@@ -12,7 +12,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 
 - [Introduction](https://docs.geometry.app/introduction): What GEOMETRY is
 - [Quickstart](https://docs.geometry.app/quickstart): Claude / Cursor connector paste
-- [Connect & manage your key](https://docs.geometry.app/connect-and-keys): `?key=` URL form, roll, cancel
+- [Connect & manage your key](https://docs.geometry.app/connect-and-keys): `?key=` URL form, Zuplo roll, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [Tools overview](https://docs.geometry.app/tools/overview): Tool catalog
 - [get_card_for_birthdate](https://docs.geometry.app/tools/get-card-for-birthdate): Tool 2 — full sample JSON for 1985-03-15
@@ -21,6 +21,11 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Data coverage](https://docs.geometry.app/coverage): Systems on the date spine
 - [FAQ](https://docs.geometry.app/faq): Common questions
 
+## Support
+
+Builders: open a GitHub issue on https://github.com/goqolabs/geometry-mcp/issues — preferred over email.
+Urgent key revoke: same Issues link (title `[urgent] key revoke`) or support@geometry.app. Do not publish company hello@ inboxes on product docs.
+
 ## Rules for agents
 
 - All string fields lowercase except glyph fields (e.g. `unicard_symbol`).
@@ -28,3 +33,4 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`).
 - GEOMETRY returns structured reference data; interpretation is the host app / model.
 - Site: https://geometry.app · Company: https://goqo.com
+- Builder support: GitHub Issues on https://github.com/goqolabs/geometry-mcp (not company spam inboxes)

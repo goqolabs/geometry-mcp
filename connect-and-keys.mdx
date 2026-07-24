@@ -5,7 +5,7 @@ description: Where your API key goes, how to rotate it, and how to cancel — se
 
 # Connect & manage your key
 
-After you subscribe in the Developer Portal, Zuplo shows a **raw key** (`zpka_…`), not a full connector URL. Use the blocks below so you never have to guess where the key goes.
+After you subscribe in the Developer Portal, **Zuplo** shows a **raw key** (`zpka_…`), not a full connector URL. Use the blocks below so you never have to guess where the key goes.
 
 ## Template
 
@@ -35,14 +35,14 @@ The **URL form is the default** — it works in Claude web/Desktop connectors.
 
 ## Security
 
-> **This URL is your password.** Anyone who has it can spend your quota. Don't commit it to a public repo or paste it in a shared channel. If it leaks, roll it — takes 30 seconds.
+> **This URL is your password.** Anyone who has it can spend your quota. Don't commit it to a public repo or paste it in a shared channel. If it leaks, roll it in the portal — takes about 30 seconds.
 
 ## Where each action lives
 
 | I want to… | Where |
 |---|---|
 | See my key | My Subscriptions → your subscription |
-| Get a new key | My Subscriptions → **Roll API Key** |
+| Get a new key | My Subscriptions → **Roll API Key** (Zuplo issues the new key) |
 | Check my usage | Portal usage dashboard |
 | Change plan | Portal → pricing → select new plan |
 | Update card / invoices | Stripe billing portal |
@@ -50,11 +50,15 @@ The **URL form is the default** — it works in Claude web/Desktop connectors.
 
 ## Rotation
 
-Go to **My Subscriptions → your subscription → Roll API Key**. You get a new key immediately. Your old key keeps working for **7 days** — update your connector URL anytime in that window (no downtime).
+In the Developer Portal go to **My Subscriptions → your subscription → Roll API Key**. **Zuplo** issues a new key immediately. Your old key keeps working for **7 days** (Zuplo grace window) — update your connector URL anytime in that window (no downtime).
 
 ## If your key was exposed
 
-> Rolling gives you a new key, but the old one stays valid for **7 days** and cannot be deleted early. If you need it killed immediately, email **hello@goqo.com**.
+> **Roll** in the portal so Zuplo issues a new key. The old key stays valid for **7 days** and cannot be deleted early (vendor behavior). If you need the old key killed immediately, open a **[GitHub issue](https://github.com/goqolabs/geometry-mcp/issues/new)** (use title prefix `[urgent] key revoke`) — do not paste the secret key in the issue body. Optional: `support@geometry.app` for the same urgent revoke request.
+
+## Support (builders)
+
+Product / technical questions → **[GitHub Issues](https://github.com/goqolabs/geometry-mcp/issues)** on the public docs repo. Real builders already have GitHub; this keeps support out of the spam / phishing inbox. Billing card issues stay in the Stripe portal.
 
 ## Quota behaviour by tier
 
