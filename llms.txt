@@ -23,8 +23,8 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 
 ## Support
 
-Builders: open a GitHub issue on https://github.com/goqolabs/geometry-mcp/issues — preferred over email.
-Urgent key revoke: same Issues link (title `[urgent] key revoke`) or support@geometry.app. Do not publish company hello@ inboxes on product docs.
+Builders: open a GitHub issue on https://github.com/goqolabs/geometry-mcp/issues — the only public support channel.
+Urgent key revoke: same link, title `[urgent] key revoke` (never paste the key). No public product email on docs.
 
 ## Rules for agents
 
