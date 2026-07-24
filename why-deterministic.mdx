@@ -1,0 +1,22 @@
+---
+title: Why deterministic
+description: LLMs guess dates. GEOMETRY doesn't.
+---
+
+# Why deterministic
+
+Ask a plain LLM what moon phase governed a date, or what was retrograde, and you get a confident guess — often different the next time you ask. GEOMETRY replaces the guess with a **lookup**: pre-computed offline, stored once, returned identically on every call.
+
+| | |
+|---|---|
+| **Without tools** | Captured model runs on the same question can hedge, disagree, or invent |
+| **With GEOMETRY** | Same tool call → same JSON bytes (within the published spine) |
+
+Reproduce it yourself:
+
+1. Ask any chatbot: *What was the moon phase on 1985-03-15, and which planets were retrograde that day?*
+2. Then ask the same via MCP after connecting `https://mcp.geometry.app/mcp`
+
+Caption: same question, same model — the only difference is the data layer.
+
+Demo / marketing surfaces use Tool 2 ([`get_card_for_birthdate`](/tools/get-card-for-birthdate)) for this proof — not Tool 1.

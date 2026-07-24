@@ -1,0 +1,12 @@
+{
+  "name": "@geometry/docs",
+  "private": true,
+  "description": "GEOMETRY public builder docs (Mintlify) — Appendix Mintlify",
+  "scripts": {
+    "dev": "mintlify dev",
+    "broken-links": "mintlify broken-links"
+  },
+  "devDependencies": {
+    "mintlify": "^4.2.163"
+  }
+}

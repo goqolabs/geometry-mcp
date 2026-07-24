@@ -1,0 +1,180 @@
+---
+title: get_card_for_birthdate
+description: One birth date → full cosmic identity + temporal layers (Tool 2).
+---
+
+# get_card_for_birthdate
+
+One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot, sidereal, moon phase, season, retrogrades, and more).
+
+| | |
+|---|---|
+| **Input** | `birth_date` (YYYY-MM-DD) |
+| **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> Get the card for birthdate 1985-03-15.
+
+geometry.app shows a **teaching excerpt** only. This page is the public docs sample builders should copy from (values from a live call; season anchors verified). Live responses can include additional nested fields and a longer `retrogrades_active` array — treat this JSON as the contract shape.
+
+## Example response
+
+```json
+{
+  "birth_date": "1985-03-15",
+  "cosmic": {
+    "card_no": 34,
+    "suit_name": "diamonds",
+    "suit_symbol": "♦",
+    "unicard_name": "eight of diamonds",
+    "unicard_symbol": "8♦",
+    "ruling_planet": "mars",
+    "unicard_emoji": "🃈",
+    "word_groups": {
+      "core": "concentration",
+      "action": "acquire",
+      "energy": "focus",
+      "shadow": "obsession",
+      "strength": "consolidation"
+    },
+    "classical_element": {
+      "element_no": 1700,
+      "element_name": "earth",
+      "element_symbol": "🜃"
+    },
+    "periodic_element": {
+      "atomic_no": 34,
+      "element_name": "selenium",
+      "element_symbol": "Se"
+    }
+  },
+  "season": {
+    "season_name": "winter",
+    "prev_anchor_name": "winter_solstice",
+    "prev_anchor_dt": "1984-12-21",
+    "next_anchor_name": "spring_equinox",
+    "next_anchor_dt": "1985-03-20",
+    "days_since_prev": 84,
+    "days_until_next": 5
+  },
+  "moon_phase": {
+    "phase_name": "waning_crescent",
+    "phase_type": "intermediate",
+    "prev_anchor": "last_quarter",
+    "next_anchor": "new_moon",
+    "days_until_next": 6
+  },
+  "astro_wheels": {
+    "tropical": {
+      "sign_name": "pisces",
+      "sign_symbol": "♓︎",
+      "house": { "house_no": 12, "house_name": "twelfth house" },
+      "ruling_planet": "poseidon",
+      "body_part": "feet"
+    },
+    "sidereal_true": {
+      "sign_name": "pisces",
+      "system_slug": "sidereal_true"
+    },
+    "vedic_rasi": {
+      "sign_name": "pisces",
+      "nakshatra": {
+        "nakshatra_name": "revati",
+        "pada_no": 3,
+        "deity": "pushan"
+      }
+    },
+    "note": "6 zodiac systems total; each carries full aspect sets (trine/square/sextile/…)"
+  },
+  "tarot": {
+    "unicard_name": "eight of pentacles",
+    "arcana_class": "minor",
+    "tarot_no": 72
+  },
+  "lunar": {
+    "sign_name": "ox",
+    "year_no": 1985,
+    "han_symbol": "牛",
+    "sign_emoji": "🐂"
+  },
+  "iching": {
+    "iching_no": 34,
+    "iching_name": "great_power",
+    "glyph": "䷡",
+    "pinyin": "da_zhuang"
+  },
+  "numerology": {
+    "birth_day_no": 74,
+    "lifepath_gregorian": 32,
+    "lifepath_vedic": 28,
+    "lifepath_hebrew": 28
+  },
+  "calendar_years": {
+    "hebrew": { "year": 5745, "month": 6, "day": 22 },
+    "persian": { "year": 1363, "month": 12, "day": 24 },
+    "chinese": { "year_no": 1985 },
+    "mayan": { "tzolkin_kin": 258, "longcount_kin": 1861857 },
+    "vedic_saka": { "year": 1906 }
+  },
+  "calendar_meta": {
+    "weekday": "friday",
+    "week_no": 11,
+    "is_weekend": false,
+    "is_leap_year": false
+  },
+  "retrogrades_active": [
+    {
+      "planet_name": "pluto",
+      "phase": "retrograde",
+      "sign_tropical": "scorpio",
+      "retro_start_dt": "1985-02-06",
+      "retro_end_dt": "1985-07-12"
+    },
+    {
+      "planet_name": "venus",
+      "phase": "retrograde",
+      "sign_tropical": "aries",
+      "cazimi_dt": "1985-04-03",
+      "retro_start_dt": "1985-03-13",
+      "retro_end_dt": "1985-04-25"
+    },
+    {
+      "planet_name": "saturn",
+      "phase": "retrograde",
+      "sign_tropical": "scorpio",
+      "retro_start_dt": "1985-03-07",
+      "retro_end_dt": "1985-07-25"
+    }
+  ],
+  "norse_runes": {
+    "rune_name": "berkano",
+    "rune_glyph": "ᛒ",
+    "sign_emoji": "🌱"
+  },
+  "celtic_ogham": {
+    "sign_name": "nion",
+    "ogham_glyph": "ᚅ",
+    "tree_name": "nion"
+  },
+  "geomancy": {
+    "figures": [
+      { "geomancy_name": "laetitia", "geomancy_symbol": "𜻨" }
+    ]
+  },
+  "temporal_context": "full"
+}
+```
+
+`retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
+
+## Out of published range
+
+Dates outside 1900–2100 return a soft envelope (`temporal_context` other than `"full"`), not a crash. Birth-card identity remains month/day based.
+
+## Related
+
+- [get_compatibility](/tools/get-compatibility) — two dates  
+- [get_day_card](/tools/get-day-card) — calendar day  
+- [Connect & manage your key](/connect-and-keys)  

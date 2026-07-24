@@ -1,0 +1,84 @@
+---
+title: get_compatibility
+description: Two birth dates → structured compatibility score (Tool 1).
+---
+
+# get_compatibility
+
+Two birth dates in → both identities, connections between them, and a scored breakdown. Scoring follows cardology canon (Robert Camp connection system) — fixed weights, transparent, never tuned to fit outcomes.
+
+| | |
+|---|---|
+| **Input** | `birth_date_a`, `birth_date_b` (YYYY-MM-DD) |
+| **Range** | Same published window as Tool 2 — `1900-01-01` … `2100-12-31` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> How compatible are people born 1985-03-15 and 1990-11-08?
+
+Live payloads are large (~85 KB) because each side embeds a full cosmic block. Below is a real teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_card_for_birthdate`](/tools/get-card-for-birthdate) shape.
+
+## Example response
+
+```json
+{
+  "flags": {
+    "is_same_card": false,
+    "is_self_pair": false,
+    "is_wild_card": false
+  },
+  "summary": "Compatibility: birth_card_* = full cosmic block (classical_element + periodic_element); true_sidereal informational (v1 policy, not in overall_score); date_context 1900-2100.",
+  "life_path_a": 5,
+  "life_path_b": 2,
+  "birth_card_a": "… full cosmic block: card, tarot, zodiacs, moon phase, season, retrogrades, runes, I Ching, and more …",
+  "birth_card_b": "… full cosmic block (same shape) …",
+  "date_context": {
+    "birth_date_a": "full",
+    "birth_date_b": "full"
+  },
+  "true_sidereal_a": "…",
+  "true_sidereal_b": "…",
+  "card_connections": [
+    {
+      "type": "jupiter",
+      "direction": "a_to_b",
+      "planet_to_planet": "harmonious"
+    }
+  ],
+  "element_to_element": "neutral",
+  "compatibility_score": {
+    "bonuses": {
+      "element_bonus": 0,
+      "scoring_policy": "v1",
+      "same_card_match": 0,
+      "self_pair_penalty": 0,
+      "ruling_planet_bonus": 0,
+      "true_sidereal_bonus": -1,
+      "chinese_zodiac_bonus": -2
+    },
+    "card_score": {
+      "a_to_b": 3,
+      "b_to_a": 0,
+      "combined": 3,
+      "connection_count_total": 1
+    },
+    "overall_score": 1,
+    "interpretation": "neutral",
+    "ruling_planet_to_planet": {
+      "a_to_b": "neutral",
+      "b_to_a": "neutral",
+      "bonus_score": 0,
+      "card_a_planet": "mars",
+      "card_b_planet": "venus"
+    }
+  },
+  "true_sidereal_aspect": "quincunx",
+  "chinese_zodiac_aspect": "quincunx"
+}
+```
+
+## Related
+
+- [get_card_for_birthdate](/tools/get-card-for-birthdate) — one date identity  
+- [get_day_card](/tools/get-day-card) — calendar day  

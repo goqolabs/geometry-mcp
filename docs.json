@@ -1,0 +1,53 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "GEOMETRY",
+  "colors": {
+    "primary": "#6E7CF6",
+    "light": "#8B9AFF",
+    "dark": "#4A56D4"
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/logo-light.svg",
+    "dark": "/logo/logo-dark.svg"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get started",
+        "pages": ["introduction", "quickstart", "connect-and-keys", "why-deterministic"]
+      },
+      {
+        "group": "Tools",
+        "pages": [
+          "tools/overview",
+          "tools/get-card-for-birthdate",
+          "tools/get-compatibility",
+          "tools/get-day-card"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": ["coverage", "faq"]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "geometry.app",
+        "href": "https://geometry.app"
+      },
+      {
+        "label": "goqo.com",
+        "href": "https://goqo.com"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/goqolabs/geometry"
+    }
+  }
+}

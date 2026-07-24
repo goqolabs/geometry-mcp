@@ -1,0 +1,30 @@
+# GEOMETRY
+
+> Deterministic temporal semantic layer for AI builders — birth cards, calendars, moon phases, seasons, retrogrades, and ~30 systems on a 1900–2100 date spine.
+
+## Canonical MCP URL
+
+https://mcp.geometry.app/mcp
+
+Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
+
+## Docs
+
+- [Introduction](https://docs.geometry.app/introduction): What GEOMETRY is
+- [Quickstart](https://docs.geometry.app/quickstart): Claude / Cursor connector paste
+- [Connect & manage your key](https://docs.geometry.app/connect-and-keys): `?key=` URL form, roll, cancel
+- [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
+- [Tools overview](https://docs.geometry.app/tools/overview): Tool catalog
+- [get_card_for_birthdate](https://docs.geometry.app/tools/get-card-for-birthdate): Tool 2 — full sample JSON for 1985-03-15
+- [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Tool 1 — two birth dates
+- [get_day_card](https://docs.geometry.app/tools/get-day-card): Tool 3 — day card + day ruler
+- [Data coverage](https://docs.geometry.app/coverage): Systems on the date spine
+- [FAQ](https://docs.geometry.app/faq): Common questions
+
+## Rules for agents
+
+- All string fields lowercase except glyph fields (e.g. `unicard_symbol`).
+- No nulls — sentinels like `none`, `0`, `[]`.
+- Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`).
+- GEOMETRY returns structured reference data; interpretation is the host app / model.
+- Site: https://geometry.app · Company: https://goqo.com

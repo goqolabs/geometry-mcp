@@ -1,0 +1,78 @@
+---
+title: get_day_card
+description: What today? — day card + day ruler (Tool 3).
+---
+
+# get_day_card
+
+One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler** context (“what today?”). Small on purpose — not a copy of Tool 2.
+
+| | |
+|---|---|
+| **Input** | `day_date` (YYYY-MM-DD) — required; no server `CURRENT_DATE` default |
+| **Range** | Full temporal window `1900-01-01` … `2100-12-31`; out-of-range still returns day card + ruler with soft `temporal_context` |
+| **Version** | `0.1.0` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> What's the day card for 2026-07-23?
+
+## Example response
+
+```json
+{
+  "tool": "get_day_card",
+  "tool_version": "0.1.0",
+  "date": "2026-07-23",
+  "temporal_context": "full",
+  "weekday": {
+    "weekday_no": 4,
+    "weekday": "thursday"
+  },
+  "day_card": {
+    "card_no": 12,
+    "card_name": "queen of clubs",
+    "unicard_slug": "queen-of-clubs",
+    "unicard_symbol": "Q♣",
+    "rank_code": "Q",
+    "suit_name": "clubs"
+  },
+  "day_ruler": {
+    "day_of_week": 4,
+    "ruling_planet": "jupiter",
+    "planet_no": 3,
+    "planet_symbol": "♃",
+    "roman": "jupiter",
+    "greek": "zeus",
+    "norse": {
+      "day_name": "þórsdagr",
+      "deity": "thor"
+    }
+  }
+}
+```
+
+Friday → Venus day (excerpt):
+
+```json
+"day_ruler": {
+  "day_of_week": 5,
+  "ruling_planet": "venus",
+  "planet_no": 6,
+  "planet_symbol": "♀",
+  "roman": "venus",
+  "greek": "aphrodite",
+  "norse": {
+    "day_name": "frjádagr",
+    "deity": "freya"
+  }
+}
+```
+
+v0.1 ships **Roman · Greek · Norse** only.
+
+## Related
+
+- [get_card_for_birthdate](/tools/get-card-for-birthdate) — birth × day product patterns  
+- [get_compatibility](/tools/get-compatibility) — two birth dates  
