@@ -19,6 +19,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Tool 1 — two birth dates
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Tool 3 — day card + day ruler
 - [Data coverage](https://docs.geometry.app/coverage): Systems on the date spine
+- [Field glossary](https://docs.geometry.app/field-glossary): What `_no` fields mean — tradition vs internal catalog numbers, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
 - [Support](https://docs.geometry.app/support): GitHub Issues — only public builder contact
 
@@ -30,7 +31,8 @@ Urgent key revoke: issue title `[urgent] key revoke` (never paste the key).
 ## Rules for agents
 
 - All string fields lowercase except glyph fields (e.g. `unicard_symbol`).
-- No nulls — sentinels like `none`, `0`, `[]`.
+- Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity). `_no` fields are non-negative.
+- `_no` fields are internal catalog ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`).
 - GEOMETRY returns structured reference data; interpretation is the host app / model.
 - Site: https://geometry.app · Company: https://goqo.com

@@ -24,6 +24,18 @@ Technical and product questions for GEOMETRY builders go through **GitHub Issues
 | Plan changes | Developer Portal → pricing |
 | Key rotation (normal) | Portal → **Roll API Key** (Zuplo issues the new key) |
 
+## Make a bug report reproducible
+
+The fastest reports include the **exact inputs** and the **catalog numbers** from the response:
+
+| Include | Example |
+|---|---|
+| Tool name and inputs | `get_card_for_birthdate`, `birth_date: 1985-03-15` |
+| The `_no` values from the block that looks wrong | `system_no: 16021`, `planet_no: 8`, `element_no: 1700` |
+| What you expected vs what you got | "expected runes sign for March; got `sign_name: "none"`" |
+
+Those `_no` fields are internal catalog identifiers — you shouldn't build on them (see [Field glossary](/field-glossary)), but quoting them lets us reproduce your exact case immediately instead of guessing which system or deck you meant. Display names can repeat across systems; the numbers can't.
+
 ## Tips
 
 - Prefer one issue per question.  
