@@ -13,7 +13,7 @@ Every row keys to a single date dimension spanning **1900–2100** (73,414 days)
 | **Sky** | Moon phases, seasons (solstice/equinox anchors), planetary retrogrades and sign ingresses |
 | **Cards** | Cardology birth cards (cosmic), karma/planetary spreads, tarot minor + dual major birth cards (Greer + Tarot School), medicine, Lenormand, full compatibility connection system |
 | **Numbers** | Numerology systems, gematria ciphers, life-path math |
-| **Signs & symbols** | Tropical + sidereal zodiacs (13-sign true sidereal included), Chinese zodiac, I Ching, runes, ogham, geomancy |
+| **Signs & symbols** | Five `astro_wheels` (tropical · sidereal_true · sidereal_iau · fagan_bradley · vedic_rasi), Chinese zodiac, I Ching, runes, ogham, geomancy |
 
 **How sky dates are calculated:** moon, season, and planetary event anchors are computed offline with the **standard Swiss Ephemeris** Python stack — the same widely used astronomical library many production astrology and astronomy systems rely on — then **stored and served as lookups**. There is no live ephemeris at request time on the published spine.
 
