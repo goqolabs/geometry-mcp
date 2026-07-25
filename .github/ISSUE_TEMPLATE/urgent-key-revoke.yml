@@ -1,0 +1,35 @@
+name: Urgent key revoke
+description: Exposed zpka_ key — request immediate revoke (do not paste the key)
+title: "[urgent] key revoke"
+labels: ["urgent", "security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste your `zpka_` key in this issue.**
+
+        Normal rotation: Developer Portal → **Roll API Key** (old key stays valid ~7 days).
+        Use this form only when you need the old key killed **sooner** than the grace window.
+  - type: input
+    id: portal-email
+    attributes:
+      label: Portal / Stripe email (if known)
+      description: Helps us find the subscription — never the raw key
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: What happened
+      description: Where the key may have leaked (public repo, chat, screenshot, etc.)
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: I did not paste the raw API key in this issue
+          required: true
+        - label: I understand Roll API Key is the normal self-serve path when available
+          required: true

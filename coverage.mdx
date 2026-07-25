@@ -10,9 +10,13 @@ Every row keys to a single date dimension spanning **1900–2100** (73,414 days)
 | Layer | What's on it |
 |---|---|
 | **Calendars** | Gregorian, Chinese/Vietnamese lunar years, Hebrew, Persian (Nowruz), Vedic samvatsara, Mayan Long Count |
-| **Sky** | Moon phases, seasons (solstice/equinox anchors), planetary retrogrades and sign ingresses (Swiss Ephemeris, pre-computed) |
+| **Sky** | Moon phases, seasons (solstice/equinox anchors), planetary retrogrades and sign ingresses |
 | **Cards** | Cardology birth cards, karma/planetary spreads, tarot, full compatibility connection system |
 | **Numbers** | Numerology systems, gematria ciphers, life-path math |
 | **Signs & symbols** | Tropical + sidereal zodiacs (13-sign true sidereal included), Chinese zodiac, I Ching, runes, ogham, geomancy |
 
-All of it: pre-computed, lowercase-normalized, served as structured JSON. No runtime ephemeris at request time for the published spine.
+**How sky dates are calculated:** moon, season, and planetary event anchors are computed offline with the **standard Swiss Ephemeris** Python stack — the same widely used astronomical library many production astrology and astronomy systems rely on — then **stored and served as lookups**. There is no live ephemeris at request time on the published spine.
+
+All of it: pre-computed, lowercase-normalized, served as structured JSON.
+
+**Full payload:** these docs summarize coverage. For every field the tools return, [call a tool](/tools/overview) — the live JSON is the complete payload (no separate `full_payload` flag).

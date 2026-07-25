@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Docs
+    url: https://docs.geometry.app
+    about: Install, tools, and teaching examples
+  - name: Product site
+    url: https://geometry.app
+    about: Marketing / install overview

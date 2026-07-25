@@ -1,0 +1,46 @@
+name: Bug report
+description: Suspected wrong data or broken MCP behavior
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Include enough to reproduce. Do **not** paste a live `zpka_` API key.
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      options:
+        - get_card_for_birthdate
+        - get_compatibility
+        - get_day_card
+        - Install / connect
+        - Docs only
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: Date(s) used
+      description: YYYY-MM-DD
+      placeholder: 1985-03-15
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What you got
+      description: Summarize or paste a redacted snippet — not secrets
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Client / environment
+      placeholder: Claude Desktop, Cursor, etc.

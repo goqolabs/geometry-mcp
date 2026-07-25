@@ -1,0 +1,35 @@
+name: Question
+description: How to connect, call tools, or read payloads
+title: "[question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Builder support is **GitHub Issues only** on this repo. For billing/keys once the portal is live, use the Developer Portal / Stripe — not this form.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What are you trying to do?
+      placeholder: e.g. How do I see the full JSON from get_card_for_birthdate?
+    validations:
+      required: true
+  - type: input
+    id: docs-page
+    attributes:
+      label: Docs page (optional)
+      description: URL or path you were reading
+      placeholder: https://docs.geometry.app/tools/get-card-for-birthdate
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client
+      options:
+        - Claude Desktop / Connectors
+        - Claude Code / CLI
+        - Cursor
+        - Other MCP client
+        - Not sure
+    validations:
+      required: true
