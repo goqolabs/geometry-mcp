@@ -20,11 +20,12 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Tool 3 — day card + day ruler
 - [Data coverage](https://docs.geometry.app/coverage): Systems on the date spine
 - [FAQ](https://docs.geometry.app/faq): Common questions
+- [Support](https://docs.geometry.app/support): GitHub Issues — only public builder contact
 
 ## Support
 
-Builders: open a GitHub issue on https://github.com/goqolabs/geometry-mcp/issues — the only public support channel.
-Urgent key revoke: same link, title `[urgent] key revoke` (never paste the key). No public product email on docs.
+Builders: https://docs.geometry.app/support → GitHub Issues on geometry-mcp. No public product email.
+Urgent key revoke: issue title `[urgent] key revoke` (never paste the key).
 
 ## Rules for agents
 

@@ -16,7 +16,7 @@
     "groups": [
       {
         "group": "Get started",
-        "pages": ["introduction", "quickstart", "connect-and-keys", "why-deterministic"]
+        "pages": ["introduction", "quickstart", "connect-and-keys", "why-deterministic", "support"]
       },
       {
         "group": "Tools",
