@@ -23,10 +23,13 @@ If you hit unexpected results, **include the relevant `_no` values in your repor
 | `atomic_no` | **Tradition** | Periodic table atomic number. Hydrogen = 1. |
 | `chakra_no` | **Tradition** | Chakra position, 1–7 (13 in the extended set). |
 | `house_no`, `pada_no` | **Tradition** | Astrological house 1–12; nakshatra pada 1–4. |
-| `planet_no` | **Catalog** | GEOMETRY body id. **Not** orbital order — Saturn is 8 for esoteric reasons, not because it is eighth from the Sun. Use `planet_name`. |
+| `nakshatra_no` | **Tradition** | Standard Vedic order, 1–27. Ashwini = 1 … Revati = 27. |
+| `planet_no` | **Catalog** | Internal body id. **Not** orbital order, Swiss Ephemeris index, or any astronomical numbering — don't infer meaning from the value. Use `planet_name`. |
 | `system_no` | **Catalog** | Registry id for a symbolic system. Not a rank, not an API version. Use the system slug or name. |
 | `element_no` | **Catalog** | Element id — see below. |
 | `sign_no` | **Catalog** | Position on *that wheel's* own catalog, not a universal zodiac index. Different wheels reuse the same numbers for different signs. Use `sign_name`. |
+| `unicard_no` | **Catalog** | Position within one deck's own catalog. Ranges differ per deck, so the same value means different things in different decks. Use `unicard_name`. |
+| `geomancy_no` | **Catalog** | Our ordering of the sixteen traditional geomantic figures, 1–16. The figures are traditional; the numbering is internal. Use `geomancy_name`. |
 
 Tradition numbers are safe to display and reason about. Catalog numbers should be treated as opaque.
 
