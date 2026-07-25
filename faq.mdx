@@ -27,7 +27,9 @@ Soft launch: paste the free MCP URL and go (no account). Metered Free / paid pla
 GEOMETRY is a read-only reference lookup. Calls carry birth dates or names as inputs, return JSON, and aren't used to build profiles.
 
 **Where is the full contract / raw JSON?**  
-Teaching examples live in these docs. On the wire, every successful tool call returns the **complete** JSON (Tool 2: only `birth_date` — no `full=true`). “Full payload” and “raw JSON” mean that object. Chat agents may summarize after they receive it; ask for the raw tool result if you need it pasted. Engine internals stay private.
+Teaching examples live in these docs (trimmed on purpose). On the wire, every successful tool call returns the **complete** JSON (Tool 2: only `birth_date` — no `full=true`). “Full payload” and “raw JSON” mean that object.
+
+**Chat example (Claude Desktop dogfood):** `give raw json for birthdate 1985-03-15 card` — forces the agent to paste the tool result instead of summarizing. RAG / HTTP builders: read the tool or API response body; you already have the full object.
 
 **How were moon / season / retrograde dates calculated?**  
 Offline with the standard **Swiss Ephemeris** Python stack (widely used in production astronomy/astrology), then stored as lookups. Requests do not run a live ephemeris.

@@ -30,7 +30,11 @@ Works on the free / anonymous trial immediately — no signup to try.
 - "How compatible are two people born 1985-03-15 and 1990-11-08?"
 - "What moon phase and season was 2020-11-08, and was anything retrograde?"
 
-**Full payload / raw JSON:** each tool call returns the **complete** object (no verbosity flag — only date inputs). Inspect the MCP tool output in the client, or tell the agent “show the raw JSON, no summarizing” if the chat truncated the display.
+**Want the full payload in chat?** (same as “raw JSON”)
+
+> give raw json for birthdate 1985-03-15 card
+
+That is an instruction to the **agent** to paste the complete tool result. The tool itself has no verbosity flag — only `birth_date`. Developers / RAG builders reading MCP or HTTP responses already get the full object on every call.
 
 **Promise:** No accounts to try it. No hallucinated dates. Same answer every time — that's the point.
 
