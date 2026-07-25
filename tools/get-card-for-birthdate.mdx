@@ -5,7 +5,7 @@ description: One birth date → full cosmic identity + temporal layers (Tool 2).
 
 # get_card_for_birthdate
 
-One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot, sidereal, moon phase, season, retrogrades, and more).
+One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot, medicine, Lenormand, runes, ogham, geomancy, sidereal, moon phase, season, retrogrades, and more).
 
 | | |
 |---|---|
@@ -95,6 +95,22 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
     "arcana_class": "minor",
     "tarot_no": 72
   },
+  "medicine": {
+    "card_no": 34,
+    "deck_type": "medicine",
+    "unicard_name": "grouse",
+    "unicard_slug": "grouse",
+    "unirank_code": "a",
+    "unicard_symbol": "34↓"
+  },
+  "lenormand": {
+    "card_no": 34,
+    "deck_type": "lenormand",
+    "unicard_name": "key",
+    "unicard_slug": "key",
+    "unicard_symbol": "8♦",
+    "in_lenormand_tradition": true
+  },
   "lunar": {
     "sign_name": "ox",
     "year_no": 1985,
@@ -169,7 +185,7 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
 }
 ```
 
-`retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
+Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`**, **`medicine`**, and **`lenormand`**. Cultural glyph systems on the same date include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. `retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
 
 ## Out of published range
 
