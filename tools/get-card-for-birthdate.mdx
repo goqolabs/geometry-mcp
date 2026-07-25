@@ -5,7 +5,7 @@ description: One birth date → full cosmic identity + temporal layers (Tool 2).
 
 # get_card_for_birthdate
 
-One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot, medicine, Lenormand, runes, ogham, geomancy, sidereal, moon phase, season, retrogrades, and more).
+One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot minor + **dual major birth cards** Greer + Tarot School, medicine, Lenormand, runes, ogham, geomancy, sidereal, moon phase, season, retrogrades, and more).
 
 | | |
 |---|---|
@@ -101,6 +101,42 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
     "arcana_class": "minor",
     "tarot_no": 72
   },
+  "tarot_birth_cards": {
+    "greer": {
+      "card_count": 1,
+      "is_same_card": true,
+      "personality": {
+        "tarot_no": 5,
+        "tarot_name": "the hierophant",
+        "tarot_roman": "V",
+        "tarot_symbol": "5★"
+      },
+      "soul": {
+        "tarot_no": 5,
+        "tarot_name": "the hierophant",
+        "tarot_roman": "V",
+        "tarot_symbol": "5★"
+      },
+      "hidden_factor": { "in_chain": false }
+    },
+    "tarot_school": {
+      "card_count": 2,
+      "is_19_chain": false,
+      "major_1": {
+        "tarot_no": 14,
+        "tarot_name": "temperance",
+        "tarot_roman": "XIV",
+        "tarot_symbol": "14★"
+      },
+      "major_2": {
+        "tarot_no": 5,
+        "tarot_name": "the hierophant",
+        "tarot_roman": "V",
+        "tarot_symbol": "5★"
+      },
+      "major_3": { "in_chain": false }
+    }
+  },
   "medicine": {
     "card_no": 34,
     "deck_type": "medicine",
@@ -191,7 +227,7 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
 }
 ```
 
-Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`**, **`medicine`**, and **`lenormand`**. Cultural glyph systems on the same date include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. `retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
+Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. `retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
 
 ## Out of published range
 
