@@ -19,7 +19,7 @@ Two birth dates in → both identities, connections between them, and a scored b
 
 Live payloads are large (~85 KB) because each side embeds a full cosmic block. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_card_for_birthdate`](/tools/get-card-for-birthdate) shape.
 
-**Full payload:** call this tool — the live response **is** the complete JSON (no separate `full_payload` flag). Ask your agent for the full tool result if the client truncates it.
+**Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
 ## Example response
 

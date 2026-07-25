@@ -26,8 +26,8 @@ Soft launch: paste the free MCP URL and go (no account). Metered Free / paid pla
 **Where's my data stored? Do you see my users' questions?**  
 GEOMETRY is a read-only reference lookup. Calls carry birth dates or names as inputs, return JSON, and aren't used to build profiles.
 
-**Where is the full contract?**  
-Teaching examples live in these docs. The **complete payload** is whatever the tool returns when you call it — there is no separate `full_payload` command. Engine internals stay private.
+**Where is the full contract / raw JSON?**  
+Teaching examples live in these docs. On the wire, every successful tool call returns the **complete** JSON (Tool 2: only `birth_date` — no `full=true`). “Full payload” and “raw JSON” mean that object. Chat agents may summarize after they receive it; ask for the raw tool result if you need it pasted. Engine internals stay private.
 
 **How were moon / season / retrograde dates calculated?**  
 Offline with the standard **Swiss Ephemeris** Python stack (widely used in production astronomy/astrology), then stored as lookups. Requests do not run a live ephemeris.

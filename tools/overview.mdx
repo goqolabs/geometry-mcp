@@ -17,4 +17,4 @@ Coming next (beta roadmap): name cards, birthday engine, team compatibility.
 
 All string fields in tool JSON are **lowercase** except glyph fields. No nulls — sentinels like `none`, `0`, `[]`.
 
-**Full payload:** every successful tool call returns the **complete** response JSON. There is no `full_payload` parameter — install MCP, call the tool, then inspect (or ask your agent to show) the tool result.
+**Full payload / raw JSON:** same thing — the complete object the tool returns. There is **no** `full_payload` flag; each tool’s only levers are its date inputs. Builders integrating MCP/HTTP get the whole payload on the wire every time. Chat UIs may summarize what the agent already received — if you want it pasted verbatim, ask the agent to show the **raw tool result** (that instruction is to the model, not to GEOMETRY).
