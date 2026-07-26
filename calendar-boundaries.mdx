@@ -71,9 +71,7 @@ Hebrew years also vary in length by design. 5787 runs 385 days because it is a l
 
 Moon phases, seasons (solstices and equinoxes), retrograde windows, and planetary ingresses are astronomical **instants** — a moment in time, not a day. GEOMETRY stores the wall time in **GMT** (`phase_gmt`, `spring_eq_gmt`, and the other `*_gmt` columns), then the tools publish the **Gregorian day containing that instant in GMT**.
 
-### Moon phases and seasons — yes, GMT
-
-These are the two builders hit most often, so say it plainly:
+### Moon phases and seasons
 
 | Catalog | Stored as | Payload fields | Anchor |
 |---|---|---|---|
@@ -89,7 +87,7 @@ Worked examples from the live catalogs (same GMT convention as [AstroPixels](htt
 
 The clock time is **not** in the MCP payload — only the GMT calendar day. `"prev_anchor_dt": "1990-05-09"` means the full-moon instant fell somewhere inside May 9, 1990 **GMT**, not necessarily that evening in your city.
 
-### Planetary retrogrades — also GMT (including shadow)
+### Planetary retrogrades (including shadow)
 
 Retrograde catalogs are Greenwich-anchored end to end. Every `planets_retrograde` row stores `anchor_tz = 'gmt'` and paired `*_dt` / `*_gmt` / `*_jd` columns for:
 
