@@ -7,7 +7,7 @@ description: Which timezone anchors each date GEOMETRY returns — cultural year
 
 Every date GEOMETRY returns is a bare `YYYY-MM-DD` string. They do not all mean the same thing.
 
-Some are **cultural year boundaries** anchored to a tradition's own civil timezone. Others are **sky events** anchored to GMT. A single payload contains both, side by side, and the JSON alone won't tell you which is which. This page will.
+Some are **cultural year boundaries** anchored to a tradition's own civil timezone. Others are **sky events** anchored to GMT. A single payload contains both, side by side; the JSON does not label which family each date belongs to.
 
 ## Two date families
 
@@ -57,7 +57,7 @@ The two rules disagree on roughly a quarter to a third of years. **2026 is one o
 
 If you are reconciling against an Iranian calendar library, expect this. It is not a bug — it is a documented convention choice, made so the Persian year stays consistent with the same equinox table that drives our season anchors.
 
-Need the Tehran civil date? Derive it on your side from the equinox instant. We will not silently switch conventions underneath you.
+To obtain the Tehran civil date, derive it on your side from the equinox instant. GEOMETRY will not switch conventions silently.
 
 ## Hebrew days begin at sunset
 
@@ -78,7 +78,7 @@ Moon phases, seasons (solstices and equinoxes), retrograde windows, and planetar
 | **Moon phases** | `phase_dt` + `phase_gmt` (TIME) | `moon_phase.prev_anchor_dt` / `next_anchor_dt` | **GMT** |
 | **Seasons** (solstice / equinox) | `spring_equinox_dt` + `spring_eq_gmt`, and the three other event pairs | `season.prev_anchor_dt` / `next_anchor_dt` | **GMT** |
 
-Worked examples from the live catalogs (same GMT convention as [AstroPixels](https://astropixels.com/ephemeris/ephemeris.html) tables we cross-checked against):
+Worked examples from the live catalogs (GMT convention matches [AstroPixels](https://astropixels.com/ephemeris/ephemeris.html) tables used as cross-checks):
 
 | Event | Instant (GMT) | Date GEOMETRY returns |
 |---|---|---|
@@ -110,11 +110,11 @@ Worked example — Mercury cycle that covers mid-May 1990 (live catalog):
 
 In the tool payload (`retrogrades_active`), each body gets a **`phase`** of `pre_shadow`, `retrograde`, or `post_shadow` for the query date, plus the station dates as GMT calendar days (`retro_start_dt`, `retro_end_dt`, and `cazimi_dt` when present). Same rule as moon and seasons: the clock time stays in the catalog; the wire carries the **GMT day**.
 
-If your ephemeris app shows a station “tomorrow” and we show “today,” check whether that app is converting the station to local time — ours does not.
+If a local ephemeris app shows a station one calendar day later than GEOMETRY, that app is usually converting the station to local time. GEOMETRY does not.
 
-**This is where a local-time source will disagree with us**, and more often than people expect. An instant lands at a uniformly random time of day, so the chance that your local date differs from the GMT date is roughly your offset divided by 24:
+A local-time source can disagree with the GMT day. An instant lands at a uniformly random time of day, so the chance that a local date differs from the GMT date is roughly the zone offset divided by 24:
 
-| Your zone | Chance the local date differs from ours |
+| Zone | Chance the local date differs from GMT |
 |---|---|
 | UTC+1 (Berlin, winter) | ~4% |
 | UTC+5:30 (India) | ~23% |
@@ -122,20 +122,20 @@ If your ephemeris app shows a station “tomorrow” and we show “today,” ch
 | UTC−8 (Los Angeles, winter) | ~33% |
 | UTC+13 (Auckland, summer) | ~54% |
 
-So an app in Singapore comparing our full-moon dates against a local almanac should expect a one-day difference on about a third of them. Neither is wrong — they answer "which day in GMT" and "which day here."
+An app in Singapore comparing GEOMETRY full-moon dates to a local almanac should expect a one-day difference on about a third of them. Both answers can be correct: one is the GMT day, the other is the local day.
 
-**If you need local dates**, convert on your side: take the GMT date, apply your user's zone, and accept that without the instant's time you can only shift whole days. We publish the GMT day because it is stable, reproducible, and independent of who is asking. Ask for the exact time and we'd have to invent it.
+**Local dates:** convert on your side from the GMT day and the user's zone. Without the stored clock time on the wire, only whole-day shifts are possible. GEOMETRY publishes the GMT day because it is stable and independent of the caller.
 
-**Note the interaction with cultural years.** A payload can show a moon phase date in GMT next to a lunar year anchored to CST. Both are correct in their own frame. Don't assume that because they sit in the same object they share an anchor.
+**Cultural years in the same payload.** A moon-phase date in GMT can sit next to a lunar year anchored to CST. Both are correct in their own frame; shared JSON does not imply a shared timezone.
 
 ## What this means near a boundary
 
-If a birth date falls within a day or two of a year boundary, the system you're reading matters:
+If a birth date falls within a day or two of a year boundary, the system under read matters:
 
-- **You choose the date.** Send the civil date your user identifies with. GEOMETRY will not second-guess it.
-- **A birth "just before" a lunar new year belongs to the previous animal year.** Someone born February 16, 2026 is in the snake year; February 17, 2026 is the first day of the fire horse.
+- **Caller chooses the date.** Send the civil date the user identifies with. GEOMETRY does not reinterpret it.
+- **A birth immediately before a lunar new year belongs to the previous animal year.** Someone born February 16, 2026 is in the snake year; February 17, 2026 is the first day of the fire horse.
 - **Different systems roll over at different times of year**, so the same date can be late in one cultural year and early in another. That is expected, not a contradiction.
-- **We never infer a birth time.** If your product needs hour-level precision at a boundary, that decision belongs in your application, using the birth time and place you collected.
+- **No inferred birth time.** Hour-level precision at a boundary belongs in the application, using birth time and place collected there.
 
 ## Related
 

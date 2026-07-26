@@ -17,13 +17,13 @@ One birth date in → the full cosmic identity out: birth card, ruling planet, c
 
 > Get the card for birthdate 1985-03-15.
 
-**Ask (raw JSON / full payload — dogfood-proven in Claude Desktop):**
+**Ask (raw JSON / full payload):**
 
 > give raw json for birthdate 1985-03-15 card
 
 That phrase calls `get_card_for_birthdate` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `birth_date`. “Raw JSON” and “full payload” are the same object.
 
-geometry.app shows a **teaching excerpt** only. This page is a public docs sample (values from a live call; season anchors verified). The sample below is **teaching shape** — shorter than the wire. Your Claude paste for the same date includes the full blocks (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, …).
+geometry.app shows a **teaching excerpt** only. This page is a public docs sample (values from a live call; season anchors verified). The sample below is **teaching shape** — shorter than the wire. A full Claude paste for the same date includes the complete blocks (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, and the rest).
 
 **Full payload / raw JSON:** the tool always returns the complete object. RAG builders and HTTP clients read that response body directly. Chat UIs may need the “raw json” line above so the model does not trim.
 
@@ -237,7 +237,7 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
 
 Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. `retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
 
-Wondering which numbers to build on? See the [Field glossary](/field-glossary) — it separates tradition numbers like `card_no` and `tarot_no` from internal catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
+Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from internal catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
 
 ## Out of published range
 
