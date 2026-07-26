@@ -14,7 +14,7 @@ Some are **cultural year boundaries** anchored to a tradition's own civil timezo
 | Family | Fields | Anchored to |
 |---|---|---|
 | **Cultural years** | `lunar.year_no`, `calendar_years.*`, and the year windows behind them | **The tradition's own civil timezone** — CST, IST, or timezone-neutral |
-| **Sky events** | `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt`, planetary ingress dates | **GMT** — the Gregorian day containing the astronomical instant |
+| **Sky events** | `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt`, planetary ingress dates | **GMT** — Gregorian day of the instant (`moon_phases.phase_gmt`, `seasons.*_gmt`, …) |
 
 If you are reconciling GEOMETRY against another source and see a one-day difference, the family tells you where to look. Cultural years disagree because of a **civil convention**; sky events disagree because of a **timezone offset from GMT**.
 
@@ -69,9 +69,25 @@ Hebrew years also vary in length by design. 5787 runs 385 days because it is a l
 
 ## Sky event dates are GMT
 
-Moon phases, seasons, retrograde windows, and planetary ingresses are astronomical **instants** — a moment in time, not a day. GEOMETRY computes them offline, then publishes the **Gregorian day containing that instant in GMT**.
+Moon phases, seasons (solstices and equinoxes), retrograde windows, and planetary ingresses are astronomical **instants** — a moment in time, not a day. GEOMETRY stores the wall time in **GMT** (`phase_gmt`, `spring_eq_gmt`, and the other `*_gmt` columns), then the tools publish the **Gregorian day containing that instant in GMT**.
 
-The time itself is not in the payload. `"prev_anchor_dt": "1990-05-09"` means the full moon instant fell somewhere inside May 9, 1990 GMT.
+### Moon phases and seasons — yes, GMT
+
+These are the two builders hit most often, so say it plainly:
+
+| Catalog | Stored as | Payload fields | Anchor |
+|---|---|---|---|
+| **Moon phases** | `phase_dt` + `phase_gmt` (TIME) | `moon_phase.prev_anchor_dt` / `next_anchor_dt` | **GMT** |
+| **Seasons** (solstice / equinox) | `spring_equinox_dt` + `spring_eq_gmt`, and the three other event pairs | `season.prev_anchor_dt` / `next_anchor_dt` | **GMT** |
+
+Worked examples from the live catalogs (same GMT convention as [AstroPixels](https://astropixels.com/ephemeris/ephemeris.html) tables we cross-checked against):
+
+| Event | Instant (GMT) | Date GEOMETRY returns |
+|---|---|---|
+| Full moon, May 1990 | **1990-05-09 19:31 GMT** | `"prev_anchor_dt": "1990-05-09"` |
+| Spring equinox 2026 | **2026-03-20 14:46 GMT** | season / Persian Nowruz day **2026-03-20** |
+
+The clock time is **not** in the MCP payload — only the GMT calendar day. `"prev_anchor_dt": "1990-05-09"` means the full-moon instant fell somewhere inside May 9, 1990 **GMT**, not necessarily that evening in your city.
 
 **This is where a local-time source will disagree with us**, and more often than people expect. An instant lands at a uniformly random time of day, so the chance that your local date differs from the GMT date is roughly your offset divided by 24:
 
