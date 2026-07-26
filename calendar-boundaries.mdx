@@ -69,7 +69,7 @@ Hebrew years also vary in length by design. 5787 runs 385 days (leap year with A
 
 ## Sky event dates are GMT
 
-Moon phases, seasons (solstices and equinoxes), and retrograde windows are astronomical **instants**. GEOMETRY stores those instants in GMT, then tools return the **Gregorian day that contains the instant in GMT**.
+Moon phases, seasons (solstices and equinoxes), and retrograde windows are astronomical **instants**. Tools return the **Gregorian day that contains each instant in GMT**.
 
 ### Moon phases and seasons
 
@@ -87,7 +87,7 @@ Clock time is **not** in the MCP payload — only the GMT calendar day. `"prev_a
 
 ### Planetary retrogrades (including shadow)
 
-Retrograde windows are Greenwich-anchored. For each body, the catalog tracks pre-shadow, station retrograde, station direct, post-shadow, and cazimi (when present).
+Retrograde windows are Greenwich-anchored. Each cycle can include pre-shadow, station retrograde, station direct, post-shadow, and cazimi (when present).
 
 | Window | Meaning |
 |---|---|
@@ -97,7 +97,7 @@ Retrograde windows are Greenwich-anchored. For each body, the catalog tracks pre
 | **Post-shadow** | Planet leaves the shadow zone after station |
 | **Cazimi** (when present) | Heart-of-Sun conjunction inside the cycle |
 
-Worked example — Mercury cycle covering mid-May 1990:
+Worked example — Mercury cycle covering mid-May 1990 (GMT days returned in the tool payload):
 
 | Instant | GMT |
 |---|---|
@@ -106,7 +106,7 @@ Worked example — Mercury cycle covering mid-May 1990:
 | Retrograde end (SD) | **1990-05-17 02:01 GMT** |
 | Post-shadow end | **1990-06-02 04:25 GMT** |
 
-In `retrogrades_active`, each body has a **`phase`** of `pre_shadow`, `retrograde`, or `post_shadow` for the query date, plus station dates as GMT calendar days (`retro_start_dt`, `retro_end_dt`, and `cazimi_dt` when present). Same rule as moon and seasons: clock time stays in the catalog; the wire carries the **GMT day**.
+In `retrogrades_active`, each body has a **`phase`** of `pre_shadow`, `retrograde`, or `post_shadow` for the query date, plus station dates as GMT calendar days (`retro_start_dt`, `retro_end_dt`, and `cazimi_dt` when present). Same rule as moon and seasons: the tools return the **GMT day**, not the clock time.
 
 If a local ephemeris app shows a station one calendar day later than GEOMETRY, that app is usually converting to local time. GEOMETRY does not.
 
@@ -125,8 +125,6 @@ Comparing GEOMETRY full-moon dates to a Singapore local almanac, expect about a 
 **Local dates:** convert in your app from the GMT day and the user’s zone. Without clock time on the wire, only whole-day shifts are possible.
 
 **Same payload, different anchors.** A moon-phase date in GMT can sit next to a lunar year anchored to CST. Shared JSON does not imply a shared timezone.
-
-Sign ingresses follow the same GMT rule in the engine catalog; they are **not** exposed on the current MCP tools.
 
 ## What this means near a boundary
 

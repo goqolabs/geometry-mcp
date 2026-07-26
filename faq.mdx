@@ -18,10 +18,10 @@ The date range and its systems are pre-computed and versioned. The same call ret
 A birth-date-to-playing-card system (Cards of Destiny tradition) with a relationship / connection layer. GEOMETRY serves a machine-readable version of it.
 
 **Is this astrology? Do you claim it predicts anything?**  
-GEOMETRY serves the *data* of traditional symbolic systems — deterministically. Interpretation belongs to your product. Where patterns are tested empirically, results are published, including negative results.
+GEOMETRY serves the *data* of traditional symbolic systems — deterministically. Interpretation belongs to your product.
 
 **What does it cost?**  
-Soft launch: free MCP URL, no account. Metered Free / paid plans and portal keys roll out with self-serve billing. Starter pricing target: **$28/mo**.
+Soft launch: free MCP URL, no account. Metered Free and paid plans roll out with self-serve billing in the Developer Portal. Current prices are shown in the portal when plans are live.
 
 **Where is my data stored? Do you see my users' questions?**  
 GEOMETRY is a read-only reference lookup. Calls take birth dates (or similar inputs), return JSON, and are not used to build user profiles.
@@ -43,9 +43,6 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 
 **Your moon phase date is one day off from mine.**  
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [Calendar boundaries](/calendar-boundaries).
-
-**Are sign ingresses in the tools?**  
-Not yet. Ingress dates exist in the engine catalog (GMT-anchored) but are not returned by the current MCP tools. Moon phase, season, and `retrogrades_active` are.
 
 **How do I get help?**  
 Open **[Support](/support)** — GitHub Issues on the public docs repo. That is the only public builder channel. Billing → Stripe customer portal.

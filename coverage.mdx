@@ -10,14 +10,14 @@ GEOMETRY keys answers to Gregorian dates from **1900-01-01** through **2100-12-3
 | Layer | Included |
 |---|---|
 | **Calendars** | Gregorian, Chinese/Vietnamese lunar years, Hebrew, Persian (Nowruz), Vedic samvatsara, Mayan Long Count |
-| **Sky** | Moon phases, seasons (solstice/equinox), planetary retrogrades; sign ingresses are in the engine catalog (not yet on MCP tools) |
-| **Cards** | Cardology birth cards, karma/planetary spreads, tarot minor + dual major birth cards (Greer + Tarot School), medicine, Lenormand, compatibility connections |
+| **Sky** | Moon phases, seasons (solstice/equinox), planetary retrogrades |
+| **Cards** | Cardology birth cards, tarot minor + dual major birth cards (Greer + Tarot School), medicine, Lenormand, compatibility connections |
 | **Numbers** | Numerology systems, gematria ciphers, life-path math |
 | **Signs & symbols** | Five `astro_wheels` (tropical · sidereal_true · sidereal_iau · fagan_bradley · vedic_rasi), Chinese zodiac, I Ching, runes, ogham, geomancy |
 
 **How sky dates are calculated:** moon, season, and planetary event anchors are computed offline with the **Swiss Ephemeris** Python stack, then **stored and returned as lookups**. Requests do not run a live ephemeris. Tool fields publish the Gregorian day of each instant **in GMT**.
 
-<sup>†</sup> Generation uses [**pyswisseph**](https://github.com/astrorigin/pyswisseph) against Astrodienst’s Swiss Ephemeris (DE440s). GEOMETRY’s product is the reconciled, date-keyed catalogs on top.
+<sup>†</sup> Generation uses the open-source [**pyswisseph**](https://github.com/astrorigin/pyswisseph) binding to Astrodienst’s Swiss Ephemeris. GEOMETRY serves precomputed, date-keyed lookups on top.
 
 **Two date families in one payload:** sky-event dates are GMT-anchored; cultural year boundaries are not — Chinese and Vietnamese use CST, Vedic uses IST, Hebrew and Dreamspell are timezone-neutral, and Persian uses the equinox in GMT (not Iran’s Tehran-local civil rule). Both families appear as plain `YYYY-MM-DD` strings. Before reconciling against another source, read [Calendar boundaries](/calendar-boundaries).
 
