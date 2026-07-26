@@ -1,24 +1,22 @@
 ---
 title: Why deterministic
-description: LLMs guess dates. GEOMETRY doesn't.
+description: LLMs guess dates. GEOMETRY looks them up — same call, same JSON.
 ---
 
 # Why deterministic
 
-Ask a plain LLM what moon phase governed a date, or what was retrograde, and you get a confident guess — often different the next time you ask. GEOMETRY replaces the guess with a **lookup**: sky anchors computed offline with the standard **Swiss Ephemeris** stack<sup>†</sup>, stored once on the date spine, returned identically on every call.
+Ask a plain LLM what moon phase fell on a date, or what was retrograde, and you often get a confident guess — sometimes different the next time you ask. GEOMETRY replaces the guess with a **lookup**: sky dates computed offline with the standard **Swiss Ephemeris** stack<sup>†</sup>, stored once, returned identically on every call.
 
 <sup>†</sup> [**pyswisseph**](https://github.com/astrorigin/pyswisseph) — open-source Python binding to Astrodienst Swiss Ephemeris. Details: [Data coverage](/coverage).
 
 | | |
 |---|---|
-| **Without tools** | Captured model runs on the same question can hedge, disagree, or invent |
-| **With GEOMETRY** | Same tool call → same JSON bytes (within the published spine) |
+| **Without tools** | The same question can hedge, disagree, or invent |
+| **With GEOMETRY** | Same tool call → same JSON (within the published 1900–2100 window) |
 
-Reproduce it yourself:
+Try it:
 
 1. Ask any chatbot: *What was the moon phase on 1985-03-15, and which planets were retrograde that day?*
-2. Then ask the same via MCP after connecting `https://mcp.geometry.app/mcp`
+2. Connect `https://mcp.geometry.app/mcp` and ask the same question again
 
-Caption: same question, same model — the only difference is the data layer.
-
-Demo / marketing surfaces use Tool 2 ([`get_card_for_birthdate`](/tools/get-card-for-birthdate)) for this proof — not Tool 1.
+Same question, same model — the difference is the data layer. Use [`get_card_for_birthdate`](/tools/get-card-for-birthdate); moon phase, season, and retrogrades are inside that payload.

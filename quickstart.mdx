@@ -1,11 +1,11 @@
 ---
 title: Quickstart
-description: Copy. Paste. Ask. — connect GEOMETRY MCP in under a minute.
+description: Connect GEOMETRY MCP in under a minute — paste the URL and ask a date question.
 ---
 
 # Quickstart
 
-Copy. Paste. Ask.
+Copy the connector URL, paste it into your MCP client, then ask a date question.
 
 ## Claude Code / CLI
 
@@ -16,7 +16,7 @@ claude mcp add \
   geometry https://mcp.geometry.app/mcp
 ```
 
-Works on the free / anonymous trial immediately — no signup to try.
+Works immediately on the free trial URL — no signup.
 
 ## Claude Desktop
 
@@ -31,15 +31,15 @@ Works on the free / anonymous trial immediately — no signup to try.
 - "What's the card and planetary ruler for today, 2026-07-28?" — *one day*
 - "What moon phase and season was 1985-03-15, and was anything retrograde?" — *deeper birth context*
 
-The first, second, and third questions map to the three tools: birth identity, a pair, and a single day. The fourth is the same birth-identity tool — moon phase, season, and retrogrades all travel inside the birth payload, so no extra call is needed.
+Those map to the three tools: [`get_card_for_birthdate`](/tools/get-card-for-birthdate), [`get_compatibility`](/tools/get-compatibility), and [`get_day_card`](/tools/get-day-card). Moon phase, season, and retrogrades ship inside the birth-card payload — no extra call.
 
-**Want the full payload in chat?** (same as “raw JSON”)
+**Full JSON in chat** (same as “raw JSON”):
 
 > give raw json for birthdate 1985-03-15 card
 
-That is an instruction to the **agent** to paste the complete tool result. The tool itself has no verbosity flag — only `birth_date`. Developers / RAG builders reading MCP or HTTP responses already get the full object on every call.
+That tells the **agent** to paste the complete tool result. The tool has no verbosity flag — only `birth_date`. If you read the MCP or HTTP response in code, you already get the full object every call.
 
-**Promise:** No accounts to try it. No hallucinated dates. Same answer every time.
+No account to try. Fixed lookups — same date, same answer.
 
 ## Free vs paid URL
 

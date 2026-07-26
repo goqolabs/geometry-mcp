@@ -1,11 +1,11 @@
 ---
 title: get_card_for_birthdate
-description: One birth date → full cosmic identity + temporal layers (Tool 2).
+description: One birth date → birth card plus calendars, moon, season, retrogrades, and related systems.
 ---
 
 # get_card_for_birthdate
 
-One birth date in → the full cosmic identity out: birth card, ruling planet, card class, plus layered systems for that date (tarot minor + **dual major birth cards** Greer + Tarot School, medicine, Lenormand, runes, ogham, geomancy, sidereal, moon phase, season, retrogrades, and more).
+One birth date in → birth card and layered systems for that date: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, and more.
 
 | | |
 |---|---|
@@ -23,9 +23,9 @@ One birth date in → the full cosmic identity out: birth card, ruling planet, c
 
 That phrase calls `get_card_for_birthdate` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `birth_date`. “Raw JSON” and “full payload” are the same object.
 
-geometry.app shows a **teaching excerpt** only. This page is a public docs sample (values from a live call; season anchors verified). The sample below is **teaching shape** — shorter than the wire. A full Claude paste for the same date includes the complete blocks (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, and the rest).
+The sample below is a **shortened teaching excerpt** (values from a live call). A full tool response for the same date includes every block (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, and the rest).
 
-**Full payload / raw JSON:** the tool always returns the complete object. RAG builders and HTTP clients read that response body directly. Chat UIs may need the “raw json” line above so the model does not trim.
+**Full payload / raw JSON:** the tool always returns the complete object. Read the MCP or HTTP response body in code. In chat, use the “raw json” line above so the model does not summarize.
 
 ## Example response
 
@@ -235,7 +235,7 @@ geometry.app shows a **teaching excerpt** only. This page is a public docs sampl
 }
 ```
 
-Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. `retrogrades_active` is trimmed for display — the live array covers major planets, asteroids, TNPs, and points. Full wire payloads carry ~30 systems on one date.
+Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
 
 Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from internal catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
 

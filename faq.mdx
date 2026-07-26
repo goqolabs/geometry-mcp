@@ -1,50 +1,54 @@
 ---
 title: FAQ
-description: Common questions about GEOMETRY MCP.
+description: Common questions for builders connecting GEOMETRY MCP.
 ---
 
 # FAQ
 
 **What is MCP?**  
-The Model Context Protocol — an open standard that lets AI models call external tools. Add GEOMETRY once and any MCP client (Claude, Cursor, and others) can query the engine mid-conversation.
+The Model Context Protocol — an open standard that lets AI apps call external tools. Add GEOMETRY once; any MCP client (Claude, Cursor, and others) can query it mid-conversation.
 
 **Do I need an account to try?**  
-No. Paste `https://mcp.geometry.app/mcp` and ask. Plans/keys come later when you want a metered Free plan or paid tier — see [Connect & manage your key](/connect-and-keys).
+No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you want a metered Free plan or paid tier — see [Connect & manage your key](/connect-and-keys).
 
 **Is the data stable?**  
-The date spine and its systems are pre-computed and versioned; the same call returns the same answer today, tomorrow, and next year. The beta label covers tooling and quotas, not the data.
+The date range and its systems are pre-computed and versioned. The same call returns the same answer today, tomorrow, and next year. The beta label covers tooling and quotas, not the data.
 
 **What's cardology?**  
-A birth-date-to-playing-card system (Cards of Destiny tradition) with a full relationship/connection layer. GEOMETRY serves a machine-readable version of it.
+A birth-date-to-playing-card system (Cards of Destiny tradition) with a relationship / connection layer. GEOMETRY serves a machine-readable version of it.
 
 **Is this astrology? Do you claim it predicts anything?**  
-GEOMETRY serves the *data* of traditional symbolic systems — deterministically. What it means is your product's call. Where we test patterns empirically, we publish what we find, including negative results.
+GEOMETRY serves the *data* of traditional symbolic systems — deterministically. Interpretation belongs to your product. Where patterns are tested empirically, results are published, including negative results.
 
 **What does it cost?**  
-Soft launch: paste the free MCP URL and go (no account). Metered Free / paid plans and portal keys roll out with self-serve billing. Starter pricing target: **$28/mo**.
+Soft launch: free MCP URL, no account. Metered Free / paid plans and portal keys roll out with self-serve billing. Starter pricing target: **$28/mo**.
 
-**Where's my data stored? Do you see my users' questions?**  
-GEOMETRY is a read-only reference lookup. Calls carry birth dates or names as inputs, return JSON, and aren't used to build profiles.
+**Where is my data stored? Do you see my users' questions?**  
+GEOMETRY is a read-only reference lookup. Calls take birth dates (or similar inputs), return JSON, and are not used to build user profiles.
 
-**Where is the full contract / raw JSON?**  
-Teaching examples live in these docs (trimmed on purpose). On the wire, every successful tool call returns the **complete** JSON (Tool 2: only `birth_date` — no `full=true`). “Full payload” and “raw JSON” mean that object.
+**Where is the full JSON / contract?**  
+Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_card_for_birthdate`](/tools/get-card-for-birthdate), the only input is `birth_date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
 
-**Chat example (Claude Desktop):** ask `give raw json for birthdate 1985-03-15 card` so the agent pastes the tool result instead of summarizing. RAG / HTTP builders already receive the full object in the tool or API response body.
+**How do I see the full JSON in chat?**  
+Ask something like: `give raw json for birthdate 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.
 
 **Which timezone decides when a cultural year starts?**  
-It depends on the system, and that is deliberate. Chinese and Vietnamese lunar years use **CST** (UTC+8), Vedic samvatsara uses **IST** (UTC+5:30), Hebrew and Dreamspell are **timezone-neutral** (arithmetic calendars with no astronomical instant to place in a zone), and Persian uses the equinox in **GMT**. Tools take a bare `YYYY-MM-DD` with no time or zone, and no conversion happens at request time. Full table: [Calendar boundaries](/calendar-boundaries).
+It depends on the system. Chinese and Vietnamese lunar years use **CST** (UTC+8), Vedic samvatsara uses **IST** (UTC+5:30), Hebrew and Dreamspell are **timezone-neutral**, and Persian uses the equinox in **GMT**. Tools take a bare `YYYY-MM-DD` with no time or zone; no conversion runs at request time. Full table: [Calendar boundaries](/calendar-boundaries).
 
 **Why doesn't your Nowruz match my Persian calendar library?**  
-GEOMETRY anchors Persian years to the equinox in GMT. Iran's official Solar Hijri rule uses Tehran local time and rolls to the next day when the equinox falls after Tehran solar noon. The two disagree on roughly a quarter to a third of years — including 2026 (GEOMETRY March 20, Iran March 21). That is a documented convention choice, not a bug. See [Calendar boundaries](/calendar-boundaries).
+GEOMETRY anchors Persian years to the equinox in GMT. Iran’s official Solar Hijri rule uses Tehran local time and rolls to the next day when the equinox falls after Tehran solar noon. The two disagree on roughly a quarter to a third of years — including 2026 (GEOMETRY March 20, Iran March 21). Documented convention, not a bug. See [Calendar boundaries](/calendar-boundaries).
 
 **How were moon / season / retrograde dates calculated?**  
-Offline with the standard **Swiss Ephemeris** Python stack (widely used in production astronomy/astrology), then stored as lookups. Requests do not run a live ephemeris. Each is published as the Gregorian day containing the instant **in GMT**. Source: open-source [**pyswisseph**](https://github.com/astrorigin/pyswisseph) (Python binding to Astrodienst Swiss Ephemeris) — same stack many production systems use; see also [Data coverage](/coverage).
+Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Requests do not run a live ephemeris. Each date in the payload is the Gregorian day of the instant **in GMT**. Library: [**pyswisseph**](https://github.com/astrorigin/pyswisseph). See [Data coverage](/coverage).
 
 **Your moon phase date is one day off from mine.**  
-Usually a timezone difference, not an error. GEOMETRY publishes the GMT day; an instant lands at a random time of day, so a local date differs roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert on your side for local dates. See [Calendar boundaries](/calendar-boundaries).
+Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [Calendar boundaries](/calendar-boundaries).
+
+**Are sign ingresses in the tools?**  
+Not yet. Ingress dates exist in the engine catalog (GMT-anchored) but are not returned by the current MCP tools. Moon phase, season, and `retrogrades_active` are.
 
 **How do I get help?**  
-Open **[Support](/support)** — GitHub Issues on the public docs repo. That is the only public builder channel (limits spam). Billing → Stripe customer portal.
+Open **[Support](/support)** — GitHub Issues on the public docs repo. That is the only public builder channel. Billing → Stripe customer portal.
 
 **Company?**  
-[Goqo Labs](https://goqo.com) · product [geometry.app](https://geometry.app) · builder support via GitHub Issues (not personal or company spam inboxes)
+[Goqo Labs](https://goqo.com) · product [geometry.app](https://geometry.app) · builder support via GitHub Issues  

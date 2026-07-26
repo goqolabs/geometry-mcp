@@ -1,20 +1,23 @@
 ---
 title: Tools overview
-description: MCP tool catalog — what builders call.
+description: The three MCP tools — birth identity, compatibility, and day card.
 ---
 
 # Tools
 
-GEOMETRY exposes curated **tools** over MCP. Same engine on Path B HTTP later.
+Three tools cover birth identity, a pair, and a single calendar day.
 
-| Tool | Job |
-|------|-----|
-| [`get_card_for_birthdate`](/tools/get-card-for-birthdate) | One birth date → full cosmic identity + temporal layers |
-| [`get_compatibility`](/tools/get-compatibility) | Two birth dates → scored compatibility read |
-| [`get_day_card`](/tools/get-day-card) | One calendar day → day card + day ruler |
+| Tool | What it returns |
+|------|-----------------|
+| [`get_card_for_birthdate`](/tools/get-card-for-birthdate) | One birth date → birth card + layered systems (calendars, moon, season, retrogrades, and more) |
+| [`get_compatibility`](/tools/get-compatibility) | Two birth dates → both identities + scored compatibility |
+| [`get_day_card`](/tools/get-day-card) | One calendar day → day card + planetary day ruler |
 
-Coming next (beta roadmap): name cards, birthday engine, team compatibility.
+On the roadmap: name cards, birthday engine, team compatibility.
 
-All string fields in tool JSON are **lowercase** except glyph fields. No nulls — sentinels like `none`, `0`, `[]`.
+## Payload conventions
 
-**Full payload / raw JSON:** same thing — the complete object the tool returns. There is **no** `full_payload` flag; each tool’s only levers are its date inputs. Builders integrating MCP/HTTP get the whole payload on the wire every time. Chat UIs may summarize what the agent already received — if you want it pasted verbatim, ask the agent to show the **raw tool result** (that instruction is to the model, not to GEOMETRY).
+- String fields are **lowercase**, except glyph / symbol fields (for example `unicard_symbol`)
+- Missing values use sentinels — `0`, `"none"`, `""`, `[]` — not `null` (one documented exception: Norse Saturday deity; see [Field glossary](/field-glossary))
+- There is **no** `full_payload` flag. Each tool’s only inputs are its date fields. MCP and HTTP responses always include the complete object
+- Chat UIs may summarize. To see every field in chat, ask the agent for the **raw tool result** — that instruction is to the model, not a GEOMETRY parameter
