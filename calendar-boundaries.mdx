@@ -14,7 +14,7 @@ Some are **cultural year boundaries** anchored to a tradition's own civil timezo
 | Family | Fields | Anchored to |
 |---|---|---|
 | **Cultural years** | `lunar.year_no`, `calendar_years.*`, and the year windows behind them | **The tradition's own civil timezone** — CST, IST, or timezone-neutral |
-| **Sky events** | `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt`, planetary ingress dates | **GMT** — Gregorian day of the instant (`moon_phases.phase_gmt`, `seasons.*_gmt`, …) |
+| **Sky events** | `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active` (`phase`, `retro_start_dt`, `retro_end_dt`, `cazimi_dt`), planetary ingress dates | **GMT** — Gregorian day of the instant (`*_gmt` columns; retro rows also carry `anchor_tz = 'gmt'`) |
 
 If you are reconciling GEOMETRY against another source and see a one-day difference, the family tells you where to look. Cultural years disagree because of a **civil convention**; sky events disagree because of a **timezone offset from GMT**.
 
@@ -88,6 +88,31 @@ Worked examples from the live catalogs (same GMT convention as [AstroPixels](htt
 | Spring equinox 2026 | **2026-03-20 14:46 GMT** | season / Persian Nowruz day **2026-03-20** |
 
 The clock time is **not** in the MCP payload — only the GMT calendar day. `"prev_anchor_dt": "1990-05-09"` means the full-moon instant fell somewhere inside May 9, 1990 **GMT**, not necessarily that evening in your city.
+
+### Planetary retrogrades — also GMT (including shadow)
+
+Retrograde catalogs are Greenwich-anchored end to end. Every `planets_retrograde` row stores `anchor_tz = 'gmt'` and paired `*_dt` / `*_gmt` / `*_jd` columns for:
+
+| Window | Catalog columns | Meaning |
+|---|---|---|
+| **Pre-shadow** | `pre_shadow_start_dt` + `pre_shadow_start_gmt` | Planet enters the shadow zone before station |
+| **Station retrograde (SR)** | `retro_start_dt` + `retro_start_gmt` | Actual retrograde begins |
+| **Station direct (SD)** | `retro_end_dt` + `retro_end_gmt` | Retrograde ends / direct motion resumes |
+| **Post-shadow** | `post_shadow_end_dt` + `post_shadow_end_gmt` | Planet leaves the shadow zone after station |
+| **Cazimi** (when present) | `cazimi_dt` + `cazimi_gmt` | Heart-of-Sun conjunction inside the cycle |
+
+Worked example — Mercury cycle that covers mid-May 1990 (live catalog):
+
+| Instant | GMT |
+|---|---|
+| Pre-shadow start | **1990-04-09 16:30 GMT** |
+| Retrograde start (SR) | **1990-04-23 06:54 GMT** |
+| Retrograde end (SD) | **1990-05-17 02:01 GMT** |
+| Post-shadow end | **1990-06-02 04:25 GMT** |
+
+In the tool payload (`retrogrades_active`), each body gets a **`phase`** of `pre_shadow`, `retrograde`, or `post_shadow` for the query date, plus the station dates as GMT calendar days (`retro_start_dt`, `retro_end_dt`, and `cazimi_dt` when present). Same rule as moon and seasons: the clock time stays in the catalog; the wire carries the **GMT day**.
+
+If your ephemeris app shows a station “tomorrow” and we show “today,” check whether that app is converting the station to local time — ours does not.
 
 **This is where a local-time source will disagree with us**, and more often than people expect. An instant lands at a uniformly random time of day, so the chance that your local date differs from the GMT date is roughly your offset divided by 24:
 
