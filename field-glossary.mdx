@@ -46,6 +46,16 @@ Classical elements have no atomic number, so `element_no` is the one key present
 
 The same applies to the `element_no` returned inside the `celtic_ogham` and `norse_runes` blocks — those are classical elements.
 
+## Year fields and their boundaries
+
+The `lunar`, `yearly`, and `calendar_years` blocks carry cultural year numbers — `year_no`, `hebrew_year_no`, `persian_year_no`, `vedic_year_no`, `chinese_year_no`, and similar.
+
+These are **tradition numbers**, safe to display: Hebrew `5787` is the anno mundi year, Vedic `1948` is Shaka Samvat, Persian `1405` is the Solar Hijri year.
+
+Which year you get depends on where the date falls relative to that system's boundary — and those boundaries are **not all in the same timezone**. Chinese and Vietnamese use CST, Vedic uses IST, Hebrew and Dreamspell are timezone-neutral, and Persian uses GMT rather than Iran's Tehran-local rule.
+
+**Same payload, different family:** `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, and `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt` look identical — bare `YYYY-MM-DD` — but are GMT sky-event days, not civil year windows. If your dates land near a year boundary or disagree with a local almanac by one day, read [Calendar boundaries](/calendar-boundaries) before reconciling against another library.
+
 ## Zero means "not applicable"
 
 Where a lookup has no match, or a concept does not apply to that date, GEOMETRY returns a typed placeholder rather than `null`:

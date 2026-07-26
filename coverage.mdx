@@ -15,7 +15,11 @@ Every row keys to a single date dimension spanning **1900–2100** (73,414 days)
 | **Numbers** | Numerology systems, gematria ciphers, life-path math |
 | **Signs & symbols** | Five `astro_wheels` (tropical · sidereal_true · sidereal_iau · fagan_bradley · vedic_rasi), Chinese zodiac, I Ching, runes, ogham, geomancy |
 
-**How sky dates are calculated:** moon, season, and planetary event anchors are computed offline with the **standard Swiss Ephemeris** Python stack — the same widely used astronomical library many production astrology and astronomy systems rely on — then **stored and served as lookups**. There is no live ephemeris at request time on the published spine.
+**How sky dates are calculated:** moon, season, and planetary event anchors are computed offline with the **standard Swiss Ephemeris** Python stack — the same widely used astronomical library many production astrology and astronomy systems rely on — then **stored and served as lookups**. There is no live ephemeris at request time on the published spine. These are published as the Gregorian day containing the instant **in GMT**.
+
+<sup>†</sup> Generation uses the open-source Python binding [**pyswisseph**](https://github.com/astrorigin/pyswisseph) (`import swisseph as swe`) against Astrodienst’s Swiss Ephemeris (DE440s). Anyone can run the same library; GEOMETRY’s work is the reconciled, date-keyed catalogs on top.
+
+**Two date families, one payload:** sky events are GMT-anchored, but cultural year boundaries are **not** — Chinese and Vietnamese use CST, Vedic uses IST, Hebrew and Dreamspell are timezone-neutral, and Persian uses the equinox in GMT rather than Iran's Tehran-local civil rule. Both families appear as plain `YYYY-MM-DD` strings side by side. Before reconciling any date against another source, read [Calendar boundaries](/calendar-boundaries).
 
 All of it: pre-computed, lowercase-normalized, served as structured JSON.
 

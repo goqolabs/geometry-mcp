@@ -31,8 +31,17 @@ Teaching examples live in these docs (trimmed on purpose). On the wire, every su
 
 **Chat example (Claude Desktop dogfood):** `give raw json for birthdate 1985-03-15 card` — forces the agent to paste the tool result instead of summarizing. RAG / HTTP builders: read the tool or API response body; you already have the full object.
 
+**Which timezone decides when a cultural year starts?**  
+It depends on the system, and that is deliberate. Chinese and Vietnamese lunar years use **CST** (UTC+8), Vedic samvatsara uses **IST** (UTC+5:30), Hebrew and Dreamspell are **timezone-neutral** (arithmetic calendars with no astronomical instant to place in a zone), and Persian uses the equinox in **GMT**. Tools take a bare `YYYY-MM-DD` with no time or zone, and no conversion happens at request time. Full table: [Calendar boundaries](/calendar-boundaries).
+
+**Why doesn't your Nowruz match my Persian calendar library?**  
+Because we anchor Persian years to the equinox in GMT, while Iran's official Solar Hijri rule uses Tehran local time and rolls to the next day when the equinox falls after Tehran solar noon. The two disagree on roughly a quarter to a third of years — 2026 is one: we say March 20, Iran says March 21. It is a documented convention choice, not a bug. See [Calendar boundaries](/calendar-boundaries).
+
 **How were moon / season / retrograde dates calculated?**  
-Offline with the standard **Swiss Ephemeris** Python stack (widely used in production astronomy/astrology), then stored as lookups. Requests do not run a live ephemeris.
+Offline with the standard **Swiss Ephemeris** Python stack (widely used in production astronomy/astrology), then stored as lookups. Requests do not run a live ephemeris. Each is published as the Gregorian day containing the instant **in GMT**. Source: open-source [**pyswisseph**](https://github.com/astrorigin/pyswisseph) (Python binding to Astrodienst Swiss Ephemeris) — same stack many production systems use; see also [Data coverage](/coverage).
+
+**Your moon phase date is one day off from mine.**  
+Almost certainly a timezone difference, not an error. We publish the GMT day; an instant lands at a random time of day, so your local date differs roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert on your side if you need local dates. See [Calendar boundaries](/calendar-boundaries).
 
 **How do I get help?**  
 Open **[Support](/support)** — GitHub Issues on the public docs repo. That is the only public builder channel (limits spam). Billing → Stripe customer portal.

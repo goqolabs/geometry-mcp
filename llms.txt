@@ -19,6 +19,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Tool 1 — two birth dates
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Tool 3 — day card + day ruler
 - [Data coverage](https://docs.geometry.app/coverage): Systems on the date spine
+- [Calendar boundaries](https://docs.geometry.app/calendar-boundaries): Two date families — sky events GMT-anchored; cultural years per-tradition (Chinese/Vietnamese CST, Vedic IST, Hebrew and Dreamspell timezone-neutral, Persian GMT not Tehran civil)
 - [Field glossary](https://docs.geometry.app/field-glossary): What `_no` fields mean — tradition vs internal catalog numbers, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
 - [Support](https://docs.geometry.app/support): GitHub Issues — only public builder contact
@@ -34,6 +35,9 @@ Urgent key revoke: issue title `[urgent] key revoke` (never paste the key).
 - Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity). `_no` fields are non-negative.
 - `_no` fields are internal catalog ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`).
+- Sky anchors (moon / season / retrograde / ingress) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph — Python binding to Astrodienst Swiss Ephemeris / DE440s), then stored as lookups. No live ephemeris at request time. See /coverage.
+- Dates come in TWO families and the JSON does not label them. (1) Sky events — `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt`/`retro_end_dt`/`cazimi_dt`, ingress dates — are the Gregorian day containing the instant in **GMT**. A local-time source will differ by one day roughly `offset ÷ 24` of the time (~33% at UTC+8). (2) Cultural years — `lunar.year_no`, `calendar_years.*` — use each tradition's own civil anchor: Chinese/Vietnamese CST (UTC+8), Vedic samvatsara IST (UTC+5:30), Hebrew and Dreamspell timezone-neutral (arithmetic, cannot shift), Persian GMT day-of-equinox by deliberate choice (may differ one day from Iran's Tehran-local rule).
+- Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /calendar-boundaries.
 - GEOMETRY returns structured reference data; interpretation is the host app / model.
 - Site: https://geometry.app · Company: https://goqo.com
 - Builder support: GitHub Issues on https://github.com/goqolabs/geometry-mcp (not company spam inboxes)
