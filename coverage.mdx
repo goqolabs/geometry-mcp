@@ -1,6 +1,6 @@
 ---
 title: Data coverage
-description: What ships on the 1900–2100 date range — calendars, sky, cards, and symbols.
+description: What ships on the 1900–2100 date range — calendars, sky, cards, symbols — and why two YYYY-MM-DD fields in one payload can mean different timezones.
 ---
 
 GEOMETRY keys answers to Gregorian dates from **1900-01-01** through **2100-12-31** (73,414 days). On that range:
@@ -17,8 +17,143 @@ GEOMETRY keys answers to Gregorian dates from **1900-01-01** through **2100-12-3
 
 <sup>†</sup> Generation uses the open-source [**pyswisseph**](https://github.com/astrorigin/pyswisseph) binding to Astrodienst’s Swiss Ephemeris. GEOMETRY serves precomputed, date-keyed lookups on top.
 
-**Two date families in one payload:** sky-event dates are GMT-anchored; cultural year boundaries are not — Chinese and Vietnamese use CST, Vedic uses IST, Hebrew and Dreamspell are timezone-neutral, and Persian uses the equinox in GMT (not Iran’s Tehran-local civil rule). Both families appear as plain `YYYY-MM-DD` strings. Before reconciling against another source, read [Calendar boundaries](/calendar-boundaries).
-
 All of it is pre-computed, lowercase-normalized, and served as structured JSON.
 
 **Full payload:** these docs summarize coverage. For every field a tool returns, [call the tool](/tools/overview) — the live JSON is complete (no separate verbosity flag).
+
+## Calendar boundaries
+
+Every date GEOMETRY returns is a bare `YYYY-MM-DD` string. They do not all mean the same thing.
+
+Some are **cultural year boundaries** anchored to a tradition’s own civil timezone. Others are **sky events** anchored to GMT. A single tool response can contain both; the JSON does not label which family each date belongs to.
+
+### Two date families
+
+| Family | Example fields in the payload | Anchored to |
+|---|---|---|
+| **Cultural years** | `lunar.year_no`, `calendar_years.*` | That tradition’s civil timezone — CST, IST, or timezone-neutral |
+| **Sky events** | `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active` (`phase`, `retro_start_dt`, `retro_end_dt`, `cazimi_dt`) | **GMT** — the Gregorian day that contains the astronomical instant |
+
+If you compare GEOMETRY to another source and see a one-day difference, start here. Cultural years disagree because of a **civil convention**; sky events disagree because of a **timezone offset from GMT**.
+
+### The governing rule
+
+Tools take a **bare calendar date** — `YYYY-MM-DD`, no time, no timezone. Each cultural year is stored as a date window in its tradition’s civil frame; lookup is a plain date-in-range match.
+
+**No timezone conversion happens at request time.** GEOMETRY does not know the user’s location, birth time, or your server’s zone. It uses the date you send and answers in each tradition’s own terms.
+
+Converting at request time would require guessing a birth time and place that were never provided.
+
+### Cultural years — which anchor each system uses
+
+| System | Year begins on | Anchored to | 2026 example |
+|---|---|---|---|
+| **Chinese** | Lunar new year | **CST** (UTC+8) | Feb 17, 2026 → Feb 5, 2027 · fire horse |
+| **Vietnamese** | Tết — same lunar calendar as Chinese | **CST** (UTC+8) | Feb 17, 2026 → Feb 5, 2027 · fire horse |
+| **Vedic samvatsara** | Chaitra Shukla Pratipada (new-moon anchored) | **IST** (UTC+5:30) | Mar 19, 2026 → Apr 6, 2027 · Shaka 1948, *parabhava* |
+| **Persian** | Nowruz, spring equinox | **GMT** — see the exception below | Mar 20, 2026 → Mar 19, 2027 · year 1405 |
+| **Hebrew** | Tishrei 1 (Rosh Hashanah) | **Timezone-neutral** | Sep 12, 2026 → Oct 1, 2027 · AM 5787 |
+| **Dreamspell** | Fixed July 26 | **Timezone-neutral** | Jul 26, 2026 → Jul 24, 2027 |
+
+**Timezone-neutral** means no timezone applies — not that UTC was chosen. The Hebrew calendar is arithmetic (Metonic calculation), with no single astronomical instant to place in a zone. Dreamspell is a fixed count from a July 26 anchor. Neither shifts by a day based on the caller’s zone.
+
+Chinese, Vietnamese, and Vedic dates follow the civil convention each tradition publishes. Re-anchoring them to UTC would disagree with common references (Hong Kong Observatory, drikpanchang) on a meaningful fraction of years, with no astronomical benefit.
+
+### The Persian exception
+
+**Persian years use the equinox date in GMT, not Iran’s official civil rule.** This is deliberate — and the one case where GEOMETRY can disagree with a Persian calendar library.
+
+Iran’s official Solar Hijri calendar places Nowruz on the day of the equinox in **Tehran local time** (UTC+3:30), rolling to the next day when the equinox falls after Tehran solar noon. GEOMETRY uses the Gregorian day that contains the equinox instant in GMT.
+
+The two rules disagree on roughly a quarter to a third of years. **2026 is one of them:**
+
+| | |
+|---|---|
+| Spring equinox 2026 | Mar 20, 14:46 GMT |
+| GEOMETRY (GMT rule) | Nowruz = **Mar 20, 2026** |
+| Iran’s official rule | 18:16 Tehran, after solar noon → **Mar 21, 2026** |
+
+If you reconcile against an Iranian calendar library, expect this. It is a documented convention choice so the Persian year stays consistent with the same equinox table that drives season anchors.
+
+To obtain the Tehran civil date, derive it in your app from the equinox instant. GEOMETRY will not switch conventions silently.
+
+### Hebrew days begin at sunset
+
+The Hebrew calendar starts each day at sunset, not midnight. GEOMETRY stores the **civil Gregorian date** on which the Hebrew date falls.
+
+Example — Rosh Hashanah 5787: observance begins the evening of **September 11, 2026**; GEOMETRY’s Hebrew year 5787 starts on **September 12, 2026** (the civil day). Both are correct; they answer different questions. If your product needs the sunset boundary, treat the eve as one day earlier.
+
+Hebrew years also vary in length by design. 5787 runs 385 days (leap year with Adar I). Lengths of 353–355 and 383–385 days are normal.
+
+### Sky event dates are GMT
+
+Moon phases, seasons (solstices and equinoxes), and retrograde windows are astronomical **instants**. Tools return the **Gregorian day that contains each instant in GMT**.
+
+#### Moon phases and seasons
+
+| In the payload | Meaning | Anchor |
+|---|---|---|
+| `moon_phase.prev_anchor_dt` / `next_anchor_dt` | Nearest moon-phase anchors around the query date | **GMT** |
+| `season.prev_anchor_dt` / `next_anchor_dt` | Nearest solstice / equinox anchors | **GMT** |
+
+| Event | Instant (GMT) | Date in the payload |
+|---|---|---|
+| Full moon, May 1990 | **1990-05-09 19:31 GMT** | `"prev_anchor_dt": "1990-05-09"` |
+| Spring equinox 2026 | **2026-03-20 14:46 GMT** | season / Persian Nowruz day **2026-03-20** |
+
+Clock time is **not** in the MCP payload — only the GMT calendar day. `"prev_anchor_dt": "1990-05-09"` means the full-moon instant fell somewhere on May 9, 1990 **GMT**, not necessarily that evening in the user’s city.
+
+#### Planetary retrogrades (including shadow)
+
+Retrograde windows are Greenwich-anchored. Each cycle can include pre-shadow, station retrograde, station direct, post-shadow, and cazimi (when present).
+
+| Window | Meaning |
+|---|---|
+| **Pre-shadow** | Planet enters the shadow zone before station |
+| **Station retrograde (SR)** | Retrograde begins |
+| **Station direct (SD)** | Retrograde ends; direct motion resumes |
+| **Post-shadow** | Planet leaves the shadow zone after station |
+| **Cazimi** (when present) | Heart-of-Sun conjunction inside the cycle |
+
+Worked example — Mercury cycle covering mid-May 1990 (GMT days returned in the tool payload):
+
+| Instant | GMT |
+|---|---|
+| Pre-shadow start | **1990-04-09 16:30 GMT** |
+| Retrograde start (SR) | **1990-04-23 06:54 GMT** |
+| Retrograde end (SD) | **1990-05-17 02:01 GMT** |
+| Post-shadow end | **1990-06-02 04:25 GMT** |
+
+In `retrogrades_active`, each body has a **`phase`** of `pre_shadow`, `retrograde`, or `post_shadow` for the query date, plus station dates as GMT calendar days (`retro_start_dt`, `retro_end_dt`, and `cazimi_dt` when present). Same rule as moon and seasons: the tools return the **GMT day**, not the clock time.
+
+If a local ephemeris app shows a station one calendar day later than GEOMETRY, that app is usually converting to local time. GEOMETRY does not.
+
+A local-time source can disagree with the GMT day. An instant lands at a random time of day, so the chance a local date differs from GMT is roughly the zone offset ÷ 24:
+
+| Zone | Chance the local date differs from GMT |
+|---|---|
+| UTC+1 (Berlin, winter) | ~4% |
+| UTC+5:30 (India) | ~23% |
+| UTC+8 (Beijing, Singapore) | ~33% |
+| UTC−8 (Los Angeles, winter) | ~33% |
+| UTC+13 (Auckland, summer) | ~54% |
+
+Comparing GEOMETRY full-moon dates to a Singapore local almanac, expect about a one-day difference on roughly a third of them. Both can be correct: GMT day vs local day.
+
+**Local dates:** convert in your app from the GMT day and the user’s zone. Without clock time on the wire, only whole-day shifts are possible.
+
+**Same payload, different anchors.** A moon-phase date in GMT can sit next to a lunar year anchored to CST. Shared JSON does not imply a shared timezone.
+
+### What this means near a boundary
+
+If a birth date falls within a day or two of a year boundary, which system you read matters:
+
+- **You send the civil date.** GEOMETRY does not reinterpret it.
+- **A birth immediately before a lunar new year belongs to the previous animal year.** February 16, 2026 is still the snake year; February 17, 2026 is the first day of the fire horse.
+- **Different systems roll over at different times of year**, so the same date can be late in one cultural year and early in another. That is expected.
+- **No inferred birth time.** Hour-level precision at a boundary belongs in your application, using birth time and place you collect there.
+
+## Related
+
+- [Why deterministic](/why-deterministic) — how sky anchors are computed and stored  
+- [`get_card_for_birthdate`](/tools/get-card-for-birthdate) — returns `lunar`, `calendar_years`, `moon_phase`, `season`, and `retrogrades_active`

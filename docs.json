@@ -21,16 +21,16 @@
       {
         "group": "Tools",
         "pages": [
+          "payload-shapes",
           "tools/overview",
           "tools/get-card-for-birthdate",
           "tools/get-compatibility",
-          "tools/get-day-card",
-          "payload-shapes"
+          "tools/get-day-card"
         ]
       },
       {
         "group": "Reference",
-        "pages": ["coverage", "calendar-boundaries", "astro-wheels", "field-glossary", "faq"]
+        "pages": ["coverage", "astro-wheels", "field-glossary", "faq"]
       }
     ]
   },
@@ -55,5 +55,11 @@
     "metatags": {
       "canonical": "https://docs.geometry.app"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/calendar-boundaries",
+      "destination": "/coverage#calendar-boundaries"
+    }
+  ]
 }

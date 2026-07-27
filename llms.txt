@@ -16,11 +16,11 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Connect & manage your key](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [Tools overview](https://docs.geometry.app/tools/overview): Tool catalog
+- [What you get](https://docs.geometry.app/payload-shapes): Field counts and repeating payload shapes
 - [get_card_for_birthdate](https://docs.geometry.app/tools/get-card-for-birthdate): Birth identity sample JSON for 1985-03-15
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two birth dates
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Day card + day ruler
-- [Data coverage](https://docs.geometry.app/coverage): Systems on the date range
-- [Calendar boundaries](https://docs.geometry.app/calendar-boundaries): Two date families — sky events GMT; cultural years per tradition (Chinese/Vietnamese CST, Vedic IST, Hebrew and Dreamspell timezone-neutral, Persian GMT not Tehran civil)
+- [Data coverage](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
@@ -29,7 +29,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 ## Support
 
 Builders: https://docs.geometry.app/support — docs / portal / walkthrough first. No public product email.
-GitHub Issues: paid plans only (Starter+); soft launch and Free = self-serve. Scope = gateway / product failures — not zodiac or calendar disagreements (/astro-wheels · /calendar-boundaries).
+GitHub Issues: paid plans only (Starter+); soft launch and Free = self-serve. Scope = gateway / product failures — not zodiac or calendar disagreements (/astro-wheels · /coverage#calendar-boundaries).
 Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-keys (never paste the key).
 
 ## Rules for agents
@@ -40,7 +40,7 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`). Catalog pad years outside that window return `"extended"` (same calculations, honest label). Dates outside `date_dim` return `"birth_card_only"` / `"day_card_only"` with a soft error envelope.
 - Sky anchors (moon / season / retrograde) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph), then stored as lookups. No live ephemeris at request time. See /coverage.
 - Dates come in TWO families and the JSON does not label them. (1) Sky events — `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt`/`retro_end_dt`/`cazimi_dt` — are the Gregorian day containing the instant in **GMT**. A local-time source will differ by one day roughly `offset ÷ 24` of the time (~33% at UTC+8). (2) Cultural years — `lunar.year_no`, `calendar_years.*` — use each tradition's own civil anchor: Chinese/Vietnamese CST (UTC+8), Vedic samvatsara IST (UTC+5:30), Hebrew and Dreamspell timezone-neutral (arithmetic, cannot shift), Persian GMT day-of-equinox by deliberate choice (may differ one day from Iran's Tehran-local rule).
-- Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /calendar-boundaries.
+- Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /coverage#calendar-boundaries.
 - GEOMETRY returns structured reference data; interpretation is the host app / model.
 - Site: https://geometry.app · Company: https://goqo.com
 - Builder support: self-serve docs at https://docs.geometry.app/support · Issues only for reproducible bugs on https://github.com/goqolabs/geometry-mcp
