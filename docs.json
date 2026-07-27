@@ -22,7 +22,6 @@
         "group": "Tools",
         "pages": [
           "payload-shapes",
-          "tools/overview",
           "tools/get-card-for-birthdate",
           "tools/get-compatibility",
           "tools/get-day-card"
@@ -60,6 +59,10 @@
     {
       "source": "/calendar-boundaries",
       "destination": "/coverage#calendar-boundaries"
+    },
+    {
+      "source": "/tools/overview",
+      "destination": "/payload-shapes"
     }
   ]
 }
