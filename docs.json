@@ -16,7 +16,7 @@
     "groups": [
       {
         "group": "Get started",
-        "pages": ["introduction", "quickstart", "connect-and-keys", "support"]
+        "pages": ["quickstart", "introduction", "connect-and-keys"]
       },
       {
         "group": "Tools",
@@ -30,7 +30,7 @@
       },
       {
         "group": "Reference",
-        "pages": ["why-deterministic", "coverage", "astro-wheels", "field-glossary", "faq"]
+        "pages": ["why-deterministic", "coverage", "astro-wheels", "field-glossary", "support", "faq"]
       }
     ]
   },
