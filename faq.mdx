@@ -42,6 +42,9 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 **Your moon phase date is one day off from mine.**  
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [Calendar boundaries](/calendar-boundaries).
 
+**Why doesn’t my sign match another app?**  
+GEOMETRY returns **five** wheels under `astro_wheels` (tropical, sidereal true, IAU, Fagan-Bradley, Vedic rasi). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. Full table: [Astro wheels](/astro-wheels).
+
 **How do I get help?**  
 Start at **[Support](/support)** — self-serve docs and portal first. GitHub Issues are only for **reproducible product bugs**. Billing → Stripe customer portal.
 

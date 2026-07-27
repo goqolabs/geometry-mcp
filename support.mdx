@@ -1,9 +1,9 @@
 ---
 title: Support
-description: Self-serve help first — docs, walkthroughs, and portal. GitHub Issues only for reproducible product bugs.
+description: Self-serve help first — docs, walkthroughs, and portal. GitHub Issues only for reproducible product / gateway bugs.
 ---
 
-GEOMETRY builder support is **self-serve by design**. Most questions already have an answer in these docs or the install walkthrough. Open a GitHub Issue only when something looks like a **product bug you can reproduce**.
+GEOMETRY builder support is **self-serve by design**. Most questions already have an answer in these docs or the install walkthrough. Open a GitHub Issue only when something looks like a **product or gateway bug you can reproduce** — not when two zodiac systems disagree.
 
 ## Help yourself first
 
@@ -14,6 +14,7 @@ GEOMETRY builder support is **self-serve by design**. Most questions already hav
 | Rotate / roll a key after a leak | [Connect & manage your key](/connect-and-keys#rotation) — do this yourself |
 | Card, cancel, invoices | Stripe billing portal (from the Developer Portal) |
 | Change plan | Developer Portal → pricing |
+| “Why is my sign different?” | [Astro wheels](/astro-wheels) — five systems in one payload |
 | What a field means / `_no` values | [Field glossary](/field-glossary) |
 | Coverage, calendars, moon off-by-one | [FAQ](/faq) · [Coverage](/coverage) · [Calendar boundaries](/calendar-boundaries) |
 | Why answers stay the same | [Why deterministic](/why-deterministic) |
@@ -28,15 +29,23 @@ Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enab
 
 ## When to open a GitHub Issue
 
-**Only for suspected product bugs** — wrong tool output, crash, or gateway error that the docs do not explain.
+**Use Issues for transport / product failures**, for example:
 
-**Open an issue:** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: get_card_for_birthdate wrong sign for 1985-03-15`).
+- Gateway errors (HTTP 5xx, timeouts, empty or truncated responses)
+- Client cannot complete the MCP handshake after following [Quickstart](/quickstart)
+- A tool throws or returns malformed JSON (missing required keys, not “I expected a different sign”)
+
+**Do not open Issues for** zodiac / calendar disagreements — read [Astro wheels](/astro-wheels) and [Calendar boundaries](/calendar-boundaries) first. The catalog and wheels are pre-validated; different systems are supposed to diverge.
+
+**Open an issue:** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: mcp.geometry.app returns 502 on get_card_for_birthdate`).
 
 ### Do not open Issues for
 
 | Topic | Why |
 |-------|-----|
 | How to connect / paste the URL | Covered by [Quickstart](/quickstart) and [geometry.app/tutorial](https://geometry.app/tutorial/) |
+| “Wrong sign” vs another app | [Astro wheels](/astro-wheels) — pick the matching wheel |
+| Moon / year off by one day | [Calendar boundaries](/calendar-boundaries) · [FAQ](/faq) |
 | “Where is the docs for…?” | Use nav, search, or [FAQ](/faq) |
 | Key rotation / normal revoke | [Connect & manage your key](/connect-and-keys) — Roll API Key |
 | Billing / plans | Stripe + Developer Portal |
@@ -48,12 +57,13 @@ Incomplete reports get closed or delayed. Include:
 
 | Include | Example |
 |---|---|
+| What failed | `502` / timeout / empty body / MCP connect error |
 | Tool name and exact inputs | `get_card_for_birthdate`, `birth_date: 1985-03-15` |
-| What you got vs what you expected | “expected Western tropical sign for March; got `sign_name: \"none\"`” |
-| The `_no` values from the wrong block | `system_no: 16021`, `planet_no: 8`, `element_no: 1700` |
 | Client + URL shape | e.g. Cursor · soft-launch URL (no key) |
+| Time (UTC) and any request id if you have one | when the 5xx happened |
+| For malformed JSON only: the `_no` values from the broken block | `system_no: 16021`, `planet_no: 8` |
 
-Those `_no` fields are internal catalog ids — not a public API contract (see [Field glossary](/field-glossary)) — but quoting them lets a solo maintainer reproduce your case without guessing.
+Those `_no` fields are internal catalog ids — not a public API contract (see [Field glossary](/field-glossary)) — but quoting them helps reproduce a broken payload shape.
 
 ## Leaked key
 
@@ -70,4 +80,4 @@ Almost every leak is fully handled by steps 1–2. Early kill before the grace w
 - A free GitHub account is required to open Issues.  
 - There is **no** public product support email.
 
-[Quickstart](/quickstart) · [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)
+[Quickstart](/quickstart) · [Astro wheels](/astro-wheels) · [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)

@@ -21,14 +21,15 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Day card + day ruler
 - [Data coverage](https://docs.geometry.app/coverage): Systems on the date range
 - [Calendar boundaries](https://docs.geometry.app/calendar-boundaries): Two date families — sky events GMT; cultural years per tradition (Chinese/Vietnamese CST, Vedic IST, Hebrew and Dreamspell timezone-neutral, Persian GMT not Tehran civil)
+- [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems in one payload — tropical · sidereal_true · sidereal_iau · fagan_bradley · vedic_rasi (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
-- [Support](https://docs.geometry.app/support): Self-serve first; GitHub Issues only for reproducible product bugs
+- [Support](https://docs.geometry.app/support): Self-serve first; GitHub Issues only for gateway / product bugs (not zodiac disagreements)
 
 ## Support
 
 Builders: https://docs.geometry.app/support — docs / portal / walkthrough first. No public product email.
-GitHub Issues: reproducible product bugs only (include tool inputs + `_no` values).
+GitHub Issues: gateway / product failures only (5xx, timeouts, malformed JSON) — not zodiac or calendar disagreements (see /astro-wheels · /calendar-boundaries).
 Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-keys (never paste the key).
 
 ## Rules for agents

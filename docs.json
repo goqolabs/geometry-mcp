@@ -29,7 +29,7 @@
       },
       {
         "group": "Reference",
-        "pages": ["coverage", "calendar-boundaries", "field-glossary", "faq"]
+        "pages": ["coverage", "calendar-boundaries", "astro-wheels", "field-glossary", "faq"]
       }
     ]
   },
