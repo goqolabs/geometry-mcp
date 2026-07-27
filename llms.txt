@@ -23,12 +23,13 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Calendar boundaries](https://docs.geometry.app/calendar-boundaries): Two date families — sky events GMT; cultural years per tradition (Chinese/Vietnamese CST, Vedic IST, Hebrew and Dreamspell timezone-neutral, Persian GMT not Tehran civil)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
-- [Support](https://docs.geometry.app/support): GitHub Issues — only public builder contact
+- [Support](https://docs.geometry.app/support): Self-serve first; GitHub Issues only for reproducible product bugs
 
 ## Support
 
-Builders: https://docs.geometry.app/support → GitHub Issues on geometry-mcp. No public product email.
-Urgent key revoke: issue title `[urgent] key revoke` (never paste the key).
+Builders: https://docs.geometry.app/support — docs / portal / walkthrough first. No public product email.
+GitHub Issues: reproducible product bugs only (include tool inputs + `_no` values).
+Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-keys (never paste the key).
 
 ## Rules for agents
 
@@ -41,4 +42,4 @@ Urgent key revoke: issue title `[urgent] key revoke` (never paste the key).
 - Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /calendar-boundaries.
 - GEOMETRY returns structured reference data; interpretation is the host app / model.
 - Site: https://geometry.app · Company: https://goqo.com
-- Builder support: GitHub Issues on https://github.com/goqolabs/geometry-mcp
+- Builder support: self-serve docs at https://docs.geometry.app/support · Issues only for reproducible bugs on https://github.com/goqolabs/geometry-mcp

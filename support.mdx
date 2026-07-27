@@ -1,43 +1,73 @@
 ---
 title: Support
-description: Get help via GitHub Issues — the only public builder support channel.
+description: Self-serve help first — docs, walkthroughs, and portal. GitHub Issues only for reproducible product bugs.
 ---
 
-Technical and product questions go through **GitHub Issues** on the public docs repo. That keeps a searchable thread and avoids a public support inbox.
+GEOMETRY builder support is **self-serve by design**. Most questions already have an answer in these docs or the install walkthrough. Open a GitHub Issue only when something looks like a **product bug you can reproduce**.
 
-**Open an issue:** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new/choose) — pick **Question**, **Bug report**, or **Urgent key revoke**
+## Help yourself first
 
-## What to use Issues for
+| I need… | Go here |
+|---------|---------|
+| Connect any MCP client | [Quickstart](/quickstart) · [Install walkthroughs](https://geometry.app/tutorial/) |
+| Soft-launch URL vs `?key=` | [Quickstart](/quickstart#try-now-vs-portal-key) · [Connect & manage your key](/connect-and-keys) |
+| Rotate / roll a key after a leak | [Connect & manage your key](/connect-and-keys#rotation) — do this yourself |
+| Card, cancel, invoices | Stripe billing portal (from the Developer Portal) |
+| Change plan | Developer Portal → pricing |
+| What a field means / `_no` values | [Field glossary](/field-glossary) |
+| Coverage, calendars, moon off-by-one | [FAQ](/faq) · [Coverage](/coverage) · [Calendar boundaries](/calendar-boundaries) |
+| Why answers stay the same | [Why deterministic](/why-deterministic) |
 
-- How to connect MCP / tools / payloads  
-- Docs gaps or wrong examples  
-- Suspected product bugs (describe date, tool, and what you expected)  
-- **Urgent key revoke** after a leak — open a new issue titled `[urgent] key revoke` (do **not** paste the `zpka_` key)
+Use your browser’s **search** on this site, or paste a docs page into your own agent (Claude / ChatGPT / Cursor) with GEOMETRY MCP connected — that is often faster than waiting on a ticket.
 
-## What not to use Issues for
+## Ask Assistant (Mintlify)
 
-| Topic | Where |
-|-------|--------|
-| Card / invoices / cancel | Stripe billing portal (from the Developer Portal) |
-| Plan changes | Developer Portal → pricing |
-| Key rotation (normal) | Portal → **Roll API Key** (Zuplo issues the new key) |
+Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enabled on the docs plan. Prefer it for “where is X?” and install wording before opening an Issue.
 
-## Make a bug report reproducible
+> **Today:** `docs.geometry.app` is on Mintlify **Starter** (no AI assistant credits). Until Pro + Assistant is turned on, use the table above + site search. Enabling Ask Assistant is a product decision later — not required for soft launch.
 
-The fastest reports include the **exact inputs** and the **catalog numbers** from the response:
+## When to open a GitHub Issue
+
+**Only for suspected product bugs** — wrong tool output, crash, or gateway error that the docs do not explain.
+
+**Open an issue:** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: get_card_for_birthdate wrong sign for 1985-03-15`).
+
+### Do not open Issues for
+
+| Topic | Why |
+|-------|-----|
+| How to connect / paste the URL | Covered by [Quickstart](/quickstart) and [geometry.app/tutorial](https://geometry.app/tutorial/) |
+| “Where is the docs for…?” | Use nav, search, or [FAQ](/faq) |
+| Key rotation / normal revoke | [Connect & manage your key](/connect-and-keys) — Roll API Key |
+| Billing / plans | Stripe + Developer Portal |
+| Feature ideas / roadmap | Not a support channel right now |
+
+## Make a bug report worth filing
+
+Incomplete reports get closed or delayed. Include:
 
 | Include | Example |
 |---|---|
-| Tool name and inputs | `get_card_for_birthdate`, `birth_date: 1985-03-15` |
-| The `_no` values from the block that looks wrong | `system_no: 16021`, `planet_no: 8`, `element_no: 1700` |
-| What you expected vs what you got | "expected runes sign for March; got `sign_name: "none"`" |
+| Tool name and exact inputs | `get_card_for_birthdate`, `birth_date: 1985-03-15` |
+| What you got vs what you expected | “expected Western tropical sign for March; got `sign_name: \"none\"`” |
+| The `_no` values from the wrong block | `system_no: 16021`, `planet_no: 8`, `element_no: 1700` |
+| Client + URL shape | e.g. Cursor · soft-launch URL (no key) |
 
-Those `_no` fields are internal catalog identifiers — you shouldn't build on them (see [Field glossary](/field-glossary)), but quoting them lets us reproduce your exact case immediately instead of guessing which system or deck you meant. Display names can repeat across systems; the numbers can't.
+Those `_no` fields are internal catalog ids — not a public API contract (see [Field glossary](/field-glossary)) — but quoting them lets a solo maintainer reproduce your case without guessing.
+
+## Leaked key
+
+1. **Roll** the key in the Developer Portal immediately — [Connect & manage your key → Rotation](/connect-and-keys#rotation).  
+2. Update your connector URL to the new key.  
+3. The old key stays valid for **7 days** (Zuplo grace). That is normal vendor behavior.
+
+Almost every leak is fully handled by steps 1–2. Early kill before the grace window is rare and operator-only — see [Connect & manage your key](/connect-and-keys#if-your-key-was-exposed).
 
 ## Tips
 
-- Prefer one issue per question.  
+- One Issue per bug.  
 - Link the docs page you were on if it helps.  
-- A free GitHub account is required to open Issues.
+- A free GitHub account is required to open Issues.  
+- There is **no** public product support email.
 
-More on keys: [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)
+[Quickstart](/quickstart) · [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)

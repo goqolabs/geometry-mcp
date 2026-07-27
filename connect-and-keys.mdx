@@ -54,11 +54,17 @@ In the Developer Portal go to **My Subscriptions → your subscription → Roll 
 
 ## If your key was exposed
 
-> **Roll** in the portal so Zuplo issues a new key. The old key stays valid for **7 days** and cannot be deleted early (vendor behavior). If you need the old key killed immediately, open a **[GitHub issue](https://github.com/goqolabs/geometry-mcp/issues/new)** titled `[urgent] key revoke`. Do not paste the secret key in the issue body.
+1. **Roll** in the portal so Zuplo issues a new key.  
+2. Update every connector to `https://mcp.geometry.app/mcp?key=` + the new key.  
+3. Treat the old key as compromised until the **7-day** Zuplo grace ends (old keys cannot be deleted early — vendor behavior).
+
+That is the complete self-serve path for almost every leak. Do **not** paste a `zpka_` key into chat, email, or a GitHub issue.
+
+If you truly need the **old** key killed before the grace window (active abuse), open a **[GitHub issue](https://github.com/goqolabs/geometry-mcp/issues/new)** titled `[urgent] key revoke` and describe the situation **without** pasting the secret. This is rare; rolling + waiting covers normal cases.
 
 ## Support (builders)
 
-Product / technical questions → **[Support](/support)** (GitHub Issues only). Billing card issues stay in the Stripe portal.
+Self-serve first → **[Support](/support)**. Billing card issues stay in the Stripe portal.
 
 ## Quotas
 
