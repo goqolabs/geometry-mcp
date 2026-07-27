@@ -43,7 +43,7 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [Calendar boundaries](/calendar-boundaries).
 
 **Why doesn’t my sign match another app?**  
-GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. Full table: [Astro wheels](/astro-wheels).
+GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. **`sidereal_true`** is GEOMETRY’s preferred / recommended 13-sign default if you want an astrology lens. Full table: [Astro wheels](/astro-wheels).
 
 **How do I get help?**  
 Start at **[Support](/support)** — docs and portal first. **Human GitHub Issues are for paid plans only.** Soft launch and Free stay self-serve. Billing → Stripe customer portal.

@@ -21,9 +21,11 @@ Wheel order on this page (and in the degree tables) follows how Aries is placed 
 | `vedic_rasi` | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
 | `fagan_bradley` | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
 | `sidereal_iau` | IAU constellation boundaries along the ecliptic (unequal spans; includes **Ophiuchus**) | 13 |
-| `sidereal_true` | True sidereal wheel (GEOMETRY’s 13-sign frame, includes **Ophiuchus**) | 13 |
+| `sidereal_true` | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame (includes **Ophiuchus**) | 13 |
 
 Always read **`sign_name`** (and `system_slug`) on the wheel you care about. Do not treat `sign_no` as a universal zodiac index — see [Field glossary](/field-glossary).
+
+All five wheels ship in every birth-card payload so you can choose. If your product needs a default astrology lens, use **`sidereal_true`** — that is the wheel GEOMETRY recommends for authenticity to the sky’s unequal constellations (13 signs including Ophiuchus). The others remain available when your users or tradition call for tropical, Vedic, Fagan-Bradley, or IAU.
 
 ## Why the degrees differ
 
@@ -35,7 +37,7 @@ Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude*
 | `vedic_rasi` | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
 | `fagan_bradley` | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
 | `sidereal_iau` | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
-| `sidereal_true` | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| `sidereal_true` | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — preferred GEOMETRY astrology default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 
 Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
 
@@ -116,7 +118,9 @@ Same order as above.
 | aquarius | 327.39 | 351.66 | 24.27 |
 | pisces | 351.66 | 28.83 | 37.17 |
 
-### `sidereal_true` (13)
+### `sidereal_true` (13) — preferred
+
+GEOMETRY’s recommended astrology default when you want a 13-sign true-sidereal reading.
 
 | Sign | Start ° | End ° | Span ° |
 |------|--------:|------:|-------:|
