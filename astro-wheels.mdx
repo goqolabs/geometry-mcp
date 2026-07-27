@@ -12,12 +12,12 @@ description: Five sign systems in one payload — tropical, Vedic rasi, Fagan-Br
 | [`tropical`](#tropical) | Season-anchored (vernal equinox = 0°). Common “Western” magazine horoscope frame — **standard tropical** | 12 |
 | [`vedic_rasi`](#vedic-rasi) | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
 | [`fagan_bradley`](#fagan-bradley) | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
-| [`sidereal_iau`](#sidereal-iau) | IAU constellation boundaries along the ecliptic (unequal spans; includes **Ophiuchus**) | 13 |
-| [`sidereal_true`](#sidereal-true) | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame (includes **Ophiuchus**) | 13 |
+| [`sidereal_iau`](#sidereal-iau) | IAU constellation boundaries along the ecliptic — **unequal spans** from real constellation sizes on the sky (includes **Ophiuchus**) | 13 |
+| [`sidereal_true`](#sidereal-true) | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame; **unequal spans** along the ecliptic (includes **Ophiuchus**) | 13 |
 
 Always read **`sign_name`** (and `system_slug`) on the wheel you care about. Do not treat `sign_no` as a universal zodiac index — see [Field glossary](/field-glossary).
 
-All five wheels ship in every birth-card payload so you can choose. If your product needs a default astrology lens, use **`sidereal_true`** — that is the wheel GEOMETRY recommends for authenticity to the sky’s unequal constellations (13 signs including Ophiuchus). The others remain available when your users or tradition call for tropical, Vedic, Fagan-Bradley, or IAU.
+All five wheels ship in every birth-card payload. Tropical, Vedic, and Fagan-Bradley use equal 30° signs for seasons or tradition. **`sidereal_iau`** and **`sidereal_true`** use unequal widths that follow constellation position and size on the sky, including Ophiuchus. The cut lines differ; both try to reflect what is actually along the ecliptic. GEOMETRY recommends **`sidereal_true`** when you need a default — that is the wheel we use to reflect the sky as closely as we can. Use **`sidereal_iau`** for the IAU constellation map; use the equal-sign wheels when your users already expect those systems.
 
 ## Why the degrees differ
 
@@ -28,8 +28,8 @@ Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude*
 | [`tropical`](#tropical) | Aries starts at **0.00°** (equinox) | Equal **30°** |
 | [`vedic_rasi`](#vedic-rasi) | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
 | [`fagan_bradley`](#fagan-bradley) | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
-| [`sidereal_iau`](#sidereal-iau) | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
-| [`sidereal_true`](#sidereal-true) | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — preferred GEOMETRY astrology default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| [`sidereal_iau`](#sidereal-iau) | Unequal IAU constellation cuts (Aries ≈ **28.83°**) — Delporte boundaries | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| [`sidereal_true`](#sidereal-true) | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — GEOMETRY recommended default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 
 Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
 
