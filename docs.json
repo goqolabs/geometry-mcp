@@ -24,7 +24,8 @@
           "tools/overview",
           "tools/get-card-for-birthdate",
           "tools/get-compatibility",
-          "tools/get-day-card"
+          "tools/get-day-card",
+          "payload-shapes"
         ]
       },
       {

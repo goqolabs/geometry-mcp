@@ -1,0 +1,53 @@
+---
+title: What you get
+description: Everything one call returns — the totals, plus the handful of repeating shapes every payload is built from.
+---
+
+One or two dates in, and you get a lot back — every call is answered from a single deterministic lookup. Here's the whole menu, plus the **small set of repeating shapes** every payload is built from, so you learn them once and can read any block. The live tool is always the source of truth for exact fields. For how to read `_name` / `_slug` / `_no`, see [Field glossary](/field-glossary).
+
+## What one call returns
+
+| Tool | Input | Returns |
+|---|---|---|
+| [`get_card_for_birthdate`](/tools/get-card-for-birthdate) | one date | 26 blocks across 20+ traditions — ~750 fields |
+| [`get_compatibility`](/tools/get-compatibility) | two dates | two full birth profiles + a weighted score — ~1,500 fields |
+| [`get_day_card`](/tools/get-day-card) | one date | the day's card, weekday, and planetary ruler |
+
+These are **field counts** — every key/value pair returned. `name`, `slug`, and `_no` are different encodings of the same entity, so the number of *distinct* concepts is lower; we quote fields, not unique concepts. Counts also flex with the date (the retrograde list runs ~17–23 active bodies), so treat them as typical, not fixed.
+
+## Sign object
+
+Every zodiac, calendar-month, rune, and cyclical block returns the same core shape:
+
+| Field | Meaning |
+|---|---|
+| `sign_slug` | stable key — build on this |
+| `sign_name` | display label |
+| `sign_no` | catalog id for that system (opaque) |
+| `sign_symbol`, `sign_emoji` | glyphs (may be `""` when not applicable) |
+| `system_no`, `system_slug` | which system the sign belongs to |
+
+Blocks that return a sign object include `lunar`, `nong_li`, `coptic`, `mayan_haab`, `hebrew_monthly`, `dreamspell_monthly`, `celtic_ogham`, `celtic_coligny`, `norse_runes`, `chakra`, each wheel under `astro_wheels`, and `true_sidereal`. Read `sign_slug`; the meaning of `sign_no` differs per system.
+
+## Card object
+
+The playing-card and tarot decks (`cosmic`, `tarot`, `medicine`, `lenormand`, and `day_card`) share:
+
+| Field | Meaning |
+|---|---|
+| `unicard_slug` | stable key — build on this |
+| `unicard_name` | display label |
+| `card_no` | deck position (tradition number) |
+| `unicard_symbol`, `unicard_emoji` | glyphs |
+
+## Aspect map
+
+Wherever a sign has relationships — each wheel under `astro_wheels`, and `true_sidereal.relationships` — you get six keys: `trine`, `square`, `sextile`, `quincunx`, `opposition`, `semisextile`. Each holds one or two **mini sign objects** (`sign_no`, `sign_name`, `sign_slug`).
+
+## Element object
+
+`classical_element` and `periodic_element` both carry `element_no` and `element_name` (plus `element_symbol`); the periodic lane adds `atomic_no`. The two lanes read differently — see [Field glossary](/field-glossary).
+
+## Everything is typed, never null
+
+Empty lookups return typed placeholders (`0`, `"none"`, `""`, `[]`) instead of `null`, so a block keeps the same shape whether or not the concept applies to that date. Check for the placeholder, not for `null`.

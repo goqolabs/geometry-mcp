@@ -1,9 +1,21 @@
 ---
 title: Field glossary
-description: Which `_no` fields are safe to build on — tradition numbers vs internal catalog ids.
+description: How to read the fields in a payload — slugs vs names vs numbers, and which `_no` fields are safe to build on.
 ---
 
 Payloads include numeric fields ending in `_no`. Some are traditional numbers (safe to display). Others are internal catalog ids (for support traces — not a public API contract).
+
+## Names, slugs, and numbers
+
+Most entities arrive in three forms. They can look redundant — `"pisces"` and `"pisces"` — but they are three different access patterns, and for multi-word values they diverge:
+
+| Form | Example | Use it for |
+|---|---|---|
+| `*_slug` | `eight_of_diamonds` | **Application logic.** snake_case, no spaces, stable across API layers. Key caches, enums, `switch`/`case`, and URLs on this. |
+| `*_name` | `eight of diamonds` | **Display only.** Human-readable; the view layer capitalizes it (`Eight Of Diamonds`), so the exact string can change between layers. Do not match on it. |
+| `*_no` | `card_no: 34` | **Support traces.** Opaque catalog id — log it, don't branch on it. |
+
+Rule: **key on the slug, show the name, log the number.** For single-word values (`pisces`) the slug and name happen to be identical, but only the slug is guaranteed stable — build on it.
 
 ## Internal catalog numbers
 
@@ -73,4 +85,4 @@ Catalog numbers are non-negative. If you ever see a negative value in a `_no` fi
 
 ## Rule of thumb
 
-Build on **names and slugs**. Display **tradition numbers** when they are meaningful to your users. Log **catalog numbers** so support can trace your exact case.
+Key on **slugs**. Display **names** (and **tradition numbers** where they mean something to your users). Log **catalog numbers** so support can trace your exact case.
