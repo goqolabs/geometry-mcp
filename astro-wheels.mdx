@@ -7,21 +7,21 @@ description: Five sign systems in one payload — tropical, Vedic rasi, Fagan-Br
 
 Wheel order on this page (and in the degree tables) follows how Aries is placed in the shared tropical-longitude frame — equal 30° wheels first, then unequal IAU and true sidereal:
 
-1. `tropical`  
-2. `vedic_rasi`  
-3. `fagan_bradley`  
-4. `sidereal_iau`  
-5. `sidereal_true`
+1. [`tropical`](#tropical)  
+2. [`vedic_rasi`](#vedic-rasi)  
+3. [`fagan_bradley`](#fagan-bradley)  
+4. [`sidereal_iau`](#sidereal-iau)  
+5. [`sidereal_true`](#sidereal-true)
 
 ## The five wheels
 
 | Key in JSON | What it is | Signs |
 |-------------|------------|-------|
-| `tropical` | Season-anchored (vernal equinox = 0°). Common “Western” magazine horoscope frame — **standard tropical** | 12 |
-| `vedic_rasi` | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
-| `fagan_bradley` | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
-| `sidereal_iau` | IAU constellation boundaries along the ecliptic (unequal spans; includes **Ophiuchus**) | 13 |
-| `sidereal_true` | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame (includes **Ophiuchus**) | 13 |
+| [`tropical`](#tropical) | Season-anchored (vernal equinox = 0°). Common “Western” magazine horoscope frame — **standard tropical** | 12 |
+| [`vedic_rasi`](#vedic-rasi) | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
+| [`fagan_bradley`](#fagan-bradley) | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
+| [`sidereal_iau`](#sidereal-iau) | IAU constellation boundaries along the ecliptic (unequal spans; includes **Ophiuchus**) | 13 |
+| [`sidereal_true`](#sidereal-true) | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame (includes **Ophiuchus**) | 13 |
 
 Always read **`sign_name`** (and `system_slug`) on the wheel you care about. Do not treat `sign_no` as a universal zodiac index — see [Field glossary](/field-glossary).
 
@@ -33,11 +33,11 @@ Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude*
 
 | Wheel | How Aries is placed | Span style |
 |-------|---------------------|------------|
-| `tropical` | Aries starts at **0.00°** (equinox) | Equal **30°** |
-| `vedic_rasi` | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
-| `fagan_bradley` | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
-| `sidereal_iau` | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
-| `sidereal_true` | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — preferred GEOMETRY astrology default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| [`tropical`](#tropical) | Aries starts at **0.00°** (equinox) | Equal **30°** |
+| [`vedic_rasi`](#vedic-rasi) | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
+| [`fagan_bradley`](#fagan-bradley) | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
+| [`sidereal_iau`](#sidereal-iau) | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| [`sidereal_true`](#sidereal-true) | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — preferred GEOMETRY astrology default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 
 Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
 
@@ -49,7 +49,7 @@ These boundaries are standard astronomical / traditional reference frames unifie
 
 Same order as above.
 
-### `tropical` (12)
+### `tropical` (12) {#tropical}
 
 | Sign | Start ° | End ° | Span ° |
 |------|--------:|------:|-------:|
