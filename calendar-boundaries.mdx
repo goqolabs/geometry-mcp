@@ -3,8 +3,6 @@ title: Calendar boundaries
 description: Why two YYYY-MM-DD fields in one payload can mean different timezones — cultural years vs GMT sky events.
 ---
 
-# Calendar boundaries
-
 Every date GEOMETRY returns is a bare `YYYY-MM-DD` string. They do not all mean the same thing.
 
 Some are **cultural year boundaries** anchored to a tradition’s own civil timezone. Others are **sky events** anchored to GMT. A single tool response can contain both; the JSON does not label which family each date belongs to.
