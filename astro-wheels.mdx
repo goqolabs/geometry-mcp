@@ -5,14 +5,6 @@ description: Five sign systems in one payload — tropical, Vedic rasi, Fagan-Br
 
 `get_card_for_birthdate` returns **five** Western/sidereal sign blocks under `astro_wheels`. They are **different systems**, not five copies of one answer. On many dates the names match; on others they diverge — that is expected.
 
-Wheel order on this page (and in the degree tables) follows how Aries is placed in the shared tropical-longitude frame — equal 30° wheels first, then unequal IAU and true sidereal:
-
-1. [`tropical`](#tropical)  
-2. [`vedic_rasi`](#vedic-rasi)  
-3. [`fagan_bradley`](#fagan-bradley)  
-4. [`sidereal_iau`](#sidereal-iau)  
-5. [`sidereal_true`](#sidereal-true)
-
 ## The five wheels
 
 | Key in JSON | What it is | Signs |
@@ -29,7 +21,7 @@ All five wheels ship in every birth-card payload so you can choose. If your prod
 
 ## Why the degrees differ
 
-Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude**. The tables below are the **sign boundaries** GEOMETRY uses, published in one shared **tropical-longitude frame** so you can compare them side by side.
+Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude**. The **degree tables** later on this page are the **sign boundaries** GEOMETRY uses, published in one shared **tropical-longitude frame** so you can compare them side by side.
 
 | Wheel | How Aries is placed | Span style |
 |-------|---------------------|------------|
@@ -45,9 +37,26 @@ Membership rule: longitude λ is in a sign when `start ≤ λ < end`, with wrap-
 
 These boundaries are standard astronomical / traditional reference frames unified in our catalog — not a secret recipe.
 
-## Degree tables
+## “Wrong sign” is usually the wrong wheel
 
-Same order as above.
+If a newspaper or app says “Pisces” and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are comparing **different cuts**, not catching a GEOMETRY bug.
+
+**Self-check before filing anything:**
+
+1. Which wheel does your source use (tropical vs Vedic vs Fagan-Bradley vs IAU vs true sidereal)?  
+2. Open the matching key under `astro_wheels` in the raw JSON.  
+3. Optionally compare the Sun’s tropical longitude for that date to the [degree tables](#degree-tables) below.  
+4. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — GMT day vs local almanac is a separate class of “off by one.”
+
+## Degree tables {#degree-tables}
+
+Wheel order in the tables follows how Aries is placed in the shared tropical-longitude frame — equal 30° wheels first, then unequal IAU and true sidereal. Jump to a table:
+
+1. [`tropical`](#tropical)  
+2. [`vedic_rasi`](#vedic-rasi)  
+3. [`fagan_bradley`](#fagan-bradley)  
+4. [`sidereal_iau`](#sidereal-iau)  
+5. [`sidereal_true`](#sidereal-true)
 
 ### tropical (12) {#tropical}
 
@@ -100,7 +109,7 @@ Same order as above.
 | aquarius | 324.74 | 354.74 | 30.00 |
 | pisces | 354.74 | 24.74 | 30.00 |
 
-### `sidereal_iau` (13) {#sidereal-iau}
+### sidereal_iau (13) {#sidereal-iau}
 
 | Sign | Start ° | End ° | Span ° |
 |------|--------:|------:|-------:|
@@ -118,7 +127,7 @@ Same order as above.
 | aquarius | 327.39 | 351.66 | 24.27 |
 | pisces | 351.66 | 28.83 | 37.17 |
 
-### `sidereal_true` (13) — preferred {#sidereal-true}
+### sidereal_true (13) — preferred {#sidereal-true}
 
 GEOMETRY’s recommended astrology default when you want a 13-sign true-sidereal reading.
 
@@ -137,17 +146,6 @@ GEOMETRY’s recommended astrology default when you want a 13-sign true-sidereal
 | capricorn | 269.50 | 294.50 | 25.00 |
 | aquarius | 294.50 | 318.00 | 23.50 |
 | pisces | 318.00 | 360.00 | 42.00 |
-
-## “Wrong sign” is usually the wrong wheel
-
-If a newspaper or app says “Pisces” and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are comparing **different cuts**, not catching a GEOMETRY bug.
-
-**Self-check before filing anything:**
-
-1. Which wheel does your source use (tropical vs Vedic vs Fagan-Bradley vs IAU vs true sidereal)?  
-2. Open the matching key under `astro_wheels` in the raw JSON.  
-3. Optionally compare the Sun’s tropical longitude for that date to the tables above.  
-4. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — GMT day vs local almanac is a separate class of “off by one.”
 
 ## Coverage
 
