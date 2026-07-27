@@ -8,7 +8,7 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 | | |
 |---|---|
 | **Input** | `birth_date` (YYYY-MM-DD) |
-| **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"` |
+| **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"`; catalog pad (e.g. 1850, 2101) → `"extended"`; outside `date_dim` → `"birth_card_only"` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -239,7 +239,12 @@ Which numbers to build on: see the [Field glossary](/field-glossary). It separat
 
 ## Out of published range
 
-Dates outside 1900–2100 return a soft envelope (`temporal_context` other than `"full"`), not a crash. Birth-card identity remains month/day based.
+Two soft bands outside focus (not crashes). Birth-card identity remains month/day based.
+
+| Band | Example | `temporal_context` | Notes |
+|------|---------|--------------------|-------|
+| **Extended** | `1850-06-15`, `2101-01-01` | `extended` | In `date_dim` outside 1900–2100 — full temporal calc, honest label |
+| **Out** | `1776-07-04`, `2200-01-01` | `birth_card_only` | Not in `date_dim` — error envelope + cosmic month/day only |
 
 ## Related
 

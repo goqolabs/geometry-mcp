@@ -8,8 +8,8 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 | | |
 |---|---|
 | **Input** | `day_date` (YYYY-MM-DD) — required; pass the date explicitly (no implicit “today”) |
-| **Range** | Full temporal window `1900-01-01` … `2100-12-31`; out-of-range still returns day card + ruler with soft `temporal_context` |
-| **Version** | `0.1.0` |
+| **Range** | Full temporal window `1900-01-01` … `2100-12-31` (`full`); catalog pad years → `extended`; outside `date_dim` → `day_card_only` (day card + ruler still returned) |
+| **Version** | `v0.2.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
@@ -23,7 +23,8 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 ```json
 {
   "tool": "get_day_card",
-  "tool_version": "0.1.0",
+  "tool_version": "v0.2.0",
+  "engine_chain": "v0.66",
   "date": "2026-07-23",
   "temporal_context": "full",
   "weekday": {
@@ -70,7 +71,7 @@ Friday → Venus day (excerpt):
 }
 ```
 
-v0.1 ships **Roman · Greek · Norse** only.
+v0.2 ships **Roman · Greek · Norse** only.
 
 ## Related
 
