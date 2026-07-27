@@ -11,8 +11,8 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 ## Docs
 
 - [Introduction](https://docs.geometry.app/introduction): What GEOMETRY is
-- [Quickstart](https://docs.geometry.app/quickstart): Paste the connector URL
-- [Claude Desktop walkthrough](https://geometry.app/tutorial/): Visual install mock on geometry.app
+- [Quickstart](https://docs.geometry.app/quickstart): Paste the connector URL — Claude Code, Desktop, ChatGPT, Codex, Cursor, VS Code
+- [Install walkthrough](https://geometry.app/tutorial/): Animated installs for every client above on geometry.app
 - [Connect & manage your key](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [Tools overview](https://docs.geometry.app/tools/overview): Tool catalog
