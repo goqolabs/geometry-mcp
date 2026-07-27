@@ -10,7 +10,7 @@ description: Five sign systems in one payload — tropical, sidereal true, IAU, 
 | Key in JSON | What it is | Signs |
 |-------------|------------|-------|
 | `tropical` | Season-anchored (vernal equinox = 0°). Common “Western” magazine horoscope frame | 12 |
-| `sidereal_true` | True sidereal / capital-star wheel (GEOMETRY’s 13-sign frame, includes **Ophiuchus**) | 13 |
+| `sidereal_true` | True sidereal wheel (GEOMETRY’s 13-sign frame, includes **Ophiuchus**) | 13 |
 | `sidereal_iau` | IAU constellation boundaries along the ecliptic (unequal spans; includes **Ophiuchus**) | 13 |
 | `fagan_bradley` | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
 | `vedic_rasi` | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
@@ -27,7 +27,7 @@ Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude*
 | `vedic_rasi` | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
 | `fagan_bradley` | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
 | `sidereal_iau` | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
-| `sidereal_true` | Unequal capital-star / true-sidereal cuts (Aries **0.00°–19.50°** in this frame) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| `sidereal_true` | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 
 Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
 
