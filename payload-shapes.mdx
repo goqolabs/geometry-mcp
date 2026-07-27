@@ -49,7 +49,9 @@ The playing-card and tarot decks (`cosmic`, `tarot`, `medicine`, `lenormand`, an
 
 ## Aspect map
 
-Wherever a sign has relationships — each wheel under `astro_wheels`, and `true_sidereal.relationships` — you get six keys: `trine`, `square`, `sextile`, `quincunx`, `opposition`, `semisextile`. Each holds one or two **mini sign objects** (`sign_no`, `sign_name`, `sign_slug`).
+Wherever a Western-style sign has relationships — each wheel under `astro_wheels`, and `true_sidereal.relationships` — you get six keys: `trine`, `square`, `sextile`, `quincunx`, `opposition`, `semisextile`. Each holds one or two **mini sign objects** (`sign_no`, `sign_name`, `sign_slug`).
+
+**Chinese zodiac** uses those same labels where they apply, plus one extra: **`harmonic_pair`** (the secret-friend / complementary animal pair — not a Western aspect). On [`get_compatibility`](/tools/get-compatibility), that shows up as `chinese_zodiac_aspect` (`trine`, `harmonic_pair`, `opposition`, `square`, `sextile`, `semisextile`, `quincunx`, or `none`).
 
 ## Element object
 
