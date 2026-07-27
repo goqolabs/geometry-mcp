@@ -13,7 +13,7 @@ No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you 
 The date range and its systems are pre-computed and versioned. The same call returns the same answer today, tomorrow, and next year. The beta label covers tooling and quotas, not the data.
 
 **What are the calendar boundaries?**  
-Published coverage is **1900-01-01** through **2100-12-31**. Within that window, bare `YYYY-MM-DD` fields can mean different things — cultural year starts vs GMT sky-event days. Full explanation: [Data coverage → Calendar boundaries](/coverage#calendar-boundaries).
+Published coverage is **1900-01-01** through **2100-12-31**. Within that window, bare `YYYY-MM-DD` fields can mean different things — cultural year starts vs GMT sky-event days. Full explanation: [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **What's cardology?**  
 A birth-date-to-playing-card system (Cards of Destiny tradition) with a relationship / connection layer. GEOMETRY serves a machine-readable version of it.
@@ -34,16 +34,16 @@ Docs samples are shortened on purpose. Every successful tool call returns the **
 Ask something like: `give raw json for birthdate 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.
 
 **Which timezone decides when a cultural year starts?**  
-It depends on the system. Chinese and Vietnamese lunar years use **CST** (UTC+8), Vedic samvatsara uses **IST** (UTC+5:30), Hebrew and Dreamspell are **timezone-neutral**, and Persian uses the equinox in **GMT**. Tools take a bare `YYYY-MM-DD` with no time or zone; no conversion runs at request time. Full table: [Data coverage → Calendar boundaries](/coverage#calendar-boundaries).
+It depends on the system. Chinese and Vietnamese lunar years use **CST** (UTC+8), Vedic samvatsara uses **IST** (UTC+5:30), Hebrew and Dreamspell are **timezone-neutral**, and Persian uses the equinox in **GMT**. Tools take a bare `YYYY-MM-DD` with no time or zone; no conversion runs at request time. Full table: [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Why doesn't your Nowruz match my Persian calendar library?**  
-GEOMETRY anchors Persian years to the equinox in GMT. Iran’s official Solar Hijri rule uses Tehran local time and rolls to the next day when the equinox falls after Tehran solar noon. The two disagree on roughly a quarter to a third of years — including 2026 (GEOMETRY March 20, Iran March 21). Documented convention, not a bug. See [Data coverage → Calendar boundaries](/coverage#calendar-boundaries).
+GEOMETRY anchors Persian years to the equinox in GMT. Iran’s official Solar Hijri rule uses Tehran local time and rolls to the next day when the equinox falls after Tehran solar noon. The two disagree on roughly a quarter to a third of years — including 2026 (GEOMETRY March 20, Iran March 21). Documented convention, not a bug. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **How were moon / season / retrograde dates calculated?**  
-Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Requests do not run a live ephemeris. Each date in the payload is the Gregorian day of the instant **in GMT**. Library: [**pyswisseph**](https://github.com/astrorigin/pyswisseph). See [Data coverage](/coverage).
+Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Requests do not run a live ephemeris. Each date in the payload is the Gregorian day of the instant **in GMT**. Library: [**pyswisseph**](https://github.com/astrorigin/pyswisseph). See [When it covers](/coverage).
 
 **Your moon phase date is one day off from mine.**  
-Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [Data coverage → Calendar boundaries](/coverage#calendar-boundaries).
+Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Why doesn’t my sign match another app?**  
 GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. **`sidereal_iau`** and **`sidereal_true`** both use unequal widths that follow the sky; GEOMETRY recommends **`sidereal_true`** when you need a default. Full table: [Astro wheels](/astro-wheels).

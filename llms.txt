@@ -20,7 +20,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_card_for_birthdate](https://docs.geometry.app/tools/get-card-for-birthdate): Birth identity sample JSON for 1985-03-15
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two birth dates
 - [get_day_card](https://docs.geometry.app/tools/get-day-card): Day card + day ruler
-- [Data coverage](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
+- [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [FAQ](https://docs.geometry.app/faq): Common questions
