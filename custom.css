@@ -1,0 +1,12 @@
+/* Field-count emphasis on What you get — brand indigo, both themes.
+   Light: colors.dark (#4A56D4) · Dark: colors.light (#8B9AFF) from docs.json */
+.field-count {
+  color: #4a56d4;
+  font-weight: 700;
+}
+
+.dark .field-count,
+html.dark .field-count,
+[data-theme="dark"] .field-count {
+  color: #8b9aff;
+}
