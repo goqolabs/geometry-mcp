@@ -27,7 +27,19 @@ Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enab
 
 > **Today:** `docs.geometry.app` is on Mintlify **Starter** (no AI assistant credits). Until Pro + Assistant is turned on, use the table above + site search. Enabling Ask Assistant is a product decision later — not required for soft launch.
 
-## When to open a GitHub Issue
+## Who gets human support
+
+| Plan | What you get |
+|------|----------------|
+| Soft launch / anonymous URL (no key) | **Self-serve only** — docs, [tutorial](https://geometry.app/tutorial/), site search |
+| Portal metered Free | **Self-serve only** — same docs + portal key/billing self-serve |
+| **Paid** (Starter and above) | Self-serve **plus** GitHub Issues for gateway / product failures (no SLA yet) |
+
+This matches common SaaS practice: free tiers get documentation and community-style self-serve; **ticketed human support is for paying customers**. There is no public support email.
+
+GitHub cannot block Issue creation by plan on a public repo. Policy: Issues from non-paying use are **closed** with a pointer back here. Prove paid by stating your **Developer Portal account email** (the one on the Stripe / portal subscription) — never paste a `zpka_` key.
+
+## When paid users may open a GitHub Issue
 
 **Use Issues for transport / product failures**, for example:
 
@@ -37,7 +49,11 @@ Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enab
 
 **Do not open Issues for** zodiac / calendar disagreements — read [Astro wheels](/astro-wheels) and [Calendar boundaries](/calendar-boundaries) first. The catalog and wheels are pre-validated; different systems are supposed to diverge.
 
-**Open an issue:** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: mcp.geometry.app returns 502 on get_card_for_birthdate`).
+**Open an issue (paid only):** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: mcp.geometry.app returns 502 on get_card_for_birthdate`) and include your portal account email in the body.
+
+### Soft launch note
+
+Until paid plans are live in the Developer Portal, treat the product as **self-serve**. Do not expect Issue replies for soft-launch / free use. Platform-wide outages may still be investigated when they are obvious from monitoring — that is not a free support channel.
 
 ### Do not open Issues for
 
@@ -50,6 +66,7 @@ Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enab
 | Key rotation / normal revoke | [Connect & manage your key](/connect-and-keys) — Roll API Key |
 | Billing / plans | Stripe + Developer Portal |
 | Feature ideas / roadmap | Not a support channel right now |
+| Soft launch / Free plan how-to | Self-serve only — upgrade for human Issues |
 
 ## Make a bug report worth filing
 
@@ -59,7 +76,8 @@ Incomplete reports get closed or delayed. Include:
 |---|---|
 | What failed | `502` / timeout / empty body / MCP connect error |
 | Tool name and exact inputs | `get_card_for_birthdate`, `birth_date: 1985-03-15` |
-| Client + URL shape | e.g. Cursor · soft-launch URL (no key) |
+| Client + URL shape | e.g. Cursor · paid URL with `?key=` (do not paste the key) |
+| Portal account email | proves paid eligibility |
 | Time (UTC) and any request id if you have one | when the 5xx happened |
 | For malformed JSON only: the `_no` values from the broken block | `system_no: 16021`, `planet_no: 8` |
 
@@ -76,8 +94,9 @@ Almost every leak is fully handled by steps 1–2. Early kill before the grace w
 ## Tips
 
 - One Issue per bug.  
+- **Paid portal subscription required** for Issue handling.  
 - Link the docs page you were on if it helps.  
-- A free GitHub account is required to open Issues.  
+- A free GitHub account is required to open Issues (anyone can click “New”; only paid are in scope).  
 - There is **no** public product support email.
 
 [Quickstart](/quickstart) · [Astro wheels](/astro-wheels) · [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)
