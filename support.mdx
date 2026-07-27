@@ -10,8 +10,8 @@ GEOMETRY builder support is **self-serve by design**. Most questions already hav
 | I need… | Go here |
 |---------|---------|
 | Connect any MCP client | [Quickstart](/quickstart) · [Install walkthroughs](https://geometry.app/tutorial/) |
-| Soft-launch URL vs `?key=` | [Quickstart](/quickstart#try-now-vs-portal-key) · [Connect & manage your key](/connect-and-keys) |
-| Rotate / roll a key after a leak | [Connect & manage your key](/connect-and-keys#rotation) — do this yourself |
+| Soft-launch URL vs `?key=` | [Quickstart](/quickstart#try-now-vs-portal-key) · [Where your key goes](/connect-and-keys) |
+| Rotate / roll a key after a leak | [Where your key goes](/connect-and-keys#rotation) — do this yourself |
 | Card, cancel, invoices | Stripe billing portal (from the Developer Portal) |
 | Change plan | Developer Portal → pricing |
 | “Why is my sign different?” | [Astro wheels](/astro-wheels) — five systems in one payload |
@@ -63,7 +63,7 @@ Until paid plans are live in the Developer Portal, treat the product as **self-s
 | “Wrong sign” vs another app | [Astro wheels](/astro-wheels) — pick the matching wheel |
 | Moon / year off by one day | [Data coverage → Calendar boundaries](/coverage#calendar-boundaries) · [FAQ](/faq) |
 | “Where is the docs for…?” | Use nav, search, or [FAQ](/faq) |
-| Key rotation / normal revoke | [Connect & manage your key](/connect-and-keys) — Roll API Key |
+| Key rotation / normal revoke | [Where your key goes](/connect-and-keys) — Roll API Key |
 | Billing / plans | Stripe + Developer Portal |
 | Feature ideas / roadmap | Not a support channel right now |
 | Soft launch / Free plan how-to | Self-serve only — upgrade for human Issues |
@@ -85,11 +85,11 @@ Those `_no` fields are internal catalog ids — not a public API contract (see [
 
 ## Leaked key
 
-1. **Roll** the key in the Developer Portal immediately — [Connect & manage your key → Rotation](/connect-and-keys#rotation).  
+1. **Roll** the key in the Developer Portal immediately — [Where your key goes → Rotation](/connect-and-keys#rotation).  
 2. Update your connector URL to the new key.  
 3. The old key stays valid for **7 days** (Zuplo grace). That is normal vendor behavior.
 
-Almost every leak is fully handled by steps 1–2. Early kill before the grace window is rare and operator-only — see [Connect & manage your key](/connect-and-keys#if-your-key-was-exposed).
+Almost every leak is fully handled by steps 1–2. Early kill before the grace window is rare and operator-only — see [Where your key goes](/connect-and-keys#if-your-key-was-exposed).
 
 ## Tips
 
@@ -98,4 +98,4 @@ Almost every leak is fully handled by steps 1–2. Early kill before the grace w
 - Link the docs page you were on if it helps.  
 - A free GitHub account is required to open Issues (anyone can click “New”; only paid are in scope).  
 
-[Quickstart](/quickstart) · [Astro wheels](/astro-wheels) · [Connect & manage your key](/connect-and-keys) · [FAQ](/faq)
+[Quickstart](/quickstart) · [Astro wheels](/astro-wheels) · [Where your key goes](/connect-and-keys) · [FAQ](/faq)
