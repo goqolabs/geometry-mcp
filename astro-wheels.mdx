@@ -1,6 +1,6 @@
 ---
 title: Astro wheels
-description: Five sign systems in one payload — tropical, sidereal true, IAU, Fagan-Bradley, and Vedic rasi. Different wheels can disagree on the same date.
+description: Five sign systems in one payload — tropical, sidereal true, IAU, Fagan-Bradley, and Vedic rasi — with ecliptic degree spans so you can see why names diverge.
 ---
 
 `get_card_for_birthdate` returns **five** Western/sidereal sign blocks under `astro_wheels`. They are **different systems**, not five copies of one answer. On many dates the names match; on others they diverge — that is expected.
@@ -17,15 +17,123 @@ description: Five sign systems in one payload — tropical, sidereal true, IAU, 
 
 Always read **`sign_name`** (and `system_slug`) on the wheel you care about. Do not treat `sign_no` as a universal zodiac index — see [Field glossary](/field-glossary).
 
+## Why the degrees differ
+
+Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude**. The tables below are the **sign boundaries** GEOMETRY uses, published in one shared **tropical-longitude frame** so you can compare them side by side.
+
+| Wheel | How Aries is placed | Span style |
+|-------|---------------------|------------|
+| `tropical` | Aries starts at **0.00°** (equinox) | Equal **30°** |
+| `vedic_rasi` | Aries starts near **23.85°** (Lahiri at J2000, in this frame) | Equal **30°** |
+| `fagan_bradley` | Aries starts near **24.74°** (Fagan-Bradley at J2000) | Equal **30°** |
+| `sidereal_iau` | Unequal IAU constellation cuts (Aries ≈ **28.83°**) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+| `sidereal_true` | Unequal capital-star / true-sidereal cuts (Aries **0.00°–19.50°** in this frame) | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
+
+Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
+
+Membership rule: longitude λ is in a sign when `start ≤ λ < end`, with wrap-through **0°** for Pisces on the sidereal equal wheels and IAU (end &lt; start).
+
+These boundaries are standard astronomical / traditional reference frames unified in our catalog — not a secret recipe.
+
+## Degree tables
+
+### `tropical` (12)
+
+| Sign | Start ° | End ° | Span ° |
+|------|--------:|------:|-------:|
+| aries | 0.00 | 30.00 | 30.00 |
+| taurus | 30.00 | 60.00 | 30.00 |
+| gemini | 60.00 | 90.00 | 30.00 |
+| cancer | 90.00 | 120.00 | 30.00 |
+| leo | 120.00 | 150.00 | 30.00 |
+| virgo | 150.00 | 180.00 | 30.00 |
+| libra | 180.00 | 210.00 | 30.00 |
+| scorpio | 210.00 | 240.00 | 30.00 |
+| sagittarius | 240.00 | 270.00 | 30.00 |
+| capricorn | 270.00 | 300.00 | 30.00 |
+| aquarius | 300.00 | 330.00 | 30.00 |
+| pisces | 330.00 | 360.00 | 30.00 |
+
+### `vedic_rasi` (12)
+
+| Sign | Start ° | End ° | Span ° |
+|------|--------:|------:|-------:|
+| aries | 23.85 | 53.85 | 30.00 |
+| taurus | 53.85 | 83.85 | 30.00 |
+| gemini | 83.85 | 113.85 | 30.00 |
+| cancer | 113.85 | 143.85 | 30.00 |
+| leo | 143.85 | 173.85 | 30.00 |
+| virgo | 173.85 | 203.85 | 30.00 |
+| libra | 203.85 | 233.85 | 30.00 |
+| scorpio | 233.85 | 263.85 | 30.00 |
+| sagittarius | 263.85 | 293.85 | 30.00 |
+| capricorn | 293.85 | 323.85 | 30.00 |
+| aquarius | 323.85 | 353.85 | 30.00 |
+| pisces | 353.85 | 23.85 | 30.00 |
+
+### `fagan_bradley` (12)
+
+| Sign | Start ° | End ° | Span ° |
+|------|--------:|------:|-------:|
+| aries | 24.74 | 54.74 | 30.00 |
+| taurus | 54.74 | 84.74 | 30.00 |
+| gemini | 84.74 | 114.74 | 30.00 |
+| cancer | 114.74 | 144.74 | 30.00 |
+| leo | 144.74 | 174.74 | 30.00 |
+| virgo | 174.74 | 204.74 | 30.00 |
+| libra | 204.74 | 234.74 | 30.00 |
+| scorpio | 234.74 | 264.74 | 30.00 |
+| sagittarius | 264.74 | 294.74 | 30.00 |
+| capricorn | 294.74 | 324.74 | 30.00 |
+| aquarius | 324.74 | 354.74 | 30.00 |
+| pisces | 354.74 | 24.74 | 30.00 |
+
+### `sidereal_iau` (13)
+
+| Sign | Start ° | End ° | Span ° |
+|------|--------:|------:|-------:|
+| aries | 28.83 | 53.54 | 24.71 |
+| taurus | 53.54 | 90.40 | 36.86 |
+| gemini | 90.40 | 118.27 | 27.87 |
+| cancer | 118.27 | 138.83 | 20.56 |
+| leo | 138.83 | 173.85 | 35.02 |
+| virgo | 173.85 | 217.81 | 43.96 |
+| libra | 217.81 | 241.10 | 23.29 |
+| scorpio | 241.10 | 248.17 | 7.07 |
+| **ophiuchus** | 248.17 | 266.59 | 18.42 |
+| sagittarius | 266.59 | 299.57 | 32.98 |
+| capricorn | 299.57 | 327.39 | 27.82 |
+| aquarius | 327.39 | 351.66 | 24.27 |
+| pisces | 351.66 | 28.83 | 37.17 |
+
+### `sidereal_true` (13)
+
+| Sign | Start ° | End ° | Span ° |
+|------|--------:|------:|-------:|
+| aries | 0.00 | 19.50 | 19.50 |
+| taurus | 19.50 | 56.50 | 37.00 |
+| gemini | 56.50 | 86.00 | 29.50 |
+| cancer | 86.00 | 103.00 | 17.00 |
+| leo | 103.00 | 141.50 | 38.50 |
+| virgo | 141.50 | 191.50 | 50.00 |
+| libra | 191.50 | 210.00 | 18.50 |
+| scorpio | 210.00 | 223.50 | 13.50 |
+| **ophiuchus** | 223.50 | 236.00 | 12.50 |
+| sagittarius | 236.00 | 269.50 | 33.50 |
+| capricorn | 269.50 | 294.50 | 25.00 |
+| aquarius | 294.50 | 318.00 | 23.50 |
+| pisces | 318.00 | 360.00 | 42.00 |
+
 ## “Wrong sign” is usually the wrong wheel
 
-If a newspaper or app says “Pisces” and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are comparing **different anchors**, not catching a GEOMETRY bug.
+If a newspaper or app says “Pisces” and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are comparing **different cuts**, not catching a GEOMETRY bug.
 
 **Self-check before filing anything:**
 
 1. Which wheel does your source use (tropical vs sidereal vs Vedic)?  
 2. Open the matching key under `astro_wheels` in the raw JSON.  
-3. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — GMT day vs local almanac is a separate class of “off by one.”
+3. Optionally compare the Sun’s tropical longitude for that date to the tables above.  
+4. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — GMT day vs local almanac is a separate class of “off by one.”
 
 ## Coverage
 
