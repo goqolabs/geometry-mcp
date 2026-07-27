@@ -3,9 +3,18 @@ title: Quickstart
 description: Connect GEOMETRY MCP in under a minute — paste the URL and ask a date question.
 ---
 
-# Quickstart
-
 Copy the connector URL, paste it into your MCP client, then ask a date question.
+
+## Free vs paid URL
+
+| | URL |
+|---|---|
+| Free / anonymous trial | `https://mcp.geometry.app/mcp` |
+| Paid (or Free plan with a key) | `https://mcp.geometry.app/mcp?key=YOUR_KEY` |
+
+Same URL shape for every client below — upgrading only swaps in `?key=`. Details: [Connect & manage your key](/connect-and-keys).
+
+## Pick your client
 
 | Client | Install |
 |--------|---------|
@@ -16,10 +25,8 @@ Copy the connector URL, paste it into your MCP client, then ask a date question.
 | [Cursor](#cursor) | Tools & MCP → `mcp.json` |
 | [VS Code](#vs-code) | Command Palette → `.vscode/mcp.json` |
 
-Same URL everywhere: `https://mcp.geometry.app/mcp`
-
 <Tip>
-  Prefer a visual? [Install walkthroughs](https://geometry.app/tutorial/) on geometry.app — animated steps for every client above. Same MCP URL.
+  Prefer a visual? [Install walkthroughs](https://geometry.app/tutorial/) on geometry.app — animated steps for every client above.
 </Tip>
 
 ## Claude Code / CLI
@@ -142,12 +149,3 @@ Those map to the three tools: [`get_card_for_birthdate`](/tools/get-card-for-bir
 That tells the **agent** to paste the complete tool result. The tool has no verbosity flag — only `birth_date`. If you read the MCP or HTTP response in code, you already get the full object every call.
 
 No account to try. Fixed lookups — same date, same answer.
-
-## Free vs paid URL
-
-| | URL |
-|---|---|
-| Free / anonymous trial | `https://mcp.geometry.app/mcp` |
-| Paid (or Free plan with a key) | `https://mcp.geometry.app/mcp?key=YOUR_KEY` |
-
-Upgrading changes **nothing else** in the client config — swap the URL string. See [Connect & manage your key](/connect-and-keys).
