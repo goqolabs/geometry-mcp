@@ -3,21 +3,26 @@ title: Astro wheels
 description: Five sign systems in one payload — tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, and true sidereal — with ecliptic degree spans so you can see why names diverge.
 ---
 
-`get_card_for_birthdate` returns **five** Western/sidereal sign blocks under `astro_wheels`. They are **different systems**, not five copies of one answer. On many dates the names match; on others they diverge — that is expected.
+`get_card_for_birthdate` returns **five** sign blocks under `astro_wheels`. Each is a **different astrology system** — not five copies of one answer. Three cut the zodiac into equal 30° signs; two use unequal spans and add a 13th sign, Ophiuchus. On many dates all five agree; on others they land on different sign names. That divergence is **expected — a different system, not a wrong answer**.
 
 ## The five wheels
 
 | Key in JSON | What it is | Signs |
 |-------------|------------|-------|
-| [`tropical`](#tropical) | Season-anchored (vernal equinox = 0°). Common “Western” magazine horoscope frame — **standard tropical** | 12 |
-| [`vedic_rasi`](#vedic-rasi) | Vedic rāśi with **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
-| [`fagan_bradley`](#fagan-bradley) | Western sidereal with **Fagan-Bradley** ayanamsa | 12 |
+| [`tropical`](#tropical) | Season-anchored (vernal equinox = 0°). The common "Western" magazine-horoscope frame — **standard tropical** | 12 |
+| [`vedic_rasi`](#vedic-rasi) | Vedic rāśi with a **Lahiri**-style sidereal frame (+ nested nakshatra where returned) | 12 |
+| [`fagan_bradley`](#fagan-bradley) | Western sidereal with the **Fagan-Bradley** ayanamsa | 12 |
 | [`sidereal_iau`](#sidereal-iau) | IAU constellation boundaries along the ecliptic — **unequal spans** from real constellation sizes on the sky (includes **Ophiuchus**) | 13 |
-| [`sidereal_true`](#sidereal-true) | True sidereal wheel — **GEOMETRY’s preferred / recommended** 13-sign frame; **unequal spans** along the ecliptic (includes **Ophiuchus**) | 13 |
+| [`sidereal_true`](#sidereal-true) | True sidereal wheel — **GEOMETRY's preferred / recommended** 13-sign frame; **unequal spans** along the ecliptic (includes **Ophiuchus**) | 13 |
 
 Always read **`sign_name`** (and `system_slug`) on the wheel you care about. Do not treat `sign_no` as a universal zodiac index — see [Field glossary](/field-glossary).
 
-All five wheels ship in every birth-card payload. Tropical, Vedic, and Fagan-Bradley use equal 30° signs for seasons or tradition. **`sidereal_iau`** and **`sidereal_true`** use unequal widths that follow constellation position and size on the sky, including Ophiuchus. The cut lines differ; both try to reflect what is actually along the ecliptic. GEOMETRY recommends **`sidereal_true`** when you need a default — that is the wheel we use to reflect the sky as closely as we can. Use **`sidereal_iau`** for the IAU constellation map; use the equal-sign wheels when your users already expect those systems.
+**Equal vs unequal spans:**
+
+- **Equal — 30° per sign, 12 signs:** `tropical`, `vedic_rasi`, `fagan_bradley`. Anchored to a season or a traditional ayanamsa.
+- **Unequal — 13 signs including Ophiuchus:** `sidereal_iau`, `sidereal_true`. Sign widths follow the real size and position of the constellations along the ecliptic.
+
+Pick by what your users expect: an equal-sign wheel when they already think in a familiar system, `sidereal_iau` for the IAU constellation map, or `sidereal_true` — GEOMETRY's recommended default — when you want the wheel that tracks the actual sky most closely.
 
 ## Why the degrees differ
 
@@ -31,22 +36,22 @@ Each wheel assigns the Sun (and other bodies) to a sign by **ecliptic longitude*
 | [`sidereal_iau`](#sidereal-iau) | Unequal IAU constellation cuts (Aries ≈ **28.83°**) — Delporte boundaries | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 | [`sidereal_true`](#sidereal-true) | Unequal true-sidereal cuts (Aries **0.00°–19.50°** in this frame) — GEOMETRY recommended default | Unequal; **Ophiuchus** between Scorpio and Sagittarius |
 
-Same calendar date → same Sun longitude → can land in different named signs when the **cuts** differ. That is the whole point of returning five wheels.
+Same calendar date → same Sun longitude → different named signs when the **cuts** differ. That is the whole point of returning five wheels.
 
 Membership rule: longitude λ is in a sign when `start ≤ λ < end`, with wrap-through **0°** for Pisces on the sidereal equal wheels and IAU (end &lt; start).
 
-These boundaries are standard astronomical / traditional reference frames unified in our catalog — not a secret recipe.
+These boundaries are standard astronomical and traditional reference frames unified in our catalog — not a secret recipe.
 
-## “Wrong sign” is usually the wrong wheel
+## Different wheel, different sign — by design
 
-If a newspaper or app says “Pisces” and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are comparing **different cuts**, not catching a GEOMETRY bug.
+If a newspaper or app says "Pisces" and `astro_wheels.sidereal_true.sign_name` says something else (or Ophiuchus), you are reading **two different systems** — not catching a GEOMETRY bug. Each wheel cuts the zodiac in its own place, so one date can carry different sign names across the five.
 
-**Self-check before filing anything:**
+**Before filing anything, confirm which system you're comparing:**
 
-1. Which wheel does your source use (tropical vs Vedic vs Fagan-Bradley vs IAU vs true sidereal)?  
-2. Open the matching key under `astro_wheels` in the raw JSON.  
-3. Optionally compare the Sun’s tropical longitude for that date to the [degree tables](#degree-tables) below.  
-4. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — GMT day vs local almanac is a separate class of “off by one.”
+1. Which wheel does your source use — tropical, Vedic, Fagan-Bradley, IAU, or true sidereal?  
+2. Open the matching key under `astro_wheels` in the raw JSON and read its `sign_name`.  
+3. Optionally compare the Sun's tropical longitude for that date to the [degree tables](#degree-tables) below.  
+4. For sky dates (moon / season / retro), also read [Calendar boundaries](/calendar-boundaries) — a GMT day vs a local almanac is a separate kind of off-by-one.
 
 ## Degree tables {#degree-tables}
 
@@ -129,7 +134,7 @@ Wheel order in the tables follows how Aries is placed in the shared tropical-lon
 
 ### sidereal_true (13) — preferred {#sidereal-true}
 
-GEOMETRY’s recommended astrology default when you want a 13-sign true-sidereal reading.
+GEOMETRY's recommended astrology default when you want a 13-sign true-sidereal reading.
 
 | Sign | Start ° | End ° | Span ° |
 |------|--------:|------:|-------:|
