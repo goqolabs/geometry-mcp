@@ -1,9 +1,9 @@
 ---
 title: Support
-description: Self-serve help first — docs, walkthroughs, and portal. GitHub Issues only for reproducible product / gateway bugs.
+description: Self-serve help first — docs, walkthroughs, and portal. GitHub Issues only for reproducible product / connectivity bugs.
 ---
 
-GEOMETRY builder support is **self-serve by design**. Most questions already have an answer in these docs or the install walkthrough. Open a GitHub Issue only when something looks like a **product or gateway bug you can reproduce** — not when two zodiac systems disagree.
+GEOMETRY builder support is **self-serve by design**. Most questions already have an answer in these docs or the install walkthrough. Open a GitHub Issue only when something looks like a **product or connectivity bug you can reproduce** — not when two zodiac systems disagree.
 
 ## Help yourself first
 
@@ -21,19 +21,13 @@ GEOMETRY builder support is **self-serve by design**. Most questions already hav
 
 Use your browser’s **search** on this site, or paste a docs page into your own agent (Claude / ChatGPT / Cursor) with GEOMETRY MCP connected — that is often faster than waiting on a ticket.
 
-## Ask Assistant (Mintlify)
-
-Mintlify’s in-docs **Ask Assistant** can answer from this site when it is enabled on the docs plan. Prefer it for “where is X?” and install wording before opening an Issue.
-
-> **Today:** `docs.geometry.app` is on Mintlify **Starter** (no AI assistant credits). Until Pro + Assistant is turned on, use the table above + site search. Enabling Ask Assistant is a product decision later — not required for soft launch.
-
 ## Support by plan
 
 | Plan | What you get |
 |------|----------------|
 | Soft launch / anonymous URL (no key) | **Self-serve only** — docs, [tutorial](https://geometry.app/tutorial/), site search |
 | Portal metered Free | **Self-serve only** — same docs + portal key/billing self-serve |
-| **Paid** (Starter and above) | Self-serve **plus** GitHub Issues for gateway / product failures (no SLA yet) |
+| **Paid** (Starter and above) | Self-serve **plus** GitHub Issues for product / connectivity failures (no SLA yet) |
 
 This matches common SaaS practice: free tiers get documentation and community-style self-serve; **ticketed human support is for paying customers**. There is no public support email.
 
@@ -41,9 +35,9 @@ GitHub cannot block Issue creation by plan on a public repo. Policy: Issues from
 
 ## When paid users may open a GitHub Issue
 
-**Use Issues for transport / product failures**, for example:
+**Use Issues for product / connectivity failures**, for example:
 
-- Gateway errors (HTTP 5xx, timeouts, empty or truncated responses)
+- HTTP 5xx, timeouts, empty or truncated responses
 - Client cannot complete the MCP handshake after following [Quickstart](/quickstart)
 - A tool throws or returns malformed JSON (missing required keys, not “I expected a different sign”)
 
@@ -53,7 +47,7 @@ GitHub cannot block Issue creation by plan on a public repo. Policy: Issues from
 
 ### Soft launch note
 
-Until paid plans are live in the Developer Portal, treat the product as **self-serve**. Do not expect Issue replies for soft-launch / free use. Platform-wide outages may still be investigated when they are obvious from monitoring — that is not a free support channel.
+Until paid plans are live in the Developer Portal, treat the product as **self-serve**. Do not expect Issue replies for soft-launch / free use.
 
 ### Do not open Issues for
 
@@ -81,7 +75,7 @@ Incomplete reports get closed or delayed. Include:
 | Time (UTC) and any request id if you have one | when the 5xx happened |
 | For malformed JSON only: the `_no` values from the broken block | `system_no: 16021`, `planet_no: 8` |
 
-Those `_no` fields are internal catalog ids — not a public API contract (see [Field glossary](/field-glossary)) — but quoting them helps reproduce a broken payload shape.
+Those `_no` fields are opaque ids — not a public API contract (see [Field glossary](/field-glossary)) — but quoting them helps reproduce a broken payload shape.
 
 ## Leaked key
 
@@ -89,7 +83,7 @@ Those `_no` fields are internal catalog ids — not a public API contract (see [
 2. Update your connector URL to the new key.  
 3. The old key stays valid for **7 days** (Zuplo grace). That is normal vendor behavior.
 
-Almost every leak is fully handled by steps 1–2. Early kill before the grace window is rare and operator-only — see [Where your key goes](/connect-and-keys#if-your-key-was-exposed).
+Almost every leak is fully handled by steps 1–2. Early kill before the grace window is rare — see [Where your key goes](/connect-and-keys#if-your-key-was-exposed).
 
 ## Tips
 

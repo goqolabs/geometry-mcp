@@ -12,7 +12,7 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 | | |
 |---|---|
 | **Input** | `birth_date` (YYYY-MM-DD) |
-| **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"`; catalog pad (e.g. 1850, 2101) → `"extended"`; outside `date_dim` → `"birth_card_only"` |
+| **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"`; nearby dates outside that window (e.g. 1850, 2101) → `"extended"`; farther out → `"birth_card_only"` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -239,16 +239,16 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 
 Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
 
-Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from internal catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
+Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from opaque catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
 
 ## Out of published range
 
-Two soft bands outside focus (not crashes). Birth-card identity remains month/day based.
+Dates outside 1900–2100 do not crash the tool. Birth-card identity still follows month/day.
 
 | Band | Example | `temporal_context` | Notes |
 |------|---------|--------------------|-------|
-| **Extended** | `1850-06-15`, `2101-01-01` | `extended` | In `date_dim` outside 1900–2100 — full temporal calc, honest label |
-| **Out** | `1776-07-04`, `2200-01-01` | `birth_card_only` | Not in `date_dim` — error envelope + cosmic month/day only |
+| **Extended** | `1850-06-15`, `2101-01-01` | `extended` | Outside the published window — full temporal fields still returned, labeled honestly |
+| **Out** | `1776-07-04`, `2200-01-01` | `birth_card_only` | Farther out — soft error envelope + birth card from month/day only |
 
 ## Related
 

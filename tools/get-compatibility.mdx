@@ -12,14 +12,14 @@ Two birth dates in → both identities, connections between them, and a scored b
 | | |
 |---|---|
 | **Input** | `birth_date_a`, `birth_date_b` (YYYY-MM-DD) |
-| **Range** | Same two-band contract as [`get_card_for_birthdate`](/tools/get-card-for-birthdate) — focus `full`; catalog pad `extended`; outside `date_dim` → `date_context` `out_of_range` |
+| **Range** | Same coverage bands as [`get_card_for_birthdate`](/tools/get-card-for-birthdate) — `full` inside 1900–2100; `extended` nearby outside that window; farther out → `date_context` `out_of_range` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
 
 > How compatible are people born 1985-03-15 and 1990-11-08?
 
-Live payloads are large (~85 KB) because each side embeds a full cosmic block. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_card_for_birthdate`](/tools/get-card-for-birthdate) shape.
+Live payloads are large (~85 KB) because each side embeds a full birth profile. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_card_for_birthdate`](/tools/get-card-for-birthdate) shape.
 
 **Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
@@ -35,8 +35,8 @@ Live payloads are large (~85 KB) because each side embeds a full cosmic block. B
   "summary": "Compatibility for two birth dates in the published 1900–2100 window.",
   "life_path_a": 5,
   "life_path_b": 2,
-  "birth_card_a": "… full cosmic block: card, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, and more …",
-  "birth_card_b": "… full cosmic block (same shape) …",
+  "birth_card_a": "… full birth profile: card, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, and more …",
+  "birth_card_b": "… full birth profile (same shape) …",
   "date_context": {
     "birth_date_a": "full",
     "birth_date_b": "full"

@@ -22,22 +22,22 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
-- [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same RPCs over HTTP; MCP first; branded `api.geometry.app` curl docs later
-- [Support](https://docs.geometry.app/support): Self-serve for free / soft launch; GitHub Issues for paid plans only (gateway bugs)
+- [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
+- [Support](https://docs.geometry.app/support): Self-serve for free / soft launch; GitHub Issues for paid plans only (product / connectivity bugs)
 - [FAQ](https://docs.geometry.app/faq): Common questions
 
 ## Support
 
 Builders: https://docs.geometry.app/support — docs / portal / walkthrough first. No public product email.
-GitHub Issues: paid plans only (Starter+); soft launch and Free = self-serve. Scope = gateway / product failures — not zodiac or calendar disagreements (/astro-wheels · /coverage#calendar-boundaries).
+GitHub Issues: paid plans only (Starter+); soft launch and Free = self-serve. Scope = product / connectivity failures — not zodiac or calendar disagreements (/astro-wheels · /coverage#calendar-boundaries).
 Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-keys (never paste the key).
 
 ## Rules for agents
 
 - All string fields lowercase except glyph fields (e.g. `unicard_symbol`).
 - Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity). `_no` fields are non-negative.
-- `_no` fields are internal catalog ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
-- Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`). Catalog pad years outside that window return `"extended"` (same calculations, honest label). Dates outside `date_dim` return `"birth_card_only"` / `"day_card_only"` with a soft error envelope.
+- `_no` fields are opaque ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
+- Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`). Nearby dates outside that window return `"extended"` (same calculations, honest label). Farther out returns `"birth_card_only"` / `"day_card_only"` with a soft error envelope.
 - Sky anchors (moon / season / retrograde) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph), then stored as lookups. No live ephemeris at request time. See /coverage.
 - Dates come in TWO families and the JSON does not label them. (1) Sky events — `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt`/`retro_end_dt`/`cazimi_dt` — are the Gregorian day containing the instant in **GMT**. A local-time source will differ by one day roughly `offset ÷ 24` of the time (~33% at UTC+8). (2) Cultural years — `lunar.year_no`, `calendar_years.*` — use each tradition's own civil anchor: Chinese/Vietnamese CST (UTC+8), Vedic samvatsara IST (UTC+5:30), Hebrew and Dreamspell timezone-neutral (arithmetic, cannot shift), Persian GMT day-of-equinox by deliberate choice (may differ one day from Iran's Tehran-local rule).
 - Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /coverage#calendar-boundaries.

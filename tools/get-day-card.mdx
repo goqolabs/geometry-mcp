@@ -12,7 +12,7 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 | | |
 |---|---|
 | **Input** | `day_date` (YYYY-MM-DD) — required; pass the date explicitly (no implicit “today”) |
-| **Range** | Full temporal window `1900-01-01` … `2100-12-31` (`full`); catalog pad years → `extended`; outside `date_dim` → `day_card_only` (day card + ruler still returned) |
+| **Range** | `1900-01-01` … `2100-12-31` → `full`; nearby dates outside that window → `extended`; farther out → `day_card_only` (day card + ruler still returned) |
 | **Version** | `v0.2.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 

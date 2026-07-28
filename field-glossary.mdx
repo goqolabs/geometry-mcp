@@ -3,7 +3,7 @@ title: Field glossary
 description: How to read the fields in a payload — slugs vs names vs numbers, and which `_no` fields are safe to build on.
 ---
 
-Payloads include numeric fields ending in `_no`. Some are traditional numbers (safe to display). Others are internal catalog ids (for support traces — not a public API contract).
+Payloads include numeric fields ending in `_no`. Some are traditional numbers (safe to display). Others are opaque catalog ids (for support traces — not a public API contract).
 
 ## Names, slugs, and numbers
 
@@ -17,9 +17,9 @@ Most entities arrive in three forms. They can look redundant — `"pisces"` and 
 
 Rule: **key on the slug, show the name, log the number.** For single-word values (`pisces`) the slug and name happen to be identical, but only the slug is guaranteed stable — build on it.
 
-## Internal catalog numbers
+## Opaque catalog numbers
 
-Fields ending in `_no` (`system_no`, `planet_no`, `element_no`, and similar) are GEOMETRY's internal catalog and system identifiers. They exist for auditing, tracing, and troubleshooting, and are **not part of the public contract** — do not key caches, foreign keys, or application logic on them. Use names and slugs for durable integrations.
+Fields ending in `_no` (`system_no`, `planet_no`, `element_no`, and similar) are GEOMETRY's opaque catalog and system identifiers. They exist for auditing, tracing, and troubleshooting, and are **not part of the public contract** — do not key caches, foreign keys, or application logic on them. Use names and slugs for durable integrations.
 
 If you hit unexpected results, **include the relevant `_no` values in your report** — they let us reproduce your exact case immediately. See [Support](/support).
 
@@ -34,12 +34,12 @@ If you hit unexpected results, **include the relevant `_no` values in your repor
 | `chakra_no` | **Tradition** | Chakra position, 1–7 (13 in the extended set). |
 | `house_no`, `pada_no` | **Tradition** | Astrological house 1–12; nakshatra pada 1–4. |
 | `nakshatra_no` | **Tradition** | Standard Vedic order, 1–27. Ashwini = 1 … Revati = 27. |
-| `planet_no` | **Catalog** | Internal body id. **Not** orbital order, Swiss Ephemeris index, or any astronomical numbering — don't infer meaning from the value. Use `planet_name`. |
+| `planet_no` | **Catalog** | Opaque body id. **Not** orbital order, Swiss Ephemeris index, or any astronomical numbering — don't infer meaning from the value. Use `planet_name`. |
 | `system_no` | **Catalog** | Registry id for a symbolic system. Not a rank, not an API version. Use the system slug or name. |
 | `element_no` | **Catalog** | Element id — see below. |
 | `sign_no` | **Catalog** | Position on *that wheel's* own catalog, not a universal zodiac index. Different wheels reuse the same numbers for different signs. Use `sign_name`. |
 | `unicard_no` | **Catalog** | Position within one deck's own catalog. Ranges differ per deck, so the same value means different things in different decks. Use `unicard_name`. |
-| `geomancy_no` | **Catalog** | Our ordering of the sixteen traditional geomantic figures, 1–16. The figures are traditional; the numbering is internal. Use `geomancy_name`. |
+| `geomancy_no` | **Catalog** | Our ordering of the sixteen traditional geomantic figures, 1–16. The figures are traditional; the numbering is GEOMETRY-specific. Use `geomancy_name`. |
 
 Tradition numbers are safe to display and reason about. Catalog numbers should be treated as opaque.
 
@@ -50,7 +50,7 @@ Tradition numbers are safe to display and reason about. Catalog numbers should b
 | Block | Example | Reading |
 |---|---|---|
 | `periodic_element` | `element_no: 34`, `atomic_no: 34` | Periodic lane — matches the atomic number. |
-| `classical_element` | `element_no: 1700`, `element_name: "earth"` | Classical lane — an internal catalog id. Earth is **not** periodic element 1700. |
+| `classical_element` | `element_no: 1700`, `element_name: "earth"` | Classical lane — an opaque catalog id. Earth is **not** periodic element 1700. |
 
 Classical elements have no atomic number, so `element_no` is the one key present in both lanes. That is deliberate: `element_no` resolves for any element block, so you never need two code paths. Read it alongside `element_name` and treat the classical values as opaque.
 
