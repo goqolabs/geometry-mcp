@@ -1,7 +1,14 @@
 ---
-title: get_card_for_birthdate
+title: get_birthdate
 description: One birth date → birth card plus calendars, moon, season, retrogrades, and related systems.
+tag: Production
 ---
+
+<Badge color="green">Production</Badge>
+
+<Info>
+  **Status:** Production — most tested with [`get_compatibility`](/tools/get-compatibility). Formerly `get_card_for_birthdate`.
+</Info>
 
 One birth date in → birth card and layered systems for that date: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, and more.
 
@@ -13,6 +20,7 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 |---|---|
 | **Input** | `birth_date` (YYYY-MM-DD) |
 | **Range** | `1900-01-01` … `2100-12-31` → `temporal_context: "full"`; nearby dates outside that window (e.g. 1850, 2101) → `"extended"`; farther out → `"birth_card_only"` |
+| **Version** | `v2.8.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -23,7 +31,7 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 
 > give raw json for birthdate 1985-03-15 card
 
-That phrase calls `get_card_for_birthdate` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `birth_date`. “Raw JSON” and “full payload” are the same object.
+That phrase calls `get_birthdate` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `birth_date`. “Raw JSON” and “full payload” are the same object.
 
 The sample below is a **shortened teaching excerpt** (values from a live call). A full tool response for the same date includes every block (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, and the rest).
 
@@ -253,5 +261,6 @@ Dates outside 1900–2100 do not crash the tool. Birth-card identity still follo
 ## Related
 
 - [get_compatibility](/tools/get-compatibility) — two dates  
-- [get_day_card](/tools/get-day-card) — calendar day  
+- [get_day](/tools/get-day) — calendar day (beta)  
+- [get_name](/tools/get-name) — name → cosmic cards (beta)  
 - [Where your key goes](/connect-and-keys)  

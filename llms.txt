@@ -16,9 +16,10 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes
-- [get_card_for_birthdate](https://docs.geometry.app/tools/get-card-for-birthdate): Birth identity sample JSON for 1985-03-15
-- [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two birth dates
-- [get_day_card](https://docs.geometry.app/tools/get-day-card): Day card + day ruler
+- [get_birthdate](https://docs.geometry.app/tools/get-birthdate): Birth identity (Production; formerly get_card_for_birthdate)
+- [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two birth dates (Production)
+- [get_day](https://docs.geometry.app/tools/get-day): Day card + day ruler (Beta; formerly get_day_card)
+- [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta; formerly get_name_cosmic_cards)
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels

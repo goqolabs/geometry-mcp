@@ -22,9 +22,10 @@
         "group": "Tools",
         "pages": [
           "payload-shapes",
-          "tools/get-card-for-birthdate",
+          "tools/get-birthdate",
           "tools/get-compatibility",
-          "tools/get-day-card"
+          "tools/get-day",
+          "tools/get-name"
         ]
       },
       {
@@ -63,6 +64,14 @@
     {
       "source": "/tools/overview",
       "destination": "/payload-shapes"
+    },
+    {
+      "source": "/tools/get-card-for-birthdate",
+      "destination": "/tools/get-birthdate"
+    },
+    {
+      "source": "/tools/get-day-card",
+      "destination": "/tools/get-day"
     }
   ]
 }

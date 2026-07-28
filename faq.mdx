@@ -31,7 +31,7 @@ Soft launch: free MCP URL, no account. Metered Free and paid plans roll out with
 GEOMETRY is a read-only reference lookup. Calls take birth dates (or similar inputs), return JSON, and are not used to build user profiles.
 
 **Where is the full JSON / contract?**  
-Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_card_for_birthdate`](/tools/get-card-for-birthdate), the only input is `birth_date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
+Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_birthdate`](/tools/get-birthdate), the only input is `birth_date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
 
 **How do I see the full JSON in chat?**  
 Ask something like: `give raw json for birthdate 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.

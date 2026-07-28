@@ -1,7 +1,14 @@
 ---
 title: get_compatibility
 description: Two birth dates → both identities plus a scored compatibility breakdown.
+tag: Production
 ---
+
+<Badge color="green">Production</Badge>
+
+<Info>
+  **Status:** Production — most tested with [`get_birthdate`](/tools/get-birthdate).
+</Info>
 
 Two birth dates in → both identities, connections between them, and a scored breakdown. Scoring follows the cardology connection system (Cards of Destiny / Robert Camp tradition).
 
@@ -12,14 +19,14 @@ Two birth dates in → both identities, connections between them, and a scored b
 | | |
 |---|---|
 | **Input** | `birth_date_a`, `birth_date_b` (YYYY-MM-DD) |
-| **Range** | Same coverage bands as [`get_card_for_birthdate`](/tools/get-card-for-birthdate) — `full` inside 1900–2100; `extended` nearby outside that window; farther out → `date_context` `out_of_range` |
+| **Range** | Same coverage bands as [`get_birthdate`](/tools/get-birthdate) — `full` inside 1900–2100; `extended` nearby outside that window; farther out → `date_context` `out_of_range` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
 
 > How compatible are people born 1985-03-15 and 1990-11-08?
 
-Live payloads are large (~85 KB) because each side embeds a full birth profile. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_card_for_birthdate`](/tools/get-card-for-birthdate) shape.
+Live payloads are large (~85 KB) because each side embeds a full birth profile. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_birthdate`](/tools/get-birthdate) shape.
 
 **Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
@@ -86,5 +93,6 @@ Live payloads are large (~85 KB) because each side embeds a full birth profile. 
 
 ## Related
 
-- [get_card_for_birthdate](/tools/get-card-for-birthdate) — one date identity  
-- [get_day_card](/tools/get-day-card) — calendar day  
+- [get_birthdate](/tools/get-birthdate) — one date identity (Production)  
+- [get_day](/tools/get-day) — calendar day (Beta)  
+- [get_name](/tools/get-name) — name → cosmic cards (Beta) 

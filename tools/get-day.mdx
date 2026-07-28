@@ -1,9 +1,16 @@
 ---
-title: get_day_card
-description: One calendar day → day card plus Roman / Greek / Norse day ruler.
+title: get_day
+description: "BETA — One calendar day → day card plus Roman / Greek / Norse day ruler."
+tag: Beta
 ---
 
-One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler** context. Smaller than [`get_card_for_birthdate`](/tools/get-card-for-birthdate) — day focus only.
+<Badge color="orange">Beta</Badge>
+
+<Info>
+  **Status:** Beta — open for builders; under active testing. Formerly `get_day_card`. Most-tested tools remain [`get_birthdate`](/tools/get-birthdate) and [`get_compatibility`](/tools/get-compatibility).
+</Info>
+
+One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler** context. Smaller than [`get_birthdate`](/tools/get-birthdate) — day focus only.
 
 <Info>
   **One call returns** the day's cosmic card, weekday, and planetary ruler — a lightweight, deterministic lookup from a single date.
@@ -13,7 +20,7 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 |---|---|
 | **Input** | `day_date` (YYYY-MM-DD) — required; pass the date explicitly (no implicit “today”) |
 | **Range** | `1900-01-01` … `2100-12-31` → `full`; nearby dates outside that window → `extended`; farther out → `day_card_only` (day card + ruler still returned) |
-| **Version** | `v0.2.0` |
+| **Version** | `v0.3.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
@@ -26,8 +33,8 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 
 ```json
 {
-  "tool": "get_day_card",
-  "tool_version": "v0.2.0",
+  "tool": "get_day",
+  "tool_version": "v0.3.0",
   "engine_chain": "v0.66",
   "date": "2026-07-23",
   "temporal_context": "full",
@@ -58,26 +65,10 @@ One calendar day in → the **day card** plus Roman / Greek / Norse **day ruler*
 }
 ```
 
-Friday → Venus day (excerpt):
-
-```json
-"day_ruler": {
-  "day_of_week": 5,
-  "ruling_planet": "venus",
-  "planet_no": 6,
-  "planet_symbol": "♀",
-  "roman": "venus",
-  "greek": "aphrodite",
-  "norse": {
-    "day_name": "frjádagr",
-    "deity": "freya"
-  }
-}
-```
-
-v0.2 ships **Roman · Greek · Norse** only.
+v0.3 ships **Roman · Greek · Norse** only.
 
 ## Related
 
-- [get_card_for_birthdate](/tools/get-card-for-birthdate) — birth × day product patterns  
+- [get_birthdate](/tools/get-birthdate) — birth identity  
 - [get_compatibility](/tools/get-compatibility) — two birth dates  
+- [get_name](/tools/get-name) — name → cosmic cards (beta)  

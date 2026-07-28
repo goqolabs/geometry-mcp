@@ -1,0 +1,40 @@
+---
+title: get_name
+description: "BETA — Name → Cosmic Cards via Francis Bacon gematria (and Latin cipher suite)."
+tag: Beta
+---
+
+<Badge color="orange">Beta</Badge>
+
+<Info>
+  **Status:** Beta — open for builders; under active testing. Formerly `get_name_cosmic_cards` (Path B only). Now in `tools/list` so Claude / Cursor can call it. Most-tested tools remain [`get_birthdate`](/tools/get-birthdate) and [`get_compatibility`](/tools/get-compatibility).
+</Info>
+
+A name string in → per-word and full-name **Francis Bacon** cosmic cards, Latin cipher suite sums, and a periodic-element block from Chaldean.
+
+| | |
+|---|---|
+| **Input** | `full_name` (text) — whitespace-separated words |
+| **Engine** | Cipher **41** (`francis_bacon`) → `card_no` 1–52; other Latin ciphers as raw sums |
+| **Version** | `v2.2.0` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> Decode the name KEEL with get_name
+
+**Ask (raw JSON):**
+
+> give raw json for get_name KEEL
+
+## What you get
+
+- Top-level `cipher_legend[]` (Latin suite metadata once)
+- `words[]` — one entry per word plus a `"full"` aggregate
+- Each word: Francis Bacon `card{}`, `arcs{}`, `archetype{}`, `periodic{}`, `ciphers[]`
+
+## Related
+
+- [get_birthdate](/tools/get-birthdate) — birth date identity  
+- [get_compatibility](/tools/get-compatibility) — two birth dates  
+- [get_day](/tools/get-day) — calendar day (beta)  
