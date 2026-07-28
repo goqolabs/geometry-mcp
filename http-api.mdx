@@ -1,20 +1,20 @@
 ---
 title: HTTP API
-description: Secondary surface — same tool RPCs over HTTP when you are not using MCP. Branded curl/SDK docs land with the api.geometry.app polish pass.
+description: Secondary surface — same tools and JSON over HTTP when you are not using MCP. Branded curl/SDK examples for api.geometry.app land here when that door is ready.
 ---
 
 GEOMETRY’s **primary** surface for AI apps is **[MCP](/quickstart)** (`https://mcp.geometry.app/mcp`). Use that first.
 
-**HTTP / REST** is the **secondary** door for apps, scripts, and pipelines that are not MCP-native. Same Postgres façade, same three tools, same JSON contracts — different transport.
+**HTTP / REST** is the **secondary** door for apps, scripts, and pipelines that are not MCP-native. Same three tools, same JSON contracts — different transport.
 
 ## Status
 
 | Surface | Role | Today |
 |---------|------|--------|
-| **MCP** | Path C — Streamable HTTP connectors | Live — [Quickstart](/quickstart) |
-| **HTTP API** | Path B — JSON / curl / SDKs | Same RPCs available behind the gateway; branded **`api.geometry.app`** routes + public curl examples ship in a later polish pass |
+| **MCP** | Connectors in Claude, ChatGPT, Cursor, VS Code, and other MCP clients | Live — [Quickstart](/quickstart) |
+| **HTTP API** | JSON over HTTP for apps and scripts | Same tools as MCP; branded **`api.geometry.app`** routes and public curl examples ship in a later docs pass |
 
-Do not invent a separate public OpenAPI from these docs yet. When the branded API door is ready, this page gets curl examples, auth (`?key=`), and rate-limit notes — still pointing at the same tools:
+When the branded API door is ready, this page will add curl examples, auth (`?key=`), and rate-limit notes — still pointing at the same tools:
 
 - [`get_card_for_birthdate`](/tools/get-card-for-birthdate)
 - [`get_compatibility`](/tools/get-compatibility)
@@ -30,7 +30,7 @@ Do not invent a separate public OpenAPI from these docs yet. When the branded AP
 ## What to use now
 
 1. Prefer **MCP** if your host supports connectors (Claude, ChatGPT, Cursor, VS Code, …).
-2. If you need raw HTTP today, treat Path B as an internal/gateway concern until this page lists canonical `https://api.geometry.app/…` examples.
+2. If you need raw HTTP today, wait for the canonical `https://api.geometry.app/…` examples on this page — or use MCP until then.
 3. Questions about zodiac or calendar disagreement belong in [Astro wheels](/astro-wheels) / [FAQ](/faq) — not “API vs MCP.”
 
 ## Next
