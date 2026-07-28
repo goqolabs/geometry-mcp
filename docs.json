@@ -29,7 +29,7 @@
       },
       {
         "group": "Reference",
-        "pages": ["why-deterministic", "coverage", "astro-wheels", "field-glossary", "support", "faq"]
+        "pages": ["why-deterministic", "coverage", "astro-wheels", "field-glossary", "http-api", "support", "faq"]
       }
     ]
   },

@@ -22,8 +22,9 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
-- [FAQ](https://docs.geometry.app/faq): Common questions
+- [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same RPCs over HTTP; MCP first; branded `api.geometry.app` curl docs later
 - [Support](https://docs.geometry.app/support): Self-serve for free / soft launch; GitHub Issues for paid plans only (gateway bugs)
+- [FAQ](https://docs.geometry.app/faq): Common questions
 
 ## Support
 

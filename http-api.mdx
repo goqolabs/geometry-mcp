@@ -1,0 +1,40 @@
+---
+title: HTTP API
+description: Secondary surface — same tool RPCs over HTTP when you are not using MCP. Branded curl/SDK docs land with the api.geometry.app polish pass.
+---
+
+GEOMETRY’s **primary** surface for AI apps is **[MCP](/quickstart)** (`https://mcp.geometry.app/mcp`). Use that first.
+
+**HTTP / REST** is the **secondary** door for apps, scripts, and pipelines that are not MCP-native. Same Postgres façade, same three tools, same JSON contracts — different transport.
+
+## Status
+
+| Surface | Role | Today |
+|---------|------|--------|
+| **MCP** | Path C — Streamable HTTP connectors | Live — [Quickstart](/quickstart) |
+| **HTTP API** | Path B — JSON / curl / SDKs | Same RPCs available behind the gateway; branded **`api.geometry.app`** routes + public curl examples ship in a later polish pass |
+
+Do not invent a separate public OpenAPI from these docs yet. When the branded API door is ready, this page gets curl examples, auth (`?key=`), and rate-limit notes — still pointing at the same tools:
+
+- [`get_card_for_birthdate`](/tools/get-card-for-birthdate)
+- [`get_compatibility`](/tools/get-compatibility)
+- [`get_day_card`](/tools/get-day-card)
+
+## What stays the same
+
+- Inputs (e.g. bare `YYYY-MM-DD`) and complete JSON outputs
+- Coverage window and calendar rules — [When it covers](/coverage)
+- Keys and rotation — [Where your key goes](/connect-and-keys)
+- Payload field meaning — [What you get](/payload-shapes) · [Field glossary](/field-glossary)
+
+## What to use now
+
+1. Prefer **MCP** if your host supports connectors (Claude, ChatGPT, Cursor, VS Code, …).
+2. If you need raw HTTP today, treat Path B as an internal/gateway concern until this page lists canonical `https://api.geometry.app/…` examples.
+3. Questions about zodiac or calendar disagreement belong in [Astro wheels](/astro-wheels) / [FAQ](/faq) — not “API vs MCP.”
+
+## Next
+
+- [Quickstart](/quickstart) — connect MCP  
+- [What you get](/payload-shapes) — tools and shapes  
+- [Support](/support) — self-serve triage  
