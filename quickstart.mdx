@@ -55,13 +55,44 @@ Visual: [tutorial · Claude Desktop](https://geometry.app/tutorial/#claude).
 
 ## ChatGPT (Plugins)
 
-Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**).
+Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**). Soft launch: **Authentication = No Auth**.
+
+### Install once
 
 1. **Settings → Security and login → Developer mode** on (plan / workspace dependent)
 2. Open [chatgpt.com/plugins](https://chatgpt.com/plugins) → **+** → **New Plugin**
-3. Name `geometry`, paste `https://mcp.geometry.app/mcp`, accept the risk checkbox → **Create**
-4. **Sign in** / **Approve** if prompted — then `geometry` shows under Installed
-5. Ask a date question in a new chat with the plugin enabled
+3. Name `geometry`, paste `https://mcp.geometry.app/mcp`, set **No Auth**, accept the risk checkbox → **Create**
+4. **Connect** on the consent screen — then `geometry` shows under Installed
+
+### Use it in a chat (ChatGPT is quirky — prefer `@geometry`)
+
+**Recommended (cleanest):** type **`@geometry`**, then **name the tool** and args. Skip the Plugins **+** picker when you can — it often disappears mid-thread and feels broken.
+
+```text
+@geometry Call get_birthdate for 1990-06-15. Confirm tool_version and temporal_context.
+```
+
+```text
+@geometry Call get_compatibility for 1990-06-15 and 1985-11-02. Confirm tool_version and overall score.
+```
+
+```text
+@geometry Call get_day for 2026-07-28. Confirm tool, tool_version, day card, day ruler.
+```
+
+```text
+@geometry Call get_name for KEEL. Confirm tool and tool_version.
+```
+
+| Approach | When |
+|----------|------|
+| **`@geometry` + tool name** | **Default** — works for first ask and follow-ups in the same chat |
+| Composer **+** → geometry chip | Optional alternate; chip often **vanishes** after a call or two — don’t rely on it |
+| New chat | Only if `@geometry` still won’t invoke |
+
+**Without** `@geometry` (or the chip), ChatGPT may invent answers from the web (e.g. Destiny Cards **2♣** instead of GEOMETRY **2♦**). Look for **Called tool** above a real answer.
+
+**Claude vs ChatGPT:** Claude — enable connector once, stay in the thread (no `@` needed). ChatGPT — keep typing **`@geometry Call get_…`**. Same MCP URL.
 
 Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). Soft-launch URL needs no separate GEOMETRY account.
 
