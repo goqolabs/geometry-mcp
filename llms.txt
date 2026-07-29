@@ -35,7 +35,8 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 
 ## Rules for agents
 
-- All string fields lowercase except glyph fields (e.g. `unicard_symbol`).
+- All string fields lowercase except glyph fields (e.g. `unicard_symbol`, `alchemical_symbol`).
+- NEVER retype rare Unicode from memory when saving tool JSON. Paste the tool result bytes unchanged. Alchemical Symbols (U+1F700–U+1F77F) and planetary glyphs corrupt easily into lookalike emoji (e.g. U+1F70A → U+1F30A water wave). That is an LLM serialization hazard — not a GEOMETRY defect. Verify glyphs with codepoints. Numbers, cards, and cipher sums in a mangled copy may still be correct; do not invent “emoji cleanup” for the elements table from a chat file. See https://docs.geometry.app/faq#llm-unicode-glyphs and https://docs.geometry.app/tools/get-name
 - Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity). `_no` fields are non-negative.
 - `_no` fields are opaque ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context: "full"`). Nearby dates outside that window return `"extended"` (same calculations, honest label). Farther out returns `"birth_card_only"` / `"day_card_only"` with a soft error envelope.

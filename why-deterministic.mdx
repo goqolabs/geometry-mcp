@@ -18,3 +18,5 @@ Try it:
 2. Connect `https://mcp.geometry.app/mcp` and ask the same question again
 
 Same question, same model — the difference is the data layer. Use [`get_birthdate`](/tools/get-birthdate); moon phase, season, and retrogrades are inside that payload.
+
+**Caveat when an AI “saves” the JSON:** the **tool response** is deterministic; if the model **retypes** the payload into a file, rare Unicode glyphs (e.g. `alchemical_symbol` on [`get_name`](/tools/get-name)) can flip to lookalike emoji while numbers and text stay correct. That is an LLM copy hazard — not GEOMETRY changing answers. See [FAQ](/faq#llm-unicode-glyphs).

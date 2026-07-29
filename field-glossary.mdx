@@ -56,6 +56,12 @@ Classical elements have no atomic number, so `element_no` is the one key present
 
 The same applies to the `element_no` returned inside the `celtic_ogham` and `norse_runes` blocks — those are classical elements.
 
+## Glyph fields (`alchemical_symbol` and friends)
+
+Some payloads include rare Unicode glyphs — notably `periodic.alchemical_symbol` on [`get_name`](/tools/get-name) (Unicode Alchemical Symbols U+1F700–U+1F77F, plus classical planetary marks).
+
+Those characters are **correct on the wire**. If a chat-exported JSON shows a water wave, random pictograph, or other lookalike, the **LLM rewritten the glyph** — cards, cipher sums, and element names in that file are usually still fine. Verify with codepoints or re-call the tool. See [FAQ](/faq#llm-unicode-glyphs).
+
 ## Year fields and their boundaries
 
 The `lunar`, `yearly`, and `calendar_years` blocks carry cultural year numbers — `year_no`, `hebrew_year_no`, `persian_year_no`, `vedic_year_no`, `chinese_year_no`, and similar.
