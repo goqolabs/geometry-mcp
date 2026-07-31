@@ -9,17 +9,36 @@ The Model Context Protocol — an open standard that lets AI apps call external 
 **Do I need an account to try?**  
 No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you want a metered Free plan or paid tier — see [Where your key goes](/connect-and-keys).
 
+**Which AI client should I use?**  
+**Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions. Enable Geometry once; Claude usually stays in-thread and picks the right tool. **ChatGPT works** on the same URL but is **inconsistent** — see below. Cursor / Codex / VS Code are fine for builders who already live there.
+
 **ChatGPT installed geometry — why won’t it use the tool?**  
-Don’t fight the Plugins **+** UI. In the chat, type **`@geometry`**, then call the tool by name (`Call get_birthdate for …`). That is the clean path. The **+** → geometry chip is optional and often disappears mid-thread. Claude Connectors stay usable in-thread after one enable — no `@` needed. Full steps: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins).
+Don’t fight the Plugins **+** UI. Type **`@geometry`**, then **`Call get_birthdate for …`** (name the tool). The **+** chip often vanishes mid-thread. After a successful call, the **next** turn **sometimes** works and **sometimes** says the tool “isn’t available” — start a **new chat** when that happens (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
+
+**Why is ChatGPT so inconsistent about new chats?**  
+Host quirk (list ≠ invoke / mid-thread drop). Dogfood 2026-07: same thread can succeed after a prior tool call, then fail on the next day — **unreliable**. Geometry’s MCP URL and tools are fine; Claude keeps using them in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Recommend Claude for demos and non-technical “just ask.”
+
+**ChatGPT called `get_day` but I asked about the moon / retrogrades / leap year?**  
+`get_day` is day card + weekday ruler only — no moon, season, Rx, or `is_leap_year`. Use **`get_birthdate`** (`calendar_meta` for weekday/leap). Prefer a **new chat** and `@geometry Call get_birthdate …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
+
+**Which tool for which question?**  
+
+| Need | Tool |
+|------|------|
+| Moon, season, classical Rx, calendars, birth card | [`get_birthdate`](/tools/get-birthdate) |
+| Weekday name / leap year (`calendar_meta`) | [`get_birthdate`](/tools/get-birthdate) |
+| Day card + weekday ruler only | [`get_day`](/tools/get-day) |
+| Two birth dates | [`get_compatibility`](/tools/get-compatibility) |
+| Name → cards | [`get_name`](/tools/get-name) |
 
 **Claude vs ChatGPT — same MCP URL?**  
-Yes — `https://mcp.geometry.app/mcp`. Different client UX only. Claude: enable connector once. ChatGPT: **`@geometry Call get_…`**. See [Quickstart](/quickstart).
+Yes — `https://mcp.geometry.app/mcp`. **Claude** = recommended NL path. **ChatGPT** = supported but flaky (`@geometry` + new chat when needed). See [Quickstart](/quickstart).
 
 **Is there a REST / HTTP API?**  
 Yes as a **secondary** surface — same tools and JSON as MCP. Prefer MCP for AI clients. Branded `api.geometry.app` curl/SDK docs land later; see [HTTP API](/http-api).
 
 **Is the data stable?**  
-The date range and its systems are pre-computed and versioned. The same call returns the same answer today, tomorrow, and next year. The beta label covers tooling and quotas, not the data.
+Yes. The date range and its systems are pre-computed and versioned — same call, same answer today, tomorrow, and next year. **Public beta** means tooling and quotas are still evolving, not that the data drifts. See [Quickstart](/quickstart).
 
 **What are the calendar boundaries?**  
 Published coverage is **1900-01-01** through **2100-12-31**. Within that window, bare `YYYY-MM-DD` fields can mean different things — cultural year starts vs GMT sky-event days. Full explanation: [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
@@ -60,6 +79,35 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 
 **Your moon phase date is one day off from mine.**  
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
+
+**Was that date a blue moon / blood moon / supermoon / micromoon?**  
+Ask [`get_birthdate`](/tools/get-birthdate) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** from AstroPixels/BOSS anchors (GMT) — not interpretive meaning. GEOMETRY does **not** invent moon slang; it applies the same standard sky rules builders already use from NASA and almanacs.
+
+**Where are the karmic cards and planetary spreads?**  
+On the birth card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: sun = birth card, then moon … rahu, midheaven, phoenix). Same blocks nest under `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
+
+**Is the Sun card different from the birth card / Life card?**  
+No — they are the **same card**. In cardology, birth card = Life card = Sun card. The payload says so explicitly: `cosmic.also_called` is `["birth_card","life_card","sun_card"]`, and `planetary_spread.sun` repeats that with `is_sun_birth_card: true`.
+
+| Flag / field | Meaning |
+|---|---|
+| `is_blue_moon_monthly` | Second **full moon** in the same Gregorian month (GMT day) |
+| `is_blue_moon_seasonal` | Third of four full moons in one astronomical season (solstice/equinox interval) |
+| `is_blood_moon` | Full moon with a **total lunar eclipse** (`eclipse_code: "lt"`) |
+| `is_supermoon` | Full moon near perigee — Earth–Moon distance **&lt; 360 000 km** |
+| `is_micromoon` | Full moon near apogee — Earth–Moon distance **&gt; 405 000 km** |
+| `earth_moon_distance_km` | Distance (km) on that phase day; `0` if not a moon-phase anchor |
+| `apparent_diameter_arcmin` | Apparent lunar diameter (arcminutes); `0` if not an anchor |
+| `phase_gmt` | Exact phase instant as `HH:MM:SS` **GMT**; `"none"` if not an anchor |
+| `prev_*` / `next_*` | Nearest earlier/later **monthly blue** or **blood** dates (`"none"` at catalog edges) |
+
+**Supermoon (NASA + standard numeric lock):** NASA describes a supermoon as a **full Moon near perigee** (closest approach in the elliptical orbit) — not an official IAU term, but the concept is standard ([NASA Science — Supermoons](https://science.nasa.gov/moon/supermoons/)). GEOMETRY does the same thing: full-moon day **and** distance under the widely published almanac threshold **&lt; 360 000 km** (same numeric rule TimeandDate publishes). We are **not** inventing a private formula — one repeatable answer for builders. Boundary honesty: **2018-01-31** is blood + monthly blue at **360 199 km**, so `is_supermoon` is **false** under that lock (media often still branded it “super”).
+
+**Micromoon:** the far-side twin — full moon **and** distance **&gt; 405 000 km** (near apogee; same threshold family as TimeandDate).
+
+Blue moon is a calendar label, not a color. Blood moon here means **total lunar eclipse** only (not dust/haze). Month bucketing uses the same GMT civil day as other sky-event dates.
+
+**“Wolf moon”?** January’s full moon. Agents can say that from the calendar; it is not a featured product flag.
 
 **Why doesn’t my sign match another app?**  
 GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. **`sidereal_iau`** and **`sidereal_true`** both use unequal widths that follow the sky; GEOMETRY recommends **`sidereal_true`** when you need a default. Full table: [Astro wheels](/astro-wheels).

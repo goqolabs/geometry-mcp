@@ -9,7 +9,7 @@ GEOMETRY keys answers to Gregorian dates from **1900-01-01** through **2100-12-3
 |---|---|
 | **Calendars** | Gregorian, Chinese/Vietnamese lunar years, Hebrew, Persian (Nowruz), Vedic samvatsara, Mayan Long Count |
 | **Sky** | Moon phases, seasons (solstice/equinox), planetary retrogrades |
-| **Cards** | Cardology birth cards, tarot minor + dual major birth cards (Greer + Tarot School), medicine, Lenormand, compatibility connections |
+| **Cards** | Cardology birth cards + karmic source/spirit + 14 planetary Life-spread cards, tarot minor + dual major birth cards (Greer + Tarot School), medicine, Lenormand, compatibility connections |
 | **Numbers** | Numerology systems, gematria ciphers, life-path math |
 | **Signs & symbols** | Five `astro_wheels` — see [Astro wheels](/astro-wheels) (tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true), Chinese zodiac, I Ching, runes, ogham, geomancy |
 
@@ -94,6 +94,7 @@ Moon phases, seasons (solstices and equinoxes), and retrograde windows are astro
 | In the payload | Meaning | Anchor |
 |---|---|---|
 | `moon_phase.prev_anchor_dt` / `next_anchor_dt` | Nearest moon-phase anchors around the query date | **GMT** |
+| `moon_phase` blue / blood / super / micro + neighbors | Deterministic labels from GMT full-moon days, eclipses, season anchors, Earth–Moon distance (NASA near-perigee / apogee + standard km locks) | **GMT**; super &lt; 360 000 km; micro &gt; 405 000 km; `phase_gmt` on anchors |
 | `season.prev_anchor_dt` / `next_anchor_dt` | Nearest solstice / equinox anchors | **GMT** |
 
 | Event | Instant (GMT) | Date in the payload |

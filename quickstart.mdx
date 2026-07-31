@@ -5,6 +5,14 @@ description: Connect GEOMETRY MCP in under a minute — paste the URL and ask a 
 
 Copy the connector URL, paste it into your MCP client, then ask a date question.
 
+<Note>
+  **Public beta.** The **data layer is stable** — same date, same JSON, every time. Tooling and quotas are still evolving. No account needed to try the free URL below; limits and plans live on [pricing](https://geometry.app/pricing/).
+</Note>
+
+<Tip>
+  **Prefer Claude** (Claude Code or Claude Desktop) for natural-language date questions. After you enable the Geometry connector once, Claude usually picks the right tool mid-thread without `@` syntax. ChatGPT works on the **same MCP URL** but needs more handholding — see [ChatGPT quirks](#chatgpt-known-quirks) below.
+</Tip>
+
 ## Try now vs portal key
 
 | | URL |
@@ -16,14 +24,14 @@ Soft launch needs no account. Once you subscribe in the Developer Portal (metere
 
 ## Pick your client
 
-| Client | Install |
-|--------|---------|
-| [Claude Code](#claude-code--cli) | CLI `claude mcp add` |
-| [Claude Desktop](#claude-desktop) | Connectors → custom URL |
-| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL |
-| [Codex](#codex) | `codex mcp add` / `config.toml` |
-| [Cursor](#cursor) | Tools & MCP → `mcp.json` |
-| [VS Code](#vs-code) | Command Palette → `.vscode/mcp.json` |
+| Client | Install | Notes |
+|--------|---------|--------|
+| [Claude Code](#claude-code--cli) | CLI `claude mcp add` | **Recommended** for NL + MCP |
+| [Claude Desktop](#claude-desktop) | Connectors → custom URL | **Recommended** — stay in one thread |
+| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL | Works; see [quirks](#chatgpt-known-quirks) |
+| [Codex](#codex) | `codex mcp add` / `config.toml` | |
+| [Cursor](#cursor) | Tools & MCP → `mcp.json` | |
+| [VS Code](#vs-code) | Command Palette → `.vscode/mcp.json` | |
 
 <Tip>
   Prefer a visual? [Install walkthroughs](https://geometry.app/tutorial/) on geometry.app — animated steps for every client above.
@@ -57,6 +65,10 @@ Visual: [tutorial · Claude Desktop](https://geometry.app/tutorial/#claude).
 
 Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**). Soft launch: **Authentication = No Auth**.
 
+<Warning>
+  **Recommend Claude** for natural-language date questions. ChatGPT uses the same MCP URL and can work well — but Plugins MCP is **inconsistent**: sometimes a follow-up in the same thread succeeds, sometimes the next turn drops the tool and you need a **new chat**. Always use **`@geometry Call get_…`**. The data is stable; the **host** is flaky. Prefer [Claude Desktop](#claude-desktop) or [Claude Code](#claude-code--cli) when teaching “just ask.”
+</Warning>
+
 ### Install once
 
 1. **Settings → Security and login → Developer mode** on (plan / workspace dependent)
@@ -64,9 +76,9 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 3. Name `geometry`, paste `https://mcp.geometry.app/mcp`, set **No Auth**, accept the risk checkbox → **Create**
 4. **Connect** on the consent screen — then `geometry` shows under Installed
 
-### Use it in a chat (ChatGPT is quirky — prefer `@geometry`)
+### Use it in a chat (handhold more than Claude)
 
-**Recommended (cleanest):** type **`@geometry`**, then **name the tool** and args. Skip the Plugins **+** picker when you can — it often disappears mid-thread and feels broken.
+**Required pattern:** type **`@geometry`**, then **name the tool** and args. Do not rely on bare natural language or the Plugins **+** chip alone.
 
 ```text
 @geometry Call get_birthdate for 1990-06-15. Confirm tool_version and temporal_context.
@@ -84,15 +96,29 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 @geometry Call get_name for KEEL. Confirm tool and tool_version.
 ```
 
+<a id="chatgpt-known-quirks"></a>
+
+### ChatGPT known quirks (dogfood 2026-07)
+
+| Quirk | What you’ll see | What to do |
+|-------|-----------------|------------|
+| **Must `@geometry` + tool name** | Without it, ChatGPT web-searches or invents (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
+| **Inconsistent same-thread** | After a success, the **next** ask sometimes works in-thread, sometimes “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat**. Do not trust same-thread as reliable |
+| **Wrong tool** | Calls `get_day` for moon / Rx / leap year | Name **`get_birthdate`**; for calendar facts say “do not call get_day” |
+| **Web search mix-in** | Cites mooninfo.org while claiming Geometry | “Answer ONLY from the tool JSON. Do not use web search.” |
+| **+ chip vanishes** | Composer Plugins chip disappears mid-thread | Ignore the chip; use `@geometry` |
+
 | Approach | When |
 |----------|------|
-| **`@geometry` + tool name** | **Default** — works for first ask and follow-ups in the same chat |
-| Composer **+** → geometry chip | Optional alternate; chip often **vanishes** after a call or two — don’t rely on it |
-| New chat | Only if `@geometry` still won’t invoke |
+| **`@geometry` + tool name** | **Default** every ChatGPT ask |
+| **New chat** | Whenever invoke fails or feels stuck — **normal ops**, not a GEOMETRY outage. Same-thread success is a bonus, not a promise |
+| Composer **+** → geometry chip | Optional; often vanishes — don’t rely on it |
 
-**Without** `@geometry` (or the chip), ChatGPT may invent answers from the web (e.g. Destiny Cards **2♣** instead of GEOMETRY **2♦**). Look for **Called tool** above a real answer.
+**Without** `@geometry` (or the chip), ChatGPT may invent answers from the web. Look for **Called tool** above a real answer.
 
-**Claude vs ChatGPT:** Claude — enable connector once, stay in the thread (no `@` needed). ChatGPT — keep typing **`@geometry Call get_…`**. Same MCP URL.
+**Tool routing:** moon / season / Rx / calendars / weekday / leap year → **`get_birthdate`**. Day card / weekday ruler only → **`get_day`**. Two people → **`get_compatibility`**. Name → **`get_name`**.
+
+**Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
 
 Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). Soft-launch URL needs no separate GEOMETRY account.
 
@@ -166,12 +192,25 @@ Visual: [tutorial · VS Code](https://geometry.app/tutorial/#vscode).
 
 ## Then ask your AI
 
-- "What's the birth card for March 15, 1985?" — *birth identity*
-- "How compatible are two people born 1985-03-15 and 1990-11-08?" — *two people*
-- "What's the card and planetary ruler for today, 2026-07-28?" — *one day*
-- "What moon phase and season was 1985-03-15, and was anything retrograde?" — *deeper birth context*
+| Question type | Tool | Example |
+|---------------|------|---------|
+| Moon / season / Rx / calendars / birth card / weekday / leap year | [`get_birthdate`](/tools/get-birthdate) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
+| Birth identity | [`get_birthdate`](/tools/get-birthdate) | "What's the birth card for March 15, 1985?" |
+| Two people | [`get_compatibility`](/tools/get-compatibility) | "How compatible are 1985-03-15 and 1990-11-08?" |
+| Day card + weekday ruler only | [`get_day`](/tools/get-day) | "What's the day card and planetary ruler for 2026-07-28?" |
+| Name → cards | [`get_name`](/tools/get-name) | "Decode the name KEEL" |
 
-Those map to the tools: [`get_birthdate`](/tools/get-birthdate) and [`get_compatibility`](/tools/get-compatibility) <Badge color="green" size="sm">Production</Badge>, plus [`get_day`](/tools/get-day) and [`get_name`](/tools/get-name) <Badge color="orange" size="sm">Beta</Badge>. Moon phase, season, and retrogrades ship inside the birth-card payload — no extra call.
+Moon phase, season, and retrogrades ship **inside** [`get_birthdate`](/tools/get-birthdate) — not [`get_day`](/tools/get-day).
+
+**ChatGPT one-liners** (copy-paste):
+
+```text
+@geometry Call get_birthdate for 1986-01-05.
+```
+
+```text
+@geometry Call get_day for 2026-07-28.
+```
 
 **Full JSON in chat** (same as “raw JSON”):
 
