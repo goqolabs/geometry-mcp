@@ -24,7 +24,7 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 |---|---|
 | **Input** | `birth_date` (YYYY-MM-DD) |
 | **Range** | `1900-01-01` … `2100-12-31` → `temporal_context.band=full` + `payload_scope=full`; nearby outside that window (e.g. 1850, 2101) → `band=extended` + `payload_scope=full`; farther out → `band=out_of_range` + `payload_scope=birth_card_only` |
-| **Version** | `v2.8.0.5` |
+| **Version** | `v2.8.0.7` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -201,7 +201,22 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
     "unicard_name": "grouse",
     "unicard_slug": "grouse",
     "unirank_code": "a",
-    "unicard_symbol": "34↓"
+    "unicard_symbol": "34↓",
+    "direction": "south",
+    "arcs": {
+      "label": "grouse",
+      "energy": "passion",
+      "persona": "warrior",
+      "role": "growth",
+      "action": "ignite",
+      "core": "sacred_spiral",
+      "strength": "courage",
+      "shadow": "impulsiveness",
+      "quality": "trust",
+      "nature": "active",
+      "symbolism": "grouse",
+      "title": "warm courage"
+    }
   },
   "lenormand": {
     "card_no": 34,
@@ -220,7 +235,17 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
   "iching": {
     "iching_no": 34,
     "iching_name": "great_power",
+    "modern_name": "great_invigorating",
     "glyph": "䷡",
+    "upper_trigram": "thunder",
+    "lower_trigram": "heaven",
+    "yin_yang_code": "YYYYNN",
+    "seq_no": 4,
+    "binary_no": 15,
+    "sign_no": 9,
+    "atomic_no": 34,
+    "element_symbol": "Se",
+    "element_name": "selenium",
     "pinyin": "da_zhuang"
   },
   "numerology": {
@@ -285,7 +310,7 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 }
 ```
 
-Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`**. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
+Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`** — each a sibling object (one Lenormand object beside `cosmic`, never nested under it). Sibling **`iching`** carries hexagram identity plus `upper_trigram` / `lower_trigram` / `yin_yang_code` / `seq_no` / `binary_no` / `sign_no`. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
 
 Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from opaque catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
 
