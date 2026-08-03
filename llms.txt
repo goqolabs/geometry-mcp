@@ -17,9 +17,8 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes
-- [get_birthdate](https://docs.geometry.app/tools/get-birthdate): Primary single-date lookup — moon, season, Rx, calendars, birth card, karmic source/spirit, 14 planetary Life-spread cards (Production; formerly get_card_for_birthdate)
+- [get_birthdate](https://docs.geometry.app/tools/get-birthdate): Primary single-date lookup — moon, season, Rx, calendars, birth card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production; formerly get_card_for_birthdate; absorbs retired get_day)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two-date compatibility score (Production)
-- [get_day](https://docs.geometry.app/tools/get-day): Day card + weekday ruler only — not moon/Rx (Beta; formerly get_day_card)
 - [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta; formerly get_name_cosmic_cards)
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
@@ -37,7 +36,7 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 
 - All string fields lowercase except glyph fields (e.g. `unicard_symbol`, `alchemical_symbol`).
 - NEVER retype rare Unicode from memory when saving tool JSON. Paste the tool result bytes unchanged. Alchemical Symbols (U+1F700–U+1F77F) and planetary glyphs corrupt easily into lookalike emoji (e.g. U+1F70A → U+1F30A water wave). That is an LLM serialization hazard — not a GEOMETRY defect. Verify glyphs with codepoints. Numbers, cards, and cipher sums in a mangled copy may still be correct; do not invent “emoji cleanup” for glyph fields from a chat file. See https://docs.geometry.app/faq#llm-unicode-glyphs and https://docs.geometry.app/tools/get-name
-- Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity). `_no` fields are non-negative.
+- Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity) on `get_birthdate`. `_no` fields are non-negative.
 - `_no` fields are opaque ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context.band=full`, `payload_scope=full`). Nearby dates outside that window return `band=extended` with `payload_scope=full` (same calculations, honest label). Farther out: `band=out_of_range` with `payload_scope` `birth_card_only` / `day_card_only` and a soft error envelope.
 - Sky anchors (moon / season / retrograde) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph), then stored as lookups. No live ephemeris at request time. See /coverage.

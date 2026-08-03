@@ -24,7 +24,6 @@
           "payload-shapes",
           "tools/get-birthdate",
           "tools/get-compatibility",
-          "tools/get-day",
           "tools/get-name"
         ]
       },
@@ -70,8 +69,12 @@
       "destination": "/tools/get-birthdate"
     },
     {
+      "source": "/tools/get-day",
+      "destination": "/tools/get-birthdate#day-ruler"
+    },
+    {
       "source": "/tools/get-day-card",
-      "destination": "/tools/get-day"
+      "destination": "/tools/get-birthdate#day-ruler"
     }
   ]
 }

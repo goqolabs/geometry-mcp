@@ -6,6 +6,9 @@ description: Common questions for builders connecting GEOMETRY MCP.
 **What is MCP?**  
 The Model Context Protocol — an open standard that lets AI apps call external tools. Add GEOMETRY once; any MCP client (Claude, ChatGPT, Cursor, and others) can query it mid-conversation.
 
+**What is RAG?**  
+Retrieval-Augmented Generation — an AI pattern that fetches facts from a tool or database before answering, instead of inventing them.
+
 **Do I need an account to try?**  
 No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you want a metered Free plan or paid tier — see [Where your key goes](/connect-and-keys).
 
@@ -18,8 +21,8 @@ Don’t fight the Plugins **+** UI. Type **`@geometry`**, then **`Call get_birth
 **Why is ChatGPT so inconsistent about new chats?**  
 Host quirk (list ≠ invoke / mid-thread drop). From our testing in July 2026: same thread can succeed after a prior tool call, then fail on the next day — **unreliable**. Geometry’s MCP URL and tools are fine; Claude keeps using them in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Recommend Claude for demos and non-technical “just ask.”
 
-**ChatGPT called `get_day` but I asked about the moon / retrogrades / leap year?**  
-`get_day` is day card + weekday ruler only — no moon, season, Rx, or `is_leap_year`. Use **`get_birthdate`** (`calendar_meta` for weekday/leap). Prefer a **new chat** and `@geometry Call get_birthdate …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
+**ChatGPT called the wrong tool for moon / retrogrades / leap year?**  
+Use **`get_birthdate`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_birthdate …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
 
 **Which tool for which question?**  
 
@@ -27,7 +30,7 @@ Host quirk (list ≠ invoke / mid-thread drop). From our testing in July 2026: s
 |------|------|
 | Moon, season, classical Rx, calendars, birth card | [`get_birthdate`](/tools/get-birthdate) |
 | Weekday name / leap year (`calendar_meta`) | [`get_birthdate`](/tools/get-birthdate) |
-| Day card + weekday ruler only | [`get_day`](/tools/get-day) |
+| Weekday planetary ruler (`day_ruler`) | [`get_birthdate`](/tools/get-birthdate#day-ruler) |
 | Two birth dates | [`get_compatibility`](/tools/get-compatibility) |
 | Name → cards | [`get_name`](/tools/get-name) |
 

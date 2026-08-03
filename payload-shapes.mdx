@@ -3,19 +3,18 @@ title: What you get
 description: The tools, what one call returns, and the repeating shapes every payload is built from.
 ---
 
-These tools cover birth identity, a pair, a single calendar day, and a name decode. One or two dates (or a name) in, and you get a lot back — every call is answered from a single deterministic lookup. Here's the whole menu, plus the **small set of repeating shapes** every payload is built from, so you learn them once and can read any block. The live tool is always the source of truth for exact fields. For how to read `_name` / `_slug` / `_no`, see [Field glossary](/field-glossary).
+These tools cover birth identity, a pair, and a name decode. One or two dates (or a name) in, and you get a lot back — every call is answered from a single deterministic lookup. Here's the whole menu, plus the **small set of repeating shapes** every payload is built from, so you learn them once and can read any block. The live tool is always the source of truth for exact fields. For how to read `_name` / `_slug` / `_no`, see [Field glossary](/field-glossary).
 
 ## Tools
 
 | Tool | Status | Input | Returns |
 |---|---|---|---|
-| [`get_birthdate`](/tools/get-birthdate) | <Badge color="green">Production</Badge> | one date | 26 blocks across 20+ traditions — <span className="field-count">~750 fields</span> |
+| [`get_birthdate`](/tools/get-birthdate) | <Badge color="green">Production</Badge> | one date | 26+ blocks across 20+ traditions — incl. `day_ruler` — <span className="field-count">~750 fields</span> |
 | [`get_compatibility`](/tools/get-compatibility) | <Badge color="green">Production</Badge> | two dates | two full birth profiles + a weighted score — <span className="field-count">~1,500 fields</span> |
-| [`get_day`](/tools/get-day) | <Badge color="orange">Beta</Badge> | one date | the day's card, weekday, and planetary ruler |
 | [`get_name`](/tools/get-name) | <Badge color="orange">Beta</Badge> | a name | Francis Bacon cosmic cards + Latin cipher suite |
 
 <Info>
-  **Production** tools (`get_birthdate`, `get_compatibility`) are the most-tested pair. **Beta** tools (`get_day`, `get_name`) are open for builders and under active testing — usable now, contract still settling.
+  **Production** tools (`get_birthdate`, `get_compatibility`) are the most-tested pair. **Beta** (`get_name`) is open for builders and under active testing. Former **`get_day`** is retired — weekday ruler lives on [`get_birthdate`](/tools/get-birthdate#day-ruler).
 </Info>
 
 These are **field counts** — every key/value pair returned. `name`, `slug`, and `_no` are different encodings of the same entity, so the number of *distinct* concepts is lower; we quote fields, not unique concepts. Counts also flex with the date (the retrograde list runs ~17–23 active bodies), so treat them as typical, not fixed.

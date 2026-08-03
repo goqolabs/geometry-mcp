@@ -89,7 +89,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 ```
 
 ```text
-@geometry Call get_day for 2026-07-28. Confirm tool, tool_version, day card, day ruler.
+@geometry Call get_birthdate for 2026-07-28. Confirm day_ruler and calendar_meta.
 ```
 
 ```text
@@ -104,7 +104,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 |-------|-----------------|------------|
 | **Must `@geometry` + tool name** | Without it, ChatGPT web-searches or invents (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
 | **Inconsistent same-thread** | After a success, the **next** ask sometimes works in-thread, sometimes “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat**. Do not trust same-thread as reliable |
-| **Wrong tool** | Calls `get_day` for moon / Rx / leap year | Name **`get_birthdate`**; for calendar facts say “do not call get_day” |
+| **Wrong tool** | Calls the wrong tool for moon / Rx / leap year / day ruler | Name **`get_birthdate`** for any single-date fact (incl. `day_ruler`) |
 | **Web search mix-in** | Cites mooninfo.org while claiming Geometry | “Answer ONLY from the tool JSON. Do not use web search.” |
 | **+ chip vanishes** | Composer Plugins chip disappears mid-thread | Ignore the chip; use `@geometry` |
 
@@ -116,7 +116,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 **Without** `@geometry` (or the chip), ChatGPT may invent answers from the web. Look for **Called tool** above a real answer.
 
-**Tool routing:** moon / season / Rx / calendars / weekday / leap year → **`get_birthdate`**. Day card / weekday ruler only → **`get_day`**. Two people → **`get_compatibility`**. Name → **`get_name`**.
+**Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_birthdate`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_birthdate → Day ruler](/tools/get-birthdate#day-ruler).)
 
 **Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
 
@@ -194,13 +194,13 @@ Visual: [tutorial · VS Code](https://geometry.app/tutorial/#vscode).
 
 | Question type | Tool | Example |
 |---------------|------|---------|
-| Moon / season / Rx / calendars / birth card / weekday / leap year | [`get_birthdate`](/tools/get-birthdate) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
+| Moon / season / Rx / calendars / birth card / weekday / leap year / day ruler | [`get_birthdate`](/tools/get-birthdate) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
 | Birth identity | [`get_birthdate`](/tools/get-birthdate) | "What's the birth card for March 15, 1985?" |
+| Weekday planetary ruler | [`get_birthdate`](/tools/get-birthdate#day-ruler) | "What's the planetary day ruler for 2026-07-28?" |
 | Two people | [`get_compatibility`](/tools/get-compatibility) | "How compatible are 1985-03-15 and 1990-11-08?" |
-| Day card + weekday ruler only | [`get_day`](/tools/get-day) | "What's the day card and planetary ruler for 2026-07-28?" |
 | Name → cards | [`get_name`](/tools/get-name) | "Decode the name KEEL" |
 
-Moon phase, season, and retrogrades ship **inside** [`get_birthdate`](/tools/get-birthdate) — not [`get_day`](/tools/get-day).
+Moon phase, season, retrogrades, and **day_ruler** ship **inside** [`get_birthdate`](/tools/get-birthdate). Former `get_day` is retired.
 
 **ChatGPT one-liners** (copy-paste):
 
@@ -209,7 +209,7 @@ Moon phase, season, and retrogrades ship **inside** [`get_birthdate`](/tools/get
 ```
 
 ```text
-@geometry Call get_day for 2026-07-28.
+@geometry Call get_birthdate for 2026-07-28. Confirm day_ruler.
 ```
 
 **Full JSON in chat** (same as “raw JSON”):

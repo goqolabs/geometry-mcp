@@ -113,7 +113,7 @@ Where a lookup has no match, or a concept does not apply to that date, GEOMETRY 
 
 So `"card_no": 0` alongside `"card_name": "none"` means *no card for this date in this system* — not card number zero. Check for the placeholder, not for `null`.
 
-**One documented exception:** `day_ruler.norse.deity` in [`get_day`](/tools/get-day) is `null` on Saturdays. Old Norse *laugardagr* means "bath day" and carries no deity, so the payload says so rather than inventing one.
+**One documented exception:** `day_ruler.norse.deity` in [`get_birthdate`](/tools/get-birthdate#day-ruler) is `null` on Saturdays. Old Norse *laugardagr* means "bath day" and carries no deity, so the payload says so rather than inventing one.
 
 Catalog numbers are non-negative. If you ever see a negative value in a `_no` field, that is a bug — please [report it](/support).
 
