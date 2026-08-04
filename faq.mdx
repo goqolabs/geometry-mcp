@@ -89,6 +89,9 @@ Ask [`get_birthdate`](/tools/get-birthdate) for the date and read `moon_phase`. 
 **Where are the karmic cards and planetary spreads?**  
 On the birth card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: sun = birth card, then moon … rahu, midheaven, phoenix). Same blocks nest under `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
 
+**How do I sort `planetary_spread`?**  
+JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort ascending on that field — sun=1 … midheaven=13, phoenix=14. See [get_birthdate → Planetary spread order](/tools/get-birthdate#planetary-spread).
+
 **Is the Sun card different from the birth card / Life card?**  
 No — they are the **same card**. In cardology, birth card = Life card = Sun card. The payload says so explicitly: `cosmic.also_called` is `["birth_card","life_card","sun_card"]`, and `planetary_spread.sun` repeats that with `is_sun_birth_card: true`.
 
