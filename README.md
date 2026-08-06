@@ -1,8 +1,8 @@
 # GEOMETRY MCP (public docs source)
 
-Public builder documentation for [GEOMETRY](https://geometry.app).
+GEOMETRY unifies time. Humans build systems of cycles — calendars, seasons, moons, the turning sky — to make meaning out of their days. GEOMETRY turns those cycles into one deterministic model: same question, same answer, same bytes, every time. Shipped to builders as JSON their models can rely on.
 
-**Live site:** [docs.geometry.app](https://docs.geometry.app) · **MCP:** `https://mcp.geometry.app/mcp` · **Company:** [Goqo Labs](https://goqo.com)
+**Live site:** [docs.geometry.app](https://docs.geometry.app) · **MCP:** `https://mcp.geometry.app/mcp` · **Product:** [geometry.app](https://geometry.app) · **Company:** [Goqo Labs](https://goqo.com)
 
 This repository powers Mintlify. It contains **public documentation only** — not engine source, schema, or internal design docs.
 
