@@ -3,7 +3,7 @@ title: Birth day cards
 description: Cosmic playing-card calendar — every month/day maps to one birth card (366 cells, including February 29 and December 31).
 ---
 
-Each Gregorian **month + day** maps to exactly one **cosmic** playing-card face. That lookup is table **`birth_day_card`** in the GEOMETRY engine (366 rows — year does not matter). [`get_birthdate`](/tools/get-birthdate) returns that face as the `cosmic` block for the date you pass.
+Each Gregorian **month + day** maps to exactly one **cosmic** playing-card face (366 faces — year does not matter). [`get_birthdate`](/tools/get-birthdate) returns that face as the `cosmic` block for the date you pass.
 
 This page is the full calendar grid: **rows = day of month (1–31)**, **columns = month**. Empty cells (`—`) are days that do not exist in that month (for example April 31).
 
@@ -11,7 +11,7 @@ This page is the full calendar grid: **rows = day of month (1–31)**, **columns
 
 | Date | Card | Notes |
 |------|------|--------|
-| **February 29** | **9♣** | Leap-day birth card (`birth_day_no` **366** in the engine) |
+| **February 29** | **9♣** | Leap-day birth card |
 | **December 31** | **W★** | Cosmic joker / infinity pole (`card_no` **0**) — not the black joker **W✦** (`card_no` 53), which is never a birth-day face |
 
 All other days are the usual 52-card cosmic deck (A–K × ♠♦♣♥).
@@ -58,7 +58,7 @@ All other days are the usual 52-card cosmic deck (A–K × ♠♦♣♥).
 
 **How to read a cell:** find your birth **day** on the left, then the **month** column. Example: March 15 → **8♦** (same face Tool 2 returns for `1985-03-15`).
 
-**Source:** engine table `birth_day_card` (366 rows). Grid fixture used to build this page: `supabase/sources/external/geometry_map_birth_card.csv` in the engine repo. Regenerate with `python scripts/generate_birth_day_card_calendar_mdx.py`.
+**Tradition:** This month/day to playing-card map is public **cardology** (also called Cards of Destiny / Science of the Cards). The birthday chart was set out for a general audience in Edith L. Randall and Florence Evylinn Campbell, *Sacred Symbols of the Ancients* (1947), following Olney H. Richmond, *The Mystic Test Book* (1893) — [Internet Archive](https://archive.org/details/mystictestbookor00rich). Later popular books (for example Robert Lee Camp, *Cards of Your Destiny*) teach the same calendar. Published here so builders do not have to hunt scattered sites for the grid.
 
 ## Related
 
