@@ -22,6 +22,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta; formerly get_name_cosmic_cards)
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
+- [Birth day cards](https://docs.geometry.app/birth-day-cards): Month × day calendar — 366 cosmic birth faces (Feb 29 = 9♣, Dec 31 = W★)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
 - [Support](https://docs.geometry.app/support): Self-serve for free / soft launch; GitHub Issues for paid plans only (product / connectivity bugs)

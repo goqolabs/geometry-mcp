@@ -10,3 +10,21 @@ html.dark .field-count,
 [data-theme="dark"] .field-count {
   color: #8b9aff;
 }
+
+/* Birth day card calendar — wide month grid; scroll on narrow viewports */
+.birth-card-calendar {
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+}
+
+.birth-card-calendar table {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.birth-card-calendar th,
+.birth-card-calendar td {
+  text-align: center;
+  padding: 0.35rem 0.45rem;
+}
