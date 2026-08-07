@@ -1,4 +1,4 @@
----
+﻿---
 title: Field glossary
 description: How to read the fields in a payload — slugs vs names vs numbers, and which `_no` fields are safe to build on.
 ---
@@ -28,7 +28,7 @@ If you hit unexpected results, **include the relevant `_no` values in your repor
 | Field | Kind | What it means |
 |---|---|---|
 | `card_no` | **Tradition** | Cosmic deck position, 0–53. Suits run hearts → clubs → diamonds → spades: A♥ = 1 … K♥ = 13, A♣ = 14 … K♣ = 26, A♦ = 27 … K♦ = 39, A♠ = 40 … K♠ = 52. Jokers are **0** and **53**. |
-| `tarot_no` | **Tradition** | Standard tarot numbering (GEOMETRY uses **Rider–Waite–Smith–style** English occult suits: cups, wands, pentacles, swords — not Marseille batons/coins, and not the French *jeu de tarot* card game). Majors 0–21; minors continue the sequence. Wire key stays `tarot` / `tarot_no`. |
+| `tarot_no` | **Tradition** | Standard tarot numbering (GEOMETRY uses **Rider–Waite–Smith** suits: cups, wands, pentacles, swords — not Marseille batons/coins, and not the French *jeu de tarot* card game). Majors 0–21; minors continue the sequence. Wire key stays `tarot` / `tarot_no`. |
 | `iching_no` | **Tradition** | King Wen hexagram number, 1–64. |
 | `atomic_no` | **Tradition** | Periodic table atomic number. Hydrogen = 1. |
 | `chakra_no` | **Tradition** | Chakra position, 1–7 (13 in the extended set). |
@@ -44,7 +44,7 @@ If you hit unexpected results, **include the relevant `_no` values in your repor
 
 Tradition numbers are safe to display and reason about. Catalog numbers should be treated as opaque.
 
-**Tarot (first mention):** In this product, **tarot** means the divinatory 78-card tradition with Rider–Waite–Smith–style suit names on the wire (`cups` / `wands` / `pentacles` / `swords`). That is a deck **lineage / vocabulary** choice — not the same thing as (a) Tarot de Marseille suit language, (b) the French card game *jeu de tarot*, or (c) how majors are *calculated* from a birth date (`tarot_birth_cards.greer` vs `tarot_birth_cards.tarot_school`). Cosmic / cardology birth faces are a separate playing-card spine that maps *to* tarot minors.
+**Tarot (first mention):** In this product, **tarot** means the 78-card tradition with **Rider–Waite–Smith** suits on the wire (`cups` / `wands` / `pentacles` / `swords`). That is a deck **lineage / vocabulary** choice — not the same thing as (a) Tarot de Marseille suit language, (b) the French card game *jeu de tarot*, or (c) how majors are *calculated* from a birth date (`tarot_birth_cards.greer` vs `tarot_birth_cards.tarot_school`). Cosmic / cardology birth faces are a separate playing-card spine that maps *to* tarot minors.
 
 ## `element_no` means two different things
 
