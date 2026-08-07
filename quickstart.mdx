@@ -10,7 +10,7 @@ Copy the connector URL, paste it into your MCP client, then ask a date question.
 </Note>
 
 <Tip>
-  **Prefer Claude** (Claude Code or Claude Desktop) for natural-language date questions. After you enable the Geometry connector once, Claude usually picks the right tool mid-thread without `@` syntax. ChatGPT works on the **same MCP URL** but needs more explicit prompting to pick the right tool — see [ChatGPT quirks](#chatgpt-known-quirks) below.
+  **Prefer Claude** (Claude Code or Claude Desktop) for natural-language date questions. After you enable the Geometry connector once, Claude usually picks the right tool mid-thread without `@` syntax. On ChatGPT (same MCP URL), use **`@geometry Call get_…`** every ask — see [ChatGPT quirks](#chatgpt-known-quirks) (tested July 2026).
 </Tip>
 
 ## With or without a key
@@ -28,7 +28,7 @@ The keyless URL is open during soft launch — no account. A key comes from any 
 |--------|---------|--------|
 | [Claude Code](#claude-code--cli) | CLI `claude mcp add` | **Recommended** for NL + MCP |
 | [Claude Desktop](#claude-desktop) | Connectors → custom URL | **Recommended** — stay in one thread |
-| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL | Works; see [quirks](#chatgpt-known-quirks) |
+| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL | Use `@geometry Call get_…`; [quirks](#chatgpt-known-quirks) |
 | [Codex](#codex) | `codex mcp add` / `config.toml` | |
 | [Cursor](#cursor) | Tools & MCP → `mcp.json` | |
 | [VS Code](#vs-code) | Command Palette → `.vscode/mcp.json` | |
@@ -100,25 +100,27 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 ### ChatGPT known quirks (observed July 2026)
 
+Host / Plugins MCP steps from our testing. GEOMETRY’s URL and JSON are the same as on Claude; follow the **What to do** column.
+
 | Quirk | What you’ll see | What to do |
 |-------|-----------------|------------|
-| **Must `@geometry` + tool name** | Without it, ChatGPT may web-search instead of calling the tool (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
+| **Must `@geometry` + tool name** | Without it, the reply may come from web search instead of the tool (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
 | **Tool drops mid-thread** | After a success, the **next** ask may work in-thread, or say “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat** |
-| **Wrong tool** | Calls the wrong tool for moon / Rx / leap year / day ruler | Name **`get_birthdate`** for any single-date fact (incl. `day_ruler`) |
+| **Wrong tool** | Moon / Rx / leap year / day ruler routed to the wrong tool | Name **`get_birthdate`** for any single-date fact (incl. `day_ruler`) |
 | **Web search mix-in** | Cites mooninfo.org while claiming Geometry | “Answer ONLY from the tool JSON. Do not use web search.” |
 | **+ chip vanishes** | Composer Plugins chip disappears mid-thread | Ignore the chip; use `@geometry` |
 
 | Approach | When |
 |----------|------|
 | **`@geometry` + tool name** | **Default** every ChatGPT ask |
-| **New chat** | Whenever invoke fails or feels stuck — **normal ops**, not a GEOMETRY outage. Same-thread success is a bonus, not a promise |
-| Composer **+** → geometry chip | Optional; often vanishes — don’t rely on it |
+| **New chat** | Whenever invoke fails or the tool drops — **normal ops**, not a GEOMETRY outage |
+| Composer **+** → geometry chip | Optional; often vanishes — use `@geometry` instead |
 
 **Without** `@geometry` (or the chip), answers may come from web search instead of the tool. Look for **Called tool** above a real answer.
 
 **Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_birthdate`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_birthdate → Day ruler](/tools/get-birthdate#day-ruler).)
 
-**Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
+**Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; **new chat if the tool drops**. Prefer Claude for demos and “just ask.”
 
 Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). Soft-launch URL needs no separate GEOMETRY account.
 
