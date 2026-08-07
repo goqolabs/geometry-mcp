@@ -13,7 +13,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Who we are](https://docs.geometry.app/introduction): What GEOMETRY is
 - [Quickstart](https://docs.geometry.app/quickstart): Paste the connector URL — prefer Claude for NL; ChatGPT quirks documented
 - [Install walkthrough](https://geometry.app/tutorial/): Animated installs for every client above on geometry.app
-- [FAQ](https://docs.geometry.app/faq): Prefer Claude · ChatGPT inconsistent same-thread · tool routing
+- [FAQ](https://docs.geometry.app/faq): Prefer Claude · ChatGPT `@geometry` + new chat if tool drops · tool routing
 - [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes

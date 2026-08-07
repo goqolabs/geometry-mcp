@@ -66,7 +66,7 @@ Visual: [tutorial · Claude Desktop](https://geometry.app/tutorial/#claude).
 Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**). Soft launch: **Authentication = No Auth**.
 
 <Warning>
-  **Recommend Claude** for natural-language date questions. ChatGPT uses the same MCP URL and can work well — but Plugins MCP is **inconsistent**: sometimes a follow-up in the same thread succeeds, sometimes the next turn drops the tool and you need a **new chat**. Always use **`@geometry Call get_…`**. The data is stable; the **host** is flaky. Prefer [Claude Desktop](#claude-desktop) or [Claude Code](#claude-code--cli) when teaching “just ask.”
+  **Recommend Claude** for natural-language date questions. ChatGPT uses the same MCP URL — always **`@geometry Call get_…`**, and start a **new chat if the tool drops**. The data is stable. Prefer [Claude Desktop](#claude-desktop) or [Claude Code](#claude-code--cli) when teaching “just ask.”
 </Warning>
 
 ### Install once
@@ -102,8 +102,8 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 | Quirk | What you’ll see | What to do |
 |-------|-----------------|------------|
-| **Must `@geometry` + tool name** | Without it, ChatGPT web-searches or invents (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
-| **Inconsistent same-thread** | After a success, the **next** ask sometimes works in-thread, sometimes “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat**. Do not trust same-thread as reliable |
+| **Must `@geometry` + tool name** | Without it, ChatGPT may web-search instead of calling the tool (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
+| **Tool drops mid-thread** | After a success, the **next** ask may work in-thread, or say “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat** |
 | **Wrong tool** | Calls the wrong tool for moon / Rx / leap year / day ruler | Name **`get_birthdate`** for any single-date fact (incl. `day_ruler`) |
 | **Web search mix-in** | Cites mooninfo.org while claiming Geometry | “Answer ONLY from the tool JSON. Do not use web search.” |
 | **+ chip vanishes** | Composer Plugins chip disappears mid-thread | Ignore the chip; use `@geometry` |
@@ -114,7 +114,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 | **New chat** | Whenever invoke fails or feels stuck — **normal ops**, not a GEOMETRY outage. Same-thread success is a bonus, not a promise |
 | Composer **+** → geometry chip | Optional; often vanishes — don’t rely on it |
 
-**Without** `@geometry` (or the chip), ChatGPT may invent answers from the web. Look for **Called tool** above a real answer.
+**Without** `@geometry` (or the chip), answers may come from web search instead of the tool. Look for **Called tool** above a real answer.
 
 **Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_birthdate`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_birthdate → Day ruler](/tools/get-birthdate#day-ruler).)
 

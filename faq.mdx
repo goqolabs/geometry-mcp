@@ -13,13 +13,13 @@ Retrieval-Augmented Generation — an AI pattern that fetches facts from a tool 
 No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you want a metered Free plan or paid tier — see [Where your key goes](/connect-and-keys).
 
 **Which AI client should I use?**  
-**Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions. Enable Geometry once; Claude usually stays in-thread and picks the right tool. **ChatGPT works** on the same URL but is **inconsistent** — see below. Cursor / Codex / VS Code are fine for builders who already live there.
+**Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions. Enable Geometry once; Claude usually stays in-thread and picks the right tool. **ChatGPT works** on the same URL — use `@geometry Call get_…`, and start a **new chat if the tool drops** (see below). Cursor / Codex / VS Code are fine for builders who already live there.
 
 **ChatGPT installed geometry — why won’t it use the tool?**  
-Don’t fight the Plugins **+** UI. Type **`@geometry`**, then **`Call get_birthdate for …`** (name the tool). The **+** chip often vanishes mid-thread. After a successful call, the **next** turn **sometimes** works and **sometimes** says the tool “isn’t available” — start a **new chat** when that happens (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
+Skip the Plugins **+** chip. Type **`@geometry`**, then **`Call get_birthdate for …`** (name the tool). The **+** chip often vanishes mid-thread. If a later turn says the tool “isn’t available,” start a **new chat** (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
 
-**Why is ChatGPT so inconsistent about new chats?**  
-Host quirk (list ≠ invoke / mid-thread drop). From our testing in July 2026: same thread can succeed after a prior tool call, then fail on the next day — **unreliable**. Geometry’s MCP URL and tools are fine; Claude keeps using them in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Recommend Claude for demos and non-technical “just ask.”
+**When should I start a new ChatGPT chat?**  
+When invoke fails or the tool drops mid-thread (list ≠ invoke). Observed July 2026: a thread that worked after one tool call can fail on a later ask. Geometry’s MCP URL and tools are fine; Claude usually keeps the connector in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Prefer Claude for demos and non-technical “just ask.”
 
 **ChatGPT called the wrong tool for moon / retrogrades / leap year?**  
 Use **`get_birthdate`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_birthdate …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
@@ -35,7 +35,7 @@ Use **`get_birthdate`** for any single-date fact (moon, season, Rx, `calendar_me
 | Name → cards | [`get_name`](/tools/get-name) |
 
 **Claude vs ChatGPT — same MCP URL?**  
-Yes — `https://mcp.geometry.app/mcp`. **Claude** = recommended NL path. **ChatGPT** = supported but flaky (`@geometry` + new chat when needed). See [Quickstart](/quickstart).
+Yes — `https://mcp.geometry.app/mcp`. **Claude** = recommended NL path. **ChatGPT** = supported — use `@geometry Call get_…`, and a **new chat if the tool drops**. See [Quickstart](/quickstart).
 
 **Is there a REST / HTTP API?**  
 Yes as a **secondary** surface — same tools and JSON as MCP. Prefer MCP for AI clients. Branded `api.geometry.app` curl/SDK docs land later; see [HTTP API](/http-api).
