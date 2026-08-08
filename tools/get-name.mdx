@@ -31,6 +31,40 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Lati
 
 > give raw json for get_name KEEL
 
+## Example response
+
+```json
+{
+  "tool": "get_name",
+  "tool_version": "v2.3.0",
+  "engine_chain": "v0.66",
+  "full_name": "KEEL",
+  "cipher_legend": ["… Latin suite metadata once …"],
+  "words": [
+    {
+      "label": "gold",
+      "card": {
+        "card_no": 33,
+        "card_code": "7d",
+        "card_name": "seven of diamonds",
+        "tarot_no": 71,
+        "tarot_card_name": "seven of pentacles"
+      },
+      "arcs": { "core": "transmutation", "persona": "integrator" },
+      "periodic": "… Chaldean lane …",
+      "periodic_set": "… chaldean / ordinal / reduction …",
+      "ciphers": ["… raw_sum + cipher_no …"]
+    },
+    {
+      "label": "full",
+      "card": "… aggregate Francis Bacon card for the whole name …"
+    }
+  ]
+}
+```
+
+Live payloads also carry glyph fields on `periodic` (including `alchemical_symbol`). Prefer the live tool result for glyphs — see the Unicode warning above.
+
 ## Warning — rare Unicode glyphs in chat copies
 
 `periodic.alchemical_symbol` uses characters from the Unicode **Alchemical Symbols** block (U+1F700–U+1F77F) and classical planetary glyphs. Those are **correct in the live MCP / HTTP response**.

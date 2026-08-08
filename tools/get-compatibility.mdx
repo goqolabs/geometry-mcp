@@ -24,6 +24,7 @@ Two dates in → **Cosmic card A** and **Cosmic card B**, connections between th
 |---|---|
 | **Input** | `date_a`, `date_b` (YYYY-MM-DD) |
 | **Range** | Same coverage bands as [`get_date`](/tools/get-date) — `temporal_context.date_a` / `date_b` = `full` inside 1900–2100; `extended` nearby; farther out → `out_of_range` with Cosmic-card-only scope |
+| **Version** | `v1.8.7` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
@@ -38,16 +39,19 @@ Live payloads are large (~85 KB). Below is a teaching excerpt — Cosmic card A 
 
 ```json
 {
+  "tool": "get_compatibility",
+  "tool_version": "v1.8.7",
+  "engine_chain": "v0.66",
   "flags": {
     "is_same_card": false,
     "is_self_pair": false,
     "is_wild_card": false
   },
-  "summary": "Compatibility for two dates in the published 1900–2100 window.",
+  "summary": "Compatibility: cosmic_card_* = full cosmic block; six *_aspect + geomancy_pair informational under v1 (only chinese_zodiac_bonus summed); temporal_context.{date_a,date_b}={band,payload_scope}; focus SLA 1900-2100.",
   "life_path_a": 5,
   "life_path_b": 2,
-  "cosmic_card_a": "… Cosmic card A for date_a — full get_date shape …",
-  "cosmic_card_b": "… Cosmic card B for date_b — full get_date shape …",
+  "cosmic_card_a": "… Cosmic card A for date_a — full get_date shape (incl. tarot_majors) …",
+  "cosmic_card_b": "… Cosmic card B for date_b — full get_date shape (incl. tarot_majors) …",
   "temporal_context": {
     "date_a": { "band": "full", "payload_scope": "full" },
     "date_b": { "band": "full", "payload_scope": "full" }

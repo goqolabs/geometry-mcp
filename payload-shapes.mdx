@@ -5,6 +5,8 @@ description: The tools, what one call returns, and the repeating shapes every pa
 
 These tools cover a single-date **Cosmic card**, a two-date score (**Cosmic card A** vs **Cosmic card B**), and a name decode. One or two dates (or a name) in, and you get a lot back — every call is answered from a single deterministic lookup. Here's the whole menu, plus the **small set of repeating shapes** every payload is built from, so you learn them once and can read any block. The live tool is always the source of truth for exact fields. For how to read `_name` / `_slug` / `_no`, see [Field glossary](/field-glossary). Naming on the pair tool: [get_compatibility](/tools/get-compatibility).
 
+**Wire names to remember:** Tool 2 profiles use top-level **`cosmic`** + sibling **`tarot_majors`** (`.greer` / `.tarot_school`). Tool 1 wraps each side as **`cosmic_card_a` / `cosmic_card_b`**. Out-of-range scope is **`cosmic_card_only`**. Every success payload also stamps **`tool` / `tool_version` / `engine_chain`**.
+
 ## Tools
 
 | Tool | Status | Input | Returns |
@@ -42,7 +44,7 @@ Blocks that return a sign object include `lunar`, `nong_li`, `coptic`, `mayan_ha
 
 ## Card object
 
-The playing-card and tarot decks (`cosmic`, `tarot`, `medicine`, `lenormand`, and `day_card`) share:
+The playing-card and tarot decks (`cosmic`, `tarot`, `medicine`, and `lenormand`) share:
 
 | Field | Meaning |
 |---|---|
