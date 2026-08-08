@@ -16,21 +16,21 @@ No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you 
 **Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions. Enable Geometry once; Claude usually stays in-thread and picks the right tool. **ChatGPT works** on the same URL — use `@geometry Call get_…`, and start a **new chat if the tool drops** (see below). Cursor / Codex / VS Code are fine for builders who already live there.
 
 **ChatGPT installed geometry — why won’t it use the tool?**  
-Skip the Plugins **+** chip. Type **`@geometry`**, then **`Call get_birthdate for …`** (name the tool). The **+** chip often vanishes mid-thread. If a later turn says the tool “isn’t available,” start a **new chat** (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
+Skip the Plugins **+** chip. Type **`@geometry`**, then **`Call get_date for …`** (name the tool). The **+** chip often vanishes mid-thread. If a later turn says the tool “isn’t available,” start a **new chat** (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
 
 **When should I start a new ChatGPT chat?**  
 When invoke fails or the tool drops mid-thread (list ≠ invoke). Observed July 2026: a thread that worked after one tool call can fail on a later ask. Geometry’s MCP URL and tools are fine; Claude usually keeps the connector in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Prefer Claude for demos and non-technical “just ask.”
 
 **ChatGPT called the wrong tool for moon / retrogrades / leap year?**  
-Use **`get_birthdate`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_birthdate …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
+Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_date …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
 
 **Which tool for which question?**  
 
 | Need | Tool |
 |------|------|
-| Moon, season, classical Rx, calendars, birth card | [`get_birthdate`](/tools/get-birthdate) |
-| Weekday name / leap year (`calendar_meta`) | [`get_birthdate`](/tools/get-birthdate) |
-| Weekday planetary ruler (`day_ruler`) | [`get_birthdate`](/tools/get-birthdate#day-ruler) |
+| Moon, season, classical Rx, calendars, birth card | [`get_date`](/tools/get-date) |
+| Weekday name / leap year (`calendar_meta`) | [`get_date`](/tools/get-date) |
+| Weekday planetary ruler (`day_ruler`) | [`get_date`](/tools/get-date#day-ruler) |
 | Two birth dates | [`get_compatibility`](/tools/get-compatibility) |
 | Name → cards | [`get_name`](/tools/get-name) |
 
@@ -59,7 +59,7 @@ Soft launch: free MCP URL, no account. Metered Free and paid plans roll out with
 GEOMETRY is a read-only reference lookup. Calls take birth dates (or similar inputs), return JSON, and are not used to build user profiles.
 
 **Where is the full JSON / contract?**  
-Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_birthdate`](/tools/get-birthdate), the only input is `birth_date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
+Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_date`](/tools/get-date), the only input is `date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
 
 **How do I see the full JSON in chat?**  
 Ask something like: `give raw json for birthdate 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.
@@ -84,13 +84,13 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Was that date a blue moon / blood moon / supermoon / micromoon?**  
-Ask [`get_birthdate`](/tools/get-birthdate) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** from AstroPixels/BOSS anchors (GMT) — not interpretive meaning. GEOMETRY does **not** invent moon slang; it applies the same standard sky rules builders already use from NASA and almanacs.
+Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** from AstroPixels/BOSS anchors (GMT) — not interpretive meaning. GEOMETRY does **not** invent moon slang; it applies the same standard sky rules builders already use from NASA and almanacs.
 
 **Where are the karmic cards and planetary spreads?**  
 On the birth card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: sun = birth card, then moon … rahu, midheaven, phoenix). Same blocks nest under `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
 
 **How do I sort `planetary_spread`?**  
-JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort ascending on that field — sun=1 … midheaven=13, phoenix=14. See [get_birthdate → Planetary spread order](/tools/get-birthdate#planetary-spread).
+JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort ascending on that field — sun=1 … midheaven=13, phoenix=14. See [get_date → Planetary spread order](/tools/get-date#planetary-spread).
 
 **Is the Sun card different from the birth card / Life card?**  
 No — they are the **same card**. In cardology, birth card = Life card = Sun card. The payload says so explicitly: `cosmic.also_called` is `["birth_card","life_card","sun_card"]`, and `planetary_spread.sun` repeats that with `is_sun_birth_card: true`.

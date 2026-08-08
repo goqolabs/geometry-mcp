@@ -16,7 +16,7 @@ Works in Claude Desktop, ChatGPT (`@geometry`), Cursor, VS Code, and other MCP c
 
 ## Tools
 
-- [get_birthdate](https://docs.geometry.app/tools/get-birthdate)
+- [get_date](https://docs.geometry.app/tools/get-date)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility)
 - [get_name](https://docs.geometry.app/tools/get-name)
 

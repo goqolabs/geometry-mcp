@@ -35,7 +35,7 @@ If you hit unexpected results, **include the relevant `_no` values in your repor
 | `house_no`, `pada_no` | **Tradition** | Astrological house 1–12; nakshatra pada 1–4. |
 | `nakshatra_no` | **Tradition** | Standard Vedic order, 1–27. Ashwini = 1 … Revati = 27. |
 | `planet_no` | **Catalog** | Opaque body id. **Not** orbital order, Swiss Ephemeris index, or any astronomical numbering — don't infer meaning from the value. Use `planet_name`. |
-| `spread_pos` | **Order** | Life-spread display order on `planetary_spread` slots (**1–14**: sun…phoenix). **Not** a catalog `_no` — sort on this; JSON object keys are unordered. See [get_birthdate → Planetary spread](/tools/get-birthdate#planetary-spread). |
+| `spread_pos` | **Order** | Life-spread display order on `planetary_spread` slots (**1–14**: sun…phoenix). **Not** a catalog `_no` — sort on this; JSON object keys are unordered. See [get_date → Planetary spread](/tools/get-date#planetary-spread). |
 | `system_no` | **Catalog** | Registry id for a symbolic system. Not a rank, not an API version. Use the system slug or name. |
 | `element_no` | **Catalog** | Element id — see below. |
 | `sign_no` | **Catalog** | Position on *that wheel's* own catalog, not a universal zodiac index. Different wheels reuse the same numbers for different signs. Use `sign_name`. |
@@ -116,7 +116,7 @@ Where a lookup has no match, or a concept does not apply to that date, GEOMETRY 
 
 So `"card_no": 0` alongside `"card_name": "none"` means *no card for this date in this system* — not card number zero. Check for the placeholder, not for `null`.
 
-**One documented exception:** `day_ruler.norse.deity` in [`get_birthdate`](/tools/get-birthdate#day-ruler) is `null` on Saturdays. Old Norse *laugardagr* means "bath day" and carries no deity, so the payload says so rather than inventing one.
+**One documented exception:** `day_ruler.norse.deity` in [`get_date`](/tools/get-date#day-ruler) is `null` on Saturdays. Old Norse *laugardagr* means "bath day" and carries no deity, so the payload says so rather than inventing one.
 
 Catalog numbers are non-negative. If you ever see a negative value in a `_no` field, that is a bug — please [report it](/support).
 

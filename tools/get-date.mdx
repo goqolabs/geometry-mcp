@@ -1,16 +1,16 @@
 ---
-title: get_birthdate
-description: One birth date → birth card plus calendars, moon, season, retrogrades, and related systems.
+title: get_date
+description: One date → birth card plus calendars, moon, season, retrogrades, and related systems.
 tag: Production
 ---
 
 <Badge color="green">Production</Badge>
 
 <Info>
-  **Status:** Production — most tested with [`get_compatibility`](/tools/get-compatibility). Formerly `get_card_for_birthdate`.
+  **Status:** Production — most tested with [`get_compatibility`](/tools/get-compatibility). Formerly `get_birthdate` / `get_card_for_birthdate`.
 </Info>
 
-One birth date in → birth card and layered systems for that date: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
+One date in → birth card and layered systems for that date: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
 
 <Info>
   **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, birth card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year` from `date_dim`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
@@ -22,20 +22,20 @@ One birth date in → birth card and layered systems for that date: tarot (minor
 
 | | |
 |---|---|
-| **Input** | `birth_date` (YYYY-MM-DD) |
+| **Input** | `date` (YYYY-MM-DD) |
 | **Range** | `1900-01-01` … `2100-12-31` → `temporal_context.band=full` + `payload_scope=full`; nearby outside that window (e.g. 1850, 2101) → `band=extended` + `payload_scope=full`; farther out → `band=out_of_range` + `payload_scope=birth_card_only` |
-| **Version** | `v2.8.0.10` |
+| **Version** | `v2.8.0.11` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
 
-> Get the card for birthdate 1985-03-15.
+> Get the card for date 1985-03-15.
 
 **Ask (raw JSON / full payload):**
 
-> give raw json for birthdate 1985-03-15 card
+> give raw json for date 1985-03-15 card
 
-That phrase calls `get_birthdate` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `birth_date`. “Raw JSON” and “full payload” are the same object.
+That phrase calls `get_date` and tells the **agent** to paste the tool result verbatim (not summarize). There is still only one tool input: `date`. “Raw JSON” and “full payload” are the same object.
 
 The sample below is a **shortened teaching excerpt** (values from a live call). A full tool response for the same date includes every block (`medicine`, `lenormand`, full `astro_wheels`, full `retrogrades_active`, and the rest).
 
@@ -45,7 +45,7 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 
 ```json
 {
-  "birth_date": "1985-03-15",
+  "date": "1985-03-15",
   "cosmic": {
     "card_no": 34,
     "suit_name": "diamonds",
@@ -367,7 +367,7 @@ Same field on [`get_compatibility`](/tools/get-compatibility) under `birth_card_
 
 ## Day ruler (weekday planetary ruler)
 
-Former standalone tool **`get_day`** / **`get_day_card`** is **retired** (SESSION 125). Its weekday ruler block now ships on **`get_birthdate`** when `temporal_context.payload_scope` is `full` (published **1900–2100** and extended pad years). Out-of-range birth-card-only calls omit `day_ruler`.
+Former standalone tool **`get_day`** / **`get_day_card`** is **retired** (SESSION 125). Its weekday ruler block now ships on **`get_date`** when `temporal_context.payload_scope` is `full` (published **1900–2100** and extended pad years). Out-of-range birth-card-only calls omit `day_ruler`.
 
 | Field | Meaning |
 |-------|---------|
@@ -388,7 +388,7 @@ Redirects: `/tools/get-day` and `/tools/get-day-card` → this section.
 
 - [get_compatibility](/tools/get-compatibility) — two dates  
 - [get_name](/tools/get-name) — name → cosmic cards (beta)  
-- [Birth day cards](/birth-day-cards) — full 366-face month × day calendar  
+- [Cosmic day cards](/cosmic-day-cards) — full 366-face month × day calendar  
 - [What you get](/payload-shapes) — tool menu + repeating shapes  
 - [Field glossary](/field-glossary) — `_no` keys and the Norse `null` exception  
 - [Where your key goes](/connect-and-keys)  

@@ -10,7 +10,7 @@ Copy the connector URL, paste it into your MCP client, then ask a date question.
 </Note>
 
 <Tip>
-  **Prefer Claude** (Claude Code or Claude Desktop) for natural-language date questions. After you enable the Geometry connector once, Claude usually picks the right tool mid-thread without `@` syntax. On ChatGPT (same MCP URL), use **`@geometry Call get_…`** every ask — see [ChatGPT quirks](#chatgpt-known-quirks) (tested July 2026).
+  **Prefer Claude** (Claude Code or Claude Desktop) for natural-language date questions. After you enable the Geometry connector once, Claude usually picks the right tool mid-thread without `@` syntax. ChatGPT works on the **same MCP URL** but needs more explicit prompting to pick the right tool — see [ChatGPT quirks](#chatgpt-known-quirks) below.
 </Tip>
 
 ## With or without a key
@@ -28,7 +28,7 @@ The keyless URL is open during soft launch — no account. A key comes from any 
 |--------|---------|--------|
 | [Claude Code](#claude-code--cli) | CLI `claude mcp add` | **Recommended** for NL + MCP |
 | [Claude Desktop](#claude-desktop) | Connectors → custom URL | **Recommended** — stay in one thread |
-| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL | Use `@geometry Call get_…`; [quirks](#chatgpt-known-quirks) |
+| [ChatGPT](#chatgpt-plugins) | Plugins → Server URL | Works; see [quirks](#chatgpt-known-quirks) |
 | [Codex](#codex) | `codex mcp add` / `config.toml` | |
 | [Cursor](#cursor) | Tools & MCP → `mcp.json` | |
 | [VS Code](#vs-code) | Command Palette → `.vscode/mcp.json` | |
@@ -81,7 +81,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 **Required pattern:** type **`@geometry`**, then **name the tool** and args. Do not rely on bare natural language or the Plugins **+** chip alone.
 
 ```text
-@geometry Call get_birthdate for 1990-06-15. Confirm tool_version and temporal_context.
+@geometry Call get_date for 1990-06-15. Confirm tool_version and temporal_context.
 ```
 
 ```text
@@ -89,7 +89,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 ```
 
 ```text
-@geometry Call get_birthdate for 2026-07-28. Confirm day_ruler and calendar_meta.
+@geometry Call get_date for 2026-07-28. Confirm day_ruler and calendar_meta.
 ```
 
 ```text
@@ -100,27 +100,25 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 ### ChatGPT known quirks (observed July 2026)
 
-Host / Plugins MCP steps from our testing. GEOMETRY’s URL and JSON are the same as on Claude; follow the **What to do** column.
-
 | Quirk | What you’ll see | What to do |
 |-------|-----------------|------------|
-| **Must `@geometry` + tool name** | Without it, the reply may come from web search instead of the tool (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
+| **Must `@geometry` + tool name** | Without it, ChatGPT may web-search instead of calling the tool (e.g. wrong Destiny Card) | Always `@geometry Call get_…` |
 | **Tool drops mid-thread** | After a success, the **next** ask may work in-thread, or say “tool isn’t available” | Try once with `@geometry`; if it drops → **new chat** |
-| **Wrong tool** | Moon / Rx / leap year / day ruler routed to the wrong tool | Name **`get_birthdate`** for any single-date fact (incl. `day_ruler`) |
+| **Wrong tool** | Calls the wrong tool for moon / Rx / leap year / day ruler | Name **`get_date`** for any single-date fact (incl. `day_ruler`) |
 | **Web search mix-in** | Cites mooninfo.org while claiming Geometry | “Answer ONLY from the tool JSON. Do not use web search.” |
 | **+ chip vanishes** | Composer Plugins chip disappears mid-thread | Ignore the chip; use `@geometry` |
 
 | Approach | When |
 |----------|------|
 | **`@geometry` + tool name** | **Default** every ChatGPT ask |
-| **New chat** | Whenever invoke fails or the tool drops — **normal ops**, not a GEOMETRY outage |
-| Composer **+** → geometry chip | Optional; often vanishes — use `@geometry` instead |
+| **New chat** | Whenever invoke fails or feels stuck — **normal ops**, not a GEOMETRY outage. Same-thread success is a bonus, not a promise |
+| Composer **+** → geometry chip | Optional; often vanishes — don’t rely on it |
 
 **Without** `@geometry` (or the chip), answers may come from web search instead of the tool. Look for **Called tool** above a real answer.
 
-**Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_birthdate`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_birthdate → Day ruler](/tools/get-birthdate#day-ruler).)
+**Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_date`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_date → Day ruler](/tools/get-date#day-ruler).)
 
-**Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; **new chat if the tool drops**. Prefer Claude for demos and “just ask.”
+**Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
 
 Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). Soft-launch URL needs no separate GEOMETRY account.
 
@@ -196,28 +194,28 @@ Visual: [tutorial · VS Code](https://geometry.app/tutorial/#vscode).
 
 | Question type | Tool | Example |
 |---------------|------|---------|
-| Moon / season / Rx / calendars / birth card / weekday / leap year / day ruler | [`get_birthdate`](/tools/get-birthdate) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
-| Birth identity | [`get_birthdate`](/tools/get-birthdate) | "What's the birth card for March 15, 1985?" |
-| Weekday planetary ruler | [`get_birthdate`](/tools/get-birthdate#day-ruler) | "What's the planetary day ruler for 2026-07-28?" |
+| Moon / season / Rx / calendars / birth card / weekday / leap year / day ruler | [`get_date`](/tools/get-date) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
+| Birth identity | [`get_date`](/tools/get-date) | "What's the birth card for March 15, 1985?" |
+| Weekday planetary ruler | [`get_date`](/tools/get-date#day-ruler) | "What's the planetary day ruler for 2026-07-28?" |
 | Two people | [`get_compatibility`](/tools/get-compatibility) | "How compatible are 1985-03-15 and 1990-11-08?" |
 | Name → cards | [`get_name`](/tools/get-name) | "Decode the name KEEL" |
 
-Moon phase, season, retrogrades, and **day_ruler** ship **inside** [`get_birthdate`](/tools/get-birthdate). Former `get_day` is retired.
+Moon phase, season, retrogrades, and **day_ruler** ship **inside** [`get_date`](/tools/get-date). Former `get_day` is retired.
 
 **ChatGPT one-liners** (copy-paste):
 
 ```text
-@geometry Call get_birthdate for 1986-01-05.
+@geometry Call get_date for 1986-01-05.
 ```
 
 ```text
-@geometry Call get_birthdate for 2026-07-28. Confirm day_ruler.
+@geometry Call get_date for 2026-07-28. Confirm day_ruler.
 ```
 
 **Full JSON in chat** (same as “raw JSON”):
 
 > give raw json for birthdate 1985-03-15 card
 
-That tells the **agent** to paste the complete tool result. The tool has no verbosity flag — only `birth_date`. If you read the MCP or HTTP response in code, you already get the full object every call.
+That tells the **agent** to paste the complete tool result. The tool has no verbosity flag — only `date`. If you read the MCP or HTTP response in code, you already get the full object every call.
 
 No account to try. Fixed lookups — same date, same answer.

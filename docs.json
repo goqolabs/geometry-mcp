@@ -22,14 +22,14 @@
         "group": "Tools",
         "pages": [
           "payload-shapes",
-          "tools/get-birthdate",
+          "tools/get-date",
           "tools/get-compatibility",
           "tools/get-name"
         ]
       },
       {
         "group": "Reference",
-        "pages": ["why-deterministic", "coverage", "astro-wheels", "birth-day-cards", "field-glossary", "http-api", "support", "faq"]
+        "pages": ["why-deterministic", "coverage", "astro-wheels", "cosmic-day-cards", "field-glossary", "http-api", "support", "faq"]
       }
     ]
   },
@@ -57,6 +57,14 @@
   },
   "redirects": [
     {
+      "source": "/birth-day-cards",
+      "destination": "/cosmic-day-cards"
+    },
+    {
+      "source": "/tools/get-birthdate",
+      "destination": "/tools/get-date"
+    },
+    {
       "source": "/calendar-boundaries",
       "destination": "/coverage#calendar-boundaries"
     },
@@ -66,15 +74,15 @@
     },
     {
       "source": "/tools/get-card-for-birthdate",
-      "destination": "/tools/get-birthdate"
+      "destination": "/tools/get-date"
     },
     {
       "source": "/tools/get-day",
-      "destination": "/tools/get-birthdate#day-ruler"
+      "destination": "/tools/get-date#day-ruler"
     },
     {
       "source": "/tools/get-day-card",
-      "destination": "/tools/get-birthdate#day-ruler"
+      "destination": "/tools/get-date#day-ruler"
     }
   ]
 }

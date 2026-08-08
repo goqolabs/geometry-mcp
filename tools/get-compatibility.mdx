@@ -7,30 +7,30 @@ tag: Production
 <Badge color="green">Production</Badge>
 
 <Info>
-  **Status:** Production — most tested with [`get_birthdate`](/tools/get-birthdate).
+  **Status:** Production — most tested with [`get_date`](/tools/get-date).
 </Info>
 
 Two birth dates in → both identities, connections between them, and a scored breakdown. Scoring follows the cardology connection system (Cards of Destiny / Robert Camp tradition).
 
 <Info>
-  **When to use:** comparing **two** people only. For a single date’s moon, season, Rx, calendars, weekday, leap year, or day_ruler → [`get_birthdate`](/tools/get-birthdate).
+  **When to use:** comparing **two** people only. For a single date’s moon, season, Rx, calendars, weekday, leap year, or day_ruler → [`get_date`](/tools/get-date).
 </Info>
 
 <Info>
-  **One call returns** two full birth profiles plus a weighted compatibility score and cross-wheel aspects — ~1,500 deterministic fields from two dates. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_birthdate → Planetary spread order](/tools/get-birthdate#planetary-spread).
+  **One call returns** two full birth profiles plus a weighted compatibility score and cross-wheel aspects — ~1,500 deterministic fields from two dates. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_date → Planetary spread order](/tools/get-date#planetary-spread).
 </Info>
 
 | | |
 |---|---|
-| **Input** | `birth_date_a`, `birth_date_b` (YYYY-MM-DD) |
-| **Range** | Same coverage bands as [`get_birthdate`](/tools/get-birthdate) — `temporal_context.birth_date_a/b.band` = `full` inside 1900–2100; `extended` nearby; farther out → `out_of_range` with `payload_scope=birth_card_only` |
+| **Input** | `date_a`, `date_b` (YYYY-MM-DD) |
+| **Range** | Same coverage bands as [`get_date`](/tools/get-date) — `temporal_context.date_a/b.band` = `full` inside 1900–2100; `extended` nearby; farther out → `out_of_range` with `payload_scope=birth_card_only` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
 
 > How compatible are people born 1985-03-15 and 1990-11-08?
 
-Live payloads are large (~85 KB) because each side embeds a full birth profile. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_birthdate`](/tools/get-birthdate) shape.
+Live payloads are large (~85 KB) because each side embeds a full birth profile. Below is a teaching excerpt — `birth_card_a` / `birth_card_b` are abbreviated; on the wire they match [`get_date`](/tools/get-date) shape.
 
 **Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
@@ -49,8 +49,8 @@ Live payloads are large (~85 KB) because each side embeds a full birth profile. 
   "birth_card_a": "… full birth profile: card, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, and more …",
   "birth_card_b": "… full birth profile (same shape) …",
   "temporal_context": {
-    "birth_date_a": { "band": "full", "payload_scope": "full" },
-    "birth_date_b": { "band": "full", "payload_scope": "full" }
+    "date_a": { "band": "full", "payload_scope": "full" },
+    "date_b": { "band": "full", "payload_scope": "full" }
   },
   "true_sidereal_a": "…",
   "true_sidereal_b": "…",
@@ -97,6 +97,6 @@ Live payloads are large (~85 KB) because each side embeds a full birth profile. 
 
 ## Related
 
-- [get_birthdate](/tools/get-birthdate) — one date identity (Production)  
+- [get_date](/tools/get-date) — one date identity (Production)  
 - [get_name](/tools/get-name) — name → cosmic cards (Beta)  
 - [get_name](/tools/get-name) — name → cosmic cards (Beta) 
