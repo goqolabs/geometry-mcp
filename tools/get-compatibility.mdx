@@ -28,9 +28,11 @@ Two dates in → both Cosmic-card identities, connections between them, and a sc
 
 **Ask:**
 
-> How compatible are people born 1985-03-15 and 1990-11-08?
+> How compatible are 1985-03-15 and 1990-11-08?
 
-Live payloads are large (~85 KB) because each side embeds a full date profile. Below is a teaching excerpt — wire keys `birth_card_a` / `birth_card_b` are abbreviated; each matches the [`get_date`](/tools/get-date) shape (Cosmic card + systems).
+Live payloads are large (~85 KB) because each side embeds a full **Cosmic card** profile — same shape as [`get_date`](/tools/get-date) (Cosmic card + calendars, moon, season, Rx, and the rest). Below is a teaching excerpt; those two profiles are abbreviated.
+
+**Wire map:** inputs and `temporal_context` → `date_a` / `date_b`. Each side’s Cosmic profile → `birth_card_a` / `birth_card_b` (Cosmic card at `….cosmic`; same card as Life / Sun via `also_called`).
 
 **Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
@@ -46,8 +48,8 @@ Live payloads are large (~85 KB) because each side embeds a full date profile. B
   "summary": "Compatibility for two dates in the published 1900–2100 window.",
   "life_path_a": 5,
   "life_path_b": 2,
-  "birth_card_a": "… full date profile: Cosmic card, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, and more …",
-  "birth_card_b": "… full date profile (same shape) …",
+  "birth_card_a": "… date_a Cosmic profile (same shape as get_date): cosmic, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, …",
+  "birth_card_b": "… date_b Cosmic profile (same shape) …",
   "temporal_context": {
     "date_a": { "band": "full", "payload_scope": "full" },
     "date_b": { "band": "full", "payload_scope": "full" }

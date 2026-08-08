@@ -87,7 +87,7 @@ Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac m
 Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** (GMT anchors) — not interpretive meaning. Flags follow standard NASA/almanac sky rules.
 
 **Where are the karmic cards and planetary spreads?**  
-On the Cosmic card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: `sun` = the Cosmic card, then moon … rahu, midheaven, phoenix). Same blocks nest under wire keys `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
+On the Cosmic card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: `sun` = the Cosmic card, then moon … rahu, midheaven, phoenix). On [`get_compatibility`](/tools/get-compatibility), the same blocks live inside each side’s Cosmic profile (`birth_card_a` / `birth_card_b` on the wire — inputs are `date_a` / `date_b`).
 
 **How do I sort `planetary_spread`?**  
 JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort ascending on that field — sun=1 … midheaven=13, phoenix=14. See [get_date → Planetary spread order](/tools/get-date#planetary-spread).
