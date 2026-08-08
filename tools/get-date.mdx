@@ -45,6 +45,9 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 
 ```json
 {
+  "tool": "get_date",
+  "tool_version": "v2.8.0.13",
+  "engine_chain": "v0.66",
   "date": "1985-03-15",
   "cosmic": {
     "card_no": 34,
@@ -251,9 +254,17 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
   },
   "numerology": {
     "birth_day_no": 74,
-    "lifepath_gregorian": 32,
-    "lifepath_vedic": 28,
-    "lifepath_hebrew": 28
+    "gregorian": {
+      "lifepath": 5,
+      "lifepath_sum": 32,
+      "lifepath_base": 5,
+      "is_master_lifepath": false,
+      "is_money_lifepath": false
+    },
+    "vedic": { "lifepath": 1, "lifepath_sum": 28, "lifepath_base": 1 },
+    "hebrew": { "lifepath": 1, "lifepath_sum": 28, "lifepath_base": 1 },
+    "solar_cancer": { "lifepath": 6, "lifepath_sum": 132, "lifepath_base": 6 },
+    "solar_capricorn": { "lifepath": 9, "lifepath_sum": 126, "lifepath_base": 9 }
   },
   "calendar_years": {
     "hebrew": { "year": 5745, "month": 6, "day": 22 },
