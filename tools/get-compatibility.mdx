@@ -10,29 +10,31 @@ tag: Production
   **Status:** Production.
 </Info>
 
-Two dates in → both Cosmic-card identities, connections between them, and a scored breakdown. Scoring follows the cardology connection system (Cards of Destiny / Robert Camp tradition).
+Two dates in → **Cosmic card A** and **Cosmic card B**, connections between them, and a scored breakdown. Scoring follows the cardology connection system (Cards of Destiny / Robert Camp tradition).
 
 <Info>
-  **When to use:** comparing **two** people only. For a single date’s moon, season, Rx, calendars, weekday, leap year, or day_ruler → [`get_date`](/tools/get-date).
+  **When to use:** comparing **two** dates only. For a single date’s moon, season, Rx, calendars, weekday, leap year, or day_ruler → [`get_date`](/tools/get-date).
 </Info>
 
 <Info>
-  **One call returns** two full date profiles plus a weighted compatibility score and cross-wheel aspects — ~1,500 deterministic fields from two dates. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_date → Planetary spread order](/tools/get-date#planetary-spread).
+  **One call returns** two full date profiles (each the same shape as [`get_date`](/tools/get-date)) plus a weighted compatibility score and cross-wheel aspects — ~1,500 deterministic fields. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_date → Planetary spread order](/tools/get-date#planetary-spread).
+</Info>
+
+<Info>
+  **Names (keep these straight):** inputs and `temporal_context` use **`date_a` / `date_b`**. In prose we say **Cosmic card A / Cosmic card B** for each side’s Cosmic face (`….cosmic`). The JSON objects that wrap each full date profile are still keyed `birth_card_a` / `birth_card_b` on the wire — same shape as a `get_date` result, not a second tool name.
 </Info>
 
 | | |
 |---|---|
 | **Input** | `date_a`, `date_b` (YYYY-MM-DD) |
-| **Range** | Same coverage bands as [`get_date`](/tools/get-date) — `temporal_context.date_a/b.band` = `full` inside 1900–2100; `extended` nearby; farther out → `out_of_range` with `payload_scope=birth_card_only` |
+| **Range** | Same coverage bands as [`get_date`](/tools/get-date) — `temporal_context.date_a/b.band` = `full` inside 1900–2100; `extended` nearby; farther out → `out_of_range` with `payload_scope=birth_card_only` (Cosmic card from month/day only) |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
 
 > How compatible are 1985-03-15 and 1990-11-08?
 
-Live payloads are large (~85 KB) because each side embeds a full **Cosmic card** profile — same shape as [`get_date`](/tools/get-date) (Cosmic card + calendars, moon, season, Rx, and the rest). Below is a teaching excerpt; those two profiles are abbreviated.
-
-**Wire map:** inputs and `temporal_context` → `date_a` / `date_b`. Each side’s Cosmic profile → `birth_card_a` / `birth_card_b` (Cosmic card at `….cosmic`; same card as Life / Sun via `also_called`).
+Live payloads are large (~85 KB). Below is a teaching excerpt — Cosmic card A / B profiles abbreviated.
 
 **Full payload / raw JSON:** call this tool — live response is the complete object (no verbosity flag). Chat may summarize; ask for the raw tool result if the UI truncates.
 
@@ -48,8 +50,8 @@ Live payloads are large (~85 KB) because each side embeds a full **Cosmic card**
   "summary": "Compatibility for two dates in the published 1900–2100 window.",
   "life_path_a": 5,
   "life_path_b": 2,
-  "birth_card_a": "… date_a Cosmic profile (same shape as get_date): cosmic, tarot, medicine, Lenormand, zodiacs, moon phase, season, retrogrades, runes, ogham, geomancy, I Ching, …",
-  "birth_card_b": "… date_b Cosmic profile (same shape) …",
+  "birth_card_a": "… Cosmic card A + full date profile for date_a (same shape as get_date) …",
+  "birth_card_b": "… Cosmic card B + full date profile for date_b (same shape) …",
   "temporal_context": {
     "date_a": { "band": "full", "payload_scope": "full" },
     "date_b": { "band": "full", "payload_scope": "full" }

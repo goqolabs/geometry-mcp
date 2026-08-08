@@ -334,7 +334,7 @@ Dates outside 1900–2100 do not crash the tool. Cosmic-card identity still foll
 | Band | Example | `temporal_context` | Notes |
 |------|---------|--------------------|-------|
 | **Extended** | `1850-06-15`, `2101-01-01` | `{ "band": "extended", "payload_scope": "full" }` | Outside the published window — full temporal fields still returned, labeled honestly |
-| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "birth_card_only" }` | Farther out — soft error envelope + Cosmic card from month/day only · **no** `day_ruler` |
+| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "birth_card_only" }` | Farther out — soft error envelope; Cosmic card from month/day only · **no** `day_ruler` (`birth_card_only` is the wire scope name) |
 
 <a id="planetary-spread"></a>
 
@@ -361,7 +361,7 @@ Dates outside 1900–2100 do not crash the tool. Cosmic-card identity still foll
 | 13 | `midheaven` |
 | 14 | `phoenix` |
 
-Same field on [`get_compatibility`](/tools/get-compatibility) under each side’s Cosmic profile (`birth_card_a.cosmic.planetary_spread` / `birth_card_b…`). `retrogrades_active` is already an **ordered array** — no `spread_pos` there.
+Same field on [`get_compatibility`](/tools/get-compatibility) for Cosmic card A / B (`….cosmic.planetary_spread` on each side’s date profile). `retrogrades_active` is already an **ordered array** — no `spread_pos` there.
 
 <a id="day-ruler"></a>
 
