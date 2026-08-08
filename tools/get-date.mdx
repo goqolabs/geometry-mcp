@@ -24,7 +24,7 @@ One date in → the **Cosmic card** for that date plus layered systems: tarot (m
 |---|---|
 | **Input** | `date` (YYYY-MM-DD) |
 | **Range** | `1900-01-01` … `2100-12-31` → `temporal_context.band=full` + `payload_scope=full`; nearby outside that window (e.g. 1850, 2101) → `band=extended` + `payload_scope=full`; farther out → `band=out_of_range` with Cosmic-card-only scope |
-| **Version** | `v2.8.0.11` |
+| **Version** | `v2.8.0.12` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -336,7 +336,7 @@ Dates outside 1900–2100 do not crash the tool. The **Cosmic card** still resol
 | Band | Example | `temporal_context` | Notes |
 |------|---------|--------------------|-------|
 | **Extended** | `1850-06-15`, `2101-01-01` | `{ "band": "extended", "payload_scope": "full" }` | Outside the published window — full temporal fields still returned, labeled honestly |
-| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "birth_card_only" }` | Farther out — soft error envelope; Cosmic card from month/day only · **no** `day_ruler`. Wire scope name stays `birth_card_only`. |
+| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "cosmic_card_only" }` | Farther out — soft error envelope; Cosmic card from month/day only · **no** `day_ruler`. Flag `cosmic_card_available: true`. |
 
 <a id="planetary-spread"></a>
 

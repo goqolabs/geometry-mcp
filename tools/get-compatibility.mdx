@@ -46,8 +46,8 @@ Live payloads are large (~85 KB). Below is a teaching excerpt — Cosmic card A 
   "summary": "Compatibility for two dates in the published 1900–2100 window.",
   "life_path_a": 5,
   "life_path_b": 2,
-  "birth_card_a": "… Cosmic card A for date_a — full get_date shape …",
-  "birth_card_b": "… Cosmic card B for date_b — full get_date shape …",
+  "cosmic_card_a": "… Cosmic card A for date_a — full get_date shape …",
+  "cosmic_card_b": "… Cosmic card B for date_b — full get_date shape …",
   "temporal_context": {
     "date_a": { "band": "full", "payload_scope": "full" },
     "date_b": { "band": "full", "payload_scope": "full" }
@@ -96,7 +96,7 @@ Live payloads are large (~85 KB). Below is a teaching excerpt — Cosmic card A 
 `chinese_zodiac_aspect` can also be `harmonic_pair` (Chinese secret-friend pair — not a Western aspect). See [What you get → Aspect map](/payload-shapes#aspect-map).
 
 <Note>
-  **Wire vs teaching names:** inputs and `temporal_context` use **`date_a` / `date_b`**. In docs we say **Cosmic card A / Cosmic card B**. Live JSON still keys each full date profile `birth_card_a` / `birth_card_b` (do not rename clients against that). Out-of-range Cosmic-card-only scope uses wire enum `payload_scope: "birth_card_only"`. Cosmic card = birth = life = sun.
+  **Wire names:** inputs and `temporal_context` use **`date_a` / `date_b`**. Full date profiles are **`cosmic_card_a` / `cosmic_card_b`**. Out-of-range Cosmic-card-only scope uses `payload_scope: "cosmic_card_only"`. Cosmic card = birth = life = sun (`cosmic.also_called`).
 </Note>
 
 ## Related
