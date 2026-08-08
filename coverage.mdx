@@ -38,9 +38,9 @@ If you compare GEOMETRY to another source and see a one-day difference, start he
 
 Tools take a **bare calendar date** — `YYYY-MM-DD`, no time, no timezone. Each cultural year is stored as a date window in its tradition’s civil frame; lookup is a plain date-in-range match.
 
-**No timezone conversion happens at request time.** GEOMETRY does not know the user’s location, birth time, or your server’s zone. It uses the date you send and answers in each tradition’s own terms.
+**No timezone conversion happens at request time.** GEOMETRY does not know the user’s location, local clock time, or your server’s zone. It uses the date you send and answers in each tradition’s own terms.
 
-Converting at request time would require guessing a birth time and place that were never provided.
+Converting at request time would require guessing a time of day and place that were never provided.
 
 ### Cultural years — which anchor each system uses
 
@@ -150,7 +150,7 @@ If a date falls within a day or two of a year boundary, which system you read ma
 - **You send the civil date.** GEOMETRY does not reinterpret it.
 - **A date immediately before a lunar new year belongs to the previous animal year.** February 16, 2026 is still the snake year; February 17, 2026 is the first day of the fire horse.
 - **Different systems roll over at different times of year**, so the same date can be late in one cultural year and early in another. That is expected.
-- **No inferred birth time.** Hour-level precision at a boundary belongs in your application, using birth time and place you collect there.
+- **No inferred clock time.** Hour-level precision at a boundary belongs in your application, using any local time and place you collect there.
 
 ## Related
 
