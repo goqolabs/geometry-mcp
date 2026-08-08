@@ -1,19 +1,19 @@
 ---
 title: get_date
-description: One date → birth card plus calendars, moon, season, retrogrades, and related systems.
+description: One date → Cosmic card plus calendars, moon, season, retrogrades, and related systems.
 tag: Production
 ---
 
 <Badge color="green">Production</Badge>
 
 <Info>
-  **Status:** Production — most tested with [`get_compatibility`](/tools/get-compatibility). Formerly `get_birthdate` / `get_card_for_birthdate`.
+  **Status:** Production.
 </Info>
 
-One date in → birth card and layered systems for that date: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
+One date in → the **Cosmic card** for that date plus layered systems: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
 
 <Info>
-  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, birth card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year` from `date_dim`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
+  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, Cosmic card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year` from `date_dim`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
 </Info>
 
 <Info>
@@ -323,18 +323,18 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 }
 ```
 
-Deck faces on the birth `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`** — each a sibling object (one Lenormand object beside `cosmic`, never nested under it). Sibling **`iching`** carries hexagram identity plus `upper_trigram` / `lower_trigram` / `yin_yang_code` / `seq_no` / `binary_no` / `sign_no`. Major Arcana birth cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
+Deck faces on the Cosmic `card_no` include **`cosmic`**, **`tarot`** (minor map), **`medicine`**, and **`lenormand`** — each a sibling object (one Lenormand object beside `cosmic`, never nested under it). Sibling **`iching`** carries hexagram identity plus `upper_trigram` / `lower_trigram` / `yin_yang_code` / `seq_no` / `binary_no` / `sign_no`. Major Arcana cards live under **`tarot_birth_cards`** with **both** methods every call: **`greer`** (Mary K. Greer — common default) and **`tarot_school`** (Amberstone). Cultural glyph systems include **`norse_runes`**, **`celtic_ogham`**, and **`geomancy`**. The `retrogrades_active` array in this sample is shortened; a live response includes major planets, asteroids, TNPs, and points. A full response carries ~30 systems for one date.
 
 Which numbers to build on: see the [Field glossary](/field-glossary). It separates tradition numbers like `card_no` and `tarot_no` from opaque catalog ids like `system_no`, and explains why `element_no` reads differently in the classical and periodic blocks.
 
 ## Out of published range
 
-Dates outside 1900–2100 do not crash the tool. Birth-card identity still follows month/day.
+Dates outside 1900–2100 do not crash the tool. Cosmic-card identity still follows month/day.
 
 | Band | Example | `temporal_context` | Notes |
 |------|---------|--------------------|-------|
 | **Extended** | `1850-06-15`, `2101-01-01` | `{ "band": "extended", "payload_scope": "full" }` | Outside the published window — full temporal fields still returned, labeled honestly |
-| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "birth_card_only" }` | Farther out — soft error envelope + birth card from month/day only · **no** `day_ruler` |
+| **Out** | `1776-07-04`, `2200-01-01` | `{ "band": "out_of_range", "payload_scope": "birth_card_only" }` | Farther out — soft error envelope + Cosmic card from month/day only · **no** `day_ruler` |
 
 <a id="planetary-spread"></a>
 
@@ -346,7 +346,7 @@ Dates outside 1900–2100 do not crash the tool. Birth-card identity still follo
 
 | `spread_pos` | Planet key |
 |-------------:|------------|
-| 1 | `sun` (birth / Life / Sun card) |
+| 1 | `sun` (Cosmic card — also Life / Sun in cardology) |
 | 2 | `moon` |
 | 3 | `mercury` |
 | 4 | `venus` |
@@ -367,7 +367,7 @@ Same field on [`get_compatibility`](/tools/get-compatibility) under `birth_card_
 
 ## Day ruler (weekday planetary ruler)
 
-Former standalone tool **`get_day`** / **`get_day_card`** is **retired** (SESSION 125). Its weekday ruler block now ships on **`get_date`** when `temporal_context.payload_scope` is `full` (published **1900–2100** and extended pad years). Out-of-range birth-card-only calls omit `day_ruler`.
+Weekday planetary ruler ships on **`get_date`** when `temporal_context.payload_scope` is `full` (published **1900–2100** and extended pad years). Out-of-range Cosmic-card-only calls omit `day_ruler`.
 
 | Field | Meaning |
 |-------|---------|
@@ -381,8 +381,6 @@ Former standalone tool **`get_day`** / **`get_day_card`** is **retired** (SESSIO
 > What's the planetary day ruler for 2026-07-23?
 
 **Norse Saturday:** `norse.deity` is **`null`** on Saturdays (*laugardagr* / bath day has no deity). That is the only sanctioned `null` in a public payload — see [Field glossary](/field-glossary).
-
-Redirects: `/tools/get-day` and `/tools/get-day-card` → this section.
 
 ## Related
 

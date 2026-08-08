@@ -1,6 +1,6 @@
 # GEOMETRY
 
-> Fixed, structured answers for date questions — birth cards, calendars, moon phases, seasons, retrogrades, and ~30 systems on 1900–2100. Connect over MCP.
+> Fixed, structured answers for date questions — Cosmic cards, calendars, moon phases, seasons, retrogrades, and ~30 systems on 1900–2100. Connect over MCP.
 
 ## Canonical MCP URL
 
@@ -17,12 +17,12 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes
-- [get_date](https://docs.geometry.app/tools/get-date): Primary single-date lookup — moon, season, Rx, calendars, birth card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production; formerly get_birthdate / get_card_for_birthdate; absorbs retired get_day)
+- [get_date](https://docs.geometry.app/tools/get-date): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two-date compatibility score (Production)
-- [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta; formerly get_name_cosmic_cards)
+- [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta)
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
-- [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards): Month × day calendar — 366 cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
+- [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards): Month × day calendar — 366 Cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
 - [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
 - [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
 - [Support](https://docs.geometry.app/support): Self-serve for free / soft launch; GitHub Issues for paid plans only (product / connectivity bugs)
@@ -42,9 +42,9 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 - Published full window: 1900-01-01 … 2100-12-31 (`temporal_context.band=full`, `payload_scope=full`). Nearby dates outside that window return `band=extended` with `payload_scope=full` (same calculations, honest label). Farther out: `band=out_of_range` with `payload_scope` `birth_card_only` / `day_card_only` and a soft error envelope.
 - Sky anchors (moon / season / retrograde) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph), then stored as lookups. No live ephemeris at request time. See /coverage.
 - `moon_phase` on `get_date` (v2.8.0.2+) carries **deterministic** named-moon facts (NASA/standard sky rules, not private slang): `is_blue_moon_monthly`, `is_blue_moon_seasonal`, `is_blood_moon` (`lt`), `is_supermoon` (full + distance_km < 360000 — NASA near-perigee), `is_micromoon` (full + distance_km > 405000), `phase_gmt` (HH:MM:SS GMT on anchors), `earth_moon_distance_km` / `apparent_diameter_arcmin`, `eclipse_code`/`eclipse_type`, and `prev_*`/`next_*` for monthly blue and blood. Not interpretive.
-- `cosmic.karma` + `cosmic.planetary_spread` on `get_date` / `get_compatibility` birth cards (v2.8.0.3+): karmic **source** (past) + **spirit** (future); 14 Life-spread planet cards (sun = birth card; includes rahu, midheaven, phoenix).
+- `cosmic.karma` + `cosmic.planetary_spread` on `get_date` / `get_compatibility` Cosmic cards (v2.8.0.3+): karmic **source** (past) + **spirit** (future); 14 Life-spread planet cards (`sun` = Cosmic card; includes rahu, midheaven, phoenix). Wire profile keys on Tool 1: `birth_card_a` / `birth_card_b`.
 - **Sort `planetary_spread` by `spread_pos` (1–14)** — JSON object keys are unordered; sun=1 … midheaven=13, phoenix=14 (Tool 2 **v2.8.0.11** / Tool 1 **v1.8.5**). See /tools/get-date#planetary-spread.
-- **Birth card = Life card = Sun card** (same identity). Wire: `cosmic.also_called` = `["birth_card","life_card","sun_card"]` and `planetary_spread.sun.identity_note` (Tool 2 **v2.8.0.7**).
+- **Cosmic card = Life card = Sun card** (same identity). Wire aliases: `cosmic.also_called` = `["birth_card","life_card","sun_card"]` and `planetary_spread.sun.identity_note` (Tool 2 **v2.8.0.7**).
 - Dates come in TWO families and the JSON does not label them. (1) Sky events — `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt`/`retro_end_dt`/`cazimi_dt` — are the Gregorian day containing the instant in **GMT**. A local-time source will differ by one day roughly `offset ÷ 24` of the time (~33% at UTC+8). (2) Cultural years — `lunar.year_no`, `calendar_years.*` — use each tradition's own civil anchor: Chinese/Vietnamese CST (UTC+8), Vedic samvatsara IST (UTC+5:30), Hebrew and Dreamspell timezone-neutral (arithmetic, cannot shift), Persian GMT day-of-equinox by deliberate choice (may differ one day from Iran's Tehran-local rule).
 - Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /coverage#calendar-boundaries.
 - GEOMETRY returns structured reference data; interpretation is the host app / model.

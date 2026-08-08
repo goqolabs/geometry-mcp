@@ -116,7 +116,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 **Without** `@geometry` (or the chip), answers may come from web search instead of the tool. Look for **Called tool** above a real answer.
 
-**Tool routing:** moon / season / Rx / calendars / weekday / leap year / **day_ruler** → **`get_date`**. Two people → **`get_compatibility`**. Name → **`get_name`**. (`get_day` retired — see [get_date → Day ruler](/tools/get-date#day-ruler).)
+**Tool routing:** moon / season / Rx / calendars / Cosmic card / weekday / leap year / **day_ruler** → **`get_date`**. Two people → **`get_compatibility`**. Name → **`get_name`**.
 
 **Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
 
@@ -194,13 +194,13 @@ Visual: [tutorial · VS Code](https://geometry.app/tutorial/#vscode).
 
 | Question type | Tool | Example |
 |---------------|------|---------|
-| Moon / season / Rx / calendars / birth card / weekday / leap year / day ruler | [`get_date`](/tools/get-date) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
-| Birth identity | [`get_date`](/tools/get-date) | "What's the birth card for March 15, 1985?" |
+| Moon / season / Rx / calendars / Cosmic card / weekday / leap year / day ruler | [`get_date`](/tools/get-date) | "What day of the week was 2000-02-29, and was that a Gregorian leap year?" |
+| Date identity | [`get_date`](/tools/get-date) | "What's the Cosmic card for March 15, 1985?" |
 | Weekday planetary ruler | [`get_date`](/tools/get-date#day-ruler) | "What's the planetary day ruler for 2026-07-28?" |
 | Two people | [`get_compatibility`](/tools/get-compatibility) | "How compatible are 1985-03-15 and 1990-11-08?" |
 | Name → cards | [`get_name`](/tools/get-name) | "Decode the name KEEL" |
 
-Moon phase, season, retrogrades, and **day_ruler** ship **inside** [`get_date`](/tools/get-date). Former `get_day` is retired.
+Moon phase, season, retrogrades, and **day_ruler** ship **inside** [`get_date`](/tools/get-date).
 
 **ChatGPT one-liners** (copy-paste):
 

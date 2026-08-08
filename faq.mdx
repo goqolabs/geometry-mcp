@@ -28,7 +28,7 @@ Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, 
 
 | Need | Tool |
 |------|------|
-| Moon, season, classical Rx, calendars, birth card | [`get_date`](/tools/get-date) |
+| Moon, season, classical Rx, calendars, Cosmic card | [`get_date`](/tools/get-date) |
 | Weekday name / leap year (`calendar_meta`) | [`get_date`](/tools/get-date) |
 | Weekday planetary ruler (`day_ruler`) | [`get_date`](/tools/get-date#day-ruler) |
 | Two dates | [`get_compatibility`](/tools/get-compatibility) |
@@ -47,7 +47,7 @@ Yes. The date range and its systems are pre-computed and versioned — same call
 Published coverage is **1900-01-01** through **2100-12-31**. Within that window, bare `YYYY-MM-DD` fields can mean different things — cultural year starts vs GMT sky-event days. Full explanation: [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **What's cardology?**  
-A birth-date-to-playing-card system (Cards of Destiny tradition) with a relationship / connection layer. GEOMETRY serves a machine-readable version of it.
+A date-to-playing-card system (Cards of Destiny tradition) with a relationship / connection layer. GEOMETRY serves a machine-readable version of it — each month/day maps to one **Cosmic card**.
 
 **Is this astrology? Do you claim it predicts anything?**  
 GEOMETRY serves the *data* of traditional symbolic systems — deterministically. Interpretation belongs to your product.
@@ -87,13 +87,13 @@ Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac m
 Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** from AstroPixels/BOSS anchors (GMT) — not interpretive meaning. GEOMETRY does **not** invent moon slang; it applies the same standard sky rules builders already use from NASA and almanacs.
 
 **Where are the karmic cards and planetary spreads?**  
-On the birth card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: sun = birth card, then moon … rahu, midheaven, phoenix). Same blocks nest under `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
+On the Cosmic card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: `sun` = the Cosmic card, then moon … rahu, midheaven, phoenix). Same blocks nest under wire keys `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
 
 **How do I sort `planetary_spread`?**  
 JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort ascending on that field — sun=1 … midheaven=13, phoenix=14. See [get_date → Planetary spread order](/tools/get-date#planetary-spread).
 
-**Is the Sun card different from the birth card / Life card?**  
-No — they are the **same card**. In cardology, birth card = Life card = Sun card. The payload says so explicitly: `cosmic.also_called` is `["birth_card","life_card","sun_card"]`, and `planetary_spread.sun` repeats that with `is_sun_birth_card: true`.
+**Is the Sun card different from the Cosmic card / Life card?**  
+No — they are the **same card**. The date’s Cosmic face is also the Life card and the Sun slot in the planetary spread. The payload aliases that identity on the wire: `cosmic.also_called` is `["birth_card","life_card","sun_card"]`, and `planetary_spread.sun` repeats it with `is_sun_birth_card: true`.
 
 | Flag / field | Meaning |
 |---|---|

@@ -3,7 +3,7 @@ title: Cosmic day cards
 description: Cosmic playing-card calendar — every month/day maps to one cosmic face (366 cells, including February 29 and December 31).
 ---
 
-Each Gregorian **month + day** maps to exactly one **cosmic** playing-card face (366 faces — year does not matter). [`get_date`](/tools/get-date) returns that face as the `cosmic` block for the date you pass. Traditional cardology still calls this the **birth card**; on the wire it is just the date’s cosmic face.
+Each Gregorian **month + day** maps to exactly one **Cosmic card** (366 faces — year does not matter). [`get_date`](/tools/get-date) returns that face as the `cosmic` block for the date you pass.
 
 This page is the full calendar grid: **rows = day of month (1–31)**, **columns = month**. Empty cells (`—`) are days that do not exist in that month (for example April 31).
 
@@ -58,10 +58,10 @@ All other days are the usual 52 playing cards (A–K × ♠♦♣♥).
 
 **How to read a cell:** find the **day** on the left, then the **month** column. Example: March 15 → **8♦** (same face [`get_date`](/tools/get-date) returns for `1985-03-15`).
 
-**Tradition:** This month/day → playing-card map is public **cardology** (also called Cards of Destiny / Science of the Cards). The classic **birth-card** chart was set out for a general audience in Edith L. Randall and Florence Evylinn Campbell, *Sacred Symbols of the Ancients* (1947), following Olney H. Richmond, *The Mystic Test Book* (1893) — [Internet Archive](https://archive.org/details/mystictestbookor00rich). Later popular books (for example Robert Lee Camp, *Cards of Your Destiny*) teach the same calendar. Published here so builders do not have to hunt scattered sites for the grid.
+**Tradition:** This month/day → playing-card map is public **cardology** (also called Cards of Destiny / Science of the Cards). The classic chart was set out for a general audience in Edith L. Randall and Florence Evylinn Campbell, *Sacred Symbols of the Ancients* (1947), following Olney H. Richmond, *The Mystic Test Book* (1893) — [Internet Archive](https://archive.org/details/mystictestbookor00rich). Later popular books (for example Robert Lee Camp, *Cards of Your Destiny*) teach the same calendar. Published here so builders do not have to hunt scattered sites for the grid.
 
 ## Related
 
-- [get_date](/tools/get-date) — live tool for one date’s cosmic face  
+- [get_date](/tools/get-date) — live tool for one date’s Cosmic card  
 - [Astro wheels](/astro-wheels) — five sign systems on the same date  
 - [Field glossary](/field-glossary) — `card_no` vs other `_no` keys  
