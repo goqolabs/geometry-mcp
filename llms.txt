@@ -17,7 +17,7 @@ Use this URL only in install instructions. Do not teach `*.zuplo.app` hosts.
 - [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
 - [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
 - [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes
-- [get_date](https://docs.geometry.app/tools/get-date): Primary single-date lookup — moon, season, Rx, calendars, birth card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production; formerly get_card_for_birthdate; absorbs retired get_day)
+- [get_date](https://docs.geometry.app/tools/get-date): Primary single-date lookup — moon, season, Rx, calendars, birth card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production; formerly get_birthdate / get_card_for_birthdate; absorbs retired get_day)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two-date compatibility score (Production)
 - [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta; formerly get_name_cosmic_cards)
 - [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)

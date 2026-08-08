@@ -31,7 +31,7 @@ Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, 
 | Moon, season, classical Rx, calendars, birth card | [`get_date`](/tools/get-date) |
 | Weekday name / leap year (`calendar_meta`) | [`get_date`](/tools/get-date) |
 | Weekday planetary ruler (`day_ruler`) | [`get_date`](/tools/get-date#day-ruler) |
-| Two birth dates | [`get_compatibility`](/tools/get-compatibility) |
+| Two dates | [`get_compatibility`](/tools/get-compatibility) |
 | Name → cards | [`get_name`](/tools/get-name) |
 
 **Claude vs ChatGPT — same MCP URL?**  
@@ -56,13 +56,13 @@ GEOMETRY serves the *data* of traditional symbolic systems — deterministically
 Soft launch: free MCP URL, no account. Metered Free and paid plans roll out with self-serve billing in the Developer Portal. Current prices are shown in the portal when plans are live.
 
 **Where is my data stored? Do you see my users' questions?**  
-GEOMETRY is a read-only reference lookup. Calls take birth dates (or similar inputs), return JSON, and are not used to build user profiles.
+GEOMETRY is a read-only reference lookup. Calls take dates or names (tool inputs), return JSON, and are not used to build user profiles.
 
 **Where is the full JSON / contract?**  
 Docs samples are shortened on purpose. Every successful tool call returns the **complete** JSON. For [`get_date`](/tools/get-date), the only input is `date` — there is no `full=true` flag. “Full payload” and “raw JSON” mean that complete object.
 
 **How do I see the full JSON in chat?**  
-Ask something like: `give raw json for birthdate 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.
+Ask something like: `give raw json for date 1985-03-15 card`. That tells the agent to paste the tool result instead of summarizing. If you read the MCP or HTTP response in code, you already have the full object.
 
 <a id="llm-unicode-glyphs"></a>
 
