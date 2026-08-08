@@ -19,7 +19,7 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Lati
 | | |
 |---|---|
 | **Input** | `full_name` (text) — whitespace-separated words |
-| **Engine** | Cipher **41** (`francis_bacon`) → `card_no` 1–52; other Latin ciphers as raw sums |
+| **Cipher** | **41** (`francis_bacon`) → `card_no` 1–52; other Latin ciphers as raw sums |
 | **Version** | `v2.3.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
@@ -37,12 +37,12 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Lati
 
 When an LLM **retypes or “saves” JSON into a chat file**, it often **substitutes lookalike emoji** for those rare glyphs. Numbers, names, cards, and cipher sums usually stay intact — only the glyph field flips.
 
-| Proven live (engine) | Corrupted chat copy (example) |
+| Live tool response | Corrupted chat copy (example) |
 |---|---|
 | Phosphorus `🝁` **U+1F741** | `🩁` U+1FA41 |
 | Oxygen `🜊` **U+1F70A** | `🌊` U+1F30A |
 
-**This is not a GEOMETRY data bug.** Trust the wire payload (or a direct SQL/`elements` read). Do not open “emoji cleanup” tickets against `elements` from a chat-regenerated JSON. Prefer asking the model to paste the **tool result unchanged**, or verify with codepoints (`U+1F70A`). Same hazard on Claude, ChatGPT, and other LLMs. Details: [FAQ](/faq#llm-unicode-glyphs).
+**This is not a GEOMETRY data bug.** Trust the live tool response. Prefer asking the model to paste the **tool result unchanged**, or verify with codepoints (`U+1F70A`). Same hazard on Claude, ChatGPT, and other LLMs. Details: [FAQ](/faq#llm-unicode-glyphs).
 
 ## What you get
 

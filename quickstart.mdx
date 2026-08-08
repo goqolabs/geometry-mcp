@@ -6,7 +6,7 @@ description: Connect GEOMETRY MCP in under a minute — paste the URL and ask a 
 Copy the connector URL, paste it into your MCP client, then ask a date question.
 
 <Note>
-  **Public beta.** The **data layer is stable** — same date, same JSON, every time. Tooling and quotas are still evolving. No account needed to try the free URL below; limits and plans live on [pricing](https://geometry.app/pricing/).
+  Same date, same JSON, every time. No account needed to try the free URL below; limits and plans live on [pricing](https://geometry.app/pricing/).
 </Note>
 
 <Tip>
@@ -20,7 +20,7 @@ Copy the connector URL, paste it into your MCP client, then ask a date question.
 | No key — try it now | `https://mcp.geometry.app/mcp` |
 | With your key | `https://mcp.geometry.app/mcp?key=YOUR_KEY` |
 
-The keyless URL is open during soft launch — no account. A key comes from any Developer Portal subscription (metered Free **or** paid), so a key is not the same as "paid"; append it as `?key=` — same shape for every client below. Details: [Where your key goes](/connect-and-keys).
+The keyless URL needs no account. A key comes from any Developer Portal subscription (metered Free **or** paid), so a key is not the same as "paid"; append it as `?key=` — same shape for every client below. Details: [Where your key goes](/connect-and-keys).
 
 ## Pick your client
 
@@ -55,7 +55,7 @@ Visual: [tutorial · Claude Code](https://geometry.app/tutorial/#claude-code).
 1. Open **Connectors** from the compose **+** menu (or **Settings → Connectors**)
 2. **+ Add connector** → **Add custom connector**
 3. Name: `geometry` · URL: `https://mcp.geometry.app/mcp`
-4. Leave **Advanced settings** empty (no OAuth for soft launch)
+4. Leave **Advanced settings** empty (no OAuth for the free URL)
 5. **Add** — then **toggle geometry ON** (easy to miss)
 6. Ask a date question in a conversation
 
@@ -63,7 +63,7 @@ Visual: [tutorial · Claude Desktop](https://geometry.app/tutorial/#claude).
 
 ## ChatGPT (Plugins)
 
-Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**). Soft launch: **Authentication = No Auth**.
+Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Connectors**). Free URL: **Authentication = No Auth**.
 
 <Warning>
   **Recommend Claude** for natural-language date questions. ChatGPT uses the same MCP URL — always **`@geometry Call get_…`**, and start a **new chat if the tool drops**. The data is stable. Prefer [Claude Desktop](#claude-desktop) or [Claude Code](#claude-code--cli) when teaching “just ask.”
@@ -98,7 +98,7 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 <a id="chatgpt-known-quirks"></a>
 
-### ChatGPT known quirks (observed July 2026)
+### ChatGPT known quirks
 
 | Quirk | What you’ll see | What to do |
 |-------|-----------------|------------|
@@ -120,9 +120,9 @@ Same remote MCP URL — ChatGPT calls these **Plugins** (Claude calls them **Con
 
 **Claude vs ChatGPT:** same MCP URL. **Claude (recommended)** — enable once, natural language, stay in the thread. **ChatGPT** — `@geometry Call get_…`; treat new-chat-as-needed as expected. Prefer Claude for demos and “just ask.”
 
-Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). Soft-launch URL needs no separate GEOMETRY account.
+Optional icon: PNG ≤10 KB from the [tutorial](https://geometry.app/tutorial/#chatgpt). The free URL needs no separate GEOMETRY account.
 
-Authority: [OpenAI — Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt).
+See also: [OpenAI — Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt).
 
 Visual: [tutorial · ChatGPT](https://geometry.app/tutorial/#chatgpt).
 

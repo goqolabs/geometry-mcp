@@ -11,7 +11,7 @@ GEOMETRY builder support is **self-serve by design**. Most questions already hav
 |---------|---------|
 | Connect any MCP client | [Quickstart](/quickstart) · [Install walkthroughs](https://geometry.app/tutorial/) |
 | Prefer Claude vs ChatGPT quirks | [FAQ](/faq) · [Quickstart → ChatGPT quirks](/quickstart#chatgpt-known-quirks) |
-| Soft-launch URL vs `?key=` | [Quickstart](/quickstart#with-or-without-a-key) · [Where your key goes](/connect-and-keys) |
+| Free URL vs `?key=` | [Quickstart](/quickstart#with-or-without-a-key) · [Where your key goes](/connect-and-keys) |
 | Rotate / roll a key after a leak | [Where your key goes](/connect-and-keys#rotation) — do this yourself |
 | Card, cancel, invoices | Stripe billing portal (from the Developer Portal) |
 | Change plan | Developer Portal → pricing |
@@ -27,7 +27,7 @@ Use your browser’s **search** on this site, or paste a docs page into your own
 
 | Plan | What you get |
 |------|----------------|
-| Soft launch / anonymous URL (no key) | **Self-serve only** — docs, [tutorial](https://geometry.app/tutorial/), site search |
+| Free / anonymous URL (no key) | **Self-serve only** — docs, [tutorial](https://geometry.app/tutorial/), site search |
 | Portal metered Free | **Self-serve only** — same docs + portal key/billing self-serve |
 | **Paid** (Starter and above) | Self-serve **plus** GitHub Issues for product / connectivity failures (no SLA yet) |
 
@@ -43,13 +43,13 @@ GitHub cannot block Issue creation by plan on a public repo. Policy: Issues from
 - Client cannot complete the MCP handshake after following [Quickstart](/quickstart)
 - A tool throws or returns malformed JSON (missing required keys, not “I expected a different sign”)
 
-**Do not open Issues for** zodiac / calendar disagreements — read [Astro wheels](/astro-wheels) and [When it covers → Calendar boundaries](/coverage#calendar-boundaries) first. The catalog and wheels are pre-validated; different systems are supposed to diverge.
+**Do not open Issues for** zodiac / calendar disagreements — read [Astro wheels](/astro-wheels) and [When it covers → Calendar boundaries](/coverage#calendar-boundaries) first. Different systems are supposed to diverge.
 
 **Open an issue (paid only):** [github.com/goqolabs/geometry-mcp/issues](https://github.com/goqolabs/geometry-mcp/issues/new) — title it clearly (e.g. `Bug: mcp.geometry.app returns 502 on get_date`) and include your portal account email in the body.
 
-### Soft launch note
+### Free / keyless note
 
-Until paid plans are live in the Developer Portal, treat the product as **self-serve**. Do not expect Issue replies for soft-launch / free use.
+Keyless and Free-plan use is **self-serve**. Do not expect Issue replies without a paid plan.
 
 ### Do not open Issues for
 
@@ -62,7 +62,7 @@ Until paid plans are live in the Developer Portal, treat the product as **self-s
 | Key rotation / normal revoke | [Where your key goes](/connect-and-keys) — Roll API Key |
 | Billing / plans | Stripe + Developer Portal |
 | Feature ideas / roadmap | Not a support channel right now |
-| Soft launch / Free plan how-to | Self-serve only — upgrade for human Issues |
+| Free / keyless how-to | Self-serve only — upgrade for human Issues |
 
 ## Make a bug report worth filing
 

@@ -75,9 +75,9 @@ Which year you get depends on where the date falls relative to that system's bou
 
 **Same payload, different family:** `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, and `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt` look identical — bare `YYYY-MM-DD` — but are GMT sky-event days, not civil year windows. If your dates land near a year boundary or disagree with a local almanac by one day, read [When it covers → Calendar boundaries](/coverage#calendar-boundaries) before reconciling against another library.
 
-### Named moons (`moon_phase` — Tool 2)
+### Named moons (`moon_phase` on [`get_date`](/tools/get-date))
 
-Deterministic flags and measures from stored AstroPixels/BOSS moon-phase anchors (**GMT**). No interpretive “meaning.” GEOMETRY follows standard NASA/almanac sky rules (full near perigee / apogee, calendar blue moons, total lunar eclipses) — it does **not** invent private slang math.
+Deterministic flags and measures from stored moon-phase anchors (**GMT**). No interpretive “meaning.” GEOMETRY follows standard NASA/almanac sky rules (full near perigee / apogee, calendar blue moons, total lunar eclipses).
 
 | Key | Type | Meaning |
 |---|---|---|
@@ -85,8 +85,8 @@ Deterministic flags and measures from stored AstroPixels/BOSS moon-phase anchors
 | `is_blue_moon_monthly` | bool | Second full moon in that Gregorian month (**GMT** `phase_dt`) |
 | `is_blue_moon_seasonal` | bool | Third of four full moons between consecutive solstice/equinox anchors |
 | `is_blood_moon` | bool | Full moon + total lunar eclipse (`eclipse_code` = `lt`) |
-| `is_supermoon` | bool | Full moon **and** `earth_moon_distance_km < 360000` (NASA near-perigee; common almanac numeric lock) |
-| `is_micromoon` | bool | Full moon **and** `earth_moon_distance_km > 405000` (near apogee; common almanac numeric lock) |
+| `is_supermoon` | bool | Full moon **and** `earth_moon_distance_km < 360000` (near perigee; common almanac threshold) |
+| `is_micromoon` | bool | Full moon **and** `earth_moon_distance_km > 405000` (near apogee; common almanac threshold) |
 | `earth_moon_distance_km` | int | Earth–Moon distance (km) on the phase-anchor day; `0` if not an anchor |
 | `apparent_diameter_arcmin` | number | Apparent lunar diameter (arcmin) on the phase-anchor day; `0` if not an anchor |
 | `phase_gmt` | string | Exact phase instant `HH:MM:SS` **GMT**; `"none"` if not an anchor |
@@ -97,11 +97,9 @@ Deterministic flags and measures from stored AstroPixels/BOSS moon-phase anchors
 | `prev_blood_moon_dt` | string | Nearest earlier blood moon (`lt`) date, or `"none"` |
 | `next_blood_moon_dt` | string | Nearest later blood moon date, or `"none"` |
 
-**Supermoon for builders:** NASA describes a full Moon near **perigee** (https://science.nasa.gov/moon/supermoons/). GEOMETRY encodes that with the standard published threshold **distance < 360000 km** (same numeric rule TimeandDate uses). Source column: BOSS `diameter_value` (km; smaller = closer). Apparent size: BOSS `degree_value` → `apparent_diameter_arcmin`. Boundary example: `2018-01-31` is blood + monthly blue at 360199 km → `is_supermoon: false`.
+**Supermoon:** NASA describes a full Moon near **perigee** ([NASA Science — Supermoons](https://science.nasa.gov/moon/supermoons/)). GEOMETRY uses the common published threshold **distance &lt; 360000 km**. Example: `2018-01-31` is blood + monthly blue at 360199 km → `is_supermoon: false`.
 
-**Micromoon:** full moon **and** distance **> 405000 km**.
-
-Not advertised: atmospheric “red moon,” folklore nicknames (quiet wire field only).
+**Micromoon:** full moon **and** distance **&gt; 405000 km**.
 
 ## Zero means "not applicable"
 

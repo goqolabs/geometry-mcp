@@ -19,7 +19,7 @@ No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you 
 Skip the Plugins **+** chip. Type **`@geometry`**, then **`Call get_date for …`** (name the tool). The **+** chip often vanishes mid-thread. If a later turn says the tool “isn’t available,” start a **new chat** (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
 
 **When should I start a new ChatGPT chat?**  
-When invoke fails or the tool drops mid-thread (list ≠ invoke). Observed July 2026: a thread that worked after one tool call can fail on a later ask. Geometry’s MCP URL and tools are fine; Claude usually keeps the connector in one thread. Ops rule: always `@geometry`; **new chat when invoke fails**. Prefer Claude for demos and non-technical “just ask.”
+When invoke fails or the tool drops mid-thread. Always `@geometry`; start a **new chat when invoke fails**. Prefer Claude for demos and natural-language asks.
 
 **ChatGPT called the wrong tool for moon / retrogrades / leap year?**  
 Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_date …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
@@ -41,7 +41,7 @@ Yes — `https://mcp.geometry.app/mcp`. **Claude** = recommended NL path. **Chat
 Yes as a **secondary** surface — same tools and JSON as MCP. Prefer MCP for AI clients. Branded `api.geometry.app` curl/SDK docs land later; see [HTTP API](/http-api).
 
 **Is the data stable?**  
-Yes. The date range and its systems are pre-computed and versioned — same call, same answer today, tomorrow, and next year. **Public beta** means tooling and quotas are still evolving, not that the data drifts. See [Quickstart](/quickstart).
+Yes. The date range and its systems are pre-computed and versioned — same call, same answer today, tomorrow, and next year. See [Quickstart](/quickstart).
 
 **What are the calendar boundaries?**  
 Published coverage is **1900-01-01** through **2100-12-31**. Within that window, bare `YYYY-MM-DD` fields can mean different things — cultural year starts vs GMT sky-event days. Full explanation: [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
@@ -53,7 +53,7 @@ A date-to-playing-card system (Cards of Destiny tradition) with a relationship /
 GEOMETRY serves the *data* of traditional symbolic systems — deterministically. Interpretation belongs to your product.
 
 **What does it cost?**  
-Soft launch: free MCP URL, no account. Metered Free and paid plans roll out with self-serve billing in the Developer Portal. Current prices are shown in the portal when plans are live.
+The free MCP URL needs no account. Metered Free and paid plans are in the Developer Portal — current prices show there when plans are live.
 
 **Where is my data stored? Do you see my users' questions?**  
 GEOMETRY is a read-only reference lookup. Calls take dates or names (tool inputs), return JSON, and are not used to build user profiles.
@@ -67,7 +67,7 @@ Ask something like: `give raw json for date 1985-03-15 card`. That tells the age
 <a id="llm-unicode-glyphs"></a>
 
 **Why does `alchemical_symbol` look like a water wave or garbage emoji in a JSON file my AI saved?**  
-The live tool is fine. Rare Unicode glyphs (especially U+1F700–U+1F77F alchemical symbols) often get **rewritten incorrectly** when an LLM regenerates or “exports” JSON from memory. Verified case (2026-07-28): live `get_name` returned phosphorus `🝁` (U+1F741) and oxygen `🜊` (U+1F70A); a chat-saved copy flipped those to `U+1FA41` and `🌊` (U+1F30A). Cards, cipher sums, element names, and atomic numbers in that same file still matched the engine.
+The live tool is fine. Rare Unicode glyphs (especially U+1F700–U+1F77F alchemical symbols) often get **rewritten incorrectly** when an LLM regenerates or “exports” JSON from memory. Example: live `get_name` returned phosphorus `🝁` (U+1F741) and oxygen `🜊` (U+1F70A); a chat-saved copy flipped those to lookalike codepoints / emoji. Cards, cipher sums, element names, and atomic numbers in that same file can still match.
 
 **What to trust:** the live MCP/HTTP tool response — not a hand-rewritten chat artifact. **What stays reliable in those copies:** ordinary text and numbers. **What to double-check:** glyph fields (`alchemical_symbol`, and any other rare symbols). Ask the model to paste the tool output **without rewriting**, or check codepoints. See [`get_name`](/tools/get-name#warning--rare-unicode-glyphs-in-chat-copies).
 
@@ -84,7 +84,7 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Was that date a blue moon / blood moon / supermoon / micromoon?**  
-Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** from AstroPixels/BOSS anchors (GMT) — not interpretive meaning. GEOMETRY does **not** invent moon slang; it applies the same standard sky rules builders already use from NASA and almanacs.
+Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** (GMT anchors) — not interpretive meaning. Flags follow standard NASA/almanac sky rules.
 
 **Where are the karmic cards and planetary spreads?**  
 On the Cosmic card under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: `sun` = the Cosmic card, then moon … rahu, midheaven, phoenix). Same blocks nest under wire keys `birth_card_a` / `birth_card_b` on [`get_compatibility`](/tools/get-compatibility).
@@ -107,9 +107,9 @@ No — they are the **same card**. The date’s Cosmic face is also the Life car
 | `phase_gmt` | Exact phase instant as `HH:MM:SS` **GMT**; `"none"` if not an anchor |
 | `prev_*` / `next_*` | Nearest earlier/later **monthly blue** or **blood** dates (`"none"` at catalog edges) |
 
-**Supermoon (NASA + standard numeric lock):** NASA describes a supermoon as a **full Moon near perigee** (closest approach in the elliptical orbit) — not an official IAU term, but the concept is standard ([NASA Science — Supermoons](https://science.nasa.gov/moon/supermoons/)). GEOMETRY does the same thing: full-moon day **and** distance under the widely published almanac threshold **&lt; 360 000 km** (same numeric rule TimeandDate publishes). We are **not** inventing a private formula — one repeatable answer for builders. Boundary honesty: **2018-01-31** is blood + monthly blue at **360 199 km**, so `is_supermoon` is **false** under that lock (media often still branded it “super”).
+**Supermoon:** NASA describes a supermoon as a **full Moon near perigee** ([NASA Science — Supermoons](https://science.nasa.gov/moon/supermoons/)). GEOMETRY uses full-moon day **and** distance **&lt; 360 000 km**. Example: **2018-01-31** is blood + monthly blue at **360 199 km**, so `is_supermoon` is **false**.
 
-**Micromoon:** the far-side twin — full moon **and** distance **&gt; 405 000 km** (near apogee; same threshold family as TimeandDate).
+**Micromoon:** full moon **and** distance **&gt; 405 000 km** (near apogee).
 
 Blue moon is a calendar label, not a color. Blood moon here means **total lunar eclipse** only (not dust/haze). Month bucketing uses the same GMT civil day as other sky-event dates.
 
@@ -119,7 +119,7 @@ Blue moon is a calendar label, not a color. Blood moon here means **total lunar 
 GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. **`sidereal_iau`** and **`sidereal_true`** both use unequal widths that follow the sky; GEOMETRY recommends **`sidereal_true`** when you need a default. Full table: [Astro wheels](/astro-wheels).
 
 **How do I get help?**  
-Start at **[Support](/support)** — docs and portal first. **Human GitHub Issues are for paid plans only.** Soft launch and Free stay self-serve. Billing → Stripe customer portal.
+Start at **[Support](/support)** — docs and portal first. **Human GitHub Issues are for paid plans only.** Free / keyless use is self-serve. Billing → Stripe customer portal.
 
 **Company?**  
 [Goqo Labs](https://goqo.com) · product [geometry.app](https://geometry.app) · builders: self-serve docs  
