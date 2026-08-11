@@ -1,28 +1,62 @@
-# GEOMETRY MCP (public docs source)
+# GEOMETRY MCP
 
-GEOMETRY unifies time. Humans build systems of cycles — calendars, seasons, moons, the turning sky — to make meaning out of their days. GEOMETRY turns those cycles into one deterministic model: same question, same answer, same bytes, every time. Shipped to builders as JSON their models can rely on.
+Deterministic temporal reference data for AI builders — calendars, seasons, moon phases, planetary retrogrades, and traditional symbolic systems as stable JSON over [Model Context Protocol](https://modelcontextprotocol.io/).
 
-**Live site:** [docs.geometry.app](https://docs.geometry.app) · **MCP:** `https://mcp.geometry.app/mcp` · **Product:** [geometry.app](https://geometry.app) · **Company:** [Goqo Labs](https://goqo.com)
+**Same date → same bytes, every time.** No hallucinated dates. No wallet connect. No seed phrases.
 
-This repository powers Mintlify. It contains **public documentation only** — not engine source, schema, or internal design docs.
+| | |
+|---|---|
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+| **Docs** | [docs.geometry.app](https://docs.geometry.app) |
+| **Product** | [geometry.app](https://geometry.app) |
+| **Pricing** | [geometry.app/pricing](https://geometry.app/pricing/) |
+| **Company** | [Goqo Labs](https://goqo.com) · GitHub org [`goqolabs`](https://github.com/goqolabs) |
 
-## Connect
+This repository hosts **public Mintlify documentation** for GEOMETRY MCP. It is **not** the engine source, schema, or internal design docs.
+
+## Try it (no account)
+
+Paste the branded URL into your MCP client:
 
 ```
 https://mcp.geometry.app/mcp
 ```
 
-Works in Claude Desktop, ChatGPT (`@geometry`), Cursor, VS Code, and other MCP clients. See [Quickstart](https://docs.geometry.app/quickstart).
+| Client | Auth |
+|--------|------|
+| Claude Desktop / Claude Code | Custom connector · plain URL |
+| ChatGPT Plugins | Server URL · **Authentication = No Auth** (not OAuth) |
+| Cursor / VS Code | HTTP MCP · plain URL |
+
+Install walkthroughs: [geometry.app/tutorial](https://geometry.app/tutorial/) · [Quickstart](https://docs.geometry.app/quickstart).
+
+Limits apply on the free try path — see [pricing](https://geometry.app/pricing/).
+
+## Builders (Free / Starter key)
+
+For a stable sandbox quota or paid volume, subscribe in the Developer Portal, then append your key:
+
+```
+https://mcp.geometry.app/mcp?key=YOUR_KEY
+```
+
+Same tools and fields on every plan — you pay for volume, not features. Details: [Connect & keys](https://docs.geometry.app/connect-and-keys) · [Pricing](https://geometry.app/pricing/).
+
+**Never** paste `zpka_…` keys into GitHub Issues or public chats.
 
 ## Tools
 
-- [get_date](https://docs.geometry.app/tools/get-date)
-- [get_compatibility](https://docs.geometry.app/tools/get-compatibility)
-- [get_name](https://docs.geometry.app/tools/get-name)
+| Tool | Docs |
+|------|------|
+| `get_date` | [Date identity JSON](https://docs.geometry.app/tools/get-date) |
+| `get_compatibility` | [Two-date compatibility](https://docs.geometry.app/tools/get-compatibility) |
+| `get_name` | [Name → cosmic cards](https://docs.geometry.app/tools/get-name) |
+
+Coverage focus: **1900–2100**. Ask examples: “What’s the birth card for 1985-03-15?” · “How compatible are 1990-05-14 and 1985-11-02?”
 
 ## Support
 
-[docs.geometry.app/support](https://docs.geometry.app/support) · [Issues](https://github.com/goqolabs/geometry-mcp/issues) (paid plans; never paste `zpka_` keys)
+[docs.geometry.app/support](https://docs.geometry.app/support) · [GitHub Issues](https://github.com/goqolabs/geometry-mcp/issues) (paid plans)
 
 ## License
 
