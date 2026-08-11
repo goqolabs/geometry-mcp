@@ -1,5 +1,7 @@
 # GEOMETRY MCP
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+
 Deterministic temporal reference data for AI builders — calendars, seasons, moon phases, planetary retrogrades, and traditional symbolic systems as stable JSON over [Model Context Protocol](https://modelcontextprotocol.io/).
 
 **Same date → same bytes, every time.** No hallucinated dates. No wallet connect. No seed phrases.
@@ -11,6 +13,7 @@ Deterministic temporal reference data for AI builders — calendars, seasons, mo
 | **Product** | [geometry.app](https://geometry.app) |
 | **Pricing** | [geometry.app/pricing](https://geometry.app/pricing/) |
 | **Company** | [Goqo Labs](https://goqo.com) · GitHub org [`goqolabs`](https://github.com/goqolabs) |
+| **Glama** | [Connector listing](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry) |
 
 This repository hosts **public Mintlify documentation** for GEOMETRY MCP. It is **not** the engine source, schema, or internal design docs.
 
@@ -27,6 +30,32 @@ https://mcp.geometry.app/mcp
 | Claude Desktop / Claude Code | Custom connector · plain URL |
 | ChatGPT Plugins | Server URL · **Authentication = No Auth** (not OAuth) |
 | Cursor / VS Code | HTTP MCP · plain URL |
+
+### Cursor / VS Code (`mcp.json`)
+
+No Auth try:
+
+```json
+{
+  "mcpServers": {
+    "geometry": {
+      "url": "https://mcp.geometry.app/mcp"
+    }
+  }
+}
+```
+
+Builders with a portal key (never commit a real `zpka_`):
+
+```json
+{
+  "mcpServers": {
+    "geometry": {
+      "url": "https://mcp.geometry.app/mcp?key=YOUR_KEY"
+    }
+  }
+}
+```
 
 Install walkthroughs: [geometry.app/tutorial](https://geometry.app/tutorial/) · [Quickstart](https://docs.geometry.app/quickstart).
 
@@ -60,4 +89,6 @@ Coverage focus: **1900–2100**. Ask examples: “What’s the birth card for 19
 
 ## License
 
-See [LICENSE](./LICENSE). Product and engine remain proprietary.
+See [LICENSE](./LICENSE).
+
+The MIT license applies to the documentation in this repository only. The GEOMETRY engine, schema, and hosted service are proprietary and are not included here.
