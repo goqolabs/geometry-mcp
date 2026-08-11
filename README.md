@@ -1,6 +1,7 @@
 # GEOMETRY MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Glama Connector](https://img.shields.io/badge/Glama-Connector-00C853)](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry)
 
 Deterministic temporal reference data for AI builders — calendars, seasons, moon phases, planetary retrogrades, and traditional symbolic systems as stable JSON over [Model Context Protocol](https://modelcontextprotocol.io/).
 
