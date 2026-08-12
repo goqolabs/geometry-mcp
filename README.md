@@ -16,7 +16,7 @@ This repository is the **public docs + listing face** for the hosted GEOMETRY MC
 | **Product** | [geometry.app](https://geometry.app) |
 | **Pricing** | [geometry.app/pricing](https://geometry.app/pricing/) |
 | **Company** | [Goqo Labs](https://goqo.com) · GitHub org [`goqolabs`](https://github.com/goqolabs) |
-| **Glama** | [Connector listing](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry) |
+| **Glama** | [Connector listing](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry) · [namespace search](https://glama.ai/mcp/connectors?query=namespace%3Aapp.geometry.mcp) |
 
 **Namespaces:** Glama listing id `app.geometry.mcp` ≠ Official MCP Registry name `io.github.goqolabs/geometry-mcp`. Connect URL is always `https://mcp.geometry.app/mcp`.
 
