@@ -13,7 +13,7 @@ tag: Production
 One date in → the **Cosmic card** for that date plus layered systems: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
 
 <Info>
-  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, Cosmic card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year` from `date_dim`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
+  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, Cosmic card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
 </Info>
 
 <Info>
@@ -384,7 +384,7 @@ Weekday planetary ruler ships on **`get_date`** when `temporal_context.payload_s
 
 | Field | Meaning |
 |-------|---------|
-| `day_of_week` | PostgreSQL DOW — `0` Sunday … `6` Saturday |
+| `day_of_week` | Weekday number — `0` Sunday … `6` Saturday |
 | `ruling_planet` / `planet_no` / `planet_symbol` | Classical weekday planet |
 | `roman` / `greek` | Planet name in those traditions |
 | `norse.day_name` / `norse.deity` | Old Norse weekday name + deity |
