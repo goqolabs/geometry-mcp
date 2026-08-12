@@ -69,7 +69,7 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Lati
 
 ## Example — Shohei Ohtani (abbrev)
 
-Live shape abbreviated: **full** name only · **7 of ~100** Latin ciphers · matching `cipher_legend` rows. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-08-11**.
+Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all six `is_primary` + `qaballa` + `agrippa`) · matching `cipher_legend` rows. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-08-11**.
 
 ```json
 {
@@ -109,6 +109,22 @@ Live shape abbreviated: **full** name only · **7 of ~100** Latin ciphers · mat
       "number_range": "1-9"
     },
     {
+      "cipher_no": 51,
+      "cipher_name": "reverse_ordinal",
+      "cipher_group": "modern",
+      "is_primary": true,
+      "is_common": true,
+      "number_range": "1-26"
+    },
+    {
+      "cipher_no": 65,
+      "cipher_name": "reverse_reduction",
+      "cipher_group": "modern",
+      "is_primary": true,
+      "is_common": true,
+      "number_range": "1-9"
+    },
+    {
       "cipher_no": 17,
       "cipher_name": "qaballa",
       "cipher_group": "modern",
@@ -117,20 +133,12 @@ Live shape abbreviated: **full** name only · **7 of ~100** Latin ciphers · mat
       "number_range": "1-800"
     },
     {
-      "cipher_no": 18,
-      "cipher_name": "satanic",
-      "cipher_group": "esoteric",
+      "cipher_no": 32,
+      "cipher_name": "agrippa",
+      "cipher_group": "latin",
       "is_primary": false,
       "is_common": true,
-      "number_range": "36-61"
-    },
-    {
-      "cipher_no": 23,
-      "cipher_name": "primes",
-      "cipher_group": "esoteric",
-      "is_primary": false,
-      "is_common": true,
-      "number_range": "2-101"
+      "number_range": "1-900"
     }
   ],
   "words": [
@@ -155,9 +163,10 @@ Live shape abbreviated: **full** name only · **7 of ~100** Latin ciphers · mat
         { "cipher_no": 27, "raw_sum": 49 },
         { "cipher_no": 48, "raw_sum": 131 },
         { "cipher_no": 42, "raw_sum": 68 },
+        { "cipher_no": 51, "raw_sum": 193 },
+        { "cipher_no": 65, "raw_sum": 58 },
         { "cipher_no": 17, "raw_sum": 518 },
-        { "cipher_no": 18, "raw_sum": 551 },
-        { "cipher_no": 23, "raw_sum": 391 }
+        { "cipher_no": 32, "raw_sum": 378 }
       ]
     }
   ]
