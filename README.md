@@ -7,6 +7,8 @@ Deterministic temporal reference data for AI builders — calendars, seasons, mo
 
 **Same date → same bytes, every time.** No hallucinated dates. No wallet connect. No seed phrases.
 
+This repository is the **public docs + listing face** for the hosted GEOMETRY MCP server. It is **not** the engine source, schema, or internal design docs.
+
 | | |
 |---|---|
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
@@ -16,7 +18,13 @@ Deterministic temporal reference data for AI builders — calendars, seasons, mo
 | **Company** | [Goqo Labs](https://goqo.com) · GitHub org [`goqolabs`](https://github.com/goqolabs) |
 | **Glama** | [Connector listing](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry) |
 
-This repository hosts **public Mintlify documentation** for GEOMETRY MCP. It is **not** the engine source, schema, or internal design docs.
+**Namespaces:** Glama listing id `app.geometry.mcp` ≠ Official MCP Registry name `io.github.goqolabs/geometry-mcp`. Connect URL is always `https://mcp.geometry.app/mcp`.
+
+### Repo layout
+
+- `docs/` — Mintlify pages (MDX, tools, `llms.txt`)
+- `docs/docs.json` — Mintlify config (content root = `/docs`)
+- `logo/` — brand assets at repo root (favicon + light/dark)
 
 ## Try it (no account)
 
@@ -76,11 +84,11 @@ Same tools and fields on every plan — you pay for volume, not features. Detail
 
 ## Tools
 
-| Tool | Docs |
-|------|------|
-| `get_date` | [Date identity JSON](https://docs.geometry.app/tools/get-date) |
-| `get_compatibility` | [Two-date compatibility](https://docs.geometry.app/tools/get-compatibility) |
-| `get_name` | [Name → cosmic cards](https://docs.geometry.app/tools/get-name) |
+| Tool | Purpose | Docs |
+|------|---------|------|
+| `get_date` | One date → identity JSON | [get-date](https://docs.geometry.app/tools/get-date) |
+| `get_compatibility` | Two dates → compatibility | [get-compatibility](https://docs.geometry.app/tools/get-compatibility) |
+| `get_name` | Name text → cosmic cards | [get-name](https://docs.geometry.app/tools/get-name) |
 
 Coverage focus: **1900–2100**. Ask examples: “What’s the birth card for 1985-03-15?” · “How compatible are 1990-05-14 and 1985-11-02?”
 
