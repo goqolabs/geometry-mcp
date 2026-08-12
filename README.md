@@ -86,9 +86,9 @@ Same tools and fields on every plan — you pay for volume, not features. Detail
 
 | Tool | Purpose | Docs |
 |------|---------|------|
-| `get_date` | One date → identity JSON | [get-date](https://docs.geometry.app/tools/get-date) |
-| `get_compatibility` | Two dates → compatibility | [get-compatibility](https://docs.geometry.app/tools/get-compatibility) |
-| `get_name` | Name text → cosmic cards | [get-name](https://docs.geometry.app/tools/get-name) |
+| `get_date` | One date → identity JSON | [Date identity JSON](https://docs.geometry.app/tools/get-date) |
+| `get_compatibility` | Two dates → compatibility | [Two-date compatibility](https://docs.geometry.app/tools/get-compatibility) |
+| `get_name` | Name text → cosmic cards | [Name → cosmic cards](https://docs.geometry.app/tools/get-name) |
 
 Coverage focus: **1900–2100**. Ask examples: “What’s the birth card for 1985-03-15?” · “How compatible are 1990-05-14 and 1985-11-02?”
 
