@@ -3,6 +3,8 @@ title: Why deterministic
 description: LLMs guess dates. GEOMETRY looks them up — same call, same JSON.
 ---
 
+**No live ephemeris. The answers already exist.**
+
 Ask a plain LLM what moon phase fell on a date, or what was retrograde, and you often get a confident guess — sometimes different the next time you ask. GEOMETRY replaces the guess with a **lookup**: sky dates computed offline with the standard **Swiss Ephemeris** ([pyswisseph](https://github.com/astrorigin/pyswisseph)), stored once, returned identically on every call. Details: [When it covers](/coverage).
 
 | | |

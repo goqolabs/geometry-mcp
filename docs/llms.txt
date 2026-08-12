@@ -15,7 +15,7 @@ Use this URL only in install instructions.
 - [Install walkthrough](https://geometry.app/tutorial/): Animated installs for every client above on geometry.app
 - [FAQ](https://docs.geometry.app/faq.md): Prefer Claude · ChatGPT `@geometry` + new chat if tool drops · tool routing
 - [Where your key goes](https://docs.geometry.app/connect-and-keys.md): `?key=` URL form, rotate, cancel
-- [Why deterministic](https://docs.geometry.app/why-deterministic.md): Same call → same JSON
+- [Why deterministic](https://docs.geometry.app/why-deterministic.md): Same call → same JSON — pre-computed lookup, no live ephemeris
 - [What you get](https://docs.geometry.app/payload-shapes.md): The tools, field counts, payload conventions, and repeating shapes
 - [get_date](https://docs.geometry.app/tools/get-date.md): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility.md): Two-date compatibility score (Production)

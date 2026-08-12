@@ -5,7 +5,7 @@ description: Deterministic date & name reference data over MCP — Cosmic cards,
 
 # GEOMETRY
 
-Deterministic reference data for date- and name-keyed questions. Same input -> same JSON. GEOMETRY returns structured data; interpretation belongs to the host app.
+Deterministic reference data for date- and name-keyed questions. Same input -> same JSON — answers are pre-computed lookups, not a live ephemeris run. GEOMETRY returns structured data; interpretation belongs to the host app.
 
 ## Connect
 
