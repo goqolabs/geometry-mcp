@@ -13,16 +13,10 @@ Retrieval-Augmented Generation — an AI pattern that fetches facts from a tool 
 No. Paste `https://mcp.geometry.app/mcp` and ask. Plans and keys apply when you want a metered Free plan or paid tier — see [Where your key goes](/connect-and-keys).
 
 **Which AI client should I use?**  
-**Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions. Enable Geometry once; Claude usually stays in-thread and picks the right tool. **ChatGPT works** on the same URL — use `@geometry Call get_…`, and start a **new chat if the tool drops** (see below). Cursor / Codex / VS Code are fine for builders who already live there.
+**Prefer Claude** (Claude Code or Claude Desktop) for natural-language questions — enable Geometry once and it stays in-thread. **ChatGPT** works on the same URL but needs `@geometry Call get_…` and a new chat if the tool drops — see [ChatGPT quirks](/quickstart#chatgpt-known-quirks). Cursor / Codex / VS Code are fine if you already work there.
 
-**ChatGPT installed geometry — why won’t it use the tool?**  
-Skip the Plugins **+** chip. Type **`@geometry`**, then **`Call get_date for …`** (name the tool). The **+** chip often vanishes mid-thread. If a later turn says the tool “isn’t available,” start a **new chat** (not a GEOMETRY outage). Claude does not need `@` after one enable. Full steps + quirk table: [Quickstart → ChatGPT](/quickstart#chatgpt-plugins) · [known quirks](/quickstart#chatgpt-known-quirks).
-
-**When should I start a new ChatGPT chat?**  
-When invoke fails or the tool drops mid-thread. Always `@geometry`; start a **new chat when invoke fails**. Prefer Claude for demos and natural-language asks.
-
-**ChatGPT called the wrong tool for moon / retrogrades / leap year?**  
-Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Prefer a **new chat** and `@geometry Call get_date …`. Routing: [Quickstart → Then ask your AI](/quickstart#then-ask-your-ai).
+**ChatGPT won't call the tool, drops it, or picks the wrong one?**  
+Type **`@geometry Call get_date for …`** — name the tool; the Plugins **+** chip is unreliable and often vanishes. If a later turn says the tool "isn't available," start a **new chat** (normal ChatGPT behavior, not a GEOMETRY outage). Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, `day_ruler`). Claude does not need `@` after one enable. Full quirk table: [Quickstart → ChatGPT quirks](/quickstart#chatgpt-known-quirks).
 
 **Which tool for which question?**  
 
@@ -33,9 +27,6 @@ Use **`get_date`** for any single-date fact (moon, season, Rx, `calendar_meta`, 
 | Weekday planetary ruler (`day_ruler`) | [`get_date`](/tools/get-date#day-ruler) |
 | Two dates | [`get_compatibility`](/tools/get-compatibility) |
 | Name → cards | [`get_name`](/tools/get-name) |
-
-**Claude vs ChatGPT — same MCP URL?**  
-Yes — `https://mcp.geometry.app/mcp`. **Claude** = recommended NL path. **ChatGPT** = supported — use `@geometry Call get_…`, and a **new chat if the tool drops**. See [Quickstart](/quickstart).
 
 **Is there a REST / HTTP API?**  
 Yes as a **secondary** surface — same tools and JSON as MCP. Prefer MCP for AI clients. Branded `api.geometry.app` curl/SDK docs land later; see [HTTP API](/http-api).
@@ -87,7 +78,7 @@ Offline with the **Swiss Ephemeris** Python stack, then stored as lookups. Reque
 Usually a timezone difference. GEOMETRY publishes the GMT day; a local almanac may use local time. Local dates differ roughly `offset ÷ 24` of the time — about a third of the time at UTC+8 or UTC−8. Convert in your app if you need local dates. See [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Was that date a blue moon / blood moon / supermoon / micromoon?**  
-Ask [`get_date`](/tools/get-date) for the date and read `moon_phase`. These are **deterministic calendar / ephemeris facts** (GMT anchors) — not interpretive meaning. Flags follow standard NASA/almanac sky rules.
+Call [`get_date`](/tools/get-date) and read `moon_phase`. These are **deterministic** GMT calendar / ephemeris facts following standard NASA / almanac rules — not interpretation. Full flag reference (`is_supermoon`, `is_blood_moon`, distance thresholds, prev/next neighbors): [Field glossary → Named moons](/field-glossary#named-moons). ("Wolf moon" is just January's full moon — a calendar nickname, not a product flag.)
 
 **Where are the karmic cards and planetary spreads?**  
 On [`get_date`](/tools/get-date): under `cosmic.karma` (source = past, spirit = future) and `cosmic.planetary_spread` (14 Life-spread slots: `sun` = the Cosmic card, then moon … rahu, midheaven, phoenix). On [`get_compatibility`](/tools/get-compatibility): same blocks for **Cosmic card A** and **Cosmic card B** — path `….cosmic.karma` / `….cosmic.planetary_spread` on each side’s date profile (inputs `date_a` / `date_b`).
@@ -98,27 +89,7 @@ JSON object keys are unordered. Every slot has **`spread_pos`** (1–14). Sort a
 **Is the Sun card different from the Cosmic card / Life card?**  
 No. **Cosmic card = birth card = life card = sun card** — one card. Live JSON may list those aliases under `cosmic.also_called` and `planetary_spread.sun`.
 
-| Flag / field | Meaning |
-|---|---|
-| `is_blue_moon_monthly` | Second **full moon** in the same Gregorian month (GMT day) |
-| `is_blue_moon_seasonal` | Third of four full moons in one astronomical season (solstice/equinox interval) |
-| `is_blood_moon` | Full moon with a **total lunar eclipse** (`eclipse_code: "lt"`) |
-| `is_supermoon` | Full moon near perigee — Earth–Moon distance **&lt; 360 000 km** |
-| `is_micromoon` | Full moon near apogee — Earth–Moon distance **&gt; 405 000 km** |
-| `earth_moon_distance_km` | Distance (km) on that phase day; `0` if not a moon-phase anchor |
-| `apparent_diameter_arcmin` | Apparent lunar diameter (arcminutes); `0` if not an anchor |
-| `phase_gmt` | Exact phase instant as `HH:MM:SS` **GMT**; `"none"` if not an anchor |
-| `prev_*` / `next_*` | Nearest earlier/later **monthly blue** or **blood** dates (`"none"` at catalog edges) |
-
-**Supermoon:** NASA describes a supermoon as a **full Moon near perigee** ([NASA Science — Supermoons](https://science.nasa.gov/moon/supermoons/)). GEOMETRY uses full-moon day **and** distance **&lt; 360 000 km**. Example: **2018-01-31** is blood + monthly blue at **360 199 km**, so `is_supermoon` is **false**.
-
-**Micromoon:** full moon **and** distance **&gt; 405 000 km** (near apogee).
-
-Blue moon is a calendar label, not a color. Blood moon here means **total lunar eclipse** only (not dust/haze). Month bucketing uses the same GMT civil day as other sky-event dates.
-
-**“Wolf moon”?** January’s full moon. Agents can say that from the calendar; it is not a featured product flag.
-
-**Why doesn’t my sign match another app?**  
+**Why doesn’t my sign match another app?**
 GEOMETRY returns **five** wheels under `astro_wheels` (tropical, Vedic rasi, Fagan-Bradley, sidereal IAU, true sidereal). They can disagree on the same date — that is by design, not a bug. Match the wheel your source uses. **`sidereal_iau`** and **`sidereal_true`** both use unequal widths that follow the sky; GEOMETRY recommends **`sidereal_true`** when you need a default. Full table: [Astro wheels](/astro-wheels).
 
 **How do I get help?**  

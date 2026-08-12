@@ -71,13 +71,13 @@ The `lunar`, `yearly`, and `calendar_years` blocks carry cultural year numbers �
 
 These are **tradition numbers**, safe to display: Hebrew `5787` is the anno mundi year, Vedic `1948` is Shaka Samvat, Persian `1405` is the Solar Hijri year.
 
-Which year you get depends on where the date falls relative to that system's boundary — and those boundaries are **not all in the same timezone**. Chinese and Vietnamese use CST, Vedic uses IST, Hebrew and Dreamspell are timezone-neutral, and Persian uses GMT rather than Iran's Tehran-local rule.
+Which year you get depends on where the date falls relative to each system's own boundary — and those boundaries sit in different civil timezones. The full per-system table (Chinese/Vietnamese CST, Vedic IST, Hebrew/Dreamspell neutral, Persian GMT) lives in [When it covers → Calendar boundaries](/coverage#calendar-boundaries).
 
 **Same payload, different family:** `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, and `retrogrades_active.retro_start_dt` / `retro_end_dt` / `cazimi_dt` look identical — bare `YYYY-MM-DD` — but are GMT sky-event days, not civil year windows. If your dates land near a year boundary or disagree with a local almanac by one day, read [When it covers → Calendar boundaries](/coverage#calendar-boundaries) before reconciling against another library.
 
-### Named moons (`moon_phase` on [`get_date`](/tools/get-date))
+### Named moons {#named-moons}
 
-Deterministic flags and measures from stored moon-phase anchors (**GMT**). No interpretive “meaning.” GEOMETRY follows standard NASA/almanac sky rules (full near perigee / apogee, calendar blue moons, total lunar eclipses).
+Deterministic flags and measures from stored `moon_phase` anchors on [`get_date`](/tools/get-date) (**GMT**). No interpretive meaning.
 
 | Key | Type | Meaning |
 |---|---|---|

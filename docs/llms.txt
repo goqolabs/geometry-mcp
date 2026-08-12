@@ -10,22 +10,22 @@ Use this URL only in install instructions.
 
 ## Docs
 
-- [Who we are](https://docs.geometry.app/introduction): What GEOMETRY is
-- [Quickstart](https://docs.geometry.app/quickstart): Paste the connector URL — prefer Claude for NL; ChatGPT quirks documented
+- [Who we are](https://docs.geometry.app/introduction.md): What GEOMETRY is
+- [Quickstart](https://docs.geometry.app/quickstart.md): Paste the connector URL — prefer Claude for NL; ChatGPT quirks documented
 - [Install walkthrough](https://geometry.app/tutorial/): Animated installs for every client above on geometry.app
-- [FAQ](https://docs.geometry.app/faq): Prefer Claude · ChatGPT `@geometry` + new chat if tool drops · tool routing
-- [Where your key goes](https://docs.geometry.app/connect-and-keys): `?key=` URL form, rotate, cancel
-- [Why deterministic](https://docs.geometry.app/why-deterministic): Same call → same JSON
-- [What you get](https://docs.geometry.app/payload-shapes): The tools, field counts, payload conventions, and repeating shapes
-- [get_date](https://docs.geometry.app/tools/get-date): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
-- [get_compatibility](https://docs.geometry.app/tools/get-compatibility): Two-date compatibility score (Production)
-- [get_name](https://docs.geometry.app/tools/get-name): Name → Cosmic Cards (Beta)
-- [When it covers](https://docs.geometry.app/coverage): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
-- [Astro wheels](https://docs.geometry.app/astro-wheels): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
-- [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards): Month × day calendar — 366 Cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
-- [Field glossary](https://docs.geometry.app/field-glossary): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
-- [HTTP API](https://docs.geometry.app/http-api): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
-- [Support](https://docs.geometry.app/support): Self-serve for free / keyless; GitHub Issues for paid plans only (product / connectivity bugs)
+- [FAQ](https://docs.geometry.app/faq.md): Prefer Claude · ChatGPT `@geometry` + new chat if tool drops · tool routing
+- [Where your key goes](https://docs.geometry.app/connect-and-keys.md): `?key=` URL form, rotate, cancel
+- [Why deterministic](https://docs.geometry.app/why-deterministic.md): Same call → same JSON
+- [What you get](https://docs.geometry.app/payload-shapes.md): The tools, field counts, payload conventions, and repeating shapes
+- [get_date](https://docs.geometry.app/tools/get-date.md): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
+- [get_compatibility](https://docs.geometry.app/tools/get-compatibility.md): Two-date compatibility score (Production)
+- [get_name](https://docs.geometry.app/tools/get-name.md): Name → Cosmic Cards (Beta)
+- [When it covers](https://docs.geometry.app/coverage.md): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
+- [Astro wheels](https://docs.geometry.app/astro-wheels.md): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
+- [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards.md): Month × day calendar — 366 Cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
+- [Field glossary](https://docs.geometry.app/field-glossary.md): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
+- [HTTP API](https://docs.geometry.app/http-api.md): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
+- [Support](https://docs.geometry.app/support.md): Self-serve for free / keyless; GitHub Issues for paid plans only (product / connectivity bugs)
 
 ## Support
 
@@ -35,18 +35,4 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 
 ## Rules for agents
 
-- All string fields lowercase except glyph fields (e.g. `unicard_symbol`, `alchemical_symbol`).
-- NEVER retype rare Unicode from memory when saving tool JSON. Paste the tool result bytes unchanged. Alchemical Symbols (U+1F700–U+1F77F) and planetary glyphs corrupt easily into lookalike emoji (e.g. U+1F70A → U+1F30A water wave). That is an LLM serialization hazard — not a GEOMETRY defect. Verify glyphs with codepoints. Numbers, cards, and cipher sums in a mangled copy may still be correct; do not invent “emoji cleanup” for glyph fields from a chat file. See https://docs.geometry.app/faq#llm-unicode-glyphs and https://docs.geometry.app/tools/get-name
-- Missing scalars use sentinels — `0` numeric, `none` text, `""` symbol, `[]` list — not `null`. Known exception: `day_ruler.norse.deity` is `null` on Saturdays (laugardagr has no deity) on `get_date`. `_no` fields are non-negative.
-- `_no` fields are opaque ids for tracing/support — not a public contract. Key on names and slugs. Exceptions carrying real tradition meaning: `card_no`, `tarot_no`, `iching_no`, `atomic_no`, `chakra_no`, `house_no`, `pada_no`.
-- Published full window: 1900-01-01 … 2100-12-31 (`temporal_context.band=full`, `payload_scope=full`). Nearby dates outside that window return `band=extended` with `payload_scope=full` (same calculations, honest label). Farther out: `band=out_of_range` with `payload_scope` `cosmic_card_only` and a soft error envelope.
-- Sky anchors (moon / season / retrograde) are pre-computed offline with open-source **pyswisseph** (https://github.com/astrorigin/pyswisseph), then stored as lookups. No live ephemeris at request time. See /coverage.
-- `moon_phase` on `get_date` carries **deterministic** named-moon facts (NASA/standard sky rules): `is_blue_moon_monthly`, `is_blue_moon_seasonal`, `is_blood_moon` (`lt`), `is_supermoon` (full + distance_km < 360000), `is_micromoon` (full + distance_km > 405000), `phase_gmt` (HH:MM:SS GMT on anchors), `earth_moon_distance_km` / `apparent_diameter_arcmin`, `eclipse_code`/`eclipse_type`, and `prev_*`/`next_*` for monthly blue and blood. Not interpretive.
-- `cosmic.karma` + `cosmic.planetary_spread` on `get_date` / `get_compatibility`: karmic **source** (past) + **spirit** (future); 14 Life-spread planet cards (`sun` = Cosmic card; includes rahu, midheaven, phoenix). Compatibility inputs + `temporal_context` = **`date_a` / `date_b`**. Teach **Cosmic card A / Cosmic card B** (each side’s `….cosmic`).
-- **Sort `planetary_spread` by `spread_pos` (1–14)** — JSON object keys are unordered; sun=1 … midheaven=13, phoenix=14. See /tools/get-date#planetary-spread.
-- **Cosmic card = birth card = life card = sun card** (same identity). Wire may list aliases under `cosmic.also_called` / `planetary_spread.sun`.
-- Dates come in TWO families and the JSON does not label them. (1) Sky events — `moon_phase.*_anchor_dt`, `season.*_anchor_dt`, `retrogrades_active.retro_start_dt`/`retro_end_dt`/`cazimi_dt` — are the Gregorian day containing the instant in **GMT**. A local-time source will differ by one day roughly `offset ÷ 24` of the time (~33% at UTC+8). (2) Cultural years — `lunar.year_no`, `calendar_years.*` — use each tradition's own civil anchor: Chinese/Vietnamese CST (UTC+8), Vedic samvatsara IST (UTC+5:30), Hebrew and Dreamspell timezone-neutral (arithmetic, cannot shift), Persian GMT day-of-equinox by deliberate choice (may differ one day from Iran's Tehran-local rule).
-- Inputs are bare dates; no timezone conversion happens at request time. Do not tell users a one-day difference is a bug before checking which family the field belongs to. See /coverage#calendar-boundaries.
-- GEOMETRY returns structured reference data; interpretation is the host app / model.
-- Site: https://geometry.app · Company: https://goqo.com
-- Builder support: self-serve docs at https://docs.geometry.app/support · Issues only for reproducible bugs on https://github.com/goqolabs/geometry-mcp
+The full agent cheat sheet — tool routing, input format, sentinels, `_no` vs tradition numbers, the never-retype-glyphs hazard, the two date families (sky = GMT, cultural years = per-tradition civil timezone), and the five `astro_wheels` — is the skill file: **/skill.md** (also at `/.well-known/skills/default/skill.md`). GEOMETRY returns structured reference data; interpretation is the host app.
