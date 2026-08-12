@@ -35,7 +35,7 @@ body:
     attributes:
       label: Date(s) used (if any)
       description: YYYY-MM-DD
-      placeholder: 1985-03-15
+      placeholder: "1985-03-15"
   - type: textarea
     id: expected
     attributes:
