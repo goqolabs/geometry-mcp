@@ -193,7 +193,7 @@ When an LLM **retypes or “saves” JSON into a chat file**, it often **substit
 ## What you get
 
 - Top-level `cipher_legend[]` once — **~100 active Latin ciphers** (`script_type = latin` and `is_active`; count can move slightly as the catalog grows)
-- `words[]` — one entry per whitespace-separated word plus a `"full"` aggregate
+- `words[]` — one entry per whitespace-separated word plus a `"full"` aggregate. Array length varies with the name (1 word → 2 entries; 3 words → 4); use your language’s array length (e.g. JavaScript `words.length`) — there is no separate `word_count` field.
 - Each word / full: Francis Bacon `card{}`, `arcs{}`, `archetype{}`, legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), and `ciphers[]` of `{ cipher_no, raw_sum }` — join sums to the legend by `cipher_no`
 - **41** (`francis_bacon`) drives the cosmic `card{}`; **27** (`chaldean`) drives `periodic{}` / alchemical wrap
 
