@@ -1,8 +1,11 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
+  - name: Support (self-serve first)
+    url: https://docs.geometry.app/support
+    about: Docs, install, and when GitHub Issues are for paid plans
+  - name: Connect and keys
+    url: https://docs.geometry.app/connect-and-keys
+    about: Rotate a leaked key in the Developer Portal — never paste zpka_ here
   - name: Docs
     url: https://docs.geometry.app
-    about: Install, tools, and teaching examples
-  - name: Product site
-    url: https://geometry.app
-    about: Marketing / install overview
+    about: Tools, coverage, and teaching examples

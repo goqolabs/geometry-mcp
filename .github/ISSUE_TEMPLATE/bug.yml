@@ -1,20 +1,30 @@
-name: Bug report
-description: Suspected wrong data or broken MCP behavior
+name: Paid product bug
+description: Gateway or tool failure on a paid plan (not zodiac disagreements)
 title: "[bug] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Include enough to reproduce. Do **not** paste a live `zpka_` API key.
+        Human Issues are for **paid (Starter+) product / connectivity failures**.
+        Free / keyless use is self-serve — see [Support](https://docs.geometry.app/support).
+
+        Do **not** paste a live `zpka_` key. Zodiac / calendar disagreements belong on [Astro wheels](https://docs.geometry.app/astro-wheels), not here.
+  - type: input
+    id: portal-email
+    attributes:
+      label: Developer Portal account email
+      description: The email on your Stripe / portal subscription (never the raw key)
+    validations:
+      required: true
   - type: dropdown
     id: tool
     attributes:
-      label: Tool
+      label: Tool / surface
       options:
-        - get_card_for_birthdate
+        - get_date
         - get_compatibility
-        - get_day_card
+        - get_name
         - Install / connect
         - Docs only
         - Other
@@ -23,7 +33,7 @@ body:
   - type: input
     id: dates
     attributes:
-      label: Date(s) used
+      label: Date(s) used (if any)
       description: YYYY-MM-DD
       placeholder: 1985-03-15
   - type: textarea
