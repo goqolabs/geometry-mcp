@@ -35,4 +35,4 @@ Leaked key: roll in Developer Portal — https://docs.geometry.app/connect-and-k
 
 ## Rules for agents
 
-The full agent cheat sheet — tool routing, input format, sentinels, `_no` vs tradition numbers, the never-retype-glyphs hazard, the two date families (sky = GMT, cultural years = per-tradition civil timezone), and the five `astro_wheels` — is the skill file: **/skill.md** (also at `/.well-known/skills/default/skill.md`). GEOMETRY returns structured reference data; interpretation is the host app.
+The full agent cheat sheet — tool routing, input format, sentinels, `_no` vs tradition numbers, the never-retype-glyphs hazard, the two date families (sky = GMT, cultural years = per-tradition civil timezone), and the five `astro_wheels` — is the skill file: **/skill.md** (also at `/.well-known/skills/geometry/skill.md`). GEOMETRY returns structured reference data; interpretation is the host app.
