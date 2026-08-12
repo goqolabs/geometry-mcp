@@ -192,9 +192,25 @@ When an LLM **retypes or “saves” JSON into a chat file**, it often **substit
 
 ## What you get
 
-- Top-level `cipher_legend[]` (Latin suite metadata once)
-- `words[]` — one entry per word plus a `"full"` aggregate
-- Each word: Francis Bacon `card{}`, `arcs{}`, `archetype{}`, legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), `ciphers[]`
+- Top-level `cipher_legend[]` once — **~100 active Latin ciphers** (`script_type = latin` and `is_active`; count can move slightly as the catalog grows)
+- `words[]` — one entry per whitespace-separated word plus a `"full"` aggregate
+- Each word / full: Francis Bacon `card{}`, `arcs{}`, `archetype{}`, legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), and `ciphers[]` of `{ cipher_no, raw_sum }` — join sums to the legend by `cipher_no`
+- **41** (`francis_bacon`) drives the cosmic `card{}`; **27** (`chaldean`) drives `periodic{}` / alchemical wrap
+
+Live payloads always include the **full** legend + matching `ciphers[]` arrays. Docs samples (KEEL shape · Ohtani abbrev) are abbreviated on purpose — do **not** paste a static 100-row table here; trust `cipher_legend` from the tool.
+
+### Popular ciphers (sample of eight)
+
+| `cipher_no` | `cipher_name` | Role in docs / product |
+|-------------|---------------|------------------------|
+| 41 | `francis_bacon` | Cosmic card engine (`is_primary`) |
+| 27 | `chaldean` | Periodic / alchemical lane (`is_primary`) |
+| 48 | `english_ordinal` | A=1…Z=26 (`is_primary`) |
+| 42 | `pythagorean` | 1–9 reduction (`is_primary`) |
+| 51 | `reverse_ordinal` | Z=1…A=26 (`is_primary`) |
+| 65 | `reverse_reduction` | Reverse reduced 1–9 (`is_primary`) |
+| 17 | `qaballa` | Common English isopsephy-style |
+| 32 | `agrippa` | Classic Latin historical |
 
 ## Related
 
