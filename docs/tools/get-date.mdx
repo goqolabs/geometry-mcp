@@ -13,7 +13,7 @@ tag: Production
 One date in → the **Cosmic card** for that date plus layered systems: tarot (minor + **dual major** Greer and Tarot School), medicine, Lenormand, runes, ogham, geomancy, sidereal wheels, moon phase, season, retrogrades, **weekday planetary ruler** (`day_ruler`), **karmic source/spirit**, **14 planetary Life-spread cards**, and more.
 
 <Info>
-  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, Cosmic card, **weekday / leap year** (`calendar_meta.weekday`, `is_leap_year`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
+  **When to use:** any **single** Gregorian date for moon phase (incl. blue / blood / supermoon flags, Earth–Moon distance, prev/next blue or blood dates), season / equinox–solstice anchors, classical retrogrades (`retrogrades_active`), calendars, lunar year, Cosmic card, **weekday / leap year / day-of-year / days remaining** (`calendar_meta`), **weekday planetary ruler** (`day_ruler` — Roman / Greek / Norse), or full date identity. **Not** for two-person scoring → [`get_compatibility`](/tools/get-compatibility). **Not** for name text → [`get_name`](/tools/get-name).
 </Info>
 
 <Info>
@@ -24,7 +24,7 @@ One date in → the **Cosmic card** for that date plus layered systems: tarot (m
 |---|---|
 | **Input** | `date` (YYYY-MM-DD) |
 | **Range** | `1900-01-01` … `2100-12-31` → `temporal_context.band=full` + `payload_scope=full`; nearby outside that window (e.g. 1850, 2101) → `band=extended` + `payload_scope=full`; farther out → `band=out_of_range` with Cosmic-card-only scope |
-| **Version** | `v2.8.1.0` |
+| **Version** | `v2.8.1.1` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask (summary):**
@@ -46,7 +46,7 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
 ```json
 {
   "tool": "get_date",
-  "tool_version": "v2.8.1.0",
+  "tool_version": "v2.8.1.1",
   "engine_chain": "v0.66",
   "date": "1985-03-15",
   "cosmic": {
@@ -274,8 +274,16 @@ The sample below is a **shortened teaching excerpt** (values from a live call). 
     "vedic_saka": { "year": 1906 }
   },
   "calendar_meta": {
+    "year_no": 1985,
+    "month_no": 3,
+    "day_no": 15,
     "weekday": "friday",
+    "weekday_no": 5,
     "week_no": 11,
+    "day_of_year": 74,
+    "days_elapsed": 74,
+    "days_remaining": 291,
+    "days_in_year": 365,
     "is_weekend": false,
     "is_leap_year": false
   },
