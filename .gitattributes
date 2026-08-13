@@ -1,0 +1,5 @@
+# Git hooks are extensionless bash scripts -- CRLF here fails with "bad interpreter".
+.githooks/* text eol=lf
+
+# Shell scripts must use LF so GitHub Actions (Linux/bash) never sees CRLF-induced errors.
+*.sh text eol=lf

@@ -1,0 +1,26 @@
+title = "GEOMETRY gitleaks config"
+
+[extend]
+useDefault = true
+
+# Zuplo gateway API key -- e.g. ?key=zpka_...  (not in the default ruleset)
+[[rules]]
+id = "zuplo-gateway-key"
+description = "Zuplo gateway API key (zpka_)"
+regex = '''zpka_[0-9A-Za-z]{16,}'''
+keywords = ["zpka_"]
+
+[allowlist]
+description = "Genuine placeholders + example env files only (do NOT allowlist real config paths)"
+regexTarget = "match"
+regexes = [
+  '''zpka_(example|placeholder|your[_-]?key|redacted|x{6,})''',
+  # Docs placeholders carry EXAMPLE inside the token (e.g. ?key=zpka_...EXAMPLE) --
+  # apps/docs/connect-and-keys.mdx, docs/ui/ui_content.md. A real random key will not
+  # contain the literal word, so this stays tight.
+  '''(?i)zpka_[0-9A-Za-z]*example[0-9A-Za-z]*''',
+]
+paths = [
+  '''.*\.example$''',
+  '''.*\.example\..*''',
+]

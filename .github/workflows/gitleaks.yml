@@ -1,0 +1,35 @@
+# Secret scanning -- MIT gitleaks binary, no license key, no gitleaks-action wrapper.
+# Separate from sql-migrations.yml on purpose: a secret finding must fail loudly on its
+# own check, and this must run on every push/PR regardless of the SQL path filters.
+#
+# Accepted non-secrets (Wikipedia hCaptcha site keys in scraped baseball HTML; the
+# publishable Supabase anon key in a deleted MCP config backup) are fingerprinted in
+# .gitleaksignore -- see docs/bugs/audit.md Appendix. Never add a real key there.
+name: gitleaks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0            # full history, so it scans all commits in the range
+
+      - name: Install gitleaks (MIT binary)
+        env:
+          GITLEAKS_VERSION: "8.30.1"
+        run: |
+          # Resolve the linux asset from the release rather than hardcoding its name
+          URL=$(curl -sSL "https://api.github.com/repos/gitleaks/gitleaks/releases/tags/v${GITLEAKS_VERSION}" \
+                | grep -o 'https://[^"]*_linux_x64\.tar\.gz' | head -1)
+          test -n "$URL" || { echo "no linux_x64 asset for v${GITLEAKS_VERSION}"; exit 1; }
+          curl -sSL "$URL" -o gl.tar.gz && tar -xzf gl.tar.gz gitleaks && sudo mv gitleaks /usr/local/bin/
+          gitleaks version
+
+      - name: Scan
+        run: gitleaks git . --config .gitleaks.toml --redact

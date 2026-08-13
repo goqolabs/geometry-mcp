@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Block commits that introduce secrets. Runs under Git-for-Windows bash on Windows.
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "gitleaks not on PATH -- install: winget install gitleaks"; exit 1
+fi
+# `protect --staged` was deprecated in v8.19; this is the current equivalent:
+git diff --cached | gitleaks stdin --redact --config .gitleaks.toml
