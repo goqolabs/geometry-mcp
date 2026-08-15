@@ -317,8 +317,12 @@ When an LLM **retypes or “saves” JSON into a chat file**, it often **substit
 - Top-level `numerology{}` is a copy of the **full** row’s numerology (the whole-name Expression / Soul Urge / Personality)
 - **41** (`francis_bacon`) drives the cosmic `card{}`; **42** (`pythagorean`) drives Expression (all letters), Soul Urge (vowels A E I O U; Y is always a consonant), and Personality (consonants); **27** (`chaldean`) drives `periodic{}` / alchemical wrap
 - Path numbers keep **11 / 22 / 33** when the raw sum is exactly those values; every other total reduces to a single digit. `*_base` is the single-digit collapse of a kept 11/22/33. Some books stop at a first-pass 11; this engine’s number is the fully reduced path (same rule as Life Path on [`get_date`](/tools/get-date)). Builders who want that first-pass reading compute it from `{stem}_sum`.
-- Expression is also called Destiny. Soul Urge is also called hearts desire. On master paths **11 / 22 / 33**, `also_called` also carries the vernacular title (`master_illuminator` / `master_builder` / `master_transmutator`). These aliases exist on `get_name` only — not on date tools.
+- Expression `also_called` may include `destiny`; Soul Urge may include `hearts_desire`. On master paths **11 / 22 / 33**, `also_called` also carries the vernacular title (`master_illuminator` / `master_builder` / `master_transmutator`). These aliases exist on `get_name` only — not on date tools.
 - **Chakra** and **I Ching** on each word use the same **card** helpers as [`get_date`](/tools/get-date) (element / unirank / atomic bridge) — not a Chaldean “mod 7” or “mod 64” from the name sum.
+
+<Info>
+  **Three “destiny”s — do not mix them.** (1) Expression `also_called: destiny` = numerology **path** alias. (2) `card.also_called: destiny_card` = role alias — “this word’s Francis Bacon cosmic card” (every first / last / full slot). (3) Cosmic **`arcs.label` = `destiny`** exists on **exactly one** card: **10♠** (Ten of Spades). Unrelated to (1)–(2). Ten-rank D-pattern labels are delight · doctrine · dynasty · destiny — only spades gets `destiny`. (Six of Spades is the fate card — label `providence`, title `fate & destiny` — not the destiny label.)
+</Info>
 
 Live payloads always include the **full** legend + matching `ciphers[]` arrays. Docs samples (KEEL · Ohtani · ROBERT) are abbreviated on purpose — do **not** paste a static 100-row table here; use `cipher_legend` from the tool.
 
