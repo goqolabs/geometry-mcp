@@ -10,17 +10,17 @@ tag: Beta
   **Status:** Beta.
 </Info>
 
-A name string in → per-word and full-name **Francis Bacon** cosmic cards, Latin cipher suite sums, Chaldean `periodic{}`, and multi-cipher `periodic_set{}` (chaldean / ordinal / reduction).
+A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pythagorean Expression / Soul Urge / Personality, Latin cipher suite sums, Chaldean `periodic{}`, and multi-cipher `periodic_set{}` (chaldean / ordinal / reduction). Each word also carries the same card siblings as [`get_date`](/tools/get-date) (tarot, medicine, iching, chakra, lenormand, karma, planetary spread).
 
 <Info>
-  **When to use:** a person or word **name** only. Not for dates, moon phase, season, or retrogrades — those are [`get_date`](/tools/get-date).
+  **When to use:** a person or word **name** only. Not for dates, moon phase, season, retrogrades, or Life Path — those are [`get_date`](/tools/get-date).
 </Info>
 
 | | |
 |---|---|
 | **Input** | `full_name` (text) — whitespace-separated words |
 | **Cipher** | **41** (`francis_bacon`) → `card_no` 1–52; other Latin ciphers as raw sums |
-| **Version** | `v2.3.0` |
+| **Version** | `v2.4.1` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
@@ -35,46 +35,117 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Lati
 
 > Decode Shohei Ohtani with get_name
 
+**Ask (master paths):**
+
+> Decode ROBERT with get_name
+
 ## Example response — KEEL
+
+Teaching excerpt (live **v2.4.1**). Full payloads also include card siblings (`karma`, `planetary_spread`, `medicine`, `tarot`, `iching`, `chakra`, `lenormand`) and the complete Latin `cipher_legend` — abbreviated here on purpose.
 
 ```json
 {
   "tool": "get_name",
-  "tool_version": "v2.3.0",
+  "tool_version": "v2.4.1",
   "engine_chain": "v0.66",
   "full_name": "KEEL",
+  "numerology": {
+    "expression": {
+      "expression_sum": 15,
+      "expression": 6,
+      "expression_base": 6,
+      "is_master_expression": false,
+      "expression_name": "nurturer",
+      "core_theme": "responsibility",
+      "keyword": "legacy",
+      "strength": "devotion",
+      "shadow": "perfectionism",
+      "also_called": ["destiny"]
+    },
+    "soul_urge": {
+      "soul_urge_sum": 10,
+      "soul_urge": 1,
+      "soul_urge_base": 1,
+      "is_master_soul_urge": false,
+      "soul_urge_name": "pioneer",
+      "core_theme": "independence",
+      "also_called": ["hearts_desire"]
+    },
+    "personality": {
+      "personality_sum": 5,
+      "personality": 5,
+      "personality_base": 5,
+      "is_master_personality": false,
+      "personality_name": "adventurer",
+      "core_theme": "freedom"
+    }
+  },
   "cipher_legend": ["… Latin suite metadata once (~100 active Latin ciphers) …"],
   "words": [
     {
+      "name_part": "word",
+      "name_role": "only",
       "label": "gold",
       "card": {
         "card_no": 33,
         "card_code": "7d",
         "card_name": "seven of diamonds",
         "tarot_no": 71,
-        "tarot_card_name": "seven of pentacles"
+        "tarot_card_name": "seven of pentacles",
+        "also_called": ["destiny_card"]
       },
       "arcs": { "core": "transmutation", "persona": "integrator" },
+      "numerology": "… same shape as top-level numerology for this row …",
       "periodic": "… Chaldean lane …",
       "periodic_set": "… chaldean / ordinal / reduction …",
       "ciphers": ["… raw_sum + cipher_no …"]
     },
     {
-      "label": "full",
-      "card": "… aggregate Francis Bacon card for the whole name …"
+      "name_part": "full",
+      "name_role": "full",
+      "card": "… aggregate Francis Bacon card for the whole name …",
+      "numerology": "… byte-identical to top-level numerology …"
     }
   ]
 }
 ```
 
+Top-level `numerology` is a copy of the **full** row’s numerology (whole-name Expression / Soul Urge / Personality).
+
 ## Example — Shohei Ohtani (abbrev)
 
-Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all six `is_primary` + `qaballa` + `agrippa`) · matching `cipher_legend` rows. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-08-11**.
+Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all six `is_primary` + `qaballa` + `agrippa`) · matching `cipher_legend` rows · slim `numerology`. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-08-14** (**v2.4.1**).
 
 ```json
 {
   "tool": "get_name",
+  "tool_version": "v2.4.1",
   "full_name": "SHOHEI OHTANI",
+  "numerology": {
+    "expression": {
+      "expression_sum": 68,
+      "expression": 5,
+      "expression_base": 5,
+      "is_master_expression": false,
+      "expression_name": "adventurer",
+      "also_called": ["destiny"]
+    },
+    "soul_urge": {
+      "soul_urge_sum": 36,
+      "soul_urge": 9,
+      "soul_urge_base": 9,
+      "is_master_soul_urge": false,
+      "soul_urge_name": "humanitarian",
+      "also_called": ["hearts_desire"]
+    },
+    "personality": {
+      "personality_sum": 32,
+      "personality": 5,
+      "personality_base": 5,
+      "is_master_personality": false,
+      "personality_name": "adventurer"
+    }
+  },
   "cipher_legend": [
     {
       "cipher_no": 41,
@@ -144,6 +215,7 @@ Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all s
   "words": [
     {
       "name_part": "full",
+      "name_role": "full",
       "word_name": "SHOHEI OHTANI",
       "card": {
         "card_no": 27,
@@ -152,6 +224,7 @@ Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all s
         "tarot_no": 65,
         "tarot_card_name": "ace of pentacles"
       },
+      "numerology": "… same object as top-level numerology …",
       "periodic": {
         "chaldean_sum": 49,
         "atomic_no": 49,
@@ -173,9 +246,55 @@ Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all s
 }
 ```
 
-`cipher_no` **41** (`francis_bacon`) drives the cosmic `card{}`. **27** (`chaldean`) drives `periodic{}` / alchemical wrap. The other rows are raw Latin suite sums — live payloads include the full **~100**-cipher legend + `ciphers[]`, not only this sample.
+`cipher_no` **41** (`francis_bacon`) drives the cosmic `card{}`. **27** (`chaldean`) drives `periodic{}` / alchemical wrap. **42** (`pythagorean`) drives Expression / Soul Urge / Personality. The other rows are raw Latin suite sums — live payloads include the full **~100**-cipher legend + `ciphers[]`, not only this sample.
 
-Live payloads also carry glyph fields on `periodic` (including `alchemical_symbol`). Prefer the live tool result for glyphs — see the Unicode warning above.
+Live payloads also carry glyph fields on `periodic` (including `alchemical_symbol`). Prefer the live tool result for glyphs — see the Unicode warning below.
+
+## Example — ROBERT (master paths)
+
+When a path raw sum is exactly **11**, **22**, or **33**, the path stays that master number, `is_master_*` is true, and `also_called` appends the vernacular title. Verified live **v2.4.1**.
+
+```json
+{
+  "tool": "get_name",
+  "tool_version": "v2.4.1",
+  "full_name": "ROBERT",
+  "numerology": {
+    "expression": {
+      "expression_sum": 33,
+      "expression": 33,
+      "expression_base": 6,
+      "is_master_expression": true,
+      "expression_name": "healer",
+      "also_called": ["destiny", "master_transmutator"]
+    },
+    "soul_urge": {
+      "soul_urge_sum": 11,
+      "soul_urge": 11,
+      "soul_urge_base": 2,
+      "is_master_soul_urge": true,
+      "soul_urge_name": "visionary",
+      "also_called": ["hearts_desire", "master_illuminator"]
+    },
+    "personality": {
+      "personality_sum": 22,
+      "personality": 22,
+      "personality_base": 4,
+      "is_master_personality": true,
+      "personality_name": "architect",
+      "also_called": ["master_builder"]
+    }
+  }
+}
+```
+
+| Path | Canonical `{stem}_name` | Title in `also_called` |
+|------|-------------------------|------------------------|
+| 11 | `visionary` | `master_illuminator` |
+| 22 | `architect` | `master_builder` |
+| 33 | `healer` | `master_transmutator` |
+
+Personality has no base alias — on masters it may be `[master_title]` only. Expression always keeps `destiny`; Soul Urge always keeps `hearts_desire`.
 
 ## Warning — rare Unicode glyphs in chat copies
 
@@ -194,10 +313,34 @@ When an LLM **retypes or “saves” JSON into a chat file**, it often **substit
 
 - Top-level `cipher_legend[]` once — **~100 active Latin ciphers** (`script_type = latin` and `is_active`; count can move slightly as the catalog grows)
 - `words[]` — one entry per whitespace-separated word plus a `"full"` aggregate. Array length varies with the name (1 word → 2 entries; 3 words → 4); use your language’s array length (e.g. JavaScript `words.length`).
-- Each word / full: Francis Bacon `card{}`, `arcs{}`, `archetype{}`, legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), and `ciphers[]` of `{ cipher_no, raw_sum }` — join sums to the legend by `cipher_no`
-- **41** (`francis_bacon`) drives the cosmic `card{}`; **27** (`chaldean`) drives `periodic{}` / alchemical wrap
+- Each word / full: Francis Bacon `card{}` (also called destiny card), `name_role` (`only` / `first` / `middle_N` / `last` / `full`), `arcs{}`, `archetype{}`, `numerology{}` (Expression / Soul Urge / Personality), legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), `ciphers[]` of `{ cipher_no, raw_sum }`, plus card siblings `karma` / `planetary_spread` / `medicine` / `tarot` / `iching` / `chakra` / `lenormand` — join cipher sums to the legend by `cipher_no`
+- Top-level `numerology{}` is a copy of the **full** row’s numerology (the whole-name Expression / Soul Urge / Personality)
+- **41** (`francis_bacon`) drives the cosmic `card{}`; **42** (`pythagorean`) drives Expression (all letters), Soul Urge (vowels A E I O U; Y is always a consonant), and Personality (consonants); **27** (`chaldean`) drives `periodic{}` / alchemical wrap
+- Path numbers keep **11 / 22 / 33** when the raw sum is exactly those values; every other total reduces to a single digit. `*_base` is the single-digit collapse of a kept 11/22/33. Some books stop at a first-pass 11; this engine’s number is the fully reduced path (same rule as Life Path on [`get_date`](/tools/get-date)). Builders who want that first-pass reading compute it from `{stem}_sum`.
+- Expression is also called Destiny. Soul Urge is also called hearts desire. On master paths **11 / 22 / 33**, `also_called` also carries the vernacular title (`master_illuminator` / `master_builder` / `master_transmutator`). These aliases exist on `get_name` only — not on date tools.
+- **Chakra** and **I Ching** on each word use the same **card** helpers as [`get_date`](/tools/get-date) (element / unirank / atomic bridge) — not a Chaldean “mod 7” or “mod 64” from the name sum.
 
-Live payloads always include the **full** legend + matching `ciphers[]` arrays. Docs samples (KEEL shape · Ohtani abbrev) are abbreviated on purpose — do **not** paste a static 100-row table here; use `cipher_legend` from the tool.
+Live payloads always include the **full** legend + matching `ciphers[]` arrays. Docs samples (KEEL · Ohtani · ROBERT) are abbreviated on purpose — do **not** paste a static 100-row table here; use `cipher_legend` from the tool.
+
+### Numerology fields (per stem)
+
+Stems: `expression` · `soul_urge` · `personality`.
+
+| Field | Meaning |
+|-------|---------|
+| `{stem}_sum` | Raw Pythagorean total (cipher **42**; Expression reuses the row’s `ciphers[]` entry) |
+| `{stem}` | Path number — keeps **11 / 22 / 33** when raw is exactly those; else single digit |
+| `{stem}_base` | Single-digit collapse of a kept master (11→2, 22→4, 33→6); else same as `{stem}` |
+| `is_master_{stem}` | `true` only when raw ∈ {11, 22, 33} |
+| `{stem}_name` | Canonical path name (`visionary` / `architect` / `healer` on masters) |
+| `core_theme` / `keyword` / `strength` / `shadow` | Meaning tokens for that path |
+| `also_called` | Present when there is at least one alias — see above |
+
+### Not on this tool
+
+<Info>
+  **Omissions (intentional):** no `is_money_*` (the money number **28** is a date / Life Path construct on [`get_date`](/tools/get-date) only). No `is_trad_master_*`. No date Life Path keys, Maturity, moon, season, retrogrades, or calendars. Use [`get_date`](/tools/get-date) for those.
+</Info>
 
 ### Popular ciphers (sample of eight)
 
@@ -206,7 +349,7 @@ Live payloads always include the **full** legend + matching `ciphers[]` arrays. 
 | 41 | `francis_bacon` | Cosmic card engine (`is_primary`) |
 | 27 | `chaldean` | Periodic / alchemical lane (`is_primary`) |
 | 48 | `english_ordinal` | A=1…Z=26 (`is_primary`) |
-| 42 | `pythagorean` | 1–9 reduction (`is_primary`) |
+| 42 | `pythagorean` | Expression / Soul Urge / Personality (`is_primary`) |
 | 51 | `reverse_ordinal` | Z=1…A=26 (`is_primary`) |
 | 65 | `reverse_reduction` | Reverse reduced 1–9 (`is_primary`) |
 | 17 | `qaballa` | Common English isopsephy-style |
@@ -214,5 +357,6 @@ Live payloads always include the **full** legend + matching `ciphers[]` arrays. 
 
 ## Related
 
-- [get_date](/tools/get-date) — date identity  
+- [get_date](/tools/get-date) — date identity (Life Path, money number 28, moon, Rx)  
 - [get_compatibility](/tools/get-compatibility) — two dates  
+- [What you get](/payload-shapes) — tool menu + repeating shapes  

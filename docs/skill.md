@@ -20,7 +20,7 @@ Deterministic reference data for date- and name-keyed questions. Same input -> s
 |---|---|---|
 | Any single-date fact — Cosmic card, moon, season, retrograde, calendars, weekday, leap year, `day_ruler` | `get_date` | Production |
 | Two dates — compatibility score + cross-wheel aspects | `get_compatibility` | Production |
-| A name -> Cosmic cards + Latin cipher suite | `get_name` | Beta |
+| A name -> Cosmic cards + Latin cipher suite + Expression / Soul Urge / Personality (no money / Life Path flags — those are `get_date`) | `get_name` | Beta |
 
 Inputs are a bare `YYYY-MM-DD` (or a name). Resolve natural language to a date before calling. There is no `full=true` flag — MCP/HTTP always returns the complete object.
 
