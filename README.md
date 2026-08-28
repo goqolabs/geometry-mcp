@@ -1,6 +1,7 @@
 # GEOMETRY MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Official MCP Registry](https://img.shields.io/badge/Official_MCP_Registry-listed-2563eb)](https://registry.modelcontextprotocol.io/?search=io.github.goqolabs/geometry-mcp)
 [![Glama Connector](https://img.shields.io/badge/Glama-Connector-00C853)](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry)
 
 Deterministic temporal reference data for AI builders — calendars, seasons, moon phases, planetary retrogrades, and traditional symbolic systems as stable JSON over [Model Context Protocol](https://modelcontextprotocol.io/).
@@ -16,6 +17,7 @@ This repository is the **public docs + listing face** for the hosted GEOMETRY MC
 | **Product** | [geometry.app](https://geometry.app) |
 | **Pricing** | [geometry.app/pricing](https://geometry.app/pricing/) |
 | **Company** | [Goqo Labs](https://goqo.com) · GitHub org [`goqolabs`](https://github.com/goqolabs) |
+| **Official Registry** | [`io.github.goqolabs/geometry-mcp`](https://registry.modelcontextprotocol.io/?search=io.github.goqolabs/geometry-mcp) |
 | **Glama** | [Connector listing](https://glama.ai/mcp/connectors/app.geometry.mcp/geometry) · [namespace search](https://glama.ai/mcp/connectors?query=namespace%3Aapp.geometry.mcp) |
 
 **Namespaces:** Glama listing id `app.geometry.mcp` ≠ Official MCP Registry name `io.github.goqolabs/geometry-mcp`. Connect URL is always `https://mcp.geometry.app/mcp`.
