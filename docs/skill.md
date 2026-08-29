@@ -10,7 +10,7 @@ Deterministic reference data for date- and name-keyed questions. Same input -> s
 ## Connect
 
 - MCP URL (the only URL to teach): `https://mcp.geometry.app/mcp`
-- With a key: `https://mcp.geometry.app/mcp?key=<zpka_...>`. A key comes from any Developer Portal plan (metered Free or paid) — a key is not the same as "paid". Checkout is Zuplo then Stripe — https://docs.geometry.app/billing
+- With a key: `https://mcp.geometry.app/mcp?key=<zpka_...>`. A key comes from any Developer Portal plan (metered Free or paid) — a key is not the same as "paid". Official portal `https://geometry-main-bf0a4d2.zuplo.site/pricing` then Stripe — https://docs.geometry.app/billing
 - Prefer Claude (Claude Code / Claude Desktop): enable once, then ask in natural language.
 - ChatGPT: type `@geometry Call get_date for ...` (name the tool). If the tool drops mid-thread, start a new chat — normal behavior, not an outage.
 
