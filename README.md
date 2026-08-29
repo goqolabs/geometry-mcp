@@ -80,7 +80,7 @@ For a stable sandbox quota or paid volume, subscribe in the Developer Portal, th
 https://mcp.geometry.app/mcp?key=YOUR_KEY
 ```
 
-Same tools and fields on every plan — you pay for volume, not features. Details: [Connect & keys](https://docs.geometry.app/connect-and-keys) · [Pricing](https://geometry.app/pricing/).
+Same tools and fields on every plan — you pay for volume, not features. Checkout is the Zuplo Developer Portal, then Stripe — [Billing](https://docs.geometry.app/billing) · [Connect & keys](https://docs.geometry.app/connect-and-keys) · [Pricing](https://geometry.app/pricing/).
 
 **Never** paste `zpka_…` keys into GitHub Issues or public chats.
 
