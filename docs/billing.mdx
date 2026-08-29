@@ -12,13 +12,28 @@ When you subscribe, you leave **geometry.app** on purpose. Keys and quotas come 
 ## Checkout path
 
 1. Open **[Pricing](https://geometry.app/pricing/)** (or follow an upgrade link after a quota `429`).
-2. **Upgrade** / **Get a Free sandbox key** opens the **Zuplo Developer Portal** (a `zuplo.site` host). Create the portal account, pick a plan, and subscribe.
+2. **Upgrade** / **Get a Free sandbox key** opens the **official Zuplo Developer Portal** (same URL as below). Create the portal account, pick a plan, and subscribe.
 3. **Stripe Checkout** collects the card. After pay, the portal shows your subscription and a raw key (`zpka_…`).
 4. Paste the key onto the branded MCP URL — [Where your key goes](/connect-and-keys). The tool URL stays `https://mcp.geometry.app/mcp` (never a `*.zuplo.app` MCP host).
+
+## Official Developer Portal
+
+This is the production checkout host. **geometry.app/pricing** Upgrade and Get a Free sandbox key open the same page. The hostname is assigned by Zuplo. It is the official portal, not a lookalike.
+
+```
+https://geometry-main-bf0a4d2.zuplo.site/pricing
+```
+
+[Open the official Developer Portal](https://geometry-main-bf0a4d2.zuplo.site/pricing)
+
+<Note>
+  `geometry-main-bf0a4d2.zuplo.site` is Zuplo's assigned Production Developer Portal. That vendor host is expected. It is **not** the MCP tool URL. Do not use `*.zuplo.app` for tools — that was a temporary gateway host. Tools stay at `https://mcp.geometry.app/mcp`.
+</Note>
 
 | Step | Who you see | What they do |
 |------|-------------|--------------|
 | Plan page | geometry.app | Explains Free vs Starter; starts checkout |
+| Official portal | `geometry-main-bf0a4d2.zuplo.site` | Zuplo Production Developer Portal (same URL Upgrade opens) |
 | Subscribe / key / usage | **Zuplo** | Developer portal, API keys, quotas, MCP gateway |
 | Card / invoices / cancel | **Stripe** | Payment and Stripe Customer Portal |
 
