@@ -16,7 +16,7 @@
     "groups": [
       {
         "group": "Get started",
-        "pages": ["quickstart", "introduction", "connect-and-keys"]
+        "pages": ["quickstart", "introduction", "connect-and-keys", "billing"]
       },
       {
         "group": "Tools",

@@ -1,0 +1,43 @@
+---
+title: Billing
+description: How checkout, keys, and invoices work — Zuplo Developer Portal, then Stripe.
+---
+
+When you subscribe, you leave **geometry.app** on purpose. Keys and quotas come from our **Zuplo** Developer Portal. Card checkout, invoices, and cancel run on **Stripe**. We do not store full payment card numbers.
+
+<Note>
+  This is the usual pattern for a hosted API: the product site explains the plan; a payment processor takes the card; a gateway issues the key. Same hop as [geometry.app/pricing](https://geometry.app/pricing/).
+</Note>
+
+## Checkout path
+
+1. Open **[Pricing](https://geometry.app/pricing/)** (or follow an upgrade link after a quota `429`).
+2. **Upgrade** / **Get a Free sandbox key** opens the **Zuplo Developer Portal** (a `zuplo.site` host). Create the portal account, pick a plan, and subscribe.
+3. **Stripe Checkout** collects the card. After pay, the portal shows your subscription and a raw key (`zpka_…`).
+4. Paste the key onto the branded MCP URL — [Where your key goes](/connect-and-keys). The tool URL stays `https://mcp.geometry.app/mcp` (never a `*.zuplo.app` MCP host).
+
+| Step | Who you see | What they do |
+|------|-------------|--------------|
+| Plan page | geometry.app | Explains Free vs Starter; starts checkout |
+| Subscribe / key / usage | **Zuplo** | Developer portal, API keys, quotas, MCP gateway |
+| Card / invoices / cancel | **Stripe** | Payment and Stripe Customer Portal |
+
+You still call tools at **`mcp.geometry.app`**. Zuplo sits in front as the gateway; Stripe never appears on the tool URL.
+
+## After you have a key
+
+How-to for `?key=`, rotation, and cancel lives on [Where your key goes](/connect-and-keys). Billing card issues stay in the **Stripe** portal (opened from the Developer Portal).
+
+## Lookups (not a public database)
+
+Tool answers are **hosted Postgres lookups**. Builders call MCP/HTTP **tools** only — there is no public SQL console and no table REST API.
+
+## Plans
+
+Same tools and fields on every tier. You pay for **volume**, not features. Current prices: [geometry.app/pricing](https://geometry.app/pricing/).
+
+## Related
+
+- [Where your key goes](/connect-and-keys) — paste `?key=`, roll a leak, cancel  
+- [Support](/support) — self-serve first; GitHub Issues for paid product bugs only  
+- [Privacy](https://geometry.app/privacy/) · [Terms](https://geometry.app/terms/) — named processors  
