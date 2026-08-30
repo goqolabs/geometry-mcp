@@ -28,6 +28,10 @@
         ]
       },
       {
+        "group": "Resources",
+        "pages": ["brand-assets"]
+      },
+      {
         "group": "Reference",
         "pages": ["why-deterministic", "coverage", "astro-wheels", "cosmic-day-cards", "field-glossary", "http-api", "support", "faq"]
       }

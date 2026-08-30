@@ -1,0 +1,87 @@
+---
+title: Brand assets
+description: Current GEOMETRY marks, legacy recognition, and official MCP identity.
+---
+
+# GEOMETRY brand assets
+
+Use these assets when you reference GEOMETRY in an integration, README, demo, or builder
+project. The current mark is the **hex + 7**. The former key-notch mark is shown below only
+so you can recognize older cached branding in an MCP client.
+
+<Tip>
+  The official hosted MCP URL is `https://mcp.geometry.app/mcp`. A logo alone is not proof
+  of an official connector.
+</Tip>
+
+## Current mark
+
+The current GEOMETRY mark is the soft pointy-top hex with a knockout **7**. Use the
+monochrome versions below when the surrounding product controls the color.
+
+<Columns cols={2}>
+  <Card title="Black on light" icon="sun">
+    ![Current GEOMETRY hex + 7 mark, black on light](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-light.svg)
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-light.svg)
+  </Card>
+  <Card title="White on dark" icon="moon">
+    ![Current GEOMETRY hex + 7 mark, white on dark](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-dark.svg)
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-dark.svg)
+  </Card>
+</Columns>
+
+**Recommended use:** use the black or white current mark for README attribution, app
+integrations, screenshots, and documentation. Do not redraw the mark or add a second
+symbol inside it.
+
+## Legacy mark: recognition only
+
+Some clients may still show the former key-notch mark. It is included here only to help
+you identify older cached branding. Do not use it for new integrations or new product
+surfaces.
+
+<Columns cols={2}>
+  <Card title="Legacy black" icon="archive">
+    ![Legacy GEOMETRY key-notch mark, black](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-key-light.svg)
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-key-light.svg)
+  </Card>
+  <Card title="Legacy white" icon="archive">
+    ![Legacy GEOMETRY key-notch mark, white](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-key-dark.svg)
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-key-dark.svg)
+  </Card>
+</Columns>
+
+<Note>
+  **If Claude shows the legacy mark:** this can be a stale favicon selected through external
+  favicon infrastructure. Claude and Google control their own refresh timing, so a live
+  website update cannot force an immediate connector-tile refresh. Disconnecting and
+  reconnecting the connector may refresh it. Verify the URL, not just the icon.
+</Note>
+
+## Favicon color policy
+
+The downloadable logo examples are intentionally black and white so the mark remains
+recognizable on any host surface. The docs favicon is a separate small-size asset and stays
+**indigo** (`#6E7CF6`) because color improves recognition in browser tabs and does not change
+the mark itself.
+
+Do not use the legacy mark as a current favicon, connector icon, or product logo. Do not
+assume that changing the docs favicon changes the Claude connector tile: Claude's current
+tile follows the `geometry.app` domain's external favicon crawl, not Mintlify.
+
+## Attribution
+
+You may use the current GEOMETRY mark to identify an integration with the public GEOMETRY
+MCP/API. Do not imply that GEOMETRY endorses your product, and do not use the mark as your
+own company or product identity.
+
+Official links:
+
+- [GEOMETRY](https://geometry.app)
+- [MCP quickstart](/quickstart)
+- [Support](/support)
+- [Public MCP URL](https://mcp.geometry.app/mcp)
