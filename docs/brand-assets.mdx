@@ -6,8 +6,8 @@ description: Current GEOMETRY marks, legacy recognition, and official MCP identi
 # GEOMETRY brand assets
 
 Use these assets when you reference GEOMETRY in an integration, README, demo, or builder
-project. The current mark is the **hex + 7**. The former key-notch mark is shown below only
-so you can recognize older cached branding in an MCP client.
+project. The current mark is the **walnut + 7**. Prior soft pointy hex + 7 and key-notch
+marks are shown below only so you can recognize older cached branding in an MCP client.
 
 <Tip>
   The official hosted MCP URL is `https://mcp.geometry.app/mcp`. A logo alone is not proof
@@ -16,20 +16,20 @@ so you can recognize older cached branding in an MCP client.
 
 ## Current mark
 
-The current GEOMETRY mark is the soft pointy-top hex with a knockout **7**. Use the
+The current GEOMETRY mark is the softer walnut hex with a knockout **7**. Use the
 monochrome versions below when the surrounding product controls the color.
 
 <Columns cols={2}>
   <Card title="Black on light" icon="sun">
     <div style={{ backgroundColor: "#f5f5f5", border: "1px solid #d1d5db", borderRadius: "12px", padding: "24px" }}>
-      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-light.svg" alt="Current GEOMETRY hex + 7 mark, black on light" style={{ width: "100%", display: "block" }} />
+      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-light.svg" alt="Current GEOMETRY walnut + 7 mark, black on light" style={{ width: "100%", display: "block" }} />
     </div>
 
     [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-light.svg)
   </Card>
   <Card title="White on dark" icon="moon">
     <div style={{ backgroundColor: "#111318", border: "1px solid #2a2f3a", borderRadius: "12px", padding: "24px" }}>
-      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-dark.svg" alt="Current GEOMETRY hex + 7 mark, white on dark" style={{ width: "100%", display: "block" }} />
+      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-dark.svg" alt="Current GEOMETRY walnut + 7 mark, white on dark" style={{ width: "100%", display: "block" }} />
     </div>
 
     [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/logo-dark.svg)
@@ -40,7 +40,29 @@ monochrome versions below when the surrounding product controls the color.
 integrations, screenshots, and documentation. Do not redraw the mark or add a second
 symbol inside it.
 
-## Legacy mark: recognition only
+## Prior mark: soft pointy hex + 7
+
+Some clients or older screenshots may still show the previous soft pointy-top hex + 7.
+It is included here only for recognition. Do not use it for new integrations.
+
+<Columns cols={2}>
+  <Card title="Prior black" icon="clock-rotate-left">
+    <div style={{ backgroundColor: "#f5f5f5", border: "1px solid #d1d5db", borderRadius: "12px", padding: "24px" }}>
+      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-hex-light.svg" alt="Prior GEOMETRY soft pointy hex + 7 mark, black" style={{ width: "100%", display: "block" }} />
+    </div>
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-hex-light.svg)
+  </Card>
+  <Card title="Prior white" icon="clock-rotate-left">
+    <div style={{ backgroundColor: "#111318", border: "1px solid #2a2f3a", borderRadius: "12px", padding: "24px" }}>
+      <img src="https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-hex-dark.svg" alt="Prior GEOMETRY soft pointy hex + 7 mark, white" style={{ width: "100%", display: "block" }} />
+    </div>
+
+    [Open SVG](https://raw.githubusercontent.com/goqolabs/geometry-mcp/main/logo/legacy/logo-hex-dark.svg)
+  </Card>
+</Columns>
+
+## Legacy mark: key-notch (recognition only)
 
 Some clients may still show the former key-notch mark. It is included here only to help
 you identify older cached branding. Do not use it for new integrations or new product
@@ -64,7 +86,7 @@ surfaces.
 </Columns>
 
 <Note>
-  **If Claude shows the legacy mark:** this can be a stale favicon selected through external
+  **If Claude shows an older mark:** this can be a stale favicon selected through external
   favicon infrastructure. Claude and Google control their own refresh timing, so a live
   website update cannot force an immediate connector-tile refresh. Disconnecting and
   reconnecting the connector may refresh it. Verify the URL, not just the icon.
@@ -77,8 +99,8 @@ recognizable on any host surface. The docs favicon is a separate small-size asse
 **indigo** (`#6E7CF6`) because color improves recognition in browser tabs and does not change
 the mark itself.
 
-Do not use the legacy mark as a current favicon, connector icon, or product logo. Do not
-assume that changing the docs favicon changes the Claude connector tile: Claude's current
+Do not use a prior or legacy mark as a current favicon, connector icon, or product logo. Do
+not assume that changing the docs favicon changes the Claude connector tile: Claude's current
 tile follows the `geometry.app` domain's external favicon crawl, not Mintlify.
 
 ## Attribution
