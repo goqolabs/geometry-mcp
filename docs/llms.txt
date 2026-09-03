@@ -20,7 +20,7 @@ Use this URL only in install instructions.
 - [What you get](https://docs.geometry.app/payload-shapes.md): The tools, field counts, payload conventions, and repeating shapes
 - [get_date](https://docs.geometry.app/tools/get-date.md): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility.md): Two-date compatibility score (Production)
-- [get_name](https://docs.geometry.app/tools/get-name.md): Name → Cosmic Cards (Beta)
+- [get_name](https://docs.geometry.app/tools/get-name.md): Name → Cosmic Cards (Production)
 - [When it covers](https://docs.geometry.app/coverage.md): Systems on the date range + calendar boundaries (two date families — sky events GMT; cultural years per tradition)
 - [Astro wheels](https://docs.geometry.app/astro-wheels.md): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards.md): Month × day calendar — 366 Cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
