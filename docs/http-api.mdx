@@ -1,20 +1,22 @@
 ---
 title: HTTP API
-description: Secondary surface — same tools and JSON over HTTP when you are not using MCP. Branded curl/SDK examples for api.geometry.app land here when that door is ready.
+description: Soft launch is MCP-only. Branded HTTP at api.geometry.app is deferred until a real non-MCP builder need; use MCP now.
 ---
 
-GEOMETRY’s **primary** surface for AI apps is **[MCP](/quickstart)** (`https://mcp.geometry.app/mcp`). Use that first.
+GEOMETRY’s **supported** surface for AI apps is **[MCP](/quickstart)** (`https://mcp.geometry.app/mcp`). Soft launch is **MCP-only**.
 
-**HTTP / REST** is the **secondary** door for apps, scripts, and pipelines that are not MCP-native. Same three tools, same JSON contracts — different transport.
+**HTTP / REST** remains a **parked secondary door** for apps, scripts, and pipelines that are not MCP-native. Same three tools and JSON contracts — different transport — when that door opens later.
 
 ## Status
 
 | Surface | Role | Today |
 |---------|------|--------|
-| **MCP** | Connectors in Claude, ChatGPT, Cursor, VS Code, and other MCP clients | Live — [Quickstart](/quickstart) |
-| **HTTP API** | JSON over HTTP for apps and scripts | Same tools as MCP; branded **`api.geometry.app`** routes and public curl examples coming soon |
+| **MCP** | Connectors in Claude, ChatGPT, Cursor, VS Code, and other MCP clients | **Live and supported** — [Quickstart](/quickstart) |
+| **HTTP API** | JSON over HTTP for apps and scripts | **Deferred** — branded **`api.geometry.app`** is reserved DNS only (no public routes yet). Not part of soft launch |
 
-When the branded API door is ready, this page will add curl examples, auth (`?key=`), and rate-limit notes — still pointing at the same tools:
+This page is kept so builders know the plan. It does **not** mean REST is available or cancelled — only that it is **not shipping now**.
+
+When a real non-MCP builder need appears, this page will add curl examples, auth (`?key=`), and rate-limit notes — still pointing at the same tools:
 
 - [`get_date`](/tools/get-date)
 - [`get_compatibility`](/tools/get-compatibility)
@@ -30,8 +32,8 @@ When the branded API door is ready, this page will add curl examples, auth (`?ke
 
 ## What to use now
 
-1. Prefer **MCP** if your host supports connectors (Claude, ChatGPT, Cursor, VS Code, …).
-2. If you need raw HTTP today, wait for the canonical `https://api.geometry.app/…` examples on this page — or use MCP until then.
+1. Use **MCP** — that is the live product door ([Quickstart](/quickstart)).
+2. Do **not** call or announce `https://api.geometry.app/…` yet — there is no public branded HTTP route to document.
 3. Questions about zodiac or calendar disagreement belong in [Astro wheels](/astro-wheels) / [FAQ](/faq) — not “API vs MCP.”
 
 ## Next

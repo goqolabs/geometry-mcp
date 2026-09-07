@@ -25,7 +25,7 @@ Use this URL only in install instructions.
 - [Astro wheels](https://docs.geometry.app/astro-wheels.md): Five sign systems + ecliptic degree spans — tropical · vedic_rasi · fagan_bradley · sidereal_iau · sidereal_true (disagreement across wheels is expected)
 - [Cosmic day cards](https://docs.geometry.app/cosmic-day-cards.md): Month × day calendar — 366 Cosmic faces (Feb 29 = 9♣, Dec 31 = W★)
 - [Field glossary](https://docs.geometry.app/field-glossary.md): `_no` fields — tradition vs catalog ids, `0`/`none` sentinels
-- [HTTP API](https://docs.geometry.app/http-api.md): Secondary surface — same tools over HTTP; MCP first; branded `api.geometry.app` curl docs later
+- [HTTP API](https://docs.geometry.app/http-api.md): Soft launch is MCP-only; branded `api.geometry.app` HTTP door deferred (not cancelled)
 - [Support](https://docs.geometry.app/support.md): Self-serve for free / keyless; GitHub Issues for paid plans only (product / connectivity bugs)
 
 ## Support
