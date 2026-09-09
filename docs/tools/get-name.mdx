@@ -10,7 +10,7 @@ tag: Production
   **Status:** Production.
 </Info>
 
-A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pythagorean Expression / Soul Urge / Personality, Latin cipher suite sums, Chaldean `periodic{}`, and multi-cipher `periodic_set{}` (chaldean / ordinal / reduction). Each word also carries the same card siblings as [`get_date`](/tools/get-date) (tarot, medicine, iching, chakra, lenormand, karma, planetary spread).
+A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pythagorean Expression / Soul Urge / Personality, Latin cipher suite sums, Chaldean `periodic{}`, and multi-cipher `periodic_set{}` (chaldean / ordinal / reduction). Each word also carries the same card siblings as [`get_date`](/tools/get-date) (tarot, medicine, iching, chakra, lenormand, karma, planetary spread). Live Path C is **v2.5.0** (inclusion / bookends / echoes / number lens).
 
 <Info>
   **When to use:** a person or word **name** only. Not for dates, moon phase, season, retrogrades, or Life Path — those are [`get_date`](/tools/get-date).
@@ -20,7 +20,7 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pyth
 |---|---|
 | **Input** | `full_name` (text) — whitespace-separated words |
 | **Cipher** | **41** (`francis_bacon`) → `card_no` 1–52; other Latin ciphers as raw sums |
-| **Version** | `v2.4.1` |
+| **Version** | `v2.5.0` |
 | **MCP URL** | `https://mcp.geometry.app/mcp` |
 
 **Ask:**
@@ -41,12 +41,12 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pyth
 
 ## Example response — KEEL
 
-Teaching excerpt (live **v2.4.1**). Full payloads also include card siblings (`karma`, `planetary_spread`, `medicine`, `tarot`, `iching`, `chakra`, `lenormand`) and the complete Latin `cipher_legend` — abbreviated here on purpose.
+Teaching excerpt (live **v2.5.0**). Full payloads also include card siblings (`karma`, `planetary_spread`, `medicine`, `tarot`, `iching`, `chakra`, `lenormand`), the complete Latin `cipher_legend`, and v2.5 full-name keys (`karmic_lessons`, `hidden_passion`, `cornerstone` / `capstone` / `first_vowel`, `echoes`) — abbreviated here on purpose.
 
 ```json
 {
   "tool": "get_name",
-  "tool_version": "v2.4.1",
+  "tool_version": "v2.5.0",
   "engine_chain": "v0.66",
   "full_name": "KEEL",
   "numerology": {
@@ -55,6 +55,14 @@ Teaching excerpt (live **v2.4.1**). Full payloads also include card siblings (`k
       "expression": 6,
       "expression_base": 6,
       "is_master_expression": false,
+      "is_karmic_debt": false,
+      "karmic_debt_no": 0,
+      "polarity": "yin",
+      "planet_name": "mercury",
+      "planet_no": 5,
+      "element_name": "earth",
+      "element_no": 1700,
+      "color": "indigo",
       "expression_name": "nurturer",
       "core_theme": "responsibility",
       "keyword": "legacy",
@@ -114,12 +122,12 @@ Top-level `numerology` is a copy of the **full** row’s numerology (whole-name 
 
 ## Example — Shohei Ohtani (abbrev)
 
-Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all six `is_primary` + `qaballa` + `agrippa`) · matching `cipher_legend` rows · slim `numerology`. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-08-14** (**v2.4.1**).
+Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all six `is_primary` + `qaballa` + `agrippa`) · matching `cipher_legend` rows · slim `numerology`. Per-word cards still return (SHOHEI · OHTANI · full). Verified live MCP **2026-09-09** (**v2.5.0**).
 
 ```json
 {
   "tool": "get_name",
-  "tool_version": "v2.4.1",
+  "tool_version": "v2.5.0",
   "full_name": "SHOHEI OHTANI",
   "numerology": {
     "expression": {
@@ -252,12 +260,12 @@ Live payloads also carry glyph fields on `periodic` (including `alchemical_symbo
 
 ## Example — ROBERT (master paths)
 
-When a path raw sum is exactly **11**, **22**, or **33**, the path stays that master number, `is_master_*` is true, and `also_called` appends the vernacular title. Verified live **v2.4.1**.
+When a path raw sum is exactly **11**, **22**, or **33**, the path stays that master number, `is_master_*` is true, and `also_called` appends the vernacular title. Verified live **v2.5.0**.
 
 ```json
 {
   "tool": "get_name",
-  "tool_version": "v2.4.1",
+  "tool_version": "v2.5.0",
   "full_name": "ROBERT",
   "numerology": {
     "expression": {
@@ -315,6 +323,7 @@ When an LLM **retypes or “saves” JSON into a chat file**, it often **substit
 - `words[]` — one entry per whitespace-separated word plus a `"full"` aggregate. Array length varies with the name (1 word → 2 entries; 3 words → 4); use your language’s array length (e.g. JavaScript `words.length`).
 - Each word / full: Francis Bacon `card{}` (also called destiny card), `name_role` (`only` / `first` / `middle_N` / `last` / `full`), `arcs{}`, `archetype{}`, `numerology{}` (Expression / Soul Urge / Personality), legacy `periodic{}` (Chaldean), `periodic_set{}` (chaldean / ordinal / reduction), `ciphers[]` of `{ cipher_no, raw_sum }`, plus card siblings `karma` / `planetary_spread` / `medicine` / `tarot` / `iching` / `chakra` / `lenormand` — join cipher sums to the legend by `cipher_no`
 - Top-level `numerology{}` is a copy of the **full** row’s numerology (the whole-name Expression / Soul Urge / Personality)
+- **v2.5 full-name keys** (top-level and the `full` row): `karmic_lessons` / `karmic_lessons_detail` / `hidden_passion` / `cornerstone` / `capstone` / `first_vowel` / `echoes`. Full-name numerology stems also include `polarity`, planet, element, and `color`
 - **41** (`francis_bacon`) drives the cosmic `card{}`; **42** (`pythagorean`) drives Expression (all letters), Soul Urge (vowels A E I O U; Y is always a consonant), and Personality (consonants); **27** (`chaldean`) drives `periodic{}` / alchemical wrap
 - Path numbers keep **11 / 22 / 33** when the raw sum is exactly those values; every other total reduces to a single digit. `*_base` is the single-digit collapse of a kept 11/22/33. Some books stop at a first-pass 11; this engine’s number is the fully reduced path (same rule as Life Path on [`get_date`](/tools/get-date)). Builders who want that first-pass reading compute it from `{stem}_sum`.
 - Expression `also_called` may include `destiny`; Soul Urge may include `hearts_desire`. On master paths **11 / 22 / 33**, `also_called` also carries the vernacular title (`master_illuminator` / `master_builder` / `master_transmutator`). These aliases exist on `get_name` only — not on date tools.
@@ -339,14 +348,33 @@ Stems: `expression` · `soul_urge` · `personality`.
 | `{stem}` | Path number — keeps **11 / 22 / 33** when raw is exactly those; else single digit |
 | `{stem}_base` | Single-digit collapse of a kept master (11→2, 22→4, 33→6); else same as `{stem}` |
 | `is_master_{stem}` | `true` only when raw ∈ {11, 22, 33} |
+| `is_karmic_debt` / `karmic_debt_no` | `true` / the raw sum when `{stem}_sum` is 13, 14, 16, or 19; else `false` / `0`. Not the same as `is_19_chain` on date cards |
 | `{stem}_name` | Canonical path name (`visionary` / `architect` / `healer` on masters) |
 | `core_theme` / `keyword` / `strength` / `shadow` | Meaning tokens for that path |
 | `also_called` | Present when there is at least one alias — see above |
+| `polarity` / `planet_name` / `planet_no` / `element_name` / `element_no` / `color` | Number lens on the **full-name** stems only (not per-word). Join from `v_numerology_life_paths` |
+
+### Full-name additive keys (v2.5)
+
+On the top-level payload **and** the `name_role=full` row (not on individual words):
+
+| Key | Meaning |
+|-----|---------|
+| `karmic_lessons` | Cipher-42 digits 1–9 missing from the name (`[]` if none) |
+| `karmic_lessons_detail` | Same digits with `reduced_influence` if that digit is also a core path number |
+| `hidden_passion` | Most-frequent digit(s); **`[]` if every present digit appears once** |
+| `cornerstone` / `capstone` | First / last A–Z of the **first** word (`{letter, value}`) |
+| `first_vowel` | First A/E/I/O/U in the name (Y skipped); `none`/`0` if none |
+| `echoes` | Intra-name only: a word’s card in another word’s Life spread (skip sun), or two words with the same card |
+
+Worked name `GEOMETRY ZEPHR`: cipher **42** (Pythagorean) raw **82** → expression 1 / soul urge 3 / personality 7. Cipher **41** (Francis Bacon after uppercase, A–Z = 27–52) raw **519** wraps to card **51** Q♠. Do not use A=1…Z=26 (that sum is 181 and is not the card engine).
+
+`Del` / `Cat` are valid names. `DEL FILE` returns `denied_phrase` (phrase check before the bare token `FILE`). Lone `DROP` / `DELETE` stay `denied_token`. Accented letters do not map (`JOSÉ` scores as `JOS`, not `JOSE`).
 
 ### Not on this tool
 
 <Info>
-  **Omissions (intentional):** no `is_money_*` / Life Path numerology (those are on [`get_date`](/tools/get-date) only — money number **28** is a date construct). No moon, season, retrogrades, or calendars. Use [`get_date`](/tools/get-date) for those.
+  **Omissions (intentional):** no `is_money_*` / Life Path numerology (those are on [`get_date`](/tools/get-date) only — money number **28** is a date construct). No franchise or myth archetype names. No moon, season, retrogrades, or calendars. Use [`get_date`](/tools/get-date) for those.
 </Info>
 
 ### Popular ciphers (sample of eight)
