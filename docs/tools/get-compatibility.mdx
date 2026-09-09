@@ -105,20 +105,9 @@ Live payloads are large (~85 KB). Below is a teaching excerpt — Cosmic card A 
 
 You can score **one** pair yourself. Use the MCP tool when you have **many** dates or many permutations — same math, just faster.
 
-**Public example:** `2029-02-27` × `2024-02-27` (rooster × dragon — a Chinese **secret-friend** / Liu He pair).
+Most real pairs have **different** Cosmic cards. Same-card matches are rare; the first example below shows one on purpose so you can see the same-card line, then a second example shows the usual case.
 
-### Step 1 — Chinese animals
-
-Look up each date’s lunar Chinese animal (CNY-aware). For this fixture:
-
-| Date | Animal |
-|------|--------|
-| 2029-02-27 | **rooster** |
-| 2024-02-27 | **dragon** |
-
-Dragon and rooster are secret friends → scored Chinese aspect = **`harmonic_pair`**.
-
-### Step 2 — Chinese bonus (what enters the score)
+### Chinese bonus table (what enters the score)
 
 | Scored Chinese aspect | Bonus |
 |----------------------|------:|
@@ -131,30 +120,59 @@ Dragon and rooster are secret friends → scored Chinese aspect = **`harmonic_pa
 | `opposition` | −8 |
 | `none` | 0 |
 
-So this pair: **`chinese_zodiac_bonus` = +8**.
+Only `chinese_zodiac_bonus` is summed. If you also see `chinese_wheel_aspect` / `chinese_wheel_bonus`, that is a leftover Western-grid label — **do not add it**.
 
-You may also see `chinese_wheel_aspect: quincunx` with `chinese_wheel_bonus: −2`. That is the leftover Western-grid label on the **same** pair. **Do not add it.** Only `chinese_zodiac_bonus` is summed.
+### Example A — Liu He + same Cosmic card (uncommon)
 
-### Step 3 — Add the other line items (policy `v1`)
+**Dates:** `2029-02-27` × `2024-02-27` (rooster × dragon — Chinese **secret-friend** / Liu He).
 
-For this same fixture the live tool returns (rounded to the score parts):
+| Date | Animal | Cosmic card |
+|------|--------|-------------|
+| 2029-02-27 | **rooster** | same card as B |
+| 2024-02-27 | **dragon** | same card as A |
+
+Scored Chinese aspect = **`harmonic_pair`** → **`chinese_zodiac_bonus` = +8**.
 
 | Line | Value | Notes |
 |------|------:|-------|
-| Same Cosmic card | **+13** | Both dates are the same Cosmic card |
+| Same Cosmic card | **+13** | Both dates share one Cosmic card |
 | Element harmony | **+5** | Harmonious classical elements |
-| Ruling-planet bonus | **0** | Neutral for this pair |
+| Ruling-planet bonus | **0** | Neutral |
 | Card connections (`card_score.combined`) | **0** | No scored cardology edges here |
-| Chinese zodiac (Liu He) | **+8** | From Step 2 |
+| Chinese zodiac (Liu He) | **+8** | From the table |
 | True sidereal / other wheels | *(shown, not added)* | Policy `v1` |
-
-**By hand:**
 
 ```text
 13 + 5 + 0 + 0 + 8 = 26
 ```
 
 Live check: `overall_score` **26**, `chinese_zodiac_aspect` **`harmonic_pair`**, `interpretation` **`deeply_harmonious`**.
+
+### Example B — San He trine + different Cosmic cards (typical)
+
+**Dates:** `2024-03-01` × `2028-06-15` (dragon × monkey — Chinese **San He** / trine). Cosmic cards differ.
+
+| Date | Animal | Cosmic card |
+|------|--------|-------------|
+| 2024-03-01 | **dragon** | **9♠** |
+| 2028-06-15 | **monkey** | **2♦** |
+
+Scored Chinese aspect = **`trine`** → **`chinese_zodiac_bonus` = +13**. Wheel leftover is `none` / 0 (San He has no 9027 Western-grid twin).
+
+| Line | Value | Notes |
+|------|------:|-------|
+| Same Cosmic card | **0** | 9♠ ≠ 2♦ — usual case |
+| Element harmony | **−3** | Challenging classical elements |
+| Ruling-planet bonus | **+1** | Slight planetary edge |
+| Card connections (`card_score.combined`) | **+1** | One scored cardology edge |
+| Chinese zodiac (San He) | **+13** | From the table |
+| True sidereal / other wheels | *(shown, not added)* | Policy `v1` |
+
+```text
+0 + (-3) + 1 + 1 + 13 = 12
+```
+
+Live check: `overall_score` **12**, `chinese_zodiac_aspect` **`trine`**, same-card bonus **0**.
 
 ### When to use the tool
 
@@ -163,7 +181,8 @@ Live check: `overall_score` **26**, `chinese_zodiac_aspect` **`harmonic_pair`**,
 | One or two dates | Score by hand with the table above (or one MCP call to confirm) |
 | Many birthdays, a roster, or all permutations | Call `get_compatibility` repeatedly — same formula, no hand arithmetic |
 
-The six Liu He pairs: rat–ox · tiger–pig · rabbit–dog · **dragon–rooster** · snake–monkey · horse–goat.
+The six Liu He pairs: rat–ox · tiger–pig · rabbit–dog · **dragon–rooster** · snake–monkey · horse–goat.  
+San He (trine) groups: rat–dragon–monkey · ox–snake–rooster · tiger–horse–dog · rabbit–goat–pig.
 
 <Note>
   **Wire names:** inputs and `temporal_context` use **`date_a` / `date_b`**. Full date profiles are **`cosmic_card_a` / `cosmic_card_b`**. Out-of-range Cosmic-card-only scope uses `payload_scope: "cosmic_card_only"`. Cosmic card = birth = life = sun (`cosmic.also_called`).
