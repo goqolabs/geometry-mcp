@@ -17,7 +17,7 @@ One date in → the **Cosmic card** for that date plus layered systems: tarot (m
 </Info>
 
 <Info>
-  **One call returns** 26+ symbolic systems across 20+ traditions — cards, tarot, five astrology wheels, numerology, chakras, moon phase, retrogrades, day ruler, and multi-calendar years — as ~750 deterministic fields from a single date.
+  **One call returns** 26+ symbolic systems across 20+ traditions — cards, tarot, five astrology wheels, numerology, chakras, moon phase, retrogrades, day ruler, and multi-calendar years — from a single date.
 </Info>
 
 | | |
@@ -361,7 +361,7 @@ Dates outside 1900–2100 do not crash the tool. The **Cosmic card** still resol
 
 ## Planetary spread order (`spread_pos`)
 
-`cosmic.planetary_spread` is a **keyed object** (planet name → slot). JSON object key order is **not** reliable — clients and gateways may reshuffle keys. Each slot carries **`spread_pos`** (integer **1–14**) = Life-spread order from `cosmic_planets.sort_no`.
+`cosmic.planetary_spread` is a **keyed object** (planet name → slot). JSON object key order is **not** reliable — clients and gateways may reshuffle keys. Each slot carries **`spread_pos`** (integer **1–14**) = Life-spread display order.
 
 **Consumer rule:** sort slots by `spread_pos` ascending. Do not rely on `Object.keys()` / iteration order.
 

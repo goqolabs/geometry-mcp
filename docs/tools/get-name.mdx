@@ -39,6 +39,8 @@ A name string in → per-word and full-name **Francis Bacon** cosmic cards, Pyth
 
 > Decode ROBERT with get_name
 
+<a id="example-keel"></a>
+
 ## Example response — KEEL
 
 Teaching excerpt (live **v2.5.0**). Full payloads also include card siblings (`karma`, `planetary_spread`, `medicine`, `tarot`, `iching`, `chakra`, `lenormand`), the complete Latin `cipher_legend`, and v2.5 full-name keys (`karmic_lessons`, `hidden_passion`, `cornerstone` / `capstone` / `first_vowel`, `echoes`) — abbreviated here on purpose.
@@ -119,6 +121,8 @@ Teaching excerpt (live **v2.5.0**). Full payloads also include card siblings (`k
 ```
 
 Top-level `numerology` is a copy of the **full** row’s numerology (whole-name Expression / Soul Urge / Personality).
+
+<a id="example-ohtani"></a>
 
 ## Example — Shohei Ohtani (abbrev)
 
@@ -258,6 +262,8 @@ Live shape abbreviated: **full** name only · **8 of ~100** Latin ciphers (all s
 
 Live payloads also carry glyph fields on `periodic` (including `alchemical_symbol`). Prefer the live tool result for glyphs — see the Unicode warning below.
 
+<a id="example-robert"></a>
+
 ## Example — ROBERT (master paths)
 
 When a path raw sum is exactly **11**, **22**, or **33**, the path stays that master number, `is_master_*` is true, and `also_called` appends the vernacular title. Verified live **v2.5.0**.
@@ -303,6 +309,8 @@ When a path raw sum is exactly **11**, **22**, or **33**, the path stays that ma
 | 33 | `healer` | `master_transmutator` |
 
 Personality has no base alias — on masters it may list only the vernacular title (e.g. `master_builder`). Expression always keeps `destiny`; Soul Urge always keeps `hearts_desire`.
+
+<a id="unicode-glyphs"></a>
 
 ## Warning — rare Unicode glyphs in chat copies
 
@@ -352,7 +360,7 @@ Stems: `expression` · `soul_urge` · `personality`.
 | `{stem}_name` | Canonical path name (`visionary` / `architect` / `healer` on masters) |
 | `core_theme` / `keyword` / `strength` / `shadow` | Meaning tokens for that path |
 | `also_called` | Present when there is at least one alias — see above |
-| `polarity` / `planet_name` / `planet_no` / `element_name` / `element_no` / `color` | Number lens on the **full-name** stems only (not per-word). Join from `v_numerology_life_paths` |
+| `polarity` / `planet_name` / `planet_no` / `element_name` / `element_no` / `color` | Number lens on the **full-name** stems only (not per-word) |
 
 ### Full-name additive keys (v2.5)
 

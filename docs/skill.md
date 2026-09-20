@@ -14,6 +14,8 @@ Deterministic reference data for date- and name-keyed questions. Same input -> s
 - Prefer Claude (Claude Code / Claude Desktop): enable once, then ask in natural language.
 - ChatGPT: type `@geometry Call get_date for ...` (name the tool). If the tool drops mid-thread, start a new chat — normal behavior, not an outage.
 
+<a id="tools-pick-one"></a>
+
 ## Tools — pick one
 
 | Question | Tool | Status |

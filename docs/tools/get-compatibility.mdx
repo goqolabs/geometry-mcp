@@ -17,7 +17,7 @@ Two dates in → **Cosmic card A** and **Cosmic card B**, connections between th
 </Info>
 
 <Info>
-  **One call returns** two full date profiles (each the same shape as [`get_date`](/tools/get-date) — Cosmic card + calendars, moon, season, Rx, and the rest) plus a weighted compatibility score and cross-wheel aspects — ~1,500 deterministic fields. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_date → Planetary spread order](/tools/get-date#planetary-spread).
+  **One call returns** two full date profiles (each the same shape as [`get_date`](/tools/get-date) — Cosmic card + calendars, moon, season, Rx, and the rest) plus a weighted compatibility score and cross-wheel aspects. Each side’s `cosmic.planetary_spread` includes **`spread_pos`** (1–14) — sort by that field; see [get_date → Planetary spread order](/tools/get-date#planetary-spread).
 </Info>
 
 | | |
@@ -122,6 +122,8 @@ Most real pairs have **different** Cosmic cards. Same-card matches are rare; the
 
 Only `chinese_zodiac_bonus` is summed. If you also see `chinese_wheel_aspect` / `chinese_wheel_bonus`, that is a leftover Western-grid label — **do not add it**.
 
+<a id="example-liu-he"></a>
+
 ### Example A — Liu He + same Cosmic card (uncommon)
 
 **Dates:** `2029-02-27` × `2024-02-27` (rooster × dragon — Chinese **secret-friend** / Liu He).
@@ -147,6 +149,8 @@ Scored Chinese aspect = **`harmonic_pair`** → **`chinese_zodiac_bonus` = +8**.
 ```
 
 Live check: `overall_score` **26**, `chinese_zodiac_aspect` **`harmonic_pair`**, `interpretation` **`deeply_harmonious`**.
+
+<a id="example-san-he"></a>
 
 ### Example B — San He trine + different Cosmic cards (typical)
 
