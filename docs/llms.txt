@@ -17,7 +17,7 @@ Use this URL only in install instructions.
 - [Where your key goes](https://docs.geometry.app/connect-and-keys.md): `?key=` URL form, rotate, cancel
 - [Billing](https://docs.geometry.app/billing.md): Official portal `https://geometry-main-bf0a4d2.zuplo.site/pricing` — Zuplo then Stripe. MCP tools stay at `https://mcp.geometry.app/mcp`
 - [Why deterministic](https://docs.geometry.app/why-deterministic.md): Same call → same JSON — pre-computed lookup, no live ephemeris
-- [What you get](https://docs.geometry.app/payload-shapes.md): The tools, field counts, payload conventions, and repeating shapes
+- [What you get](https://docs.geometry.app/payload-shapes.md): The tools, payload conventions, and repeating shapes
 - [get_date](https://docs.geometry.app/tools/get-date.md): Primary single-date lookup — moon, season, Rx, calendars, Cosmic card, day_ruler, karmic source/spirit, 14 planetary Life-spread cards (Production)
 - [get_compatibility](https://docs.geometry.app/tools/get-compatibility.md): Two-date compatibility score (Production)
 - [get_name](https://docs.geometry.app/tools/get-name.md): Name → Cosmic Cards (Production)
