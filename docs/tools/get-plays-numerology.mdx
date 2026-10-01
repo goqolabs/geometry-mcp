@@ -1,0 +1,70 @@
+---
+title: get_plays_numerology
+description: Play-level calendar day × jersey × season HR# / K# patterns for a Retrosheet player.
+tag: Production
+---
+
+<Badge color="green">Production</Badge>
+
+<Info>
+  **Status:** Production on Path C (`https://mcp.geometry.app/mcp`).
+</Info>
+
+Player **play-event numerology** on Retrosheet plays — when season home-run or strikeout milestones align with calendar day-of-month, jersey number, or inning.
+
+<Info>
+  **When to use:** a known **Retrosheet** `retro_id` and optional season / game filter. **Not** for team roster stacks → [`get_team_chemistry`](/tools/get-team-chemistry). **Not** for a bare birth date → [`get_date`](/tools/get-date). Overlay `get_date(game_dt)` yourself for day-card narrative.
+</Info>
+
+| | |
+|---|---|
+| **Required** | `retro_id` — Retrosheet id, e.g. **`ohtas001`**, `freef001` (**not** Lahman/BBRef ids like `ohtansh01`) |
+| **Optional** | `season_yr` · `mode` (`season` default \| `spotlight` \| `career_summary`) · `lane` (`both` default \| `hr` \| `k`) · `tier_max` · `game_dt` · `limit` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> Use get_plays_numerology for ohtas001 mode career_summary.
+
+## Example (teaching excerpt)
+
+```json
+{
+  "retro_id": "ohtas001",
+  "full_name": "shohei ohtani",
+  "mode": "career_summary",
+  "lane": "both",
+  "summary": {
+    "hr_events": 292,
+    "hr_day_eq": 10,
+    "hr_any_pattern": 49,
+    "seasons_with_hr_patterns": 7,
+    "k_events": 698,
+    "k_day_eq": 10,
+    "k_any_pattern": 52,
+    "seasons_with_k_patterns": 6
+  }
+}
+```
+
+Season mode returns `events[]` with pattern labels such as `day=HR#`, `HR#=jersey`, `day=K#=jersey`.
+
+## Errors
+
+| `error` | Meaning |
+|---|---|
+| `player_not_found` | Unknown `retro_id` (wrong id family, typo, or not in mart) |
+| `missing_retro_id` | No `retro_id` |
+| `missing_season_yr` | Season/spotlight mode without `season_yr` |
+| `invalid_mode` / `invalid_lane` / `invalid_season_yr` | Bad enum or type |
+
+## Notes
+
+- **Retrosheet vs Lahman:** Ohtani is `ohtas001` on this tool. `ohtansh01` returns `player_not_found`.
+- Teaching patterns only — population rates for `day=HR#` are near chance; use for verified moments, not prediction.
+
+## See also
+
+- [get_team_chemistry](/tools/get-team-chemistry) — WS / postseason roster stacks
+- [get_date](/tools/get-date) — day card for a `game_dt`
+- [What you get](/payload-shapes) — tool menu

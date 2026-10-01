@@ -1,0 +1,73 @@
+---
+title: get_team_chemistry
+description: MLB team season roster Cosmic card stacks — World Series champions or postseason rosters.
+tag: Production
+---
+
+<Badge color="green">Production</Badge>
+
+<Info>
+  **Status:** Production on Path C (`https://mcp.geometry.app/mcp`).
+</Info>
+
+Team-season **roster cardology** — suit mix, anchor card stacks, and related season / animal fields for a Retrosheet team code. Built for **World Series champion** and **postseason** roster scopes already in the baseball façade — not a live 40-man lookup.
+
+<Info>
+  **When to use:** historical October / World Series roster chemistry (`season_yr` + `team_code`). **Not** for a single birth date → [`get_date`](/tools/get-date). **Not** for play-level day/jersey/HR# patterns → [`get_plays_numerology`](/tools/get-plays-numerology). **Not** for live scraped rosters until that season exists in the postseason / WS spine (missing season → `team_season_not_found`).
+</Info>
+
+| | |
+|---|---|
+| **Required** | `season_yr` (integer) · `team_code` (Retrosheet, e.g. `LAN`, `CHA`, `NYA`) |
+| **Optional** | `scope` — `ws_champion` (default) \| `postseason` · `gametype` · `include_pair_matrix` |
+| **MCP URL** | `https://mcp.geometry.app/mcp` |
+
+**Ask:**
+
+> Use get_team_chemistry for 2024 LAN with scope ws_champion.
+
+## Example (teaching excerpt)
+
+Live 2024 Dodgers World Series champion call (shortened):
+
+```json
+{
+  "season_yr": 2024,
+  "team_code": "LAN",
+  "scope": "ws_champion",
+  "roster_size": 60,
+  "season_animal": "dragon",
+  "anchor_stacks": [
+    { "card_symbol": "K♥", "count": 6 },
+    { "card_symbol": "10♦", "count": 4 },
+    { "card_symbol": "A♦", "count": 4 }
+  ],
+  "suit_mix": {
+    "clubs": 40,
+    "diamonds": 31.7,
+    "hearts": 16.7,
+    "spades": 10
+  }
+}
+```
+
+## Errors
+
+| `error` | Meaning |
+|---|---|
+| `team_season_not_found` | No WS / postseason cosmic rows for that `season_yr` + `team_code` (e.g. future seasons not loaded) |
+| `missing_season_yr_or_team_code` | Required args missing |
+| `unsupported_scope` | `scope` not `ws_champion` or `postseason` |
+| `invalid_season_yr` | Non-integer season |
+
+## Notes
+
+- Team codes are **Retrosheet** (`LAN` not `LAD`; `CHA` not `CWS`).
+- Overlay individual birth dates with [`get_date`](/tools/get-date) when you have DOBs outside this tool.
+- Live `tools/list` also includes Magian Age / Long Range tools; this page covers baseball roster chemistry only.
+
+## See also
+
+- [get_plays_numerology](/tools/get-plays-numerology) — play-level HR/K numerology
+- [get_date](/tools/get-date) — one date → Cosmic card
+- [What you get](/payload-shapes) — tool menu

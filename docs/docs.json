@@ -24,7 +24,9 @@
           "payload-shapes",
           "tools/get-date",
           "tools/get-compatibility",
-          "tools/get-name"
+          "tools/get-name",
+          "tools/get-team-chemistry",
+          "tools/get-plays-numerology"
         ]
       },
       {
